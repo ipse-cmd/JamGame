@@ -1,0 +1,455 @@
+extends Control
+
+# JamRoom — the G0 spike shell. Single player, local 4-bar loop, three tracks
+# (drum ring, bass ring, chord strip), each behind its own active/pending commit
+# model that promotes at the next loop boundary — Unreal Jammin is the reference
+# behavior. UI is a read-only projection; input dispatches edits to pending buffers.
+
+const DrumPattern := preload("res://scripts/core/drum_pattern.gd")
+const PatternEditor := preload("res://scripts/core/drum_pattern_editor.gd")
+const CommitModel := preload("res://scripts/core/commit_model.gd")
+const BassLine := preload("res://scripts/core/bass_line.gd")
+const ChordTrack := preload("res://scripts/core/chord_track.gd")
+const Harmony := preload("res://scripts/core/harmony.gd")
+const AudioEngine := preload("res://scripts/audio/audio_engine.gd")
+const Transport := preload("res://scripts/audio/transport.gd")
+const StepRing := preload("res://scripts/ui/step_ring.gd")
+const ChordStrip := preload("res://scripts/ui/chord_strip.gd")
+
+const BARS_PER_LOOP := 4
+const STEPS_PER_BAR := 16
+const STEPS_PER_LOOP := BARS_PER_LOOP * STEPS_PER_BAR
+const DEFAULT_VELOCITY := 0.75
+const BASS_ROOT_MIDI := 36 # C2 — bass ring degrees ascend from here (key of C major)
+const CHORD_ROOT_MIDI := 60 # C4
+
+const DRUM_LANE_NAMES := ["Kick", "Snare", "Hat", "Perc"]
+const DRUM_LANE_COLORS := [Color("e05a4e"), Color("e8b84b"), Color("6fd3e0"), Color("b58ce8")]
+const BASS_LANE_COLORS := [Color("e06c5a"), Color("e8b84b"), Color("8fd15f"), Color("5fc9d8"), Color("b58ce8")]
+
+enum Focus { DRUMS, BASS, CHORDS }
+
+const HELP_TEXT := """CONTROLS
+
+GLOBAL
+  Tab     switch instrument
+  Space   pause / resume
+  F1      toggle this help
+  C       cancel pending edit
+  X       clear all (focused track)
+  Del     clear lane / line / slot
+
+DRUM RING (focus: DRUMS)
+  1-4     select lane
+  Left/Right  move step cursor
+  Enter   place / remove hit
+  Y       toggle accent
+
+BASS RING (focus: BASS)
+  1-5     select scale degree
+  Left/Right  move step cursor
+  Enter   place / re-tune / remove
+
+CHORD STRIP (focus: CHORDS)
+  Left/Right  select bar
+  A / D   cycle chord
+  Del     clear slot
+
+Edits show as ghosts and COMMIT at the
+next 4-bar loop boundary (Jammin rule:
+edit in loop N -> commit at N+1)."""
+
+var drums: JamCommitModel
+var bass: JamCommitModel
+var chords: JamCommitModel
+
+var transport: JamTransport
+var audio: JamAudioEngine
+var drum_ring: JamStepRing
+var bass_ring: JamStepRing
+var chord_strip: JamChordStrip
+var hud_line: Label
+var status_line: Label
+var help_label: Label
+
+var focus: int = Focus.DRUMS
+var drum_lane := 0
+var drum_cursor := 0
+var bass_lane := 0
+var bass_cursor := 0
+var chord_cursor := 0
+
+var loop_index := -1 # audible loop (display + pending-edit basis)
+var bar_in_loop := 0
+var step_in_bar := 0
+var _sched_loop := -1 # loop index in the SCHEDULE domain (runs ahead by the lookahead)
+var hitch_mode := false # F9: deliberately stall the main thread to prove timing immunity
+
+
+func _ready() -> void:
+	add_to_group("mcp_watch")
+	_build_tracks()
+	_build_scene()
+	transport.native = audio.native
+	transport.mix_rate = audio.mix_rate
+	transport.cursor_source = audio.sample_cursor
+	transport.sixteenth.connect(_on_sixteenth)
+	transport.schedule_sixteenth.connect(_on_schedule_sixteenth)
+	transport.start()
+	_refresh_ui()
+
+
+func _process(_delta: float) -> void:
+	if hitch_mode:
+		# TEST ONLY (G2.6): murder the main thread. Queued audio must not care.
+		OS.delay_msec(randi_range(5, 25))
+
+
+func _build_tracks() -> void:
+	var starter := DrumPattern.new()
+	for kick_step in [0, 8]:
+		PatternEditor.toggle_hit(starter, 0, kick_step)
+	PatternEditor.toggle_accent(starter, 0, 0)
+	for snare_step in [4, 12]:
+		PatternEditor.toggle_hit(starter, 1, snare_step)
+	for hat_step in range(0, 16, 2):
+		PatternEditor.toggle_hit(starter, 2, hat_step, 0.6)
+	drums = CommitModel.new(starter)
+
+	var line := BassLine.new()
+	line.notes = {0: 0, 8: 0, 12: 4}
+	bass = CommitModel.new(line)
+
+	var track := ChordTrack.new()
+	track.slots = [0, 5, 3, 4] # I - vi - IV - V
+	chords = CommitModel.new(track)
+
+
+func _build_scene() -> void:
+	var bg := ColorRect.new()
+	bg.color = Color("101318")
+	bg.set_anchors_preset(Control.PRESET_FULL_RECT)
+	add_child(bg)
+
+	audio = AudioEngine.new()
+	add_child(audio)
+	transport = Transport.new()
+	add_child(transport)
+
+	hud_line = _make_label(Vector2(60, 24), 18, Color("f0f3f7"))
+	status_line = _make_label(Vector2(60, 52), 13, Color("8a93a0"))
+
+	drum_ring = StepRing.new()
+	drum_ring.title = "DRUMS"
+	drum_ring.lane_names = DRUM_LANE_NAMES
+	drum_ring.lane_colors = DRUM_LANE_COLORS
+	drum_ring.position = Vector2(50, 110)
+	drum_ring.size = Vector2(440, 440)
+	add_child(drum_ring)
+
+	bass_ring = StepRing.new()
+	bass_ring.title = "BASS"
+	bass_ring.lane_names = _bass_lane_names()
+	bass_ring.lane_colors = BASS_LANE_COLORS
+	bass_ring.position = Vector2(505, 110)
+	bass_ring.size = Vector2(440, 440)
+	add_child(bass_ring)
+
+	chord_strip = ChordStrip.new()
+	chord_strip.position = Vector2(50, 580)
+	chord_strip.size = Vector2(895, 116)
+	add_child(chord_strip)
+
+	help_label = _make_label(Vector2(975, 84), 11, Color("aeb7c2"))
+	help_label.text = HELP_TEXT
+
+
+func _make_label(pos: Vector2, font_size: int, color: Color) -> Label:
+	var l := Label.new()
+	l.position = pos
+	l.add_theme_font_size_override("font_size", font_size)
+	l.add_theme_color_override("font_color", color)
+	add_child(l)
+	return l
+
+
+func _bass_lane_names() -> Array:
+	var names: Array = []
+	for d in BassLine.NUM_DEGREES:
+		names.append("%d · %s" % [d + 1, Harmony.pitch_class_name(Harmony.degree_to_midi(BASS_ROOT_MIDI, d))])
+	return names
+
+
+# ---------------------------------------------------------------- transport
+
+## Audible playhead crossed a step. In native mode this is display-only (audio was
+## already scheduled ahead); in legacy mode it also commits and fires sounds.
+func _on_sixteenth(abs_step: int) -> void:
+	@warning_ignore("integer_division")
+	var new_loop: int = abs_step / STEPS_PER_LOOP
+	if transport.native:
+		loop_index = new_loop
+	elif new_loop != loop_index:
+		loop_index = new_loop
+		_try_commits(loop_index)
+	var step_in_loop := abs_step % STEPS_PER_LOOP
+	step_in_bar = step_in_loop % STEPS_PER_BAR
+	@warning_ignore("integer_division")
+	bar_in_loop = step_in_loop / STEPS_PER_BAR
+
+	if not transport.native:
+		for h in drums.active.hits:
+			if h.step == step_in_bar:
+				audio.trigger_drum(h.voice, h.velocity, h.accent)
+		if bass.active.notes.has(step_in_bar):
+			audio.trigger_bass(Harmony.degree_to_midi(BASS_ROOT_MIDI, bass.active.notes[step_in_bar]), 0.8)
+		if step_in_bar == 0:
+			var deg: int = chords.active.slots[bar_in_loop]
+			if deg >= 0:
+				audio.trigger_chord(Harmony.triad_midi(CHORD_ROOT_MIDI, deg), 0.7)
+	_refresh_ui()
+
+
+## Native path: submit this step's events with an absolute sample stamp, ahead of
+## audible time. Commits run in the SCHEDULE domain so a promoted pattern applies
+## exactly from the boundary step onward — the future buffer taken down to samples.
+func _on_schedule_sixteenth(abs_step: int, at_sample: int) -> void:
+	@warning_ignore("integer_division")
+	var s_loop: int = abs_step / STEPS_PER_LOOP
+	if s_loop != _sched_loop:
+		_sched_loop = s_loop
+		_try_commits(_sched_loop)
+	var step_in_loop := abs_step % STEPS_PER_LOOP
+	var sb := step_in_loop % STEPS_PER_BAR
+	@warning_ignore("integer_division")
+	var bar: int = step_in_loop / STEPS_PER_BAR
+
+	for h in drums.active.hits:
+		if h.step == sb:
+			audio.schedule_drum(at_sample, h.voice, h.velocity, h.accent)
+	if bass.active.notes.has(sb):
+		audio.schedule_bass(at_sample, Harmony.degree_to_midi(BASS_ROOT_MIDI, bass.active.notes[sb]), 0.8)
+	if sb == 0:
+		var deg: int = chords.active.slots[bar]
+		if deg >= 0:
+			audio.schedule_chord(at_sample, Harmony.triad_midi(CHORD_ROOT_MIDI, deg), 0.7)
+
+
+func _try_commits(at_loop: int) -> void:
+	drums.try_commit_at_loop(at_loop)
+	bass.try_commit_at_loop(at_loop)
+	chords.try_commit_at_loop(at_loop)
+
+
+# ---------------------------------------------------------------- input
+
+func _unhandled_key_input(event: InputEvent) -> void:
+	var k := event as InputEventKey
+	if k == null or not k.pressed:
+		return
+	if k.echo and k.keycode != KEY_LEFT and k.keycode != KEY_RIGHT:
+		return
+	match k.keycode:
+		KEY_TAB:
+			focus = (focus + 1) % 3
+		KEY_F1:
+			help_label.visible = not help_label.visible
+		KEY_F9:
+			hitch_mode = not hitch_mode
+		KEY_SPACE:
+			transport.toggle_pause()
+		KEY_LEFT:
+			_move_cursor(-1)
+		KEY_RIGHT:
+			_move_cursor(1)
+		KEY_ENTER, KEY_KP_ENTER:
+			_place()
+		KEY_Y:
+			_toggle_accent()
+		KEY_DELETE:
+			_clear_lane()
+		KEY_X:
+			_clear_all()
+		KEY_C:
+			_focused_model().cancel_pending()
+		KEY_A:
+			_cycle_chord(-1)
+		KEY_D:
+			_cycle_chord(1)
+		KEY_1, KEY_2, KEY_3, KEY_4, KEY_5:
+			_select_lane(k.keycode - KEY_1)
+		_:
+			return
+	get_viewport().set_input_as_handled()
+	_refresh_ui()
+
+
+func _focused_model() -> JamCommitModel:
+	match focus:
+		Focus.DRUMS: return drums
+		Focus.BASS: return bass
+		_: return chords
+
+
+func _move_cursor(dir: int) -> void:
+	match focus:
+		Focus.DRUMS: drum_cursor = posmod(drum_cursor + dir, STEPS_PER_BAR)
+		Focus.BASS: bass_cursor = posmod(bass_cursor + dir, STEPS_PER_BAR)
+		Focus.CHORDS: chord_cursor = posmod(chord_cursor + dir, BARS_PER_LOOP)
+
+
+func _select_lane(n: int) -> void:
+	match focus:
+		Focus.DRUMS:
+			if n < DrumPattern.NUM_VOICES:
+				drum_lane = n
+		Focus.BASS:
+			if n < BassLine.NUM_DEGREES:
+				bass_lane = n
+		_:
+			pass
+
+
+func _place() -> void:
+	match focus:
+		Focus.DRUMS:
+			PatternEditor.toggle_hit(drums.begin_or_get_pending(loop_index), drum_lane, drum_cursor, DEFAULT_VELOCITY)
+		Focus.BASS:
+			bass.begin_or_get_pending(loop_index).place_or_toggle(bass_cursor, bass_lane)
+		Focus.CHORDS:
+			pass # chords edit via A/D
+
+
+func _toggle_accent() -> void:
+	if focus == Focus.DRUMS:
+		PatternEditor.toggle_accent(drums.begin_or_get_pending(loop_index), drum_lane, drum_cursor)
+
+
+func _clear_lane() -> void:
+	match focus:
+		Focus.DRUMS:
+			PatternEditor.clear_voice(drums.begin_or_get_pending(loop_index), drum_lane)
+		Focus.BASS:
+			bass.begin_or_get_pending(loop_index).clear()
+		Focus.CHORDS:
+			chords.begin_or_get_pending(loop_index).clear_slot(chord_cursor)
+
+
+func _clear_all() -> void:
+	match focus:
+		Focus.DRUMS:
+			PatternEditor.clear_all(drums.begin_or_get_pending(loop_index))
+		Focus.BASS:
+			bass.begin_or_get_pending(loop_index).clear()
+		Focus.CHORDS:
+			chords.begin_or_get_pending(loop_index).clear()
+
+
+func _cycle_chord(delta: int) -> void:
+	if focus == Focus.CHORDS:
+		chords.begin_or_get_pending(loop_index).cycle_slot(chord_cursor, delta)
+
+
+# ---------------------------------------------------------------- UI refresh
+
+func _refresh_ui() -> void:
+	drum_ring.cells = _drum_cells()
+	drum_ring.playhead_step = step_in_bar
+	drum_ring.cursor_step = drum_cursor
+	drum_ring.selected_lane = drum_lane
+	drum_ring.focused = focus == Focus.DRUMS
+	drum_ring.status_text = _track_status(drums)
+	drum_ring.queue_redraw()
+
+	bass_ring.cells = _bass_cells()
+	bass_ring.playhead_step = step_in_bar
+	bass_ring.cursor_step = bass_cursor
+	bass_ring.selected_lane = bass_lane
+	bass_ring.focused = focus == Focus.BASS
+	bass_ring.status_text = _track_status(bass)
+	bass_ring.queue_redraw()
+
+	chord_strip.active_slots = chords.active.slots
+	chord_strip.pending_slots = chords.pending.slots if chords.has_pending() else null
+	chord_strip.cursor_bar = chord_cursor
+	chord_strip.playhead_bar = bar_in_loop
+	chord_strip.focused = focus == Focus.CHORDS
+	chord_strip.status_text = _track_status(chords)
+	chord_strip.queue_redraw()
+
+	var pause_tag := "" if transport.playing else "  ·  PAUSED (Space)"
+	var hitch_tag := "  ·  HITCHING (F9)" if hitch_mode else ""
+	hud_line.text = "JAMMIN LITE  ·  %d BPM  ·  Key C  ·  Loop %d  ·  Bar %d  Beat %d%s%s" % [
+		int(transport.bpm), maxi(loop_index, 0), bar_in_loop + 1, int(step_in_bar / 4.0) + 1, pause_tag, hitch_tag]
+	var audio_tag := "audio: legacy (frame-quantized)"
+	if audio.native:
+		var d: Dictionary = audio.diagnostics()
+		audio_tag = "audio: native sample-scheduled  ·  late %d  ·  dropped %d" % [d.late, d.dropped]
+	status_line.text = "Focus: %s (Tab)  ·  F1 help  ·  %s" % [["DRUMS", "BASS", "CHORDS"][focus], audio_tag]
+
+
+func _track_status(model: JamCommitModel) -> String:
+	if model.has_pending():
+		return "pending → loop %d" % model.commit_loop_index
+	return "v%d live" % model.version_id
+
+
+func _drum_cells() -> Dictionary:
+	var out := {}
+	var active: JamDrumPattern = drums.active
+	if not drums.has_pending():
+		for h in active.hits:
+			out[Vector2i(h.voice, h.step)] = {"color": DRUM_LANE_COLORS[h.voice], "mode": JamStepRing.CELL_SOLID, "accent": h.accent}
+		return out
+	var pend: JamDrumPattern = drums.pending
+	for h in active.hits:
+		if pend.find_hit_index(h.voice, h.step) < 0:
+			out[Vector2i(h.voice, h.step)] = {"color": DRUM_LANE_COLORS[h.voice], "mode": JamStepRing.CELL_GHOST_REMOVE, "accent": false}
+	for h in pend.hits:
+		var mode := JamStepRing.CELL_SOLID if active.find_hit_index(h.voice, h.step) >= 0 else JamStepRing.CELL_GHOST_ADD
+		out[Vector2i(h.voice, h.step)] = {"color": DRUM_LANE_COLORS[h.voice], "mode": mode, "accent": h.accent}
+	return out
+
+
+func _bass_cells() -> Dictionary:
+	var out := {}
+	var active: JamBassLine = bass.active
+	if not bass.has_pending():
+		for step in active.notes:
+			var deg: int = active.notes[step]
+			out[Vector2i(deg, step)] = {"color": BASS_LANE_COLORS[deg], "mode": JamStepRing.CELL_SOLID, "accent": false}
+		return out
+	var pend: JamBassLine = bass.pending
+	for step in active.notes:
+		var deg: int = active.notes[step]
+		if not pend.notes.has(step) or pend.notes[step] != deg:
+			out[Vector2i(deg, step)] = {"color": BASS_LANE_COLORS[deg], "mode": JamStepRing.CELL_GHOST_REMOVE, "accent": false}
+	for step in pend.notes:
+		var deg: int = pend.notes[step]
+		var same: bool = active.notes.has(step) and active.notes[step] == deg
+		var mode := JamStepRing.CELL_SOLID if same else JamStepRing.CELL_GHOST_ADD
+		out[Vector2i(deg, step)] = {"color": BASS_LANE_COLORS[deg], "mode": mode, "accent": false}
+	return out
+
+
+# ---------------------------------------------------------------- MCP observability
+
+func _mcp_state() -> Dictionary:
+	return {
+		"loop": loop_index,
+		"bar": bar_in_loop + 1,
+		"sixteenth": step_in_bar,
+		"bpm": transport.bpm,
+		"playing": transport.playing,
+		"focus": ["DRUMS", "BASS", "CHORDS"][focus],
+		"drum_hits": drums.active.hits.size(),
+		"drum_pending": drums.has_pending(),
+		"drum_version": drums.version_id,
+		"drum_cursor": {"lane": drum_lane, "step": drum_cursor},
+		"bass_notes": bass.active.notes.size(),
+		"bass_pending": bass.has_pending(),
+		"chord_slots": chords.active.slots,
+		"chord_pending": chords.has_pending(),
+		"hitch_mode": hitch_mode,
+		"audio": audio.diagnostics(),
+	}

@@ -1,2 +1,10 @@
 # Godot 4+ specific ignores
 .godot/
+
+# Native extension build artifacts (the built DLL in native/bin/ IS tracked)
+native/godot-cpp/
+native/.sconsign.dblite
+native/src/*.obj
+native/bin/*.exp
+native/bin/*.lib
+native/bin/*.pdb
