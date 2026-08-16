@@ -1,16 +1,29 @@
 class_name JamBotObservation
 extends RefCounted
 
-# Phase 1A: the observation a bot policy receives. This is the ONLY game state a
-# policy may see — the MCP `get_bot_observation` path and BotPeer must both call
-# this constructor, never hand-roll their own view, so gaps discovered while
-# playing the policy manually are gaps in the real interface.
+# The versioned policy input boundary (JamObservation): the ONLY game state a
+# policy may see. BotPeer, the MCP manual-policy path, offline trainers, and
+# replay tooling must all consume THIS structure — never a hand-rolled view —
+# so gaps discovered while playing a policy are gaps in the real interface,
+# and a logged observation stays sufficient to reproduce its decision.
+#
+# Contract: the structure must survive JSON encode/decode (decision logs, a
+# future Python boundary). from_json() rehydrates the policy-facing fields and
+# the suite pins encode→decode→encode as a byte-identical fixed point.
+#
+# Shape (observation_schema 2):
+#   canonical state   bass_notes, chord_slots, kick/snare/hat_steps, ...
+#   snapshot features JamFeatures.extract of the same future-facing state
+#   temporal context  deltas / event-overlap lookbacks / change ages (JamHistory)
+#   decision metadata role, target_loop, versions, windows_since_change
 #
 # Future-facing: for each track the builder picks the pending snapshot when its
 # commit lands at or before the bot's target loop (that IS the state the bot's
 # edit will coexist with), otherwise the active one.
 
-const SCHEMA_VERSION := 1
+const OBSERVATION_SCHEMA := 2
+
+const Features := preload("res://scripts/core/jam_features.gd")
 
 const TRACK_DRUMS := 0
 const TRACK_BASS := 1
@@ -24,8 +37,10 @@ const VOICE_PERC := 3
 
 ## Observation for a BASS decision targeting target_loop.
 ## windows_since_change: decision windows since the bass line last actually
-## changed (committed version bump) — the policy's only repetition signal in 1A.
-static func build_bass(bass_model, drums_model, chords_model, target_loop: int, windows_since_change: int) -> Dictionary:
+## changed (committed version bump). history (JamHistory or null) contributes
+## the temporal section; without it, temporal is {} — absent, not fabricated.
+static func build_bass(bass_model, drums_model, chords_model, target_loop: int,
+		windows_since_change: int, history = null) -> Dictionary:
 	var bass_line = state_at(bass_model, target_loop)
 	var drum_pattern = state_at(drums_model, target_loop)
 	var chord_track = state_at(chords_model, target_loop)
@@ -34,8 +49,14 @@ static func build_bass(bass_model, drums_model, chords_model, target_loop: int, 
 	for h in drum_pattern.hits:
 		voice_steps[h.voice].append(h.step)
 
+	var state := {
+		"drums": drum_pattern.to_dict(),
+		"bass": bass_line.to_dict(),
+		"chords": chord_track.to_dict(),
+	}
+
 	return {
-		"schema": SCHEMA_VERSION,
+		"observation_schema": OBSERVATION_SCHEMA,
 		"role": TRACK_BASS,
 		"target_loop": target_loop,
 		"steps_per_bar": bass_line.num_steps,
@@ -47,12 +68,14 @@ static func build_bass(bass_model, drums_model, chords_model, target_loop: int, 
 		"hat_steps": voice_steps[VOICE_HAT],
 		"drum_density": float(drum_pattern.hits.size()) / float(drum_pattern.num_steps * 4),
 		"windows_since_change": windows_since_change,
+		"features": Features.extract(state),
+		"temporal": history.temporal() if history != null else {},
 	}
 
 
 ## The track state that will be audible at target_loop: a pending snapshot whose
 ## commit boundary is at or before it, else the active one. Public: BotPeer uses
-## the same choice when snapshotting states for feature measurement.
+## the same choice when snapshotting states for measurement/history.
 static func state_at(model, target_loop: int):
 	if model.has_pending() and model.commit_loop_index <= target_loop:
 		return model.pending
@@ -62,7 +85,7 @@ static func state_at(model, target_loop: int):
 ## Rehydrate an observation that went through JSON (decision logs): string keys
 ## back to int, floats back to int where the schema says int. A logged frame's
 ## observation + rng_seed must reproduce its ops exactly — replay tooling and
-## the 1C location-independence proof both depend on this round-trip.
+## the location-independence proof both depend on this round-trip.
 static func from_json(d: Dictionary) -> Dictionary:
 	var obs := d.duplicate(true)
 	var notes := {}
@@ -78,7 +101,7 @@ static func from_json(d: Dictionary) -> Dictionary:
 	for v in d.get("chord_slots", []):
 		slots.append(int(v))
 	obs.chord_slots = slots
-	for int_key in ["schema", "role", "target_loop", "steps_per_bar", "bass_version", "windows_since_change"]:
+	for int_key in ["observation_schema", "role", "target_loop", "steps_per_bar", "bass_version", "windows_since_change"]:
 		if obs.has(int_key):
 			obs[int_key] = int(obs[int_key])
 	return obs

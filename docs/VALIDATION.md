@@ -261,6 +261,37 @@ one-hit jaccard 12/13, and feature invariance across the JSON round-trip —
 which caught string-keyed steps sorting lexicographically). **6/6 integration
 tests green.**
 
+## AI player Phase 2B + 2C — temporal features and the observation contract (2026-08-16)
+
+**2B — temporal measurements.** Two states with identical snapshot features are
+musically different if one just changed and the other sat still for six loops.
+`JamFeatures.compare(prev, cur)` (pure deltas over the numeric feature keys)
+plus `scripts/core/jam_history.gd` — a ring that only STORES per-loop
+{state, features, versions}; all math stays in pure functions so candidate
+scoring and offline replay measure identically. Temporal output: per-feature
+deltas vs the previous loop, event-overlap vs 1/2/4 loops ago (explicitly named
+`*_event_jaccard_prev_N` / `chord_slot_match_prev_N` — overlap is a
+measurement, "repetition" is a judgment for the interpretation layer), and
+per-track change ages from the three version counters (`loops_since_*_change`,
+a lower bound: a bot only knows what it watched). Unobserved lookbacks are
+null — honesty over fabrication.
+
+**2C — JamObservation as a versioned serialization contract**
+(observation_schema 2): canonical state + snapshot features + temporal context
++ decision metadata, built ONLY by `JamBotObservation.build_bass` (BotPeer, the
+MCP path, trainers, and replay all consume this one structure). The contract
+test pins encode→decode→encode as a byte-identical fixed point — sidestepping
+float-precision comparison — and the policy replays identically through the
+round-tripped structure. BotPeer feeds history each loop (audible/active
+states) and frames' `analysis` is now the observation's own feature block,
+measured before the bot's ops mutate the pending buffer.
+
+Validation: **184 unit tests green** (+18: hand-computed deltas, still-state vs
+changed-state history including per-track age reset, null lookbacks, monotonic
+push guard, schema field, fixed-point serialization, full-schema policy
+replay). **6/6 integration green** — the external-process gate now pushes the
+schema-2 observation through real ENet + JSON logs and still replays exactly.
+
 ## How to rebuild the extension
 
 ```

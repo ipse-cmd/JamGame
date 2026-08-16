@@ -20,6 +20,7 @@ const RuleBassPolicy := preload("res://scripts/ai/rule_bass_policy.gd")
 const DecisionLog := preload("res://scripts/ai/decision_log.gd")
 const BotPeer := preload("res://scripts/ai/bot_peer.gd")
 const Features := preload("res://scripts/core/jam_features.gd")
+const History := preload("res://scripts/core/jam_history.gd")
 
 var passed := 0
 var failed := 0
@@ -40,6 +41,8 @@ func _initialize() -> void:
 	_test_decision_log()
 	_test_bot_peer()
 	_test_jam_features()
+	_test_temporal_features()
+	_test_observation_contract()
 	print("TESTS: %d passed, %d failed" % [passed, failed])
 	quit(1 if failed > 0 else 0)
 
@@ -569,7 +572,8 @@ func _test_bot_peer() -> void:
 			frames += 1
 			if e.ops.is_empty():
 				zero_op_frames += 1
-			if e.analysis != null and e.analysis.has("drum_density"):
+			if e.analysis != null and e.analysis.has("drum_density") \
+					and e.observation.temporal.has("loops_since_bass_change"):
 				analyzed += 1
 		elif e.type == "commit":
 			commits += 1
@@ -632,6 +636,88 @@ func _test_jam_features() -> void:
 	check(is_equal_approx(f2.kick_bass_alignment, f.kick_bass_alignment)
 		and is_equal_approx(f2.bass_pitch_mean, f.bass_pitch_mean),
 		"features identical on JSON-round-tripped state")
+
+
+func _test_temporal_features() -> void:
+	# Pure delta comparison on hand-built feature dicts.
+	var deltas := Features.compare({"drum_density": 0.2, "bass_density": 0.25},
+		{"drum_density": 0.5, "bass_density": 0.25})
+	check(is_equal_approx(deltas.drum_density_delta, 0.3), "drum density delta +0.3")
+	check(is_equal_approx(deltas.bass_density_delta, 0.0), "unchanged density delta 0")
+
+	# History: same state sitting still vs a bass change — the distinction two
+	# identical snapshots cannot express.
+	var models := _mk_models()
+	var state := {
+		"drums": models.drums.active.to_dict(),
+		"bass": models.bass.active.to_dict(),
+		"chords": models.chords.active.to_dict(),
+	}
+	var h := History.new()
+	h.push(0, state, [0, 0, 0])
+	var t0 := h.temporal()
+	check(t0.drum_event_jaccard_prev_1 == null and t0.bass_event_jaccard_prev_2 == null,
+		"unobserved lookbacks are null, not fabricated")
+	h.push(1, state, [0, 0, 0])
+	h.push(2, state, [0, 0, 0])
+	var t2 := h.temporal()
+	check(is_equal_approx(t2.drum_density_delta, 0.0), "still state: zero deltas")
+	check(is_equal_approx(t2.bass_event_jaccard_prev_1, 1.0)
+		and is_equal_approx(t2.drum_event_jaccard_prev_2, 1.0), "still state: full overlap on lookbacks")
+	check(t2.loops_since_bass_change == 2 and t2.loops_since_drum_change == 2,
+		"no observed change: age = observed span (lower bound)")
+
+	# A bass change at loop 3: age resets for bass only, overlap drops.
+	var changed := {
+		"drums": state.drums,
+		"bass": {"num_steps": 16, "notes": {2: 1, 6: 3, 10: 2}},
+		"chords": state.chords,
+	}
+	h.push(3, changed, [0, 1, 0])
+	var t3 := h.temporal()
+	check(t3.loops_since_bass_change == 0, "bass change observed: age 0")
+	check(t3.loops_since_drum_change == 3, "drums untouched: age keeps growing")
+	check(is_equal_approx(t3.bass_event_jaccard_prev_1, 0.0), "disjoint new line: bass overlap 0")
+	check(is_equal_approx(t3.drum_event_jaccard_prev_1, 1.0), "drums still identical")
+	h.push(4, changed, [0, 1, 0])
+	check(h.temporal().loops_since_bass_change == 1, "bass age counts up from its change")
+
+	# Monotonic guard: re-observing a loop adds no history.
+	var n := h.entries.size()
+	h.push(4, changed, [0, 1, 0])
+	check(h.entries.size() == n, "re-pushing the same loop is ignored")
+
+
+func _test_observation_contract() -> void:
+	var models := _mk_models()
+	var h := History.new()
+	for loop in 3:
+		h.push(loop, {
+			"drums": models.drums.active.to_dict(),
+			"bass": models.bass.active.to_dict(),
+			"chords": models.chords.active.to_dict(),
+		}, [0, 0, 0])
+	var obs := BotObservation.build_bass(models.bass, models.drums, models.chords, 3, 1, h)
+	check(obs.observation_schema == 2, "observation carries its schema version")
+	check(obs.features.has("kick_bass_alignment"), "observation carries snapshot features")
+	check(obs.temporal.has("loops_since_bass_change") and obs.temporal.has("bass_event_jaccard_prev_1"),
+		"observation carries temporal context")
+	check(BotObservation.build_bass(models.bass, models.drums, models.chords, 3, 1).temporal == {},
+		"no history -> temporal absent, not fabricated")
+
+	# The serialization contract: encode -> decode -> encode is a byte-identical
+	# fixed point (sidesteps float-precision comparison entirely).
+	var s1 := JSON.stringify(obs)
+	var o2: Dictionary = JSON.parse_string(s1)
+	var s2 := JSON.stringify(o2)
+	var s3 := JSON.stringify(JSON.parse_string(s2))
+	check(s2 == s3, "observation JSON encode/decode reaches a byte-identical fixed point")
+
+	# And the policy consumes the round-tripped structure identically.
+	var seed_value := DecisionLog.derive_seed(9, 0, 1, 3)
+	check(RuleBassPolicy.decide(BotObservation.from_json(o2), seed_value)
+		== RuleBassPolicy.decide(obs, seed_value),
+		"full-schema observation replays through the policy after JSON")
 
 
 func _test_harmony() -> void:

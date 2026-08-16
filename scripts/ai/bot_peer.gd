@@ -17,7 +17,7 @@ extends Node
 const BotObservation := preload("res://scripts/ai/bot_observation.gd")
 const RuleBassPolicy := preload("res://scripts/ai/rule_bass_policy.gd")
 const DecisionLog := preload("res://scripts/ai/decision_log.gd")
-const Features := preload("res://scripts/core/jam_features.gd")
+const History := preload("res://scripts/core/jam_history.gd")
 
 const TRACK_DRUMS := 0
 const TRACK_BASS := 1
@@ -43,6 +43,7 @@ var _last_version := -1
 var _windows_since_change := 0
 var _pending_commit_key = null # DecisionKey of the last edit awaiting its version bump
 var _op_seq := 0 # client-assigned op sequence IDs (log-side only for now)
+var _history := History.new() # per-loop committed snapshots for temporal features
 
 
 func _process(_delta: float) -> void:
@@ -57,6 +58,18 @@ func _process(_delta: float) -> void:
 ## One decision opportunity per loop: author (or deliberately HOLD) the next
 ## editable window. Public so tests drive musical time directly.
 func on_loop(loop: int) -> void:
+	# History records what is actually AUDIBLE this loop (active states), with
+	# all three version counters so per-track change ages can be measured.
+	_history.push(loop, {
+		"drums": room.model_for(TRACK_DRUMS).active.to_dict(),
+		"bass": room.model_for(TRACK_BASS).active.to_dict(),
+		"chords": room.model_for(TRACK_CHORDS).active.to_dict(),
+	}, [
+		room.model_for(TRACK_DRUMS).version_id,
+		room.model_for(TRACK_BASS).version_id,
+		room.model_for(TRACK_CHORDS).version_id,
+	])
+
 	var net = room.net
 	if net != null and net.active and not net.can_edit(role):
 		return # not our seat in this room — also enforced server-side
@@ -82,17 +95,12 @@ func on_loop(loop: int) -> void:
 	authored[mark] = true
 
 	var key := DecisionLog.make_key(epoch, role, target, model.version_id)
+	# Built BEFORE dispatching — ops mutate the pending buffer, and the
+	# observation (features included) must not contain the bot's own edit.
 	var obs := BotObservation.build_bass(
 		room.model_for(TRACK_BASS), room.model_for(TRACK_DRUMS), room.model_for(TRACK_CHORDS),
-		target, _windows_since_change)
+		target, _windows_since_change, _history)
 	var seed_value := DecisionLog.derive_seed(session_seed, epoch, role, target)
-	# Measure the observed state BEFORE dispatching — ops mutate the pending
-	# buffer, and analysis_before must not contain the bot's own edit.
-	var analysis := Features.extract({
-		"drums": BotObservation.state_at(room.model_for(TRACK_DRUMS), target).to_dict(),
-		"bass": BotObservation.state_at(room.model_for(TRACK_BASS), target).to_dict(),
-		"chords": BotObservation.state_at(room.model_for(TRACK_CHORDS), target).to_dict(),
-	})
 
 	var t0 := Time.get_ticks_usec()
 	var ops := RuleBassPolicy.decide(obs, seed_value)
@@ -117,7 +125,7 @@ func on_loop(loop: int) -> void:
 	if decision_log != null:
 		decision_log.write(DecisionLog.build_frame(
 			key, source, RuleBassPolicy.POLICY_NAME, RuleBassPolicy.POLICY_VERSION,
-			seed_value, obs, logged_ops, t0, t1, _deadline_margin_steps(), analysis))
+			seed_value, obs, logged_ops, t0, t1, _deadline_margin_steps(), obs.features))
 
 
 ## Steps of headroom left before the lock horizon of the loop being authored

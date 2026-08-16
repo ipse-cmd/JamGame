@@ -103,9 +103,29 @@ static func extract(state: Dictionary) -> Dictionary:
 	}
 
 
+## Numeric features that make sense as deltas between two snapshots.
+const DELTA_KEYS := [
+	"drum_density", "kick_density", "snare_density", "hat_density", "perc_density",
+	"bass_density", "bass_pitch_mean", "bass_pitch_range", "bass_mean_interval",
+	"kick_bass_alignment", "chord_slot_count", "active_roles",
+]
+
+
+## Pure temporal comparison: how the measurements moved between two snapshots.
+## Still measurement, not opinion — "+0.27 drum density" is a fact; whether it
+## is a build is interpretation.
+static func compare(prev: Dictionary, cur: Dictionary) -> Dictionary:
+	var out := {}
+	for k in DELTA_KEYS:
+		out[k + "_delta"] = float(cur.get(k, 0)) - float(prev.get(k, 0))
+	return out
+
+
 ## Pattern similarity between two states, per track and combined — the
 ## measurement behind any repetition/novelty signal. Jaccard over event sets
-## (1.0 = identical, 0.0 = disjoint; two empty sets are identical).
+## (1.0 = identical, 0.0 = disjoint; two empty sets are identical). Named
+## "jaccard"/"match" wherever these surface: overlap is a measurement,
+## "repetition" is a judgment that belongs to a later interpretation layer.
 static func similarity(a: Dictionary, b: Dictionary) -> Dictionary:
 	var drums := _jaccard(_drum_set(a), _drum_set(b))
 	var bass := _jaccard(_bass_set(a), _bass_set(b))
