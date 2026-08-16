@@ -8,3 +8,5 @@ reloadable = false
 
 windows.debug.x86_64 = "res://native/bin/jam_audio.windows.template_debug.x86_64.dll"
 windows.release.x86_64 = "res://native/bin/jam_audio.windows.template_debug.x86_64.dll"
+linux.debug.x86_64 = "res://native/bin/libjam_audio.linux.template_debug.x86_64.so"
+linux.release.x86_64 = "res://native/bin/libjam_audio.linux.template_debug.x86_64.so"

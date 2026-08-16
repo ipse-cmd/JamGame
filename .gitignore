@@ -6,6 +6,7 @@ build/
 native/godot-cpp/
 native/.sconsign.dblite
 native/src/*.obj
+native/src/*.os
 native/bin/*.exp
 native/bin/*.lib
 native/bin/*.pdb
