@@ -20,6 +20,8 @@ const DrumRenderer := preload("res://scripts/core/drum_renderer.gd")
 const Templates := preload("res://scripts/core/drum_templates.gd")
 const StepRing := preload("res://scripts/ui/step_ring.gd")
 const ChordStrip := preload("res://scripts/ui/chord_strip.gd")
+const BotPeer := preload("res://scripts/ai/bot_peer.gd")
+const DecisionLog := preload("res://scripts/ai/decision_log.gd")
 
 const BARS_PER_LOOP := 4
 const STEPS_PER_BAR := 16
@@ -123,25 +125,22 @@ func _ready() -> void:
 			net.join(arg.trim_prefix("--join="))
 		elif arg == "--lagsim":
 			net.lag_sim = true
-		elif arg == "--bot":
-			# Autonomous test peer (for SSH/headless launches): once joined, plays
-			# bass edits through the normal dispatch path every few seconds.
-			var t := Timer.new()
-			t.wait_time = 2.5
-			t.autostart = true
-			t.timeout.connect(_bot_tick)
-			add_child(t)
+		elif arg == "--bot" or arg.begins_with("--bot-seed="):
+			# Autonomous bass peer (Phase 1B): the real rule-based BotPeer, playing
+			# through the normal dispatch path like any human, decisions logged.
+			var bot := BotPeer.new()
+			bot.room = self
+			if arg.begins_with("--bot-seed="):
+				bot.session_seed = int(arg.trim_prefix("--bot-seed="))
+			var dlog := DecisionLog.new()
+			dlog.open({
+				"session_id": "bot_%d" % int(Time.get_unix_time_from_system()),
+				"session_seed": bot.session_seed,
+				"source": DecisionLog.SOURCE_RULE_BOT,
+			})
+			bot.decision_log = dlog
+			add_child(bot)
 	_refresh_ui()
-
-
-var _bot_counter := 0
-
-
-func _bot_tick() -> void:
-	if not net.active or net.is_server or not net.can_edit(Focus.BASS):
-		return
-	_bot_counter += 1
-	_dispatch(Focus.BASS, "place", {"step": (_bot_counter * 3) % 16, "degree": _bot_counter % 5})
 
 
 func _process(_delta: float) -> void:
@@ -314,6 +313,12 @@ func _blank_factory(track: int) -> Callable:
 		Focus.DRUMS: return Callable(DrumPattern, "new")
 		Focus.BASS: return Callable(BassLine, "new")
 		_: return Callable(ChordTrack, "new")
+
+
+## Public dispatch surface — the ONLY entry point for non-UI participants
+## (BotPeer, MCP-driven play). Same path as human input, no privileges.
+func dispatch(track: int, op: String, args: Dictionary) -> void:
+	_dispatch(track, op, args)
 
 
 ## Every edit goes through here. Solo: apply directly. Client: apply locally as a

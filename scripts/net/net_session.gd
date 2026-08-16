@@ -28,6 +28,10 @@ var is_server := false
 var status := "solo"
 var roles := {} # track:int -> peer_id:int
 var rejects := 0 # server: invalid commands refused
+# Room generation: bumped by the server on every host(), replicated via snapshot.
+# Decision logging and bot watermarks key on it so a rehost/reset can't alias
+# decision windows from a previous room life.
+var room_epoch := 0
 
 # client-side clock sync + agreement tracking
 var rtt_ms := -1.0
@@ -66,6 +70,7 @@ func host() -> bool:
 	active = true
 	is_server = true
 	status = "hosting"
+	room_epoch += 1
 	_assign_roles()
 	return true
 
@@ -228,6 +233,7 @@ func _make_snapshot() -> Dictionary:
 		],
 		"roles": roles,
 		"rejects": rejects,
+		"epoch": room_epoch,
 	}
 
 
@@ -266,6 +272,7 @@ func snapshot(d: Dictionary) -> void:
 	server_versions = d.versions
 	roles = d.roles
 	rejects = int(d.rejects)
+	room_epoch = int(d.get("epoch", room_epoch))
 	room.queue_ui_refresh()
 
 

@@ -107,17 +107,34 @@ var path := ""
 
 
 ## session_meta should carry at least: session_id, session_seed, room_epoch,
-## peer_id, game_revision. Written as the file's header line.
+## peer_id. Written as the file's header line; the game revision and engine
+## version are stamped automatically — a frame is only interpretable if you
+## know which build produced it.
 func open(session_meta: Dictionary, dir: String = DEFAULT_DIR) -> Error:
 	DirAccess.make_dir_recursive_absolute(dir)
 	path = "%s/%s.jsonl" % [dir, session_meta.get("session_id", "session")]
 	_file = FileAccess.open(path, FileAccess.WRITE)
 	if _file == null:
 		return FileAccess.get_open_error()
-	var header := {"type": "session", "schema_version": SCHEMA_VERSION}
+	var header := {
+		"type": "session",
+		"schema_version": SCHEMA_VERSION,
+		"game_revision": game_revision(),
+		"engine_version": Engine.get_version_info()["string"],
+	}
 	header.merge(session_meta)
 	write(header)
 	return OK
+
+
+## Best-effort git HEAD of the running project (dev runs only; exported builds
+## have no .git and report "unknown").
+static func game_revision() -> String:
+	var head := FileAccess.get_file_as_string("res://.git/HEAD").strip_edges()
+	if head.begins_with("ref: "):
+		var ref := FileAccess.get_file_as_string("res://.git/" + head.trim_prefix("ref: ")).strip_edges()
+		return ref.substr(0, 12) if not ref.is_empty() else "unknown"
+	return head.substr(0, 12) if not head.is_empty() else "unknown"
 
 
 ## Append any event dict as one JSONL line, flushed immediately — a crashed or

@@ -18,6 +18,7 @@ const TrackOps := preload("res://scripts/core/track_ops.gd")
 const BotObservation := preload("res://scripts/ai/bot_observation.gd")
 const RuleBassPolicy := preload("res://scripts/ai/rule_bass_policy.gd")
 const DecisionLog := preload("res://scripts/ai/decision_log.gd")
+const BotPeer := preload("res://scripts/ai/bot_peer.gd")
 
 var passed := 0
 var failed := 0
@@ -36,6 +37,7 @@ func _initialize() -> void:
 	_test_bot_observation()
 	_test_rule_bass_policy()
 	_test_decision_log()
+	_test_bot_peer()
 	print("TESTS: %d passed, %d failed" % [passed, failed])
 	quit(1 if failed > 0 else 0)
 
@@ -430,11 +432,139 @@ func _test_decision_log() -> void:
 	var events := DecisionLog.read_events(log.path)
 	check(events.size() == 3, "log holds session header + decision + commit")
 	check(events[0].type == "session" and events[0].session_seed == 42, "header carries session meta")
+	check(events[0].has("game_revision") and not str(events[0].game_revision).is_empty(),
+		"header auto-stamps the game revision")
 	check(events[1].type == "decision" and events[1].result == "hold", "hold frame round-trips")
 	check(events[2].type == "commit" and int(events[2].at_loop) == 12, "commit event round-trips")
 	check(int(events[1].decision_key.target_loop) == int(events[2].decision_key.target_loop),
 		"decision and commit join on the decision key")
 	DirAccess.remove_absolute(log.path)
+
+
+## Duck-typed room + net for driving BotPeer without a scene tree or ENet.
+class FakeNet extends RefCounted:
+	var active := true
+	var room_epoch := 1
+	var editable := {}
+	func can_edit(track: int) -> bool:
+		return editable.get(track, false)
+
+
+class FakeRoom extends RefCounted:
+	const CommitModelC := preload("res://scripts/core/commit_model.gd")
+	const DrumPatternC := preload("res://scripts/core/drum_pattern.gd")
+	const BassLineC := preload("res://scripts/core/bass_line.gd")
+	const ChordTrackC := preload("res://scripts/core/chord_track.gd")
+	const TrackOpsC := preload("res://scripts/core/track_ops.gd")
+	var drums
+	var bass
+	var chords
+	var net = null
+	var transport = null
+	var loop_index := 0
+	var dispatched: Array = []
+	func _init() -> void:
+		drums = CommitModelC.new(DrumPatternC.new())
+		var line = BassLineC.new()
+		line.notes = {0: 0, 8: 0, 12: 4}
+		bass = CommitModelC.new(line)
+		var track = ChordTrackC.new()
+		track.slots = [0, 5, 3, 4]
+		chords = CommitModelC.new(track)
+	func model_for(track: int):
+		match track:
+			0: return drums
+			1: return bass
+			_: return chords
+	func dispatch(track: int, op: String, args: Dictionary) -> void:
+		dispatched.append({"track": track, "op": op, "args": args})
+		TrackOpsC.apply(model_for(track), track, op, args, loop_index)
+	func commit_boundary(loop: int) -> void:
+		loop_index = loop
+		for t in [0, 1, 2]:
+			model_for(t).try_commit_at_loop(loop)
+
+
+func _test_bot_peer() -> void:
+	var room := FakeRoom.new()
+	var net := FakeNet.new()
+	net.editable = {1: true}
+	room.net = net
+	var bot = BotPeer.new()
+	bot.room = room
+	bot.session_seed = 5
+
+	# Watermark: multiple observations of the same loop author ONE decision.
+	bot.on_loop(0)
+	bot.on_loop(0)
+	check(bot.decisions == 1, "one decision per editable window, not per observation")
+	check(bot.holds == 1 and room.dispatched.is_empty(),
+		"first window after (initial) version is a guaranteed zero-op HOLD")
+
+	# Successive loops open successive windows.
+	room.commit_boundary(1)
+	bot.on_loop(1)
+	room.commit_boundary(2)
+	bot.on_loop(2)
+	check(bot.decisions == 3, "each loop opens exactly one new window")
+	check(bot.decisions == bot.authored.size(), "authored watermark matches decision count")
+
+	# Role gate: losing the seat silences the bot entirely.
+	net.editable = {1: false}
+	room.commit_boundary(3)
+	var before: int = bot.decisions
+	bot.on_loop(3)
+	check(bot.decisions == before, "bot without the role authors nothing")
+	net.editable = {1: true}
+
+	# Epoch bump (rehost/reset) legitimately reopens the same target loop.
+	bot.on_loop(3)
+	check(bot.decisions == before + 1, "regained seat resumes deciding")
+	net.room_epoch = 2
+	bot.on_loop(3)
+	check(bot.decisions == before + 2, "epoch bump reopens the watermark for the same loop")
+
+	# Ops the bot dispatched only ever touch its own track.
+	var foreign := false
+	for d in room.dispatched:
+		if d.track != 1:
+			foreign = true
+	check(not foreign, "bot only ever dispatches ops for its own role")
+
+	# After its edit commits, the next window is a guaranteed breathe-HOLD, and
+	# the resolution is logged as a commit event joined by decision key.
+	var log = DecisionLog.new()
+	check(log.open({"session_id": "botpeer", "session_seed": 5}, "user://test_decision_logs") == OK,
+		"bot log opens")
+	bot.decision_log = log
+	var run_room := FakeRoom.new()
+	run_room.net = net
+	var run_bot = BotPeer.new()
+	run_bot.room = run_room
+	run_bot.session_seed = 5
+	run_bot.decision_log = log
+	for loop in range(0, 8):
+		run_room.commit_boundary(loop)
+		run_bot.on_loop(loop)
+	log.close()
+	check(run_bot.edits >= 1 and run_bot.holds >= 1, "bot both edits and holds over 8 windows")
+	var events := DecisionLog.read_events(log.path)
+	var frames := 0
+	var zero_op_frames := 0
+	var commits := 0
+	for e in events:
+		if e.type == "decision":
+			frames += 1
+			if e.ops.is_empty():
+				zero_op_frames += 1
+		elif e.type == "commit":
+			commits += 1
+	check(frames == run_bot.decisions, "every decision window produced exactly one frame")
+	check(zero_op_frames == run_bot.holds, "every HOLD is a recorded zero-op frame")
+	check(commits >= 1, "committed edits produce commit resolution events")
+	DirAccess.remove_absolute(log.path)
+	bot.free()
+	run_bot.free()
 
 
 func _test_harmony() -> void:

@@ -186,6 +186,37 @@ while audio keeps mixing (13 clamped onsets, phantom "late" events). The suite
 now disables vsync and caps at 120 fps; **4/4 integration tests green**
 regardless of window visibility.
 
+## AI player Phase 1B — BotPeer as an ordinary network participant (2026-08-16)
+
+The 1A policy mounted as a real peer. `scripts/ai/bot_peer.gd` observes
+replicated state, decides once per editable window, and submits through the
+room's normal dispatch (local prediction + server validation) — the same path
+as human input. `JamRoom.dispatch()` is now the public non-UI entry point;
+`--bot` / `--bot-seed=N` launches the real rule bot with decision logging
+(replacing the old timer stub).
+
+- **Watermark**: at most one authored decision per (room_epoch, role,
+  target_loop). `room_epoch` is new engine state — bumped by the server on
+  every `host()`, replicated via snapshot — so a rehost/reset legitimately
+  reopens windows instead of aliasing a previous room life.
+- **windows_since_change** tracked off the replicated version counter: a
+  version bump resets staleness AND emits a commit-resolution event joined to
+  the originating DecisionFrame by decision key.
+- **Op sequence IDs**: client-assigned, recorded in frames (log-side only —
+  the wire protocol is untouched; the server-rejection join lands later).
+
+Validation: **147 unit tests green** (+13: one decision per window regardless
+of observation count, epoch bump reopens the watermark, role gate silences the
+bot entirely, bot never dispatches outside its role, guaranteed breathe-HOLD
+after a committed change, frame count == decision count, HOLDs == zero-op
+frames, commit events present). **5/5 integration tests green** — new gate
+`BotPeerPlaysBassAsOrdinaryPeer`: the bot mounted on the REAL client peer under
+the impaired link (60±20 ms, 20% modeled loss) decided 7 windows with zero
+duplicate authorship, ≥1 edit and ≥1 deliberate hold, a squatter bot pointed
+at the host's drums never acted, the server rejected nothing, both peers
+converged on the same committed line and version, and the JSONL log carried
+exactly one frame per window with HOLDs as zero-op frames.
+
 ## How to rebuild the extension
 
 ```

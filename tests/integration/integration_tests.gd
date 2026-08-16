@@ -18,8 +18,13 @@ extends Node
 #    Consistency ≠ intent preservation; this asserts intent.
 # 4. PeersPromoteSameVersionAtSameBoundary — host and client promote the same
 #    version at the same musical loop under latency.
+# 5. BotPeerPlaysBassAsOrdinaryPeer — the Phase 1B rule bot, mounted on the real
+#    client under the same impaired link: one decision per window, zero rejects,
+#    peers converge, every window (HOLDs included) logged.
 
 const NetSession := preload("res://scripts/net/net_session.gd")
+const BotPeer := preload("res://scripts/ai/bot_peer.gd")
+const DecisionLog := preload("res://scripts/ai/decision_log.gd")
 const CommitModel := preload("res://scripts/core/commit_model.gd")
 const DrumPattern := preload("res://scripts/core/drum_pattern.gd")
 const BassLine := preload("res://scripts/core/bass_line.gd")
@@ -55,9 +60,10 @@ func _ready() -> void:
 	if session_ok:
 		await _run_test("ReliableCommandsPreserveOrderUnderLatency", _test_order_under_latency)
 		await _run_test("PeersPromoteSameVersionAtSameBoundary", _test_same_boundary_promotion)
+		await _run_test("BotPeerPlaysBassAsOrdinaryPeer", _test_bot_peer_ordinary)
 	else:
 		print("ITEST FAIL: session setup (host/join/clock-lock) — skipping network tests")
-		tests_failed += 2
+		tests_failed += 3
 	print("ITESTS DONE: %d failed" % tests_failed)
 	get_tree().quit(tests_failed)
 
@@ -377,3 +383,61 @@ func _commit_loop_for(room: RoomStub, track: int, version: int) -> int:
 		if entry.version == version:
 			return entry.loop
 	return -1
+
+
+## Phase 1B gate: the rule bot mounted on the REAL client peer, under the same
+## impaired link as tests 3/4 (60±20 ms, 20% modeled loss). It must behave as an
+## ordinary — and containable — network participant: one decision per window,
+## a role it doesn't own is never touched, the server rejects nothing, both
+## peers converge, and every window (HOLDs included) lands in the decision log.
+func _test_bot_peer_ordinary() -> void:
+	var rejects_before: int = s_net.rejects
+	var dlog = DecisionLog.new()
+	check(dlog.open({"session_id": "itest_bot", "session_seed": 5,
+		"room_epoch": c_net.room_epoch}, "user://test_decision_logs") == OK, "decision log opens")
+	var bot = BotPeer.new()
+	bot.room = c_room
+	bot.session_seed = 5
+	bot.decision_log = dlog
+	add_child(bot)
+	# A bot pointed at a seat it does NOT own (drums are the host's): must never act.
+	var squatter = BotPeer.new()
+	squatter.room = c_room
+	squatter.role = 0
+	add_child(squatter)
+
+	var start_loop: int = c_room.loop_index
+	var reached := await await_until(func(): return c_room.loop_index >= start_loop + 7, 40.0)
+	check(reached, "seven decision windows elapsed")
+	bot.set_process(false) # freeze decisions so the last edit can settle
+	squatter.set_process(false)
+
+	check(bot.decisions >= 6, "bot decided once per window (got %d)" % bot.decisions)
+	check(bot.decisions == bot.authored.size(), "no window authored twice")
+	check(bot.edits >= 1, "bot made at least one edit (got %d)" % bot.edits)
+	check(bot.holds >= 1, "bot deliberately held at least once (got %d)" % bot.holds)
+	check(squatter.decisions == 0, "bot without the role never acts")
+	check(s_net.rejects == rejects_before, "server accepted every bot op (rejects %d -> %d)"
+		% [rejects_before, s_net.rejects])
+
+	var converged := await await_until(func(): return not s_room.bass.has_pending() \
+		and not c_room.bass.has_pending() \
+		and s_room.bass.version_id == c_room.bass.version_id \
+		and s_room.bass.active.equals(c_room.bass.active), 15.0)
+	check(converged, "host and client converge on the same committed bass line and version")
+	var density: int = s_room.bass.active.notes.size()
+	check(density >= 1 and density <= 6, "converged line lands at a sane density (got %d)" % density)
+
+	dlog.close()
+	var frames := 0
+	var zero_ops := 0
+	for e in DecisionLog.read_events(dlog.path):
+		if e.type == "decision":
+			frames += 1
+			if e.ops.is_empty():
+				zero_ops += 1
+	check(frames == bot.decisions, "one logged frame per decision window (%d/%d)" % [frames, bot.decisions])
+	check(zero_ops == bot.holds, "every HOLD logged as a zero-op frame (%d/%d)" % [zero_ops, bot.holds])
+	DirAccess.remove_absolute(dlog.path)
+	bot.queue_free()
+	squatter.queue_free()
