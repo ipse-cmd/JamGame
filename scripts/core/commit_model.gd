@@ -26,11 +26,14 @@ func has_pending() -> bool:
 	return pending != null
 
 
-## Open (or continue) an edit session during current_loop; returns the pending track to mutate.
-func begin_or_get_pending(current_loop: int):
+## Open (or continue) an edit session during current_loop; returns the pending track
+## to mutate. commit_delay is normally 1 (commit at N+1); the LOCK HORIZON passes 2
+## when the edit lands inside the final steps of a loop — too close to the boundary
+## for every peer to promote it in time, so it schedules one loop further out.
+func begin_or_get_pending(current_loop: int, commit_delay: int = 1):
 	if pending == null:
 		pending = active.clone()
-		commit_loop_index = current_loop + 1
+		commit_loop_index = current_loop + commit_delay
 	return pending
 
 

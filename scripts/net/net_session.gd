@@ -15,6 +15,7 @@ extends Node
 # packets, they pay for them in time).
 
 const PORT := 7777
+var listen_port := PORT # overridable so tests can run sessions on a side port
 const TRACK_DRUMS := 0
 const TRACK_BASS := 1
 const TRACK_CHORDS := 2
@@ -58,8 +59,8 @@ func host() -> bool:
 	if active:
 		return false
 	var peer := ENetMultiplayerPeer.new()
-	if peer.create_server(PORT) != OK:
-		status = "host failed (port %d busy?)" % PORT
+	if peer.create_server(listen_port) != OK:
+		status = "host failed (port %d busy?)" % listen_port
 		return false
 	multiplayer.multiplayer_peer = peer
 	active = true
@@ -73,7 +74,7 @@ func join(ip: String) -> bool:
 	if active:
 		return false
 	var peer := ENetMultiplayerPeer.new()
-	if peer.create_client(ip, PORT) != OK:
+	if peer.create_client(ip, listen_port) != OK:
 		status = "join failed"
 		return false
 	multiplayer.multiplayer_peer = peer
@@ -149,6 +150,16 @@ func broadcast_track(track: int) -> void:
 
 # ---------------------------------------------------------------- server side
 
+# Drum-role state ops (kit/modifiers): applied immediately, replicated as room
+# state — NOT commit-gated pattern edits.
+const DRUM_STATE_OPS := ["fill", "drop", "intensify", "kit"]
+
+
+func broadcast_drums() -> void:
+	if active and is_server and room.get("drum_state") != null:
+		_broadcast("state_drums", [room.drum_state.to_dict()])
+
+
 @rpc("any_peer", "call_remote", "reliable")
 func cmd_edit(track: int, op: String, args: Dictionary) -> void:
 	if not multiplayer.is_server():
@@ -158,7 +169,10 @@ func cmd_edit(track: int, op: String, args: Dictionary) -> void:
 		rejects += 1
 		return
 	room.apply_edit(track, op, args)
-	broadcast_track(track)
+	if track == TRACK_DRUMS and op in DRUM_STATE_OPS:
+		broadcast_drums()
+	else:
+		broadcast_track(track)
 
 
 ## Strict validation: role gate + exact payload shape + ranges. Reject, never repair.
@@ -170,6 +184,12 @@ func _validate_cmd(sender: int, track: int, op: String, args: Dictionary) -> boo
 			return _int_in(args, "voice", 0, 3) and _int_in(args, "step", 0, 15) and args.size() == 2
 		[TRACK_DRUMS, "clear_voice"]:
 			return _int_in(args, "voice", 0, 3) and args.size() == 1
+		[TRACK_DRUMS, "kit"]:
+			return _int_in(args, "lane", 0, 3) and args.size() == 1
+		[TRACK_DRUMS, "template"]:
+			return _int_in(args, "index", 0, 3) and args.size() == 1
+		[TRACK_DRUMS, "fill"], [TRACK_DRUMS, "drop"], [TRACK_DRUMS, "intensify"]:
+			return args.is_empty()
 		[TRACK_BASS, "place"]:
 			return _int_in(args, "step", 0, 15) and _int_in(args, "degree", 0, 4) and args.size() == 2
 		[TRACK_CHORDS, "cycle"]:
@@ -214,6 +234,8 @@ func _make_snapshot() -> Dictionary:
 func _send_full_state_to(peer_id: int) -> void:
 	for t in [TRACK_DRUMS, TRACK_BASS, TRACK_CHORDS]:
 		_net_send("state_track", [t, room.model_for(t).state_dict()], peer_id)
+	if room.get("drum_state") != null:
+		_net_send("state_drums", [room.drum_state.to_dict()], peer_id)
 	_net_send("snapshot", [_make_snapshot()], peer_id)
 
 
@@ -230,6 +252,12 @@ func _assign_roles() -> void:
 @rpc("authority", "call_remote", "reliable")
 func state_track(track: int, state: Dictionary) -> void:
 	room.apply_track_state(track, state)
+
+
+@rpc("authority", "call_remote", "reliable")
+func state_drums(state: Dictionary) -> void:
+	if room.has_method("apply_drum_state"):
+		room.apply_drum_state(state)
 
 
 @rpc("authority", "call_remote", "reliable")

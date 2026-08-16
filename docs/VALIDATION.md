@@ -76,6 +76,77 @@ audio jitter are separate problems by construction — a command can arrive 150 
 late and its audio still starts on the exact sample, because only *state* crossed
 the network. Migration decision formally closed.
 
+## Permanent adversarial integration suite (2026-08-16)
+
+The G1/G2 experiments are now automated regression tests — run them after ANY
+change to transport, networking, or the audio extension:
+
+```
+godot_console --path . res://tests/integration/integration_tests.tscn   (exit 0 = green)
+```
+
+Four tests (`tests/integration/integration_tests.gd`), ~25 s, needs a window
+(audio tests require a real audio driver):
+
+1. **AudioTimingUnderMainThreadHitches** — 32 pre-queued clicks at exact 3000-sample
+   spacing stay sample-exact while the main thread stalls 5–25 ms every frame.
+2. **NetworkDelayDoesNotAffectScheduledSamplePlacement** — submission times jittered
+   by 120–300 ms (what network delay actually shifts) leave onset placement invariant.
+3. **ReliableCommandsPreserveOrderUnderLatency** — order-sensitive burst (clear + 8
+   places + 2 retunes) through the FIFO lag sim at 60±20 ms / 20% modeled loss
+   arrives content-exact on the server AND survives the echo path. Guards the
+   "consistency ≠ intent preservation" invariant.
+4. **PeersPromoteSameVersionAtSameBoundary** — a real two-peer ENet session in one
+   process (branch-scoped MultiplayerAPIs, 4x-speed transports, clock-synced):
+   both peers promote the same version with identical content at the SAME loop.
+
+The network tests run the real `JamNetSession` + commit models + `JamTrackOps`
+(op semantics extracted from the room into the domain layer for exactly this
+reason) against stub rooms — no UI involved.
+
+**Mutation-verified**: reintroducing the non-FIFO lag simulator makes tests 3 and 4
+fail with the mangled line visible (exit 2); restoring FIFO returns the suite to
+green. The tests demonstrably catch the bug they memorialize.
+
+Known modeled edge (deliberate): an edit inside the final ~RTT of a loop may slip
+one boundary — Jammin's lock horizon exists for this and is not yet ported. Test 4
+bursts just after a boundary to assert the common case, not that edge.
+
+## Feature phase 1 — Real drum system (2026-08-16)
+
+First vertical feature migration on the proven seams. Ported from the Unreal
+reference (semantics read from `JamDrumModifiers.cpp` / `JamDrumTemplates.cpp`):
+
+- **Modifiers (D3)**: `drum_renderer.gd` — exact port of the Drop → Intensify →
+  Fill pipeline as a non-destructive render-time lens over the per-step hit set.
+  Deterministic (no RNG) so peers derive identical feel from replicated state.
+  Fill is phrase-gated (phrase = one 4-bar loop here); a fill pressed on the final
+  bar auto-stretches to the next turnaround. Press rules in `drum_state.gd`
+  (drop escalates light→heavy, intensify extends, fill doesn't stack).
+- **Kit variants (D9)**: 3 synthesis presets per lane (Deep/Punch/Boom,
+  Snap/Tight/Fat, Closed/Open/Crisp, Tom/Conga/Low Tom) — implemented as a
+  thread-safe voice-table swap in the audio engine; the G2 trigger protocol is
+  untouched.
+- **Templates (D8)**: Backbeat / Four-on-floor / Boom bap / Half time, applied as
+  a pending edit committing at the boundary (bass-lane hits omitted — bass is its
+  own ring). Op flows through `JamTrackOps` like any pattern edit.
+- **Lock horizon**: edits in the final 2 sixteenths of a loop (~268 ms > worst
+  simulated RTT) schedule commit at N+2 — closes the boundary-slip edge test 4
+  documents.
+- **Replication**: modifiers/kit are live drum-role state (`state_drums`), not
+  commit-gated; strict server validation extended to the 5 new ops. Keys: F/G/H
+  fill/drop/intensify, K kit, T templates (host/join moved to F2/F3).
+
+Seam rule held: modifiers transform hits (never touch audio), the network carries
+ops/state (never triggers), the extension learned nothing.
+
+Validation: **101 unit tests green** (modifier pipeline ported test-for-test from
+the Unreal suite, templates, press rules, lock horizon); live proof via injected
+keys (template pending→committed 12→20 hits v1, kit [2,0,0,0], 3 modifier events,
+0 late); **4/4 integration tests green** after the net changes; MP proof: join
+full-sync replaced local drum state with host's, 3 hostile ops (role-violating
+kit/fill, template index 9) all rejected.
+
 ## How to rebuild the extension
 
 ```

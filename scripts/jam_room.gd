@@ -14,6 +14,10 @@ const Harmony := preload("res://scripts/core/harmony.gd")
 const AudioEngine := preload("res://scripts/audio/audio_engine.gd")
 const Transport := preload("res://scripts/audio/transport.gd")
 const NetSession := preload("res://scripts/net/net_session.gd")
+const TrackOps := preload("res://scripts/core/track_ops.gd")
+const DrumState := preload("res://scripts/core/drum_state.gd")
+const DrumRenderer := preload("res://scripts/core/drum_renderer.gd")
+const Templates := preload("res://scripts/core/drum_templates.gd")
 const StepRing := preload("res://scripts/ui/step_ring.gd")
 const ChordStrip := preload("res://scripts/ui/chord_strip.gd")
 
@@ -41,8 +45,8 @@ GLOBAL
   Del     clear lane / line / slot
 
 NETWORK (deliberately ugly)
-  H       host a jam (port 7777)
-  J       join 127.0.0.1
+  F2      host a jam (port 7777)
+  F3      join 127.0.0.1
   F9      hitch test (stall main thread)
   F10     toggle net lag simulator
 In a room you only edit YOUR track:
@@ -53,6 +57,9 @@ DRUM RING (focus: DRUMS)
   Left/Right  move step cursor
   Enter   place / remove hit
   Y       toggle accent
+  F/G/H   fill / drop / intensify
+  K       kit sound (selected lane)
+  T       starter templates
 
 BASS RING (focus: BASS)
   1-5     select scale degree
@@ -71,6 +78,8 @@ edit in loop N -> commit at N+1)."""
 var drums: JamCommitModel
 var bass: JamCommitModel
 var chords: JamCommitModel
+var drum_state: JamDrumState
+var _template_cursor := -1 # last applied starter template (T cycles)
 
 var transport: JamTransport
 var audio: JamAudioEngine
@@ -114,7 +123,25 @@ func _ready() -> void:
 			net.join(arg.trim_prefix("--join="))
 		elif arg == "--lagsim":
 			net.lag_sim = true
+		elif arg == "--bot":
+			# Autonomous test peer (for SSH/headless launches): once joined, plays
+			# bass edits through the normal dispatch path every few seconds.
+			var t := Timer.new()
+			t.wait_time = 2.5
+			t.autostart = true
+			t.timeout.connect(_bot_tick)
+			add_child(t)
 	_refresh_ui()
+
+
+var _bot_counter := 0
+
+
+func _bot_tick() -> void:
+	if not net.active or net.is_server or not net.can_edit(Focus.BASS):
+		return
+	_bot_counter += 1
+	_dispatch(Focus.BASS, "place", {"step": (_bot_counter * 3) % 16, "degree": _bot_counter % 5})
 
 
 func _process(_delta: float) -> void:
@@ -141,6 +168,8 @@ func _build_tracks() -> void:
 	var track := ChordTrack.new()
 	track.slots = [0, 5, 3, 4] # I - vi - IV - V
 	chords = CommitModel.new(track)
+
+	drum_state = DrumState.new()
 
 
 func _build_scene() -> void:
@@ -242,14 +271,21 @@ func _on_schedule_sixteenth(abs_step: int, at_sample: int) -> void:
 	if s_loop != _sched_loop:
 		_sched_loop = s_loop
 		_try_commits(_sched_loop)
+		drum_state.prune(_sched_loop)
 	var step_in_loop := abs_step % STEPS_PER_LOOP
 	var sb := step_in_loop % STEPS_PER_BAR
 	@warning_ignore("integer_division")
 	var bar: int = step_in_loop / STEPS_PER_BAR
 
+	# Base hits -> modifier lens (Drop/Intensify/Fill, non-destructive) -> triggers.
+	var base_hits: Array = []
 	for h in drums.active.hits:
 		if h.step == sb:
-			audio.schedule_drum(at_sample, h.voice, h.velocity, h.accent)
+			base_hits.append(h)
+	var final_bar := bar == BARS_PER_LOOP - 1 # the phrase turnaround (phrase = one 4-bar loop)
+	var rendered := DrumRenderer.render_step(base_hits, sb, STEPS_PER_BAR, drum_state.modifiers, s_loop, final_bar)
+	for h in rendered:
+		audio.schedule_drum(at_sample, h.voice, h.velocity, h.accent)
 	if bass.active.notes.has(sb):
 		audio.schedule_bass(at_sample, Harmony.degree_to_midi(BASS_ROOT_MIDI, bass.active.notes[sb]), 0.8)
 	if sb == 0:
@@ -289,35 +325,47 @@ func _dispatch(track: int, op: String, args: Dictionary) -> void:
 	apply_edit(track, op, args)
 	if net.active:
 		if net.is_server:
-			net.broadcast_track(track)
+			if track == Focus.DRUMS and op in NetSession.DRUM_STATE_OPS:
+				net.broadcast_drums()
+			else:
+				net.broadcast_track(track)
 		else:
 			net.send_cmd(track, op, args)
 
 
-## Pure application of a musical edit op to this machine's models. Used by local
-## dispatch AND by the server when validating a client command.
+## Application of a musical edit op to this machine's models. Used by local
+## dispatch AND by the server when validating a client command. Pattern-op
+## semantics live in the domain layer (JamTrackOps); drum-role state ops
+## (modifiers/kit) go to JamDrumState and apply live, not commit-gated.
 func apply_edit(track: int, op: String, args: Dictionary) -> void:
-	var m := model_for(track)
-	if op == "cancel":
-		m.cancel_pending()
+	if track == Focus.DRUMS and op in NetSession.DRUM_STATE_OPS:
+		match op:
+			"fill": drum_state.press_fill(loop_index, bar_in_loop, BARS_PER_LOOP)
+			"drop": drum_state.press_drop(loop_index)
+			"intensify": drum_state.press_intensify(loop_index)
+			"kit":
+				drum_state.cycle_kit(args.lane)
+				audio.set_kit_variant(args.lane, drum_state.kit[args.lane])
 		return
-	var p = m.begin_or_get_pending(loop_index)
-	match track:
-		Focus.DRUMS:
-			match op:
-				"toggle": PatternEditor.toggle_hit(p, args.voice, args.step, DEFAULT_VELOCITY)
-				"accent": PatternEditor.toggle_accent(p, args.voice, args.step)
-				"clear_voice": PatternEditor.clear_voice(p, args.voice)
-				"clear_all": PatternEditor.clear_all(p)
-		Focus.BASS:
-			match op:
-				"place": p.place_or_toggle(args.step, args.degree)
-				"clear": p.clear()
-		Focus.CHORDS:
-			match op:
-				"cycle": p.cycle_slot(args.bar, args.delta)
-				"clear_slot": p.clear_slot(args.bar)
-				"clear": p.clear()
+	TrackOps.apply(model_for(track), track, op, args, loop_index, _commit_delay())
+
+
+## LOCK HORIZON: an edit landing in the final steps of a loop cannot reach every
+## peer before the boundary, so it schedules one loop further out. Horizon = 2
+## sixteenths (~268 ms at 112 BPM) > the worst simulated RTT.
+const LOCK_HORIZON_STEPS := 2
+
+
+func _commit_delay() -> int:
+	var step_in_loop := bar_in_loop * STEPS_PER_BAR + step_in_bar
+	return 2 if step_in_loop >= STEPS_PER_LOOP - LOCK_HORIZON_STEPS else 1
+
+
+## Replicated drum-role state (kit + modifiers) arrived from the server.
+func apply_drum_state(state: Dictionary) -> void:
+	drum_state.from_dict(state)
+	audio.apply_kit(drum_state.kit)
+	_refresh_ui()
 
 
 ## Replicated commit-model state arrived from the server: overwrite local replica.
@@ -367,9 +415,20 @@ func _unhandled_key_input(event: InputEvent) -> void:
 			_cycle_chord(1)
 		KEY_1, KEY_2, KEY_3, KEY_4, KEY_5:
 			_select_lane(k.keycode - KEY_1)
-		KEY_H:
+		KEY_F: # drummer: queue a fill for the phrase turnaround
+			_dispatch(Focus.DRUMS, "fill", {})
+		KEY_G: # drummer: drop (press again while active = heavy)
+			_dispatch(Focus.DRUMS, "drop", {})
+		KEY_H: # drummer: intensify (press again while active = extend)
+			_dispatch(Focus.DRUMS, "intensify", {})
+		KEY_K: # drummer: cycle kit sound for the selected lane
+			_dispatch(Focus.DRUMS, "kit", {"lane": drum_lane})
+		KEY_T: # drummer: cycle starter templates (pending, commits at boundary)
+			_template_cursor = (_template_cursor + 1) % Templates.count()
+			_dispatch(Focus.DRUMS, "template", {"index": _template_cursor})
+		KEY_F2:
 			net.host()
-		KEY_J:
+		KEY_F3:
 			net.join("127.0.0.1")
 		KEY_F10:
 			net.lag_sim = not net.lag_sim
@@ -446,7 +505,12 @@ func _refresh_ui() -> void:
 	drum_ring.cursor_step = drum_cursor
 	drum_ring.selected_lane = drum_lane
 	drum_ring.focused = focus == Focus.DRUMS
-	drum_ring.status_text = _track_status(drums)
+	var lane_names := []
+	for lane in DRUM_LANE_NAMES.size():
+		lane_names.append("%s · %s" % [DRUM_LANE_NAMES[lane], drum_state.kit_name(lane)])
+	drum_ring.lane_names = lane_names
+	var mod_tags: String = drum_state.active_tags(maxi(_sched_loop, loop_index))
+	drum_ring.status_text = _track_status(drums) + ("" if mod_tags.is_empty() else "  ·  " + mod_tags)
 	drum_ring.queue_redraw()
 
 	bass_ring.cells = _bass_cells()
@@ -479,7 +543,7 @@ func _refresh_ui() -> void:
 
 func _net_status_text() -> String:
 	if not net.active:
-		return "NET: solo  ·  H host  ·  J join 127.0.0.1"
+		return "NET: solo  ·  F2 host  ·  F3 join 127.0.0.1"
 	var track_names := ["DRUMS", "BASS", "CHORDS"]
 	var owned := ""
 	for t in net.owned_tracks():
@@ -559,6 +623,8 @@ func _mcp_state() -> Dictionary:
 		"chord_slots": chords.active.slots,
 		"chord_pending": chords.has_pending(),
 		"hitch_mode": hitch_mode,
+		"kit": drum_state.kit,
+		"modifiers": drum_state.modifiers,
 		"audio": audio.diagnostics(),
 		"net": net.debug_state(),
 	}

@@ -59,6 +59,27 @@ func _setup_native() -> void:
 	_rate_ratio = float(JamSampleFactory.MIX_RATE) / mix_rate
 
 
+# ---------------------------------------------------------------- kit variants
+
+## Load the (lane, variant) voice table. Native path is a thread-safe table swap
+## (the ready-flag handshake in the extension); the sound changes from the next
+## trigger without touching the trigger protocol.
+func set_kit_variant(lane: int, variant: int) -> void:
+	if lane < 0 or lane >= 4:
+		return
+	if native:
+		stream.set_voice_table(lane, JamSampleFactory.drum_samples(lane, variant))
+	elif lane < _drum_pools.size():
+		var wav := JamSampleFactory._to_wav(JamSampleFactory.drum_samples(lane, variant))
+		for p in _drum_pools[lane].players:
+			p.stream = wav
+
+
+func apply_kit(kit: Array) -> void:
+	for lane in mini(kit.size(), 4):
+		set_kit_variant(lane, int(kit[lane]))
+
+
 # ---------------------------------------------------------------- native scheduled API
 
 func sample_cursor() -> int:

@@ -9,62 +9,106 @@ extends RefCounted
 const MIX_RATE := 44100
 
 
-static func kick_samples() -> PackedFloat32Array:
-	var n := int(MIX_RATE * 0.35)
+# Kit variants (Jammin D9): 3 sounds per drum lane as synthesis-parameter presets.
+# Variant indices/names match JamDrumState.KIT_NAMES.
+
+static func kick_samples(variant: int = 0) -> PackedFloat32Array:
+	match variant:
+		1: return _kick(160.0, 42.0, 0.12, 0.35) # Punch
+		2: return _kick(120.0, 48.0, 0.25, 0.55) # Boom
+		_: return _kick(150.0, 36.0, 0.18, 0.45) # Deep
+
+
+static func snare_samples(variant: int = 0) -> PackedFloat32Array:
+	match variant:
+		1: return _snare(0.030, 220.0, 0.04, 0.35, 0.15) # Tight
+		2: return _snare(0.070, 165.0, 0.09, 0.70, 0.30) # Fat
+		_: return _snare(0.045, 190.0, 0.06, 0.50, 0.22) # Snap
+
+
+static func hat_samples(variant: int = 0) -> PackedFloat32Array:
+	match variant:
+		1: return _hat(0.090, 0.30, false) # Open
+		2: return _hat(0.013, 0.07, true) # Crisp
+		_: return _hat(0.022, 0.09, false) # Closed
+
+
+static func perc_samples(variant: int = 0) -> PackedFloat32Array:
+	match variant:
+		1: return _perc(330.0, 290.0, 0.05, 0.15) # Conga
+		2: return _perc(120.0, 85.0, 0.14, 0.35) # Low Tom
+		_: return _perc(185.0, 120.0, 0.09, 0.25) # Tom
+
+
+## Voice table for (drum lane, kit variant) — the audio engine's lookup.
+static func drum_samples(lane: int, variant: int) -> PackedFloat32Array:
+	match lane:
+		0: return kick_samples(variant)
+		1: return snare_samples(variant)
+		2: return hat_samples(variant)
+		_: return perc_samples(variant)
+
+
+static func _kick(f_start: float, f_end: float, decay_tau: float, dur: float) -> PackedFloat32Array:
+	var n := int(MIX_RATE * dur)
 	var s := PackedFloat32Array()
 	s.resize(n)
 	var phase := 0.0
 	for i in n:
 		var t := float(i) / MIX_RATE
-		var f: float = lerpf(160.0, 42.0, clampf(t / 0.08, 0.0, 1.0))
+		var f: float = lerpf(f_start, f_end, clampf(t / 0.08, 0.0, 1.0))
 		phase += TAU * f / MIX_RATE
-		var v := sin(phase) * exp(-t / 0.12)
+		var v := sin(phase) * exp(-t / decay_tau)
 		if i < 300:
 			v += 0.25 * (1.0 - float(i) / 300.0) * sin(TAU * 1200.0 * t)
 		s[i] = v
 	return s
 
 
-static func snare_samples() -> PackedFloat32Array:
-	var n := int(MIX_RATE * 0.22)
+static func _snare(noise_tau: float, tone_freq: float, tone_tau: float, tone_amt: float, dur: float) -> PackedFloat32Array:
+	var n := int(MIX_RATE * dur)
 	var s := PackedFloat32Array()
 	s.resize(n)
 	var rng := RandomNumberGenerator.new()
 	rng.seed = 1337
 	for i in n:
 		var t := float(i) / MIX_RATE
-		var noise := rng.randf_range(-1.0, 1.0) * exp(-t / 0.045) * 0.8
-		var tone := sin(TAU * 190.0 * t) * exp(-t / 0.06) * 0.5
+		var noise := rng.randf_range(-1.0, 1.0) * exp(-t / noise_tau) * 0.8
+		var tone := sin(TAU * tone_freq * t) * exp(-t / tone_tau) * tone_amt
 		s[i] = noise + tone
 	return s
 
 
-static func hat_samples() -> PackedFloat32Array:
-	var n := int(MIX_RATE * 0.09)
+static func _hat(decay_tau: float, dur: float, extra_bright: bool) -> PackedFloat32Array:
+	var n := int(MIX_RATE * dur)
 	var s := PackedFloat32Array()
 	s.resize(n)
 	var rng := RandomNumberGenerator.new()
 	rng.seed = 4242
 	var prev := 0.0
+	var prev2 := 0.0
 	for i in n:
 		var t := float(i) / MIX_RATE
 		var raw := rng.randf_range(-1.0, 1.0)
 		var hp := raw - prev # crude one-pole high-pass
+		if extra_bright:
+			hp = hp - prev2 # second difference: brighter still
+		prev2 = prev
 		prev = raw
-		s[i] = hp * exp(-t / 0.022) * 0.9
+		s[i] = hp * exp(-t / decay_tau) * 0.9
 	return s
 
 
-static func perc_samples() -> PackedFloat32Array:
-	var n := int(MIX_RATE * 0.25)
+static func _perc(f_start: float, f_end: float, decay_tau: float, dur: float) -> PackedFloat32Array:
+	var n := int(MIX_RATE * dur)
 	var s := PackedFloat32Array()
 	s.resize(n)
 	var phase := 0.0
 	for i in n:
 		var t := float(i) / MIX_RATE
-		var f: float = lerpf(185.0, 120.0, clampf(t / 0.15, 0.0, 1.0))
+		var f: float = lerpf(f_start, f_end, clampf(t / 0.15, 0.0, 1.0))
 		phase += TAU * f / MIX_RATE
-		s[i] = sin(phase) * exp(-t / 0.09)
+		s[i] = sin(phase) * exp(-t / decay_tau)
 	return s
 
 
