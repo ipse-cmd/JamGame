@@ -1,5 +1,6 @@
 # Godot 4+ specific ignores
 .godot/
+build/
 
 # Native extension build artifacts (the built DLL in native/bin/ IS tracked)
 native/godot-cpp/
