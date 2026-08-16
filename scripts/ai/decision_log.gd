@@ -65,7 +65,7 @@ static func _mix64(z: int) -> int:
 static func build_frame(key: Dictionary, source: String, policy_name: String, policy_version: int,
 		rng_seed: int, observation: Dictionary, ops: Array,
 		decision_started_usec: int, decision_submitted_usec: int,
-		deadline_margin_steps: float, extra: Dictionary = {}) -> Dictionary:
+		deadline_margin_steps: float, analysis = null, extra: Dictionary = {}) -> Dictionary:
 	var frame := {
 		"type": "decision",
 		"schema_version": SCHEMA_VERSION,
@@ -73,13 +73,15 @@ static func build_frame(key: Dictionary, source: String, policy_name: String, po
 		"source": source,
 		"policy_name": policy_name,
 		"policy_version": policy_version,
-		"rng_seed": rng_seed,
+		# As a STRING: seeds use all 64 bits and JSON numbers are doubles — a
+		# numeric seed would lose low bits on read-back and break replay.
+		"rng_seed": str(rng_seed),
 		"observation": observation,
 		"ops": ops,
 		"result": "hold" if ops.is_empty() else "edit",
 		"accepted_ops": null, # joined later from server echo (needs op sequence IDs)
 		"rejected_ops": null,
-		"analysis": null, # JamAnalysis metrics arrive in Phase 2
+		"analysis": analysis, # JamFeatures measurements of the observed state
 		"decision_started_usec": decision_started_usec,
 		"decision_submitted_usec": decision_submitted_usec,
 		"deadline_margin_steps": deadline_margin_steps,

@@ -121,6 +121,10 @@ func _ready() -> void:
 	for arg in OS.get_cmdline_user_args():
 		if arg == "--host":
 			net.host()
+		elif arg.begins_with("--bpm="):
+			# Dev/test knob: match a test harness transport (e.g. 448 = 4x) so an
+			# externally launched peer agrees on loop timing.
+			transport.bpm = float(arg.trim_prefix("--bpm="))
 		elif arg.begins_with("--join="):
 			net.join(arg.trim_prefix("--join="))
 		elif arg == "--lagsim":

@@ -19,6 +19,7 @@ const BotObservation := preload("res://scripts/ai/bot_observation.gd")
 const RuleBassPolicy := preload("res://scripts/ai/rule_bass_policy.gd")
 const DecisionLog := preload("res://scripts/ai/decision_log.gd")
 const BotPeer := preload("res://scripts/ai/bot_peer.gd")
+const Features := preload("res://scripts/core/jam_features.gd")
 
 var passed := 0
 var failed := 0
@@ -38,6 +39,7 @@ func _initialize() -> void:
 	_test_rule_bass_policy()
 	_test_decision_log()
 	_test_bot_peer()
+	_test_jam_features()
 	print("TESTS: %d passed, %d failed" % [passed, failed])
 	quit(1 if failed > 0 else 0)
 
@@ -394,6 +396,15 @@ func _test_rule_bass_policy() -> void:
 	check(holds > 0, "healthy line: some seeds deliberately hold (leave space)")
 	check(edits > 0, "healthy line: some seeds still edit")
 
+	# JSON replay round-trip: an observation that went through the decision log
+	# (string keys, floats) must reproduce the same ops after rehydration.
+	models.bass.active.notes = {0: 0, 8: 0, 12: 4}
+	var live_obs := _mk_obs(models, 9, 4)
+	var wire: Dictionary = JSON.parse_string(JSON.stringify(live_obs))
+	var rehydrated := BotObservation.from_json(wire)
+	check(RuleBassPolicy.decide(rehydrated, seed_value) == RuleBassPolicy.decide(live_obs, seed_value),
+		"JSON-round-tripped observation replays to identical ops")
+
 	# Musicality floor: from empty, the chosen notes are chord tones of the loop's
 	# harmony (I-vi-IV-V in degrees 0..4 admits 0,2,3,4 but never degree 1).
 	var tonal := true
@@ -419,8 +430,8 @@ func _test_decision_log() -> void:
 	var edit_frame := DecisionLog.build_frame(key, DecisionLog.SOURCE_RULE_BOT,
 		"rule_bass", 1, s, {}, [{"track": 1, "op": "place", "args": {"step": 0, "degree": 0}}], 100, 250, 61.5)
 	check(edit_frame.result == "edit", "op-bearing window is an edit frame")
-	check(frame.source == DecisionLog.SOURCE_RULE_BOT and frame.rng_seed == s
-		and frame.decision_key == key, "frame carries source, seed, and decision key")
+	check(frame.source == DecisionLog.SOURCE_RULE_BOT and int(frame.rng_seed) == s
+		and frame.decision_key == key, "frame carries source, seed (as string), and decision key")
 
 	# JSONL round-trip: header + decision + commit survive write/read.
 	var log := DecisionLog.new()
@@ -552,19 +563,75 @@ func _test_bot_peer() -> void:
 	var frames := 0
 	var zero_op_frames := 0
 	var commits := 0
+	var analyzed := 0
 	for e in events:
 		if e.type == "decision":
 			frames += 1
 			if e.ops.is_empty():
 				zero_op_frames += 1
+			if e.analysis != null and e.analysis.has("drum_density"):
+				analyzed += 1
 		elif e.type == "commit":
 			commits += 1
 	check(frames == run_bot.decisions, "every decision window produced exactly one frame")
 	check(zero_op_frames == run_bot.holds, "every HOLD is a recorded zero-op frame")
 	check(commits >= 1, "committed edits produce commit resolution events")
+	check(analyzed == frames, "every frame carries JamFeatures measurements")
 	DirAccess.remove_absolute(log.path)
 	bot.free()
 	run_bot.free()
+
+
+func _test_jam_features() -> void:
+	# Starter room state, every number hand-computable:
+	# drums: kick {0,8}, snare {4,12}, hat {0,2,..,14} -> 12 hits
+	# bass: {0:0, 8:0, 12:4} -> midis 36,36,43; chords: I-vi-IV-V
+	var models := _mk_models()
+	var state := {
+		"drums": models.drums.active.to_dict(),
+		"bass": models.bass.active.to_dict(),
+		"chords": models.chords.active.to_dict(),
+	}
+	var f := Features.extract(state)
+	check(is_equal_approx(f.drum_density, 12.0 / 64.0), "drum density 12/64")
+	check(is_equal_approx(f.kick_density, 2.0 / 16.0), "kick density 2/16")
+	check(is_equal_approx(f.hat_density, 8.0 / 16.0), "hat density 8/16")
+	check(is_equal_approx(f.perc_density, 0.0), "perc density 0")
+	check(is_equal_approx(f.bass_density, 3.0 / 16.0), "bass density 3/16")
+	check(is_equal_approx(f.bass_pitch_mean, (36.0 + 36.0 + 43.0) / 3.0), "bass pitch mean")
+	check(f.bass_pitch_range == 7, "bass pitch range = a fifth")
+	check(is_equal_approx(f.bass_mean_interval, (0.0 + 7.0) / 2.0), "bass mean interval 3.5 semitones")
+	check(is_equal_approx(f.kick_bass_alignment, 2.0 / 3.0), "2 of 3 bass onsets sit on kicks")
+	check(f.chord_slot_count == 4 and f.active_roles == 3, "chord slots and active roles counted")
+
+	# Empty state: all zeros, no NaNs, nothing active.
+	var empty := Features.extract({})
+	check(is_equal_approx(empty.drum_density, 0.0) and is_equal_approx(empty.bass_pitch_mean, 0.0)
+		and is_equal_approx(empty.bass_mean_interval, 0.0) and empty.active_roles == 0,
+		"empty state measures to zeros")
+
+	# Similarity: identical -> 1; one drum toggle -> jaccard 12/13; disjoint bass -> 0.
+	var same := Features.similarity(state, state)
+	check(is_equal_approx(same.mean, 1.0), "identical states are similarity 1")
+	var tweaked := {
+		"drums": models.drums.active.clone(),
+		"bass": models.bass.active.to_dict(),
+		"chords": models.chords.active.to_dict(),
+	}
+	PatternEditor.toggle_hit(tweaked.drums, 3, 7)
+	tweaked.drums = tweaked.drums.to_dict()
+	var sim := Features.similarity(state, tweaked)
+	check(is_equal_approx(sim.drums, 12.0 / 13.0), "one added hit -> drum jaccard 12/13")
+	check(is_equal_approx(sim.bass, 1.0) and is_equal_approx(sim.chords, 1.0), "untouched tracks stay 1")
+	var moved := {"bass": {"num_steps": 16, "notes": {1: 1, 5: 2}}}
+	check(is_equal_approx(Features.similarity(state, moved).bass, 0.0), "disjoint bass lines are 0")
+
+	# Measurements survive the JSON round-trip decision logs apply (string keys).
+	var wire: Dictionary = JSON.parse_string(JSON.stringify(state))
+	var f2 := Features.extract(wire)
+	check(is_equal_approx(f2.kick_bass_alignment, f.kick_bass_alignment)
+		and is_equal_approx(f2.bass_pitch_mean, f.bass_pitch_mean),
+		"features identical on JSON-round-tripped state")
 
 
 func _test_harmony() -> void:

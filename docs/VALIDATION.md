@@ -217,6 +217,50 @@ at the host's drums never acted, the server rejected nothing, both peers
 converged on the same committed line and version, and the JSONL log carried
 exactly one frame per window with HOLDs as zero-op frames.
 
+## AI player Phase 1C — external-process bot is the same player (2026-08-16)
+
+Deliberately boring: same BotPeer code + different process boundary = same
+behavior. New gate `ExternalBotProcessIsTheSamePlayer`: a REAL game instance
+(`--join --bot-seed=777 --bpm=448`) spawned as a separate OS process joins the
+test host over actual ENet, takes the BASS seat, and authors windows (holds AND
+edits) that the host commits at sane density. The strongest assertion is the
+**replay**: every logged frame's observation + seed, run back through the
+policy in the test process, reproduces the logged ops exactly — process
+location is provably irrelevant to the policy, and a logged observation is
+provably sufficient to reproduce its decision.
+
+Two real findings, memorialized in the code:
+- **Scoped-multiplayer RPC paths are RELATIVE to the multiplayer root.** The
+  in-process harness never felt it (symmetric "Net" on both branches), but an
+  external game peer sends "JamRoom/Net" relative to /root — the test host's
+  scoped API must root at a wrapper CONTAINING JamRoom/Net.
+- **64-bit seeds must be logged as strings.** JSON numbers are doubles; a
+  numeric splitmix64 seed loses low bits on read-back and silently breaks
+  replay determinism.
+
+Dev knob: `--bpm=N` lets an externally launched peer match a harness transport.
+
+## AI player Phase 2A — JamFeatures: measurements, not opinions (2026-08-16)
+
+`scripts/core/jam_features.gd`: a pure functional library over plain state
+dicts (to_dict() shapes) — no nodes, no autoloads — so the same code measures
+live state, hypothetical candidate states, and logged/replicated snapshots.
+Only objectively defensible measurements: per-voice drum densities, bass
+density / pitch mean / pitch range / mean interval, kick↔bass onset alignment,
+chord slot count, active role count, and `similarity(a,b)` (Jaccard per track)
+as the substrate for any repetition signal. Interpretations (energy/tension)
+are deliberately NOT here — they belong in a later JamAnalysis.interpret layer
+that consumes these features, keeping the measurement/opinion boundary hard.
+
+BotPeer now attaches features of the observed (pre-edit — ordering matters and
+is tested) state to every DecisionFrame as `analysis`.
+
+Validation: **166 unit tests green** (+17: every feature hand-computed on the
+starter fixture, empty-state zero behavior, similarity identities including
+one-hit jaccard 12/13, and feature invariance across the JSON round-trip —
+which caught string-keyed steps sorting lexicographically). **6/6 integration
+tests green.**
+
 ## How to rebuild the extension
 
 ```

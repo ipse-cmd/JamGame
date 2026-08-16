@@ -17,6 +17,7 @@ extends Node
 const BotObservation := preload("res://scripts/ai/bot_observation.gd")
 const RuleBassPolicy := preload("res://scripts/ai/rule_bass_policy.gd")
 const DecisionLog := preload("res://scripts/ai/decision_log.gd")
+const Features := preload("res://scripts/core/jam_features.gd")
 
 const TRACK_DRUMS := 0
 const TRACK_BASS := 1
@@ -85,6 +86,13 @@ func on_loop(loop: int) -> void:
 		room.model_for(TRACK_BASS), room.model_for(TRACK_DRUMS), room.model_for(TRACK_CHORDS),
 		target, _windows_since_change)
 	var seed_value := DecisionLog.derive_seed(session_seed, epoch, role, target)
+	# Measure the observed state BEFORE dispatching — ops mutate the pending
+	# buffer, and analysis_before must not contain the bot's own edit.
+	var analysis := Features.extract({
+		"drums": BotObservation.state_at(room.model_for(TRACK_DRUMS), target).to_dict(),
+		"bass": BotObservation.state_at(room.model_for(TRACK_BASS), target).to_dict(),
+		"chords": BotObservation.state_at(room.model_for(TRACK_CHORDS), target).to_dict(),
+	})
 
 	var t0 := Time.get_ticks_usec()
 	var ops := RuleBassPolicy.decide(obs, seed_value)
@@ -109,7 +117,7 @@ func on_loop(loop: int) -> void:
 	if decision_log != null:
 		decision_log.write(DecisionLog.build_frame(
 			key, source, RuleBassPolicy.POLICY_NAME, RuleBassPolicy.POLICY_VERSION,
-			seed_value, obs, logged_ops, t0, t1, _deadline_margin_steps()))
+			seed_value, obs, logged_ops, t0, t1, _deadline_margin_steps(), analysis))
 
 
 ## Steps of headroom left before the lock horizon of the loop being authored

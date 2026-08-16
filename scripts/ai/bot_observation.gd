@@ -26,9 +26,9 @@ const VOICE_PERC := 3
 ## windows_since_change: decision windows since the bass line last actually
 ## changed (committed version bump) — the policy's only repetition signal in 1A.
 static func build_bass(bass_model, drums_model, chords_model, target_loop: int, windows_since_change: int) -> Dictionary:
-	var bass_line = _state_at(bass_model, target_loop)
-	var drum_pattern = _state_at(drums_model, target_loop)
-	var chord_track = _state_at(chords_model, target_loop)
+	var bass_line = state_at(bass_model, target_loop)
+	var drum_pattern = state_at(drums_model, target_loop)
+	var chord_track = state_at(chords_model, target_loop)
 
 	var voice_steps := [[], [], [], []]
 	for h in drum_pattern.hits:
@@ -51,8 +51,34 @@ static func build_bass(bass_model, drums_model, chords_model, target_loop: int, 
 
 
 ## The track state that will be audible at target_loop: a pending snapshot whose
-## commit boundary is at or before it, else the active one.
-static func _state_at(model, target_loop: int):
+## commit boundary is at or before it, else the active one. Public: BotPeer uses
+## the same choice when snapshotting states for feature measurement.
+static func state_at(model, target_loop: int):
 	if model.has_pending() and model.commit_loop_index <= target_loop:
 		return model.pending
 	return model.active
+
+
+## Rehydrate an observation that went through JSON (decision logs): string keys
+## back to int, floats back to int where the schema says int. A logged frame's
+## observation + rng_seed must reproduce its ops exactly — replay tooling and
+## the 1C location-independence proof both depend on this round-trip.
+static func from_json(d: Dictionary) -> Dictionary:
+	var obs := d.duplicate(true)
+	var notes := {}
+	for k in d.get("bass_notes", {}):
+		notes[int(str(k))] = int(d.bass_notes[k])
+	obs.bass_notes = notes
+	for list_key in ["kick_steps", "snare_steps", "hat_steps"]:
+		var ints: Array = []
+		for v in d.get(list_key, []):
+			ints.append(int(v))
+		obs[list_key] = ints
+	var slots: Array = []
+	for v in d.get("chord_slots", []):
+		slots.append(int(v))
+	obs.chord_slots = slots
+	for int_key in ["schema", "role", "target_loop", "steps_per_bar", "bass_version", "windows_since_change"]:
+		if obs.has(int_key):
+			obs[int_key] = int(obs[int_key])
+	return obs

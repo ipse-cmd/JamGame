@@ -25,6 +25,8 @@ extends Node
 const NetSession := preload("res://scripts/net/net_session.gd")
 const BotPeer := preload("res://scripts/ai/bot_peer.gd")
 const DecisionLog := preload("res://scripts/ai/decision_log.gd")
+const BotObservation := preload("res://scripts/ai/bot_observation.gd")
+const RuleBassPolicy := preload("res://scripts/ai/rule_bass_policy.gd")
 const CommitModel := preload("res://scripts/core/commit_model.gd")
 const DrumPattern := preload("res://scripts/core/drum_pattern.gd")
 const BassLine := preload("res://scripts/core/bass_line.gd")
@@ -64,6 +66,7 @@ func _ready() -> void:
 	else:
 		print("ITEST FAIL: session setup (host/join/clock-lock) — skipping network tests")
 		tests_failed += 3
+	await _run_test("ExternalBotProcessIsTheSamePlayer", _test_external_bot_process)
 	print("ITESTS DONE: %d failed" % tests_failed)
 	get_tree().quit(tests_failed)
 
@@ -441,3 +444,89 @@ func _test_bot_peer_ordinary() -> void:
 	DirAccess.remove_absolute(dlog.path)
 	bot.queue_free()
 	squatter.queue_free()
+
+
+## Phase 1C gate — deliberately boring: same BotPeer code + different process
+## boundary = same behavior. A REAL game instance (`--join --bot-seed --bpm`) is
+## spawned as a separate OS process and must join over actual ENet, take the
+## BASS seat, author windows the host commits, and leave a decision log whose
+## every frame REPLAYS: logged observation + logged seed through the policy
+## reproduces the logged ops exactly. That proves process location is irrelevant
+## to the policy, not merely that both mounts happen to function.
+func _test_external_bot_process() -> void:
+	# RPC paths are RELATIVE TO THE MULTIPLAYER ROOT, and this peer lives in
+	# another process: the game instance (unscoped, root = /root) sends and
+	# expects "JamRoom/Net". So the host's scoped API must root at a WRAPPER
+	# whose subtree contains JamRoom/Net — then both sides' relative paths
+	# agree. The in-process tests never feel this because their branches are
+	# scoped symmetrically ("Net" on both sides).
+	var branch := Node.new()
+	branch.name = "S3"
+	add_child(branch)
+	get_tree().set_multiplayer(MultiplayerAPI.create_default_interface(), branch.get_path())
+	var jam_mirror := Node.new()
+	jam_mirror.name = "JamRoom"
+	branch.add_child(jam_mirror)
+	var host_room := RoomStub.new(STUB_BPM)
+	branch.add_child(host_room)
+	var host_net = NetSession.new()
+	host_net.name = "Net"
+	host_net.room = host_room
+	host_net.listen_port = 7777 # the game's default join port
+	jam_mirror.add_child(host_net)
+	host_room.net = host_net
+	if not host_net.host():
+		check(false, "external-bot host failed (port 7777 busy?)")
+		return
+
+	var log_dir := "user://decision_logs"
+	var before := {}
+	if DirAccess.dir_exists_absolute(log_dir):
+		for f in DirAccess.get_files_at(log_dir):
+			before[f] = true
+
+	var pid := OS.create_process(OS.get_executable_path(),
+		["--path", ProjectSettings.globalize_path("res://"), "--",
+		"--join=127.0.0.1", "--bot-seed=777", "--bpm=%d" % int(STUB_BPM)])
+	check(pid > 0, "external bot process launched")
+
+	var joined := await await_until(func(): return host_net.multiplayer.get_peers().size() >= 1, 20.0)
+	check(joined, "external bot joined over real ENet")
+	var v0: int = host_room.bass.version_id
+	var progressed := await await_until(func(): return host_room.bass.version_id >= v0 + 2, 90.0)
+	check(progressed, "host committed two bass versions authored by the external bot")
+	var density: int = host_room.bass.active.notes.size()
+	check(density >= 1 and density <= 6, "external bot drove the line to sane density (got %d)" % density)
+	OS.kill(pid)
+
+	var log_file := ""
+	for f in DirAccess.get_files_at(log_dir):
+		if not before.has(f):
+			log_file = f
+	check(not log_file.is_empty(), "external bot wrote a decision log")
+	if log_file.is_empty():
+		return
+	var frames := 0
+	var holds := 0
+	var edits := 0
+	var replays_ok := true
+	for e in DecisionLog.read_events(log_dir + "/" + log_file):
+		if e.type != "decision":
+			continue
+		frames += 1
+		if e.ops.is_empty():
+			holds += 1
+		else:
+			edits += 1
+		var replayed := RuleBassPolicy.decide(BotObservation.from_json(e.observation), int(e.rng_seed))
+		var logged: Array = []
+		for op in e.ops:
+			logged.append({"track": int(op.track), "op": String(op.op),
+				"args": {"step": int(op.args.step), "degree": int(op.args.degree)}})
+		if logged != replayed:
+			replays_ok = false
+	check(frames >= 3, "external bot authored multiple windows (got %d)" % frames)
+	check(holds >= 1 and edits >= 1, "external bot both held and edited (%d holds, %d edits)" % [holds, edits])
+	check(replays_ok, "REPLAY: every logged observation + seed reproduces the logged ops")
+	DirAccess.remove_absolute(log_dir + "/" + log_file)
+	branch.queue_free()
