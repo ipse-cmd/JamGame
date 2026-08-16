@@ -15,6 +15,9 @@ const Renderer := preload("res://scripts/core/drum_renderer.gd")
 const Templates := preload("res://scripts/core/drum_templates.gd")
 const DrumState := preload("res://scripts/core/drum_state.gd")
 const TrackOps := preload("res://scripts/core/track_ops.gd")
+const BotObservation := preload("res://scripts/ai/bot_observation.gd")
+const RuleBassPolicy := preload("res://scripts/ai/rule_bass_policy.gd")
+const DecisionLog := preload("res://scripts/ai/decision_log.gd")
 
 var passed := 0
 var failed := 0
@@ -30,6 +33,9 @@ func _initialize() -> void:
 	_test_drum_templates()
 	_test_drum_state()
 	_test_lock_horizon()
+	_test_bot_observation()
+	_test_rule_bass_policy()
+	_test_decision_log()
 	print("TESTS: %d passed, %d failed" % [passed, failed])
 	quit(1 if failed > 0 else 0)
 
@@ -255,6 +261,180 @@ func _test_lock_horizon() -> void:
 	var m2 = CommitModel.new(DrumPattern.new())
 	TrackOps.apply(m2, 0, "template", {"index": 1}, 0)
 	check(m2.pending.hits == Templates.build(1).hits, "template op replaces the pending pattern")
+
+
+# ---------------------------------------------------------------- Phase 1A: AI player
+
+## Room-shaped test fixture: starter groove (kick 0/8, snares, hats), starter
+## bass line, I-vi-IV-V chords — the same musical state a bot joining the
+## default room would observe.
+func _mk_models() -> Dictionary:
+	var starter := DrumPattern.new()
+	for kick_step in [0, 8]:
+		PatternEditor.toggle_hit(starter, 0, kick_step)
+	for snare_step in [4, 12]:
+		PatternEditor.toggle_hit(starter, 1, snare_step)
+	for hat_step in range(0, 16, 2):
+		PatternEditor.toggle_hit(starter, 2, hat_step, 0.6)
+	var line := BassLine.new()
+	line.notes = {0: 0, 8: 0, 12: 4}
+	var track := ChordTrack.new()
+	track.slots = [0, 5, 3, 4]
+	return {
+		"drums": CommitModel.new(starter),
+		"bass": CommitModel.new(line),
+		"chords": CommitModel.new(track),
+	}
+
+
+func _mk_obs(models: Dictionary, target_loop: int, windows: int) -> Dictionary:
+	return BotObservation.build_bass(models.bass, models.drums, models.chords, target_loop, windows)
+
+
+## Mirror of JamNetSession._validate_cmd for [TRACK_BASS, "place"]: the policy
+## must emit nothing a hostile-peer check would reject.
+func _valid_bass_op(op: Dictionary) -> bool:
+	if op.track != 1 or op.op != "place":
+		return false
+	var a: Dictionary = op.args
+	return a.size() == 2 \
+		and a.has("step") and typeof(a.step) == TYPE_INT and a.step >= 0 and a.step <= 15 \
+		and a.has("degree") and typeof(a.degree) == TYPE_INT and a.degree >= 0 and a.degree <= 4
+
+
+## Apply policy ops to a fresh commit model seeded with the observed line;
+## returns the resulting pending notes (what would commit at the boundary).
+func _apply_ops(obs: Dictionary, ops: Array) -> Dictionary:
+	var line := BassLine.new()
+	line.notes = obs.bass_notes.duplicate()
+	var m = CommitModel.new(line)
+	for op in ops:
+		TrackOps.apply(m, 1, op.op, op.args, obs.target_loop - 1)
+	return m.pending.notes if m.has_pending() else m.active.notes
+
+
+func _test_bot_observation() -> void:
+	var models := _mk_models()
+	var obs := _mk_obs(models, 5, 2)
+	check(obs.kick_steps == [0, 8], "observation extracts kick steps")
+	check(obs.snare_steps == [4, 12], "observation extracts snare steps")
+	check(obs.bass_notes == {0: 0, 8: 0, 12: 4}, "observation carries the bass line")
+	check(obs.chord_slots == [0, 5, 3, 4], "observation carries chord slots")
+	check(obs.target_loop == 5 and obs.windows_since_change == 2, "identity fields pass through")
+	obs.bass_notes.erase(0)
+	check(models.bass.active.notes.has(0), "observation is a copy, not a live reference")
+
+	# Future-facing: a pending that commits by the target loop is what the bot
+	# will coexist with; a later-committing pending is not.
+	var pend = models.bass.begin_or_get_pending(4) # commits at loop 5
+	pend.place_or_toggle(2, 3)
+	check(_mk_obs(models, 5, 0).bass_notes.has(2), "pending committing at target loop is observed")
+	models.bass.commit_loop_index = 6
+	check(not _mk_obs(models, 5, 0).bass_notes.has(2), "pending committing after target loop is ignored")
+	models.bass.cancel_pending()
+
+
+func _test_rule_bass_policy() -> void:
+	var models := _mk_models()
+	var seed_value := DecisionLog.derive_seed(1234, 0, 1, 7)
+
+	# Determinism: same observation + same seed -> byte-identical ops, always.
+	var obs := _mk_obs(models, 7, 4)
+	var a := RuleBassPolicy.decide(obs, seed_value)
+	var b := RuleBassPolicy.decide(_mk_obs(models, 7, 4), seed_value)
+	check(a == b, "same state + same seed -> exactly same ops")
+
+	# A just-changed line always gets a window to breathe.
+	check(RuleBassPolicy.decide(_mk_obs(models, 7, 0), seed_value).is_empty(),
+		"windows_since_change 0 -> guaranteed hold")
+
+	# Every emitted op must survive the server's hostile-peer validation.
+	var stale_ops := RuleBassPolicy.decide(obs, seed_value)
+	check(not stale_ops.is_empty(), "stale line (windows >= 3) forces a mutation")
+	var all_valid := true
+	for op in stale_ops:
+		if not _valid_bass_op(op):
+			all_valid = false
+	check(all_valid, "all policy ops pass server-side validation shape")
+
+	# Stale mutation moves exactly one note: same density, different line.
+	var mutated := _apply_ops(obs, stale_ops)
+	check(mutated.size() == obs.bass_notes.size(), "stale mutation preserves density")
+	check(mutated != obs.bass_notes, "stale mutation actually changes the line")
+
+	# Density steering: an empty line is rebuilt into the band...
+	models.bass.active.notes = {}
+	var fill_ops := RuleBassPolicy.decide(_mk_obs(models, 7, 1), seed_value)
+	var filled := _apply_ops(_mk_obs(models, 7, 1), fill_ops)
+	check(filled.size() >= RuleBassPolicy.DENSITY_MIN and filled.size() <= RuleBassPolicy.DENSITY_MAX,
+		"empty line rebuilt into the density band")
+	# ...and an overcrowded line is thinned into it.
+	var crowded := {}
+	for step in 12:
+		crowded[step] = step % 5
+	models.bass.active.notes = crowded
+	var thin_ops := RuleBassPolicy.decide(_mk_obs(models, 7, 1), seed_value)
+	var thinned := _apply_ops(_mk_obs(models, 7, 1), thin_ops)
+	check(thinned.size() <= RuleBassPolicy.DENSITY_MAX, "overcrowded line thinned into the band")
+
+	# Zero-op HOLD is a real outcome: a healthy, non-stale line must sometimes be
+	# left alone (and sometimes edited) across seeds — space-leaving is data.
+	models.bass.active.notes = {0: 0, 8: 0, 12: 4}
+	var holds := 0
+	var edits := 0
+	for s in 40:
+		var ops := RuleBassPolicy.decide(_mk_obs(models, 7, 1),
+			DecisionLog.derive_seed(s, 0, 1, 7))
+		if ops.is_empty():
+			holds += 1
+		else:
+			edits += 1
+	check(holds > 0, "healthy line: some seeds deliberately hold (leave space)")
+	check(edits > 0, "healthy line: some seeds still edit")
+
+	# Musicality floor: from empty, the chosen notes are chord tones of the loop's
+	# harmony (I-vi-IV-V in degrees 0..4 admits 0,2,3,4 but never degree 1).
+	var tonal := true
+	for step in filled:
+		if filled[step] == 1:
+			tonal = false
+	check(tonal, "rebuilt line avoids the one non-chord-tone degree")
+
+
+func _test_decision_log() -> void:
+	# Seed derivation: stable, and every key component matters.
+	var s := DecisionLog.derive_seed(42, 0, 1, 10)
+	check(s == DecisionLog.derive_seed(42, 0, 1, 10), "derived seed is stable")
+	check(s != DecisionLog.derive_seed(42, 0, 1, 11), "target loop changes the seed")
+	check(s != DecisionLog.derive_seed(42, 1, 1, 10), "room epoch changes the seed")
+	check(s != DecisionLog.derive_seed(42, 0, 0, 10), "role changes the seed")
+	check(s != DecisionLog.derive_seed(43, 0, 1, 10), "session seed changes the seed")
+
+	var key := DecisionLog.make_key(0, 1, 10, 3)
+	var frame := DecisionLog.build_frame(key, DecisionLog.SOURCE_RULE_BOT,
+		"rule_bass", 1, s, {"bass_notes": {}}, [], 100, 250, 61.5)
+	check(frame.result == "hold" and frame.ops == [], "zero-op window is a first-class HOLD frame")
+	var edit_frame := DecisionLog.build_frame(key, DecisionLog.SOURCE_RULE_BOT,
+		"rule_bass", 1, s, {}, [{"track": 1, "op": "place", "args": {"step": 0, "degree": 0}}], 100, 250, 61.5)
+	check(edit_frame.result == "edit", "op-bearing window is an edit frame")
+	check(frame.source == DecisionLog.SOURCE_RULE_BOT and frame.rng_seed == s
+		and frame.decision_key == key, "frame carries source, seed, and decision key")
+
+	# JSONL round-trip: header + decision + commit survive write/read.
+	var log := DecisionLog.new()
+	var meta := {"session_id": "coretest", "session_seed": 42, "room_epoch": 0, "peer_id": 1}
+	check(log.open(meta, "user://test_decision_logs") == OK, "log file opens")
+	log.write(frame)
+	log.write(DecisionLog.build_commit(key, {"notes": {}}, 4, 12))
+	log.close()
+	var events := DecisionLog.read_events(log.path)
+	check(events.size() == 3, "log holds session header + decision + commit")
+	check(events[0].type == "session" and events[0].session_seed == 42, "header carries session meta")
+	check(events[1].type == "decision" and events[1].result == "hold", "hold frame round-trips")
+	check(events[2].type == "commit" and int(events[2].at_loop) == 12, "commit event round-trips")
+	check(int(events[1].decision_key.target_loop) == int(events[2].decision_key.target_loop),
+		"decision and commit join on the decision key")
+	DirAccess.remove_absolute(log.path)
 
 
 func _test_harmony() -> void:

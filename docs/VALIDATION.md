@@ -147,6 +147,45 @@ keys (template pending→committed 12→20 hits v1, kit [2,0,0,0], 3 modifier ev
 full-sync replaced local drum state with host's, 3 hostile ops (role-violating
 kit/fill, template index 9) all rejected.
 
+## AI player Phase 1A — rule bass policy + decision logging (2026-08-16)
+
+First slice of the AI-player roadmap. Constraint fixed from day one: **an AI
+player is indistinguishable from a hostile/untrusted peer** — it emits ordinary
+`JamTrackOps` through normal validation; no privileged path.
+
+- **`scripts/ai/rule_bass_policy.gd`**: pure `(observation, seed) → ops`.
+  Deliberately simple, NO intent layer (that's Phase 3, verified against this
+  baseline). Deterministic by construction: no wall clock, no global RNG.
+  Rules: fresh line breathes ≥1 window; healthy+non-stale line HOLDs ~65%;
+  density steered into [3,6]; stale (≥3 windows) forces one moved note;
+  desired-line diff emitted as place/retune/remove ops. Candidate scoring:
+  harmonic fit across all chord slots + kick alignment + spacing + downbeat
+  root anchor; seeded rng tie-breaks only within the near-best band.
+- **`scripts/ai/bot_observation.gd`**: THE observation constructor (BotPeer and
+  the MCP manual-policy path must both use it). Future-facing: pendings that
+  commit by the target loop are observed, later ones aren't.
+- **`scripts/ai/decision_log.gd`**: append-only JSONL decision-WINDOW logging —
+  zero-op HOLDs are first-class frames (else a learned player inherits
+  pathological busyness). DecisionKey = {room_epoch, role, target_loop,
+  state_version}; per-decision seed = splitmix64(session_seed, epoch, role,
+  target_loop), so same state + same session seed → same ops on any peer at any
+  transport speed. Sources (human/rule_bot/ml_bot) stay separated forever.
+
+Validation: **134 unit tests green** (+33: determinism, guaranteed-hold window,
+server-validation shape of every emitted op, stale mutation preserves density
+while changing the line, density steering both directions, hold AND edit both
+occur across seeds, chord-tone floor, seed derivation, JSONL round-trip incl.
+zero-op frame). Behavior spot-check over 10 loops × 2 seeds: root anchored on
+both kicks, third voice wandering chord tones (never the non-chord-tone
+degree), ~35% holds, seeds phrase differently, fully reproducible.
+
+Harness finding while validating: the integration suite silently required the
+compositor to serve frames — an occluded window (or locked screen) blocks
+vsync'd swaps at ~1.2 fps, wrecking wall-clock-paced submission and clock sync
+while audio keeps mixing (13 clamped onsets, phantom "late" events). The suite
+now disables vsync and caps at 120 fps; **4/4 integration tests green**
+regardless of window visibility.
+
 ## How to rebuild the extension
 
 ```

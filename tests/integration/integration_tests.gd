@@ -42,6 +42,12 @@ var c_net
 
 
 func _ready() -> void:
+	# The suite needs a real audio driver but must NOT depend on the compositor
+	# serving frames: an occluded window (or locked screen) blocks vsync'd swaps
+	# at ~1 fps, which wrecks wall-clock-paced submissions and clock sync while
+	# audio keeps mixing. Free-run the loop at a sane cap instead.
+	DisplayServer.window_set_vsync_mode(DisplayServer.VSYNC_DISABLED)
+	Engine.max_fps = 120
 	seed(424242) # deterministic lag-sim jitter/loss
 	await _run_test("AudioTimingUnderMainThreadHitches", _test_audio_timing_under_hitches)
 	await _run_test("NetworkDelayDoesNotAffectScheduledSamplePlacement", _test_delay_invariant_placement)
