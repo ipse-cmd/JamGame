@@ -8,7 +8,7 @@ param(
     [switch]$Bot,
     [string]$RemoteHost = "192.168.1.105",
     [string]$RemoteUser = "ipse",
-    [string]$RemoteDir = "C:/Users/ipse/JamGame_build",
+    [string]$RemoteDir = "D:/JamGame_build", # C: on the LAN PC is nearly full; D: (500 GB) and E: (2 TB) are empty
     [string]$HostIp = "192.168.1.167"
 )
 
