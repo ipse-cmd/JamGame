@@ -24,6 +24,15 @@ func equals(other) -> bool:
 	return num_steps == other.num_steps and notes == other.notes
 
 
+func to_dict() -> Dictionary:
+	return {"num_steps": num_steps, "notes": notes.duplicate()}
+
+
+func from_dict(d: Dictionary) -> void:
+	num_steps = int(d.get("num_steps", 16))
+	notes = d.get("notes", {}).duplicate()
+
+
 ## Jammin Enter semantics: place if empty, re-tune if different degree, remove if same.
 ## Returns "placed" | "retuned" | "removed" | "" (out of range).
 func place_or_toggle(step: int, degree: int) -> String:

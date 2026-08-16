@@ -39,6 +39,31 @@ func cancel_pending() -> void:
 	commit_loop_index = -1
 
 
+## Replication payload: the full musical decision — active/pending state, the
+## server-assigned commit boundary, and the version. Never audio triggers.
+func state_dict() -> Dictionary:
+	return {
+		"active": active.to_dict(),
+		"pending": pending.to_dict() if pending != null else null,
+		"commit_loop": commit_loop_index,
+		"version": version_id,
+	}
+
+
+## Overwrite local state from a replicated payload. blank_factory creates an empty
+## track instance (the model is track-type agnostic).
+func apply_state(d: Dictionary, blank_factory: Callable) -> void:
+	active = blank_factory.call()
+	active.from_dict(d.active)
+	if d.pending != null:
+		pending = blank_factory.call()
+		pending.from_dict(d.pending)
+	else:
+		pending = null
+	commit_loop_index = int(d.commit_loop)
+	version_id = int(d.version)
+
+
 ## Promote pending to active if current_loop has reached the scheduled commit loop.
 ## Returns true only when a real change was committed.
 func try_commit_at_loop(current_loop: int) -> bool:

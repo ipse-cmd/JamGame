@@ -13,6 +13,7 @@ const ChordTrack := preload("res://scripts/core/chord_track.gd")
 const Harmony := preload("res://scripts/core/harmony.gd")
 const AudioEngine := preload("res://scripts/audio/audio_engine.gd")
 const Transport := preload("res://scripts/audio/transport.gd")
+const NetSession := preload("res://scripts/net/net_session.gd")
 const StepRing := preload("res://scripts/ui/step_ring.gd")
 const ChordStrip := preload("res://scripts/ui/chord_strip.gd")
 
@@ -38,6 +39,14 @@ GLOBAL
   C       cancel pending edit
   X       clear all (focused track)
   Del     clear lane / line / slot
+
+NETWORK (deliberately ugly)
+  H       host a jam (port 7777)
+  J       join 127.0.0.1
+  F9      hitch test (stall main thread)
+  F10     toggle net lag simulator
+In a room you only edit YOUR track:
+host=drums, 2nd player=bass, 3rd=chords.
 
 DRUM RING (focus: DRUMS)
   1-4     select lane
@@ -65,11 +74,13 @@ var chords: JamCommitModel
 
 var transport: JamTransport
 var audio: JamAudioEngine
+var net: JamNetSession
 var drum_ring: JamStepRing
 var bass_ring: JamStepRing
 var chord_strip: JamChordStrip
 var hud_line: Label
 var status_line: Label
+var net_line: Label
 var help_label: Label
 
 var focus: int = Focus.DRUMS
@@ -96,6 +107,13 @@ func _ready() -> void:
 	transport.sixteenth.connect(_on_sixteenth)
 	transport.schedule_sixteenth.connect(_on_schedule_sixteenth)
 	transport.start()
+	for arg in OS.get_cmdline_user_args():
+		if arg == "--host":
+			net.host()
+		elif arg.begins_with("--join="):
+			net.join(arg.trim_prefix("--join="))
+		elif arg == "--lagsim":
+			net.lag_sim = true
 	_refresh_ui()
 
 
@@ -135,9 +153,14 @@ func _build_scene() -> void:
 	add_child(audio)
 	transport = Transport.new()
 	add_child(transport)
+	net = NetSession.new()
+	net.name = "Net" # stable node path — RPCs are bound to it on every instance
+	net.room = self
+	add_child(net)
 
 	hud_line = _make_label(Vector2(60, 24), 18, Color("f0f3f7"))
 	status_line = _make_label(Vector2(60, 52), 13, Color("8a93a0"))
+	net_line = _make_label(Vector2(60, 74), 13, Color("7fa0c0"))
 
 	drum_ring = StepRing.new()
 	drum_ring.title = "DRUMS"
@@ -236,9 +259,75 @@ func _on_schedule_sixteenth(abs_step: int, at_sample: int) -> void:
 
 
 func _try_commits(at_loop: int) -> void:
-	drums.try_commit_at_loop(at_loop)
-	bass.try_commit_at_loop(at_loop)
-	chords.try_commit_at_loop(at_loop)
+	for t in [Focus.DRUMS, Focus.BASS, Focus.CHORDS]:
+		if model_for(t).try_commit_at_loop(at_loop) and net.active and net.is_server:
+			net.broadcast_track(t) # replicate the promoted state (version + boundary)
+
+
+# ---------------------------------------------------------------- edit routing
+
+func model_for(track: int) -> JamCommitModel:
+	match track:
+		Focus.DRUMS: return drums
+		Focus.BASS: return bass
+		_: return chords
+
+
+func _blank_factory(track: int) -> Callable:
+	match track:
+		Focus.DRUMS: return Callable(DrumPattern, "new")
+		Focus.BASS: return Callable(BassLine, "new")
+		_: return Callable(ChordTrack, "new")
+
+
+## Every edit goes through here. Solo: apply directly. Client: apply locally as a
+## prediction (immediate ghost, Jammin D7 style) AND send the intent to the server;
+## the server's echoed state overwrites and reconciles. Host: apply + broadcast.
+func _dispatch(track: int, op: String, args: Dictionary) -> void:
+	if not net.can_edit(track):
+		return # not your instrument in this room (also enforced server-side)
+	apply_edit(track, op, args)
+	if net.active:
+		if net.is_server:
+			net.broadcast_track(track)
+		else:
+			net.send_cmd(track, op, args)
+
+
+## Pure application of a musical edit op to this machine's models. Used by local
+## dispatch AND by the server when validating a client command.
+func apply_edit(track: int, op: String, args: Dictionary) -> void:
+	var m := model_for(track)
+	if op == "cancel":
+		m.cancel_pending()
+		return
+	var p = m.begin_or_get_pending(loop_index)
+	match track:
+		Focus.DRUMS:
+			match op:
+				"toggle": PatternEditor.toggle_hit(p, args.voice, args.step, DEFAULT_VELOCITY)
+				"accent": PatternEditor.toggle_accent(p, args.voice, args.step)
+				"clear_voice": PatternEditor.clear_voice(p, args.voice)
+				"clear_all": PatternEditor.clear_all(p)
+		Focus.BASS:
+			match op:
+				"place": p.place_or_toggle(args.step, args.degree)
+				"clear": p.clear()
+		Focus.CHORDS:
+			match op:
+				"cycle": p.cycle_slot(args.bar, args.delta)
+				"clear_slot": p.clear_slot(args.bar)
+				"clear": p.clear()
+
+
+## Replicated commit-model state arrived from the server: overwrite local replica.
+func apply_track_state(track: int, state: Dictionary) -> void:
+	model_for(track).apply_state(state, _blank_factory(track))
+	_refresh_ui()
+
+
+func queue_ui_refresh() -> void:
+	_refresh_ui()
 
 
 # ---------------------------------------------------------------- input
@@ -271,24 +360,23 @@ func _unhandled_key_input(event: InputEvent) -> void:
 		KEY_X:
 			_clear_all()
 		KEY_C:
-			_focused_model().cancel_pending()
+			_dispatch(focus, "cancel", {})
 		KEY_A:
 			_cycle_chord(-1)
 		KEY_D:
 			_cycle_chord(1)
 		KEY_1, KEY_2, KEY_3, KEY_4, KEY_5:
 			_select_lane(k.keycode - KEY_1)
+		KEY_H:
+			net.host()
+		KEY_J:
+			net.join("127.0.0.1")
+		KEY_F10:
+			net.lag_sim = not net.lag_sim
 		_:
 			return
 	get_viewport().set_input_as_handled()
 	_refresh_ui()
-
-
-func _focused_model() -> JamCommitModel:
-	match focus:
-		Focus.DRUMS: return drums
-		Focus.BASS: return bass
-		_: return chords
 
 
 func _move_cursor(dir: int) -> void:
@@ -313,41 +401,41 @@ func _select_lane(n: int) -> void:
 func _place() -> void:
 	match focus:
 		Focus.DRUMS:
-			PatternEditor.toggle_hit(drums.begin_or_get_pending(loop_index), drum_lane, drum_cursor, DEFAULT_VELOCITY)
+			_dispatch(Focus.DRUMS, "toggle", {"voice": drum_lane, "step": drum_cursor})
 		Focus.BASS:
-			bass.begin_or_get_pending(loop_index).place_or_toggle(bass_cursor, bass_lane)
+			_dispatch(Focus.BASS, "place", {"step": bass_cursor, "degree": bass_lane})
 		Focus.CHORDS:
 			pass # chords edit via A/D
 
 
 func _toggle_accent() -> void:
 	if focus == Focus.DRUMS:
-		PatternEditor.toggle_accent(drums.begin_or_get_pending(loop_index), drum_lane, drum_cursor)
+		_dispatch(Focus.DRUMS, "accent", {"voice": drum_lane, "step": drum_cursor})
 
 
 func _clear_lane() -> void:
 	match focus:
 		Focus.DRUMS:
-			PatternEditor.clear_voice(drums.begin_or_get_pending(loop_index), drum_lane)
+			_dispatch(Focus.DRUMS, "clear_voice", {"voice": drum_lane})
 		Focus.BASS:
-			bass.begin_or_get_pending(loop_index).clear()
+			_dispatch(Focus.BASS, "clear", {})
 		Focus.CHORDS:
-			chords.begin_or_get_pending(loop_index).clear_slot(chord_cursor)
+			_dispatch(Focus.CHORDS, "clear_slot", {"bar": chord_cursor})
 
 
 func _clear_all() -> void:
 	match focus:
 		Focus.DRUMS:
-			PatternEditor.clear_all(drums.begin_or_get_pending(loop_index))
+			_dispatch(Focus.DRUMS, "clear_all", {})
 		Focus.BASS:
-			bass.begin_or_get_pending(loop_index).clear()
+			_dispatch(Focus.BASS, "clear", {})
 		Focus.CHORDS:
-			chords.begin_or_get_pending(loop_index).clear()
+			_dispatch(Focus.CHORDS, "clear", {})
 
 
 func _cycle_chord(delta: int) -> void:
 	if focus == Focus.CHORDS:
-		chords.begin_or_get_pending(loop_index).cycle_slot(chord_cursor, delta)
+		_dispatch(Focus.CHORDS, "cycle", {"bar": chord_cursor, "delta": delta})
 
 
 # ---------------------------------------------------------------- UI refresh
@@ -386,6 +474,26 @@ func _refresh_ui() -> void:
 		var d: Dictionary = audio.diagnostics()
 		audio_tag = "audio: native sample-scheduled  ·  late %d  ·  dropped %d" % [d.late, d.dropped]
 	status_line.text = "Focus: %s (Tab)  ·  F1 help  ·  %s" % [["DRUMS", "BASS", "CHORDS"][focus], audio_tag]
+	net_line.text = _net_status_text()
+
+
+func _net_status_text() -> String:
+	if not net.active:
+		return "NET: solo  ·  H host  ·  J join 127.0.0.1"
+	var track_names := ["DRUMS", "BASS", "CHORDS"]
+	var owned := ""
+	for t in net.owned_tracks():
+		owned += ("" if owned.is_empty() else ", ") + track_names[t]
+	if owned.is_empty():
+		owned = "nothing (spectator)"
+	var lag_tag := ""
+	if net.lag_sim:
+		lag_tag = "  ·  LAGSIM %d±%dms %.1f%%loss" % [int(net.lag_base_ms), int(net.lag_jitter_ms), net.lag_loss_pct * 100.0]
+	if net.is_server:
+		return "NET: HOST  ·  %s  ·  you edit: %s  ·  rejects %d%s" % [net.status, owned, net.rejects, lag_tag]
+	var agree := "YES" if net.debug_state().versions_agree else "NO"
+	return "NET: CLIENT  ·  %s  ·  RTT %.0f ms  ·  you edit: %s  ·  server loop %d / local %d  ·  versions agree: %s%s" % [
+		net.status, net.rtt_ms, owned, net.server_loop, loop_index, agree, lag_tag]
 
 
 func _track_status(model: JamCommitModel) -> String:
@@ -452,4 +560,5 @@ func _mcp_state() -> Dictionary:
 		"chord_pending": chords.has_pending(),
 		"hitch_mode": hitch_mode,
 		"audio": audio.diagnostics(),
+		"net": net.debug_state(),
 	}

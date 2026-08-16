@@ -19,7 +19,9 @@ var bpm: float = 112.0
 var playing: bool = false
 var native := false
 var mix_rate := 44100.0
-var lookahead_seconds := 0.15
+# Must exceed one step spacing (134 ms per sixteenth at 112 BPM) plus the worst
+# main-thread stall, or steps that become due between frames get submitted late.
+var lookahead_seconds := 0.25
 var start_margin_seconds := 0.05
 var cursor_source: Callable # returns the absolute sample cursor (int)
 
@@ -52,6 +54,25 @@ func start() -> void:
 		_anchor_usec = Time.get_ticks_usec()
 		_elapsed_paused = 0.0
 		_next_step = 0
+	playing = true
+
+
+## Re-anchor the local timeline so the musical position is pos_steps RIGHT NOW —
+## used by a joining client to phase-lock onto the server's musical clock (the
+## Jammin M-PL0 move). Scheduling resumes from the first step safely in the future.
+func start_at(pos_steps: float) -> void:
+	if native:
+		var cur := int(cursor_source.call())
+		_start_sample = cur - int(round(pos_steps * samples_per_step()))
+		var next := int(ceil(pos_steps))
+		var margin := cur + int(start_margin_seconds * mix_rate)
+		while step_sample(next) <= margin:
+			next += 1
+		_sched_step = next
+		_play_step = next
+	else:
+		_anchor_usec = Time.get_ticks_usec() - int(pos_steps * (60.0 / bpm / 4.0) * 1e6)
+		_next_step = int(ceil(pos_steps))
 	playing = true
 
 

@@ -20,6 +20,14 @@ func equals(other) -> bool:
 	return slots == other.slots
 
 
+func to_dict() -> Dictionary:
+	return {"slots": slots.duplicate()}
+
+
+func from_dict(d: Dictionary) -> void:
+	slots = d.get("slots", [-1, -1, -1, -1]).duplicate()
+
+
 func cycle_slot(bar: int, delta: int) -> void:
 	if bar < 0 or bar >= slots.size():
 		return

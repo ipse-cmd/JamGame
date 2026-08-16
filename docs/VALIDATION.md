@@ -37,6 +37,45 @@ Verdict: Godot passes the migration's hardest technical gate. Remaining audio wo
 (DaisySP voices, per-voice synthesis, mixer replication) is engineering inside a
 proven seam, not risk.
 
+## G1 — Minimal adversarial multiplayer (2026-08-16)
+
+The gate: *can Jammin's future-buffered commit model survive host/client latency
+while keeping UI responsive and audio locally scheduled?* The wire carries musical
+decisions only — edit commands up, replicated commit-model state (with the
+server-assigned boundary + version) down. Never audio triggers.
+
+Setup: two instances on one machine (CLI host `--host --lagsim`, editor-run client),
+ENet port 7777, explicit RPCs on `JamNetSession`. Roles: host=DRUMS+CHORDS,
+client=BASS, gated client-side AND server-side. Clock sync: 6 pings, min-RTT sample,
+RTT/2-compensated `transport.start_at()` (the M-PL0 move).
+
+1. **G1.0–G1.4**: join + clock lock at RTT 8 ms; `server_loop == local_loop`
+   immediately; full state sync on join; roles replicated.
+2. **G1.2 strict validation**: 3 hostile commands (role violation, out-of-range step,
+   extra payload field) → all rejected server-side, zero state disturbed, no repair.
+3. **G1.5/G1.6**: client edit burst → pending ghost immediately (local prediction),
+   server assigned boundary N+1, both machines promoted at the same loop:
+   versions `[0,1,0]` == `[0,1,0]`, each machine scheduling its own audio (0 late).
+4. **G1.7/G1.8 adversarial**: full-duplex lag sim 60±20 ms + 2% modeled loss on BOTH
+   peers (RTT ~150 ms) + main-thread hitching (5–25 ms/frame). Order-sensitive burst
+   (`clear` + 8 places + 2 retunes) arrived intact: **content matched intent exactly**,
+   versions and loops agreed across two boundaries, rejects 0.
+
+Two real findings from the adversarial pass:
+- **Lag simulator must be FIFO.** Independently-delayed packets reorder commands
+  (`clear` overtaking `place` mangled a line to 1 note). Real ENet reliable channels
+  are ordered — loss causes head-of-line delay, not reordering. Fixed; state still
+  *converged* even under reordering (server-authoritative echo), but musical intent
+  requires ordering.
+- **Lookahead must exceed step spacing + worst hitch.** At 112 BPM a sixteenth is
+  ~134 ms; the 150 ms lookahead left ~16 ms headroom and 25 ms stalls produced 3 late
+  events. Raised to 250 ms → 0 further lates over 15 s of hitching.
+
+Verdict: the future-buffered protocol maps to Godot cleanly. Network jitter and
+audio jitter are separate problems by construction — a command can arrive 150 ms
+late and its audio still starts on the exact sample, because only *state* crossed
+the network. Migration decision formally closed.
+
 ## How to rebuild the extension
 
 ```
