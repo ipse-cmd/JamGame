@@ -38,6 +38,11 @@ var _chord_pool: Dictionary # legacy
 
 func _ready() -> void:
 	native = ClassDB.class_exists("JamAudioStream")
+	# --mute: this instance renders its clock but outputs silence — for local
+	# bot clients sharing the host's speakers. In-process, so no dependence on
+	# OS mixer per-app restore state (which keys on the shared app name).
+	if "--mute" in OS.get_cmdline_user_args():
+		AudioServer.set_bus_volume_db(0, -80.0)
 	if native:
 		_setup_native()
 	else:
