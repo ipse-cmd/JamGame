@@ -449,6 +449,54 @@ flow-through, pre-change line surfacing + int-key rehydration, bot
 self-after-commit and foreign-bump-is-other, human self-attribution with
 authored-but-uncommitted tracks staying none). **6/6 integration green.**
 
+## Phase 3A — JamAnalysis: the musical perception layer (2026-08-17)
+
+`scripts/core/jam_analysis.gd`: a pure, deterministic, versioned
+(analysis_schema 1) function from a schema-4 observation to a VECTOR of
+interpretation contributors — never a single tension scalar; collapsing the
+vector is the consumer's decision. The layer holds the design opinions
+(normalization ceilings, tone/function tension tables, weights) that
+JamFeatures deliberately refused to hold.
+
+Contributors and their specific meanings:
+
+- **energy** — activity/force (density + motion), NOT tension: a dense
+  consonant groove is high-energy and calm.
+- **rhythmic_tension** — WHERE events sit, normalized per event (offbeat
+  weighting + kick↔bass divergence), so it cannot become a second density
+  metric.
+- **harmonic_tension** — resolution pressure from two independent
+  contributors: bass tone color over the chord-relative lanes (R/5 stable,
+  3 descriptive, 7 directional) + diatonic function (I low … V directional,
+  vii° strong). Lanes 2/4/6 will slot in without an API change.
+- **density_tension** — crowding via PAIRWISE track fullness products:
+  drums-dense-bass-sparse is energetic but uncrowded.
+- **external_change_pressure / self_change_pressure** — kept as SEPARATE
+  outputs (same principle as no global tension): schema 4's attribution is
+  exactly what distinguishes "someone changed the jam → listen/react" from
+  "I just changed my line → don't immediately re-change". Documented, not
+  implemented: if own and foreign ops share one observed version transition,
+  "mixed" is the honest fourth attribution state — add it when a test
+  demonstrates the ambiguity.
+- **repetition_pressure** — time-without-novelty (first simple version:
+  weighted change ages); bass_notes_prev enables alternation/motif-recurrence
+  refinements later without an API change.
+
+Unobserved inputs (empty temporal, "none" attribution) contribute ZERO
+pressure — no information is never interpreted as pressure. Both observers
+attach the vector to every frame (`interpretation` field, human and bot/shadow
+alike), so the 2.5 divergence corpus is now automatically annotated with what
+the perception layer would have said. The rule policy deliberately does NOT
+consume it (baseline stays frozen); the first consumer will be Phase 3B/4.
+
+Validation: **296 unit tests green** (+24: the full scene table — sparse/calm,
+dense-consonant high-energy-low-tension, sparse 7ths-over-V low-energy-high-
+tension, all-offbeat syncopation, fresh external edits, stale-forever,
+self-change, chords-moved-under-stale-bass — plus the two structural
+invariants energy≠tension and change≠repetition pinned as opposing orderings,
+monotonic repetition, zero-pressure-when-unobserved, and byte-identical
+interpretation across the JSON boundary). **6/6 integration green.**
+
 ## How to rebuild the extension
 
 ```

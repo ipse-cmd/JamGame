@@ -15,6 +15,7 @@ extends Node
 # transport speed.
 
 const BotObservation := preload("res://scripts/ai/bot_observation.gd")
+const Analysis := preload("res://scripts/core/jam_analysis.gd")
 const RuleBassPolicy := preload("res://scripts/ai/rule_bass_policy.gd")
 const DecisionLog := preload("res://scripts/ai/decision_log.gd")
 const History := preload("res://scripts/core/jam_history.gd")
@@ -145,7 +146,9 @@ func on_loop(loop: int) -> void:
 			_pending_commit_key = key # shadow proposals never commit — nothing to resolve
 
 	if decision_log != null:
-		var extra := {"shadow": true} if shadow else {}
+		var extra := {"interpretation": Analysis.interpret(obs)}
+		if shadow:
+			extra["shadow"] = true
 		decision_log.write(DecisionLog.build_frame(
 			key, source, RuleBassPolicy.POLICY_NAME, RuleBassPolicy.POLICY_VERSION,
 			seed_value, obs, logged_ops, t0, t1, _deadline_margin_steps(), obs.features, extra))

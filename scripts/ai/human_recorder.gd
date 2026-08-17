@@ -11,6 +11,7 @@ extends Node
 # hold from an AFK one. Purely an observer — it never dispatches anything.
 
 const BotObservation := preload("res://scripts/ai/bot_observation.gd")
+const Analysis := preload("res://scripts/core/jam_analysis.gd")
 const DecisionLog := preload("res://scripts/ai/decision_log.gd")
 const History := preload("res://scripts/core/jam_history.gd")
 
@@ -128,7 +129,8 @@ func _flush_window() -> void:
 		decision_log.write(DecisionLog.build_frame(
 			_win.key, DecisionLog.SOURCE_HUMAN, POLICY_NAME, POLICY_VERSION,
 			0, _win.obs, _win.ops, _win.t0, t1, _win.last_margin, _win.obs.features,
-			{"window_focused": _win.focused, "input_events": _input_events}))
+			{"window_focused": _win.focused, "input_events": _input_events,
+				"interpretation": Analysis.interpret(_win.obs)}))
 	frames += 1
 	if _win.ops.is_empty():
 		holds += 1

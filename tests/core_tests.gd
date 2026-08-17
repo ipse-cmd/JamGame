@@ -20,6 +20,7 @@ const RuleBassPolicy := preload("res://scripts/ai/rule_bass_policy.gd")
 const DecisionLog := preload("res://scripts/ai/decision_log.gd")
 const BotPeer := preload("res://scripts/ai/bot_peer.gd")
 const Features := preload("res://scripts/core/jam_features.gd")
+const Analysis := preload("res://scripts/core/jam_analysis.gd")
 const History := preload("res://scripts/core/jam_history.gd")
 const HumanRecorder := preload("res://scripts/ai/human_recorder.gd")
 const StepRing := preload("res://scripts/ui/step_ring.gd")
@@ -47,6 +48,7 @@ func _initialize() -> void:
 	_test_jam_features()
 	_test_temporal_features()
 	_test_observation_contract()
+	_test_jam_analysis()
 	_test_pointer_picking()
 	_test_human_recorder()
 	_test_shadow_bot()
@@ -611,6 +613,13 @@ func _test_bot_peer() -> void:
 			self_after_commit = e.observation.last_change_by.bass == "self"
 			break
 	check(self_after_commit, "bot's own committed edit attributes as self")
+	var first_frame := {}
+	for e in events2:
+		if e.type == "decision":
+			first_frame = e
+			break
+	check(first_frame.interpretation.has("energy") and first_frame.interpretation.has("repetition_pressure"),
+		"bot frames carry the interpretation vector")
 	run_bot.decision_log = null # log already closed
 	run_room.drums.version_id += 1 # someone else's edit arrives
 	run_bot.on_loop(9)
@@ -660,6 +669,8 @@ func _test_human_recorder() -> void:
 	check(f0.analysis.has("kick_bass_alignment") and f0.has("window_focused")
 		and int(f0.input_events) == 0,
 		"frames carry features and attention proxies")
+	check(f0.interpretation.has("energy") and f0.interpretation.has("external_change_pressure"),
+		"human frames carry the interpretation vector")
 	var f1: Dictionary = frames_read[1]
 	check(f1.ops.is_empty() and int(f1.decision_key.target_loop) == 2,
 		"deliberate hold is a zero-op frame")
@@ -913,6 +924,132 @@ func _test_observation_contract() -> void:
 	check(RuleBassPolicy.decide(BotObservation.from_json(o2), seed_value)
 		== RuleBassPolicy.decide(obs, seed_value),
 		"full-schema observation replays through the policy after JSON")
+
+
+## Assemble a minimal schema-4 observation for interpretation tests: each scene
+## isolates one contributor. drum_hits: [[voice, step], ...].
+func _mk_analysis_obs(bass_notes: Dictionary, slots: Array, drum_hits: Array,
+		temporal := {}, lcb := {}) -> Dictionary:
+	var hits: Array = []
+	var voice_steps := [[], [], [], []]
+	for h in drum_hits:
+		hits.append({"voice": h[0], "step": h[1], "velocity": 0.75, "accent": false})
+		voice_steps[h[0]].append(h[1])
+	var state := {
+		"drums": {"num_steps": 16, "hits": hits},
+		"bass": {"num_steps": 16, "notes": bass_notes},
+		"chords": {"slots": slots},
+	}
+	return {
+		"bass_notes": bass_notes,
+		"chord_slots": slots,
+		"kick_steps": voice_steps[0],
+		"snare_steps": voice_steps[1],
+		"hat_steps": voice_steps[2],
+		"features": Features.extract(state),
+		"temporal": temporal,
+		"last_change_by": lcb if not lcb.is_empty() else {"drums": "none", "bass": "none", "chords": "none"},
+	}
+
+
+func _test_jam_analysis() -> void:
+	# Scene: sparse roots + simple kick -> low everything.
+	var calm := Analysis.interpret(_mk_analysis_obs(
+		{0: 0, 8: 0}, [-1, -1, -1, -1], [[0, 0], [0, 8]]))
+	check(calm.analysis_schema == 1, "interpretation carries its schema version")
+	check(calm.energy < 0.35 and calm.rhythmic_tension < 0.1 and calm.harmonic_tension < 0.1
+		and calm.density_tension < 0.1, "sparse roots on the beat: low everything")
+
+	# Scene: dense root/fifth groove over I -> HIGH energy, LOW harmonic tension.
+	var groove := Analysis.interpret(_mk_analysis_obs(
+		{0: 0, 2: 2, 4: 0, 6: 2, 8: 0, 10: 2, 12: 0, 14: 2}, [0, 0, 0, 0],
+		[[0, 0], [0, 4], [0, 8], [0, 12], [1, 4], [1, 12],
+		 [2, 0], [2, 2], [2, 4], [2, 6], [2, 8], [2, 10], [2, 12], [2, 14]]))
+	check(groove.energy > 0.6, "dense consonant groove is high energy")
+	check(groove.harmonic_tension < 0.1, "...and harmonically calm")
+
+	# Scene: sparse 7ths over V -> LOW energy, HIGH harmonic tension.
+	var sevens := Analysis.interpret(_mk_analysis_obs(
+		{0: 3, 8: 3}, [4, 4, 4, 4], [[0, 0]]))
+	check(sevens.energy < 0.35, "sparse line stays low energy")
+	check(sevens.harmonic_tension > 0.5, "7ths over V carry resolution pressure")
+	# THE invariant: energy != tension (both orderings).
+	check(groove.energy > sevens.energy and sevens.harmonic_tension > groove.harmonic_tension,
+		"energy and harmonic tension move independently")
+
+	# Scene: busy syncopated consonant phrase -> high rhythmic, low harmonic.
+	var sync := Analysis.interpret(_mk_analysis_obs(
+		{1: 0, 3: 2, 5: 0, 7: 2, 9: 0, 11: 2, 13: 0, 15: 2}, [0, 0, 0, 0],
+		[[0, 0], [0, 8]]))
+	check(sync.rhythmic_tension > 0.5, "all-offbeat placement reads as rhythmic tension")
+	check(sync.harmonic_tension < 0.2, "...while staying consonant")
+	check(sync.rhythmic_tension > groove.rhythmic_tension,
+		"placement, not density, drives rhythmic tension")
+
+	# Scene: everything just changed by OTHERS -> high external, ZERO repetition.
+	var invaded := Analysis.interpret(_mk_analysis_obs(
+		{0: 0}, [0, 5, 3, 4], [[0, 0]],
+		{"loops_since_drum_change": 0, "loops_since_bass_change": 0, "loops_since_chord_change": 0},
+		{"drums": "other", "bass": "other", "chords": "other"}))
+	check(invaded.external_change_pressure > 0.7, "fresh external edits are a call to react")
+	check(is_equal_approx(invaded.repetition_pressure, 0.0), "just-changed material has no repetition pressure")
+
+	# Scene: same material forever -> ZERO change pressure, FULL repetition.
+	var stale := Analysis.interpret(_mk_analysis_obs(
+		{0: 0}, [0, 5, 3, 4], [[0, 0]],
+		{"loops_since_drum_change": 8, "loops_since_bass_change": 8, "loops_since_chord_change": 8},
+		{"drums": "other", "bass": "other", "chords": "other"}))
+	check(is_equal_approx(stale.external_change_pressure, 0.0), "old changes no longer press")
+	check(stale.repetition_pressure > 0.9, "unchanged material accumulates repetition pressure")
+	# THE other invariant: change_pressure != repetition_pressure.
+	check(invaded.external_change_pressure > stale.external_change_pressure
+		and stale.repetition_pressure > invaded.repetition_pressure,
+		"change pressure and repetition pressure move in opposition")
+	var mid := Analysis.interpret(_mk_analysis_obs({0: 0}, [0, 5, 3, 4], [[0, 0]],
+		{"loops_since_drum_change": 2, "loops_since_bass_change": 2, "loops_since_chord_change": 2}))
+	check(mid.repetition_pressure > invaded.repetition_pressure
+		and mid.repetition_pressure < stale.repetition_pressure,
+		"repetition pressure rises monotonically with age")
+
+	# Scene: the player just changed bass THEMSELVES -> self pressure, not external.
+	var own := Analysis.interpret(_mk_analysis_obs(
+		{0: 0}, [0, 5, 3, 4], [[0, 0]],
+		{"loops_since_drum_change": 5, "loops_since_bass_change": 0, "loops_since_chord_change": 5},
+		{"drums": "none", "bass": "self", "chords": "none"}))
+	check(own.self_change_pressure > 0.9, "own fresh edit presses against re-editing")
+	check(is_equal_approx(own.external_change_pressure, 0.0),
+		"a self-change is NOT an external call to action")
+
+	# Scene: chords changed under a stale bass -> external pressure AND
+	# repetition pressure coexist (the human divergence from the 2.5 session).
+	var recontext := Analysis.interpret(_mk_analysis_obs(
+		{0: 0, 8: 0}, [6, 5, 3, 1], [[0, 0]],
+		{"loops_since_drum_change": 6, "loops_since_bass_change": 6, "loops_since_chord_change": 0},
+		{"drums": "none", "bass": "none", "chords": "other"}))
+	check(recontext.external_change_pressure > 0.7, "harmony moved: call to react")
+	check(recontext.repetition_pressure > 0.4, "...while the bass line is also going stale")
+
+	# No information -> no pressure (empty temporal, default attribution).
+	var blind := Analysis.interpret(_mk_analysis_obs({0: 0}, [0, 5, 3, 4], [[0, 0]]))
+	check(is_equal_approx(blind.external_change_pressure, 0.0)
+		and is_equal_approx(blind.self_change_pressure, 0.0)
+		and is_equal_approx(blind.repetition_pressure, 0.0),
+		"unobserved history is never interpreted as pressure")
+
+	# Determinism through the serialization boundary: a real observation
+	# interprets identically raw and JSON-round-tripped.
+	var models := _mk_models()
+	var h := History.new()
+	for loop in 3:
+		h.push(loop, {
+			"drums": models.drums.active.to_dict(),
+			"bass": models.bass.active.to_dict(),
+			"chords": models.chords.active.to_dict(),
+		}, [0, 0, 0])
+	var obs := BotObservation.build_bass(models.bass, models.drums, models.chords, 3, 1, h)
+	var wire: Dictionary = BotObservation.from_json(JSON.parse_string(JSON.stringify(obs)))
+	check(JSON.stringify(Analysis.interpret(obs)) == JSON.stringify(Analysis.interpret(wire)),
+		"interpretation is identical across the JSON boundary")
 
 
 func _test_pointer_picking() -> void:
