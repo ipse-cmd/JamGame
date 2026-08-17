@@ -130,6 +130,47 @@ patterns):
   enclosure, altered tones, passing, pedal) to analyze separately, not twelve
   pitch classes to add.
 
+## The realization layer (pinned 2026-08-17 — architecture, not a build)
+
+The pipeline gains an explicit boundary AFTER candidate selection:
+
+    Intent -> candidates -> style evaluation -> PATTERN
+    ────────────────────────────────────────────────────
+    JamRealizer: chord ladder | voicing | groove | microtiming
+                 velocity/accent | roll/strum | duration
+    -> scheduled notes
+
+The policy decides WHAT musical idea happens; the realizer decides HOW it is
+performed. Second-voice-7ms-late is RENDERING knowledge, not decision
+knowledge — keeping it out of the policy/model saves enormous data and model
+complexity. (Scaler's pattern→transform→render split is field evidence the
+decomposition works; its content stays out, per the fair-use line.)
+
+Three decisions captured now:
+
+1. **Chord ladder API**: generalize `Harmony.chord_tone_midi` into
+   `ladder(chord, voicing_profile, range) -> [pitches]` when the next melodic
+   role arrives — bass/keys/melody/arps share ONE resolution system instead
+   of per-role pitch logic. Our R/3/5/7/O lanes are the 5-rung special case.
+2. **Pattern grammar, not pattern imports**: a pattern is
+   {time, ladder_index, duration, relative accent}; content comes from our
+   corpora, jam-session harvests, procedural generation, or authored seeds —
+   never Scaler's library.
+3. **Motif identity + variation as a first-class concept**: harvested riffs
+   group into motifs with variants (A1 A1 A2 A1 A3), and repetition-pressure
+   VARY realizes as "same motif, different variant" rather than "mutate
+   random cells" — repetition becomes musical identity instead of staleness.
+
+Role-constrained vocabularies (from the index-range finding — rhythm material
+caps at small indexes, phrases span octaves): drums = rhythm-space only,
+bass = small ladder + octave moves, keys = small indexes × voicing
+transforms, melody = large ladder/contour. The role constrains the search
+space — good for ML later (no single model solving unconstrained MIDI space).
+
+Velocity, when it arrives, is mostly REALIZER-derived (role/style band +
+metric accent + phrase dynamics), not per-event wire vocabulary — events stay
+{step, degree(, accent)}.
+
 ## Reference-ingestion freeze
 
 Enough vocabulary exists (harmony banks, groove captures, corpora). No more
