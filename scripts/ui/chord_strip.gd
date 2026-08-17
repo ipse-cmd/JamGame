@@ -3,6 +3,9 @@ extends Control
 
 # Code-drawn chord strip: one diatonic chord slot per bar of the 4-bar loop.
 # Read-only projection + the room dispatches edits; same rules as the rings.
+# Pointer: pressing a bar reports it (the room opens the radial chord picker).
+
+signal bar_pressed(bar: int, global_pos: Vector2)
 
 const Harmony := preload("res://scripts/core/harmony.gd")
 
@@ -20,6 +23,27 @@ const TEXT := Color("cfd6dd")
 const DIM_TEXT := Color("8a93a0")
 const ACTIVE_CHORD := Color("9ecf6e")
 const GHOST_CHORD := Color(0.62, 0.81, 0.43, 0.55)
+
+
+## Local position -> bar index, or -1 outside every slot. Mirrors the draw layout.
+func pick_bar(pos: Vector2) -> int:
+	var n := active_slots.size()
+	var margin := 10.0
+	var top := 26.0
+	var slot_w := (size.x - margin * (n + 1)) / float(n)
+	var slot_h := size.y - top - margin
+	for i in n:
+		if Rect2(margin + i * (slot_w + margin), top, slot_w, slot_h).has_point(pos):
+			return i
+	return -1
+
+
+func _gui_input(event: InputEvent) -> void:
+	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
+		var bar := pick_bar(event.position)
+		if bar >= 0:
+			bar_pressed.emit(bar, get_global_mouse_position())
+			accept_event()
 
 
 func _draw() -> void:

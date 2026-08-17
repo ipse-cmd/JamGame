@@ -20,6 +20,7 @@ const DrumRenderer := preload("res://scripts/core/drum_renderer.gd")
 const Templates := preload("res://scripts/core/drum_templates.gd")
 const StepRing := preload("res://scripts/ui/step_ring.gd")
 const ChordStrip := preload("res://scripts/ui/chord_strip.gd")
+const RadialBloom := preload("res://scripts/ui/radial_bloom.gd")
 const BotPeer := preload("res://scripts/ai/bot_peer.gd")
 const DecisionLog := preload("res://scripts/ai/decision_log.gd")
 
@@ -37,6 +38,15 @@ const BASS_LANE_COLORS := [Color("e06c5a"), Color("e8b84b"), Color("8fd15f"), Co
 enum Focus { DRUMS, BASS, CHORDS }
 
 const HELP_TEXT := """CONTROLS
+
+POINTER (mouse / touch)
+  tap wedge     toggle hit / place tone
+  hold wedge    radial options
+                (drums: accent/del,
+                 bass: R 3 5 7 O)
+  press chord bar  chord picker
+  drag + release chooses; quick tap
+  keeps it open; Esc / right-click cancels
 
 GLOBAL
   Tab     switch instrument
@@ -214,6 +224,15 @@ func _build_scene() -> void:
 	chord_strip.position = Vector2(50, 580)
 	chord_strip.size = Vector2(895, 116)
 	add_child(chord_strip)
+
+	# Pointer grammar: tap = obvious action, hold = radial options. The rings
+	# report gestures; every handler routes through the SAME _dispatch as the
+	# keyboard (role gate, validation, commit boundary all apply unchanged).
+	drum_ring.cell_tapped.connect(_on_drum_cell_tapped)
+	drum_ring.cell_held.connect(_on_drum_cell_held)
+	bass_ring.cell_tapped.connect(_on_bass_cell_tapped)
+	bass_ring.cell_held.connect(_on_bass_cell_held)
+	chord_strip.bar_pressed.connect(_on_chord_bar_pressed)
 
 	help_label = _make_label(Vector2(975, 84), 11, Color("aeb7c2"))
 	help_label.text = HELP_TEXT
@@ -508,6 +527,104 @@ func _clear_all() -> void:
 func _cycle_chord(delta: int) -> void:
 	if focus == Focus.CHORDS:
 		_dispatch(Focus.CHORDS, "cycle", {"bar": chord_cursor, "delta": delta})
+
+
+# ---------------------------------------------------------------- pointer grammar
+
+var _bloom = null # the open JamRadialBloom, if any
+
+
+func _open_bloom(gpos: Vector2, opts: Array, center_lbl: String, on_finish: Callable) -> void:
+	if _bloom != null:
+		_bloom.queue_free()
+	_bloom = RadialBloom.new()
+	add_child(_bloom)
+	_bloom.finished.connect(func(idx: int) -> void:
+		_bloom.queue_free()
+		_bloom = null
+		if idx != -2:
+			on_finish.call(idx)
+		_refresh_ui())
+	_bloom.open(gpos, opts, center_lbl)
+
+
+## Tap a drum wedge: toggle a hit in that lane, no cursor dance needed.
+func _on_drum_cell_tapped(lane: int, step: int) -> void:
+	focus = Focus.DRUMS
+	drum_lane = lane
+	drum_cursor = step
+	_dispatch(Focus.DRUMS, "toggle", {"voice": lane, "step": step})
+	_refresh_ui()
+
+
+## Hold a drum wedge: edit the hit (accent / delete) instead of toggling it.
+func _on_drum_cell_held(lane: int, step: int, gpos: Vector2) -> void:
+	focus = Focus.DRUMS
+	drum_lane = lane
+	drum_cursor = step
+	_refresh_ui()
+	_open_bloom(gpos, [{"label": "ACC"}, {"label": "DEL"}], "", _apply_drum_bloom.bind(lane, step))
+
+
+func _apply_drum_bloom(idx: int, lane: int, step: int) -> void:
+	if idx == 0:
+		_dispatch(Focus.DRUMS, "accent", {"voice": lane, "step": step})
+	elif idx == 1:
+		var line = drums.pending if drums.pending != null else drums.active
+		for h in line.hits:
+			if h.voice == lane and h.step == step:
+				_dispatch(Focus.DRUMS, "toggle", {"voice": lane, "step": step})
+				return
+
+
+## Tap a bass wedge: the lane IS the harmonic role (R/3/5/7/O), so tapping
+## places/re-tunes/removes directly — no radial detour for the common case.
+func _on_bass_cell_tapped(lane: int, step: int) -> void:
+	focus = Focus.BASS
+	bass_lane = lane
+	bass_cursor = step
+	_dispatch(Focus.BASS, "place", {"step": step, "degree": lane})
+	_refresh_ui()
+
+
+## Hold a bass step: bloom the full tone vocabulary around it (thin lanes on
+## touch, or deliberate choice), x removes whatever the step holds.
+func _on_bass_cell_held(_lane: int, step: int, gpos: Vector2) -> void:
+	focus = Focus.BASS
+	bass_cursor = step
+	_refresh_ui()
+	var opts: Array = []
+	for d in BassLine.NUM_DEGREES:
+		opts.append({"label": Harmony.BASS_TONE_NAMES[d], "color": BASS_LANE_COLORS[d]})
+	_open_bloom(gpos, opts, "×", _apply_bass_bloom.bind(step))
+
+
+func _apply_bass_bloom(idx: int, step: int) -> void:
+	if idx >= 0:
+		bass_lane = idx
+		_dispatch(Focus.BASS, "place", {"step": step, "degree": idx})
+	else:
+		var line = bass.pending if bass.pending != null else bass.active
+		if line.notes.has(step): # place same degree = remove
+			_dispatch(Focus.BASS, "place", {"step": step, "degree": line.notes[step]})
+
+
+## Press a chord bar: bloom the diatonic vocabulary, x clears the slot.
+func _on_chord_bar_pressed(bar: int, gpos: Vector2) -> void:
+	focus = Focus.CHORDS
+	chord_cursor = bar
+	_refresh_ui()
+	var opts: Array = []
+	for d in Harmony.ROMAN.size():
+		opts.append({"label": Harmony.ROMAN[d]})
+	_open_bloom(gpos, opts, "×", _apply_chord_bloom.bind(bar))
+
+
+func _apply_chord_bloom(idx: int, bar: int) -> void:
+	if idx >= 0:
+		_dispatch(Focus.CHORDS, "set", {"bar": bar, "degree": idx})
+	else:
+		_dispatch(Focus.CHORDS, "clear_slot", {"bar": bar})
 
 
 # ---------------------------------------------------------------- UI refresh

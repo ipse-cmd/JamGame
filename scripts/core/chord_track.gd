@@ -37,6 +37,12 @@ func cycle_slot(bar: int, delta: int) -> void:
 	slots[bar] = v - 1
 
 
+## Direct idempotent assignment (radial picker / non-incremental editors).
+func set_slot(bar: int, degree: int) -> void:
+	if bar >= 0 and bar < slots.size() and degree >= 0 and degree <= 6:
+		slots[bar] = degree
+
+
 func clear_slot(bar: int) -> void:
 	if bar >= 0 and bar < slots.size():
 		slots[bar] = -1

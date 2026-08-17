@@ -21,6 +21,9 @@ const DecisionLog := preload("res://scripts/ai/decision_log.gd")
 const BotPeer := preload("res://scripts/ai/bot_peer.gd")
 const Features := preload("res://scripts/core/jam_features.gd")
 const History := preload("res://scripts/core/jam_history.gd")
+const StepRing := preload("res://scripts/ui/step_ring.gd")
+const ChordStrip := preload("res://scripts/ui/chord_strip.gd")
+const RadialBloom := preload("res://scripts/ui/radial_bloom.gd")
 
 var passed := 0
 var failed := 0
@@ -43,6 +46,7 @@ func _initialize() -> void:
 	_test_jam_features()
 	_test_temporal_features()
 	_test_observation_contract()
+	_test_pointer_picking()
 	print("TESTS: %d passed, %d failed" % [passed, failed])
 	quit(1 if failed > 0 else 0)
 
@@ -146,6 +150,16 @@ func _test_chord_track() -> void:
 	check(not u.equals(t), "clone diverges independently")
 	u.clear_slot(2)
 	check(u.equals(t), "clear_slot restores equality")
+
+	# Direct set (radial picker path): idempotent, range-guarded.
+	t.set_slot(2, 4)
+	check(t.slots[2] == 4, "set_slot assigns directly")
+	t.set_slot(2, 4)
+	check(t.slots[2] == 4, "set_slot is idempotent")
+	t.set_slot(2, 7)
+	t.set_slot(2, -1)
+	t.set_slot(9, 3)
+	check(t.slots[2] == 4, "out-of-range set_slot is ignored (reject, never repair)")
 
 
 static func _mk_hit(voice: int, step: int, vel := 0.5, accent := false) -> Dictionary:
@@ -746,6 +760,61 @@ func _test_observation_contract() -> void:
 	check(RuleBassPolicy.decide(BotObservation.from_json(o2), seed_value)
 		== RuleBassPolicy.decide(obs, seed_value),
 		"full-schema observation replays through the policy after JSON")
+
+
+func _test_pointer_picking() -> void:
+	# Ring hit-testing is the exact inverse of the draw layout: the centroid of
+	# every wedge must pick back to its own (lane, step).
+	var ring = StepRing.new()
+	ring.size = Vector2(440, 440)
+	ring.num_steps = 16
+	ring.lane_names = ["R", "3", "5", "7", "O"]
+	var center: Vector2 = ring.size / 2.0
+	var outer := minf(ring.size.x, ring.size.y) / 2.0 - 6.0
+	var inner := outer * 0.38
+	var thickness := (outer - inner) / 5.0
+	var ok := true
+	for lane in 5:
+		for step in 16:
+			var r := inner + (lane + 0.5) * thickness
+			var ang := -PI / 2.0 + (step + 0.5) * TAU / 16.0
+			if ring.pick(center + Vector2.from_angle(ang) * r) != Vector2i(lane, step):
+				ok = false
+	check(ok, "every wedge centroid picks back to its own (lane, step)")
+	check(ring.pick(center) == Vector2i(-1, -1), "center hole picks nothing")
+	check(ring.pick(Vector2.ZERO) == Vector2i(-1, -1), "corner outside the ring picks nothing")
+	ring.free()
+
+	# Chord strip: slot centroids pick their bar, the margins pick nothing.
+	var strip = ChordStrip.new()
+	strip.size = Vector2(895, 116)
+	var n: int = strip.active_slots.size()
+	var slot_w: float = (strip.size.x - 10.0 * (n + 1)) / float(n)
+	for i in n:
+		var p := Vector2(10.0 + i * (slot_w + 10.0) + slot_w / 2.0, (26.0 + strip.size.y - 10.0) / 2.0)
+		check(strip.pick_bar(p) == i, "slot %d centroid picks bar %d" % [i, i])
+	check(strip.pick_bar(Vector2(2, 60)) == -1 and strip.pick_bar(Vector2(400, 5)) == -1,
+		"margins pick no bar")
+	strip.free()
+
+	# Radial bloom gesture resolution (pure static math): dead zone -> center or
+	# cancel, each option's own direction -> that option, far away -> cancel.
+	check(RadialBloom.resolve(Vector2(200, 200), Vector2(200, 200), 5, true) == -1,
+		"dead zone with a center action resolves to center")
+	check(RadialBloom.resolve(Vector2(200, 200), Vector2(200, 200), 5, false) == -2,
+		"dead zone without a center action cancels")
+	for i in 5:
+		var ang := -PI / 2.0 + TAU * float(i) / 5.0
+		var p: Vector2 = Vector2(200, 200) + Vector2.from_angle(ang) * RadialBloom.RADIUS
+		check(RadialBloom.resolve(Vector2(200, 200), p, 5, true) == i, "option %d direction resolves" % i)
+	check(RadialBloom.resolve(Vector2(200, 200), Vector2(600, 600), 5, true) == -2,
+		"releasing far outside cancels")
+
+	# Chord "set" flows through the shared op layer like every other edit.
+	var model := CommitModel.new(ChordTrack.new())
+	TrackOps.apply(model, TrackOps.TRACK_CHORDS, "set", {"bar": 1, "degree": 5}, 0)
+	check(model.pending != null and model.pending.slots[1] == 5 and model.active.slots[1] == -1,
+		"set edits the pending buffer, active untouched until commit")
 
 
 func _test_harmony() -> void:

@@ -336,6 +336,43 @@ case, schema bumps, JSON round-trip). **6/6 integration green** — the bot
 plays the same legal ops under the new semantics and the external-process
 replay gate still reproduces logged frames exactly.
 
+## Pointer grammar slice 1 — rings as the instrument, radial blooms as vocabulary (2026-08-17)
+
+The interface direction: **rings are the instrument; radial blooms are the
+contextual vocabulary; the keyboard is a shortcut layer.** Three-level pointer
+grammar (mouse today; touch rides Godot's emulation): tap = perform the
+obvious action, hold = expose musical options, drag + release = choose.
+Everything routes through the SAME `_dispatch` as the keyboard and the bot —
+the UI produces ordinary validated ops; role gates, server validation, and the
+commit boundary apply unchanged. No new mutation path.
+
+- **Drum ring**: tap a wedge toggles the hit in that lane (no cursor dance);
+  hold blooms ACC / DEL.
+- **Bass ring**: the 5 concentric lanes ARE the chord-relative vocabulary, so
+  tapping a lane places/re-tunes/removes that tone directly; hold blooms
+  R/3/5/7/O + × (thin-lane fallback for touch, and deliberate choice).
+- **Chord strip**: pressing a bar blooms I–vii° + × (clear). This needed one
+  op-grammar addition: `chords "set" {bar 0..3, degree 0..6}` — validated,
+  idempotent, and also exactly what the Phase 2.5 manual policy and a future
+  RoleRealizer want (cycle ±1 cannot express "pick vi directly").
+- **`JamRadialBloom`**: reusable overlay; momentary (hold-drag-release like an
+  instrument) with a sticky fallback (a quick tap keeps it open for a second
+  click), Esc/right-click cancels. Gesture resolution is a pure static
+  function.
+- Gestures also move focus/cursors, so keyboard and pointer stay coherent.
+
+Findings: GDScript rejects `match` inside a lambda ("Expected expression for
+match pattern") — bloom handlers are named methods with `Callable.bind`. The
+in-process integration tests never load jam_room.gd; only the
+external-process gate (test 6) boots the real game and caught the parse error
+— the reason that gate exists.
+
+Validation: **235 unit tests green** (+20: every ring wedge centroid picks
+back to its own (lane, step) — hit-testing is the exact inverse of the draw
+layout; chord-strip slot picking incl. margins; bloom gesture resolution for
+dead zone/center/all option directions/outside; `set_slot` range guards;
+chord "set" through TrackOps editing pending only). **6/6 integration green.**
+
 ## How to rebuild the extension
 
 ```

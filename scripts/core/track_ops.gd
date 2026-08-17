@@ -38,5 +38,6 @@ static func apply(model, track: int, op: String, args: Dictionary, at_loop: int,
 		TRACK_CHORDS:
 			match op:
 				"cycle": p.cycle_slot(args.bar, args.delta)
+				"set": p.set_slot(args.bar, args.degree)
 				"clear_slot": p.clear_slot(args.bar)
 				"clear": p.clear()

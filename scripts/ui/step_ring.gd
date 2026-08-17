@@ -4,6 +4,16 @@ extends Control
 # Code-drawn circular step sequencer (the Jammin ring, redrawn in Godot). Purely a
 # projection: the room computes cell states from the commit models and pushes them in;
 # the ring never owns music state (UI displays state, never owns it).
+#
+# Pointer grammar (mouse today, touch via Godot's emulation): the ring is also an
+# input surface — tap a wedge to perform the obvious action, hold it to ask for
+# options. The ring only reports (lane, step) gestures; the ROOM decides what
+# they mean and dispatches ops through the same validated path as the keyboard.
+
+signal cell_tapped(lane: int, step: int)
+signal cell_held(lane: int, step: int, global_pos: Vector2)
+
+const HOLD_MS := 220
 
 # Cell display modes
 const CELL_SOLID := 0 # in active (and pending, if a session is open)
@@ -21,6 +31,11 @@ var selected_lane := 0
 var focused := false
 var status_text := ""
 
+var _press_cell := Vector2i(-1, -1)
+var _press_time_ms := 0
+var _pressed := false
+var _held_fired := false
+
 const BG := Color("1b1e24")
 const BEAT_SHADE := Color(1, 1, 1, 0.045)
 const GRID_SHADE := Color(1, 1, 1, 0.018)
@@ -28,6 +43,46 @@ const PLAYHEAD := Color(1, 1, 1, 0.10)
 const CURSOR := Color("f0f3f7")
 const TEXT := Color("cfd6dd")
 const DIM_TEXT := Color("8a93a0")
+
+
+## Inverse of the draw layout: local position -> (lane, step), or (-1, -1)
+## outside the annulus. Pure math, unit-tested against wedge centroids.
+func pick(pos: Vector2) -> Vector2i:
+	var center := size / 2.0
+	var outer := minf(size.x, size.y) / 2.0 - 6.0
+	var inner := outer * 0.38
+	var v := pos - center
+	var r := v.length()
+	if r < inner or r > outer or lane_names.is_empty():
+		return Vector2i(-1, -1)
+	var lanes := lane_names.size()
+	var lane := clampi(int((r - inner) / ((outer - inner) / float(lanes))), 0, lanes - 1)
+	var ang := fposmod(v.angle() + PI / 2.0, TAU) # steps start at 12 o'clock
+	var step := int(ang / (TAU / float(num_steps))) % num_steps
+	return Vector2i(lane, step)
+
+
+func _gui_input(event: InputEvent) -> void:
+	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
+		if event.pressed:
+			var c := pick(event.position)
+			if c.x >= 0:
+				_pressed = true
+				_held_fired = false
+				_press_cell = c
+				_press_time_ms = Time.get_ticks_msec()
+				accept_event()
+		elif _pressed:
+			_pressed = false
+			if not _held_fired:
+				cell_tapped.emit(_press_cell.x, _press_cell.y)
+			accept_event()
+
+
+func _process(_delta: float) -> void:
+	if _pressed and not _held_fired and Time.get_ticks_msec() - _press_time_ms >= HOLD_MS:
+		_held_fired = true
+		cell_held.emit(_press_cell.x, _press_cell.y, get_global_mouse_position())
 
 
 func _draw() -> void:
