@@ -875,10 +875,13 @@ func _test_pointer_picking() -> void:
 	for lane in 5:
 		for step in 16:
 			var r := inner + (lane + 0.5) * thickness
-			var ang := -PI / 2.0 + (step + 0.5) * TAU / 16.0
+			# Wedge s is CENTERED on -PI/2 + s*step_angle (step 0 at 12 o'clock).
+			var ang := -PI / 2.0 + step * TAU / 16.0
 			if ring.pick(center + Vector2.from_angle(ang) * r) != Vector2i(lane, step):
 				ok = false
 	check(ok, "every wedge centroid picks back to its own (lane, step)")
+	check(ring.pick(center + Vector2(0, -(inner + thickness * 0.5))) == Vector2i(0, 0),
+		"12 o'clock IS step 0 (clock-face convention)")
 	check(ring.pick(center) == Vector2i(-1, -1), "center hole picks nothing")
 	check(ring.pick(Vector2.ZERO) == Vector2i(-1, -1), "corner outside the ring picks nothing")
 	ring.free()

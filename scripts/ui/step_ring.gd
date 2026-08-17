@@ -57,8 +57,10 @@ func pick(pos: Vector2) -> Vector2i:
 		return Vector2i(-1, -1)
 	var lanes := lane_names.size()
 	var lane := clampi(int((r - inner) / ((outer - inner) / float(lanes))), 0, lanes - 1)
-	var ang := fposmod(v.angle() + PI / 2.0, TAU) # steps start at 12 o'clock
-	var step := int(ang / (TAU / float(num_steps))) % num_steps
+	# Half-step shift mirrors the draw layout: step 0 is centered on 12 o'clock.
+	var sa := TAU / float(num_steps)
+	var ang := fposmod(v.angle() + PI / 2.0 + sa / 2.0, TAU)
+	var step := int(ang / sa) % num_steps
 	return Vector2i(lane, step)
 
 
@@ -93,12 +95,15 @@ func _draw() -> void:
 	var lane_thickness := (outer - inner) / float(lanes)
 	var step_angle := TAU / float(num_steps)
 	var gap := 0.018
+	# Step 0 is CENTERED on 12 o'clock (clock-face convention: beat 1 sits AT
+	# the top), so every wedge starts half a step early. pick() must mirror this.
+	var a_base := -PI / 2.0 - step_angle / 2.0
 
 	draw_circle(center, outer + 4.0, BG)
 
 	# Beat shading + step grid background
 	for s in num_steps:
-		var a0 := -PI / 2.0 + s * step_angle + gap
+		var a0 := a_base + s * step_angle + gap
 		var a1 := a0 + step_angle - 2.0 * gap
 		var shade := BEAT_SHADE if s % 4 == 0 else GRID_SHADE
 		draw_colored_polygon(_wedge(center, inner, outer, a0, a1), shade)
@@ -110,7 +115,7 @@ func _draw() -> void:
 		var cell: Dictionary = cells[key]
 		var r0 := inner + lane * lane_thickness + 2.0
 		var r1 := inner + (lane + 1) * lane_thickness - 2.0
-		var a0 := -PI / 2.0 + step * step_angle + gap
+		var a0 := a_base + step * step_angle + gap
 		var a1 := a0 + step_angle - 2.0 * gap
 		var poly := _wedge(center, r0, r1, a0, a1)
 		var col: Color = cell.color
@@ -129,13 +134,13 @@ func _draw() -> void:
 
 	# Playhead wedge across all lanes
 	if playhead_step >= 0:
-		var a0 := -PI / 2.0 + playhead_step * step_angle
+		var a0 := a_base + playhead_step * step_angle
 		draw_colored_polygon(_wedge(center, inner - 4.0, outer + 4.0, a0, a0 + step_angle), PLAYHEAD)
 
 	# Cursor outline on (selected_lane, cursor_step)
 	var cr0 := inner + selected_lane * lane_thickness + 1.0
 	var cr1 := inner + (selected_lane + 1) * lane_thickness - 1.0
-	var ca0 := -PI / 2.0 + cursor_step * step_angle + gap * 0.5
+	var ca0 := a_base + cursor_step * step_angle + gap * 0.5
 	var ca1 := ca0 + step_angle - gap
 	_outline(_wedge(center, cr0, cr1, ca0, ca1), CURSOR, 2.0)
 
