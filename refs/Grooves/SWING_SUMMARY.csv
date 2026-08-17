@@ -1,0 +1,26 @@
+preset,hits,down_ticks,e_ticks,and_ticks,a_ticks
+STL_Base,33,0,0,0,-1
+STL_Push1,65,0,34,34,33
+STL_Push2,65,0,26,26,26
+STL_Push3,65,0,47,47,47
+STL_Push4,65,0,39,39,39
+STL_Push5,65,0,59,60,59
+STL_Push6,65,0,53,53,52
+STL_Shake1,65,0,34,-1,33
+STL_Shake2,65,0,53,-1,52
+STL_Shake3,65,0,47,0,47
+STL_Shake4,65,0,39,0,39
+STL_Shake5,65,0,59,-1,59
+STL_Shake6,65,0,79,-1,79
+STL_Clave1,65,16,51,34,16
+STL_Clave2,65,12,66,53,12
+STL_Clave3,65,22,71,47,23
+STL_Clave4,65,37,99,59,39
+STL_Clave5,65,14,74,59,-1
+STL_Clave6,65,12,53,-54,-28
+STL_Trip1,65,0,34,68,102
+STL_Trip2,65,0,-27,53,26
+STL_Trip3,65,0,-49,95,47
+STL_Trip4,65,0,-81,,-1
+STL_Trip5 ,65,54,-120,119,119
+STL_Trip6,65,-1,,,-81

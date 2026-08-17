@@ -1,0 +1,27 @@
+preset       hits    down     e   and     a   shape
+---------------------------------------------------
+STL_Base       33      +0    +0    +0    -1   straight
+STL_Push1      65      +0   +34   +34   +33   uniform lay-back (e=and=a)
+STL_Push2      65      +0   +26   +26   +26   uniform lay-back (e=and=a)
+STL_Push3      65      +0   +47   +47   +47   uniform lay-back (e=and=a)
+STL_Push4      65      +0   +39   +39   +39   uniform lay-back (e=and=a)
+STL_Push5      65      +0   +59   +60   +59   uniform lay-back (e=and=a)
+STL_Push6      65      +0   +53   +53   +52   uniform lay-back (e=and=a)
+STL_Shake1     65      +0   +34    -1   +33   16th swing (e+a only)
+STL_Shake2     65      +0   +53    -1   +52   16th swing (e+a only)
+STL_Shake3     65      +0   +47    +0   +47   16th swing (e+a only)
+STL_Shake4     65      +0   +39    +0   +39   16th swing (e+a only)
+STL_Shake5     65      +0   +59    -1   +59   16th swing (e+a only)
+STL_Shake6     65      +0   +79    -1   +79   16th swing (e+a only)
+STL_Clave1     65     +16   +51   +34   +16   complex / asymmetric
+STL_Clave2     65     +12   +66   +53   +12   complex / asymmetric
+STL_Clave3     65     +22   +71   +47   +23   complex / asymmetric
+STL_Clave4     65     +37   +99   +59   +39   complex / asymmetric
+STL_Clave5     65     +14   +74   +59    -1   complex / asymmetric
+STL_Clave6     65     +12   +53   -54   -28   complex / asymmetric
+STL_Trip1      65      +0   +34   +68  +102   complex / asymmetric
+STL_Trip2      65      +0   -27   +53   +26   complex / asymmetric
+STL_Trip3      65      +0   -49   +95   +47   complex / asymmetric
+STL_Trip4      65      +0   -81    --    -1   16th swing (e+a only)
+STL_Trip5      65     +54  -120  +119  +119   complex / asymmetric
+STL_Trip6      65      -1    --    --   -81   sparse / large-shift (see caveat)
