@@ -1092,15 +1092,26 @@ func _test_intent_policy() -> void:
 		{"energy": 0.8}).intent == IntentPolicy.HOLD,
 		"hot jam with bass already present is not a call to intensify")
 
-	# REVERT: bass_notes_prev's first consumer — my own change crowded the jam.
+	# REVERT: bass_notes_prev's first consumer — my own ADDITION crowded the jam.
 	var revert_obs := {"features": {"bass_density": 0.4},
-		"last_change_by": {"bass": "self"}, "bass_notes_prev": {0: 0, 8: 0}}
+		"bass_notes": {0: 0, 8: 0, 12: 4}, "last_change_by": {"bass": "self"},
+		"bass_notes_prev": {0: 0, 8: 0}}
 	var r := IntentPolicy.decide(revert_obs,
 		{"density_tension": 0.75, "self_change_pressure": 0.9})
-	check(r.intent == IntentPolicy.REVERT, "own change made it crowded -> REVERT, not HOLD")
+	check(r.intent == IntentPolicy.REVERT, "own addition made it crowded -> REVERT, not HOLD")
 	check(IntentPolicy.decide({"features": {}, "last_change_by": {"bass": "self"},
 		"bass_notes_prev": null}, {"density_tension": 0.75, "self_change_pressure": 0.9}).intent
 		== IntentPolicy.HOLD, "no previous pattern -> REVERT unavailable, falls to HOLD")
+	# Ping-pong regressions from the first live duet (v2 guards): a MOVE keeps
+	# the note count, so it can never trigger a revert of itself...
+	var moved_obs: Dictionary = revert_obs.duplicate(true)
+	moved_obs.bass_notes = {0: 0, 10: 4}
+	check(IntentPolicy.decide(moved_obs, {"density_tension": 0.75, "self_change_pressure": 0.9}).intent
+		== IntentPolicy.HOLD, "own MOVE in a dense room holds, never revert ping-pong")
+	# ...and live external pressure means the change was a response: no retreat.
+	check(IntentPolicy.decide(revert_obs, {"density_tension": 0.75,
+		"self_change_pressure": 0.9, "external_change_pressure": 0.8}).intent
+		== IntentPolicy.HOLD, "responding to the room is never immediately reverted")
 
 	# Calm default and determinism.
 	check(IntentPolicy.decide(base_obs, {}).intent == IntentPolicy.HOLD,

@@ -22,7 +22,14 @@ extends RefCounted
 # weights without corpus evidence. Unknown styles behave as DEFAULT.
 
 const POLICY_NAME := "intent_rules"
-const POLICY_VERSION := 1
+# v2: REVERT guards from the first live duet — the bot reverted its own moves
+# and even its own RESPOND additions in a ping-pong (windows 58-66, session
+# bot_1787000738): ambient density (the human's busy drums) satisfied
+# "crowded", and a revert is itself a self-change, so it oscillated. REVERT
+# now requires that the bot's change ADDED notes (count > prev — moves and
+# reverts can never re-trigger it) and that no external pressure is live
+# (when something just changed, the move is forward, not retreat).
+const POLICY_VERSION := 2
 const INTENT_SCHEMA := 1
 
 const STYLE_DEFAULT := "default"
@@ -57,12 +64,17 @@ static func decide(obs: Dictionary, interp: Dictionary, style_context := STYLE_D
 	var bass_density := float(obs.get("features", {}).get("bass_density", 0.0))
 	var lcb: Dictionary = obs.get("last_change_by", {})
 
+	var prev = obs.get("bass_notes_prev")
 	var intent := HOLD
 	var drivers := {}
-	if lcb.get("bass", "none") == "self" and obs.get("bass_notes_prev") != null \
-			and crowding >= T_CROWDED:
-		# bass_notes_prev's first consumer: my own change crowded the jam — go
-		# back. Not a mutation in the opposite direction; the actual pattern.
+	if lcb.get("bass", "none") == "self" and prev != null \
+			and crowding >= T_CROWDED and external < T_EXTERNAL \
+			and obs.get("bass_notes", {}).size() > prev.size():
+		# bass_notes_prev's first consumer: my own ADDITION crowded the jam —
+		# go back. Not a mutation in the opposite direction; the actual
+		# pattern. Count guard: moves/reverts keep the count, so they can
+		# never re-trigger this. External guard: live external pressure means
+		# the change was a response — move forward, don't retreat.
 		intent = REVERT
 		drivers = {"density_tension": crowding, "last_change_by_bass": "self"}
 	elif self_p >= T_SELF:

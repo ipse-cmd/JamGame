@@ -590,6 +590,34 @@ intent×seed×state, determinism, per-intent faithfulness by simulation, revert
 restoration + cap, empty-seat entry, pipeline JSON replay, mounted-bot
 listen-then-act pacing, explained frames). **6/6 integration green.**
 
+## First duet session + REVERT v2 (2026-08-17)
+
+First human-vs-intent-bot duet (82 bot windows, session bot_1787000738), user
+verdict "timing is good", logs concur: entered after listening 5 windows;
+21 edits / 61 holds; 19/21 edits immediately followed by a HOLD; RESPONDed to
+every chord change within 0-2 windows with the right candidate (anchor_root
+when the downbeat had drifted, add_seventh/recolor otherwise) while the
+baseline shadow proposed unrelated staleness moves; 21/21 edits committed,
+zero rejects.
+
+The explained frames exposed a real behavioral bug invisible to tests:
+**REVERT ping-pong** (windows 58-66) — the bot reverted its own MOVE, then
+reverted the revert, then reverted a seventh it had just added as a RESPOND.
+Cause: ambient density (the human's busy drums) satisfied "crowded", and a
+revert is itself a self-change. IntentPolicy v2 adds two guards: REVERT
+requires the bot's change to have ADDED notes (count > prev — moves and
+reverts can never re-trigger it) and no live external pressure (a response is
+forward motion, not retreat). Regression tests pin both ping-pong shapes.
+
+Noted for the style era, not changed: VARY cadence is metronomic (threshold
+crossing every 4th window — variability is a style/seeded-jitter concern) and
+VARY's random walk can erode the downbeat anchor (a candidate-evaluator term,
+possibly; the RESPOND anchor_root currently repairs it on the next harmonic
+event).
+
+Validation: **350 unit tests green** (+2 regressions). **6/6 integration
+green.**
+
 ## How to rebuild the extension
 
 ```
