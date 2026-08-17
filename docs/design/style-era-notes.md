@@ -66,6 +66,32 @@ that shape (variance). Any stochastic part must be seeded and deterministic —
 derived like decision seeds from (session_seed, musical position) — so every
 peer computes identical sample stamps.
 
+### Measured humanization budgets (Scaler 3 performance library, 2026-08-17)
+
+Hard numbers from 1,274 authored patterns / 37,790 events
+(refs/ScalerReference/PERFORMANCE.md — study the model, never ship the
+patterns):
+
+- **Micro-timing cap: ±1/24 beat** (~21ms @120) — holds across every
+  category; beyond it, feel reads as wrong notes.
+- **Tightness is per-ROLE**: pulse layers 9-11% off-grid, decorative layers
+  44-46%. Confirms the no-global-humanize-slider rule with data.
+- **Rolled simultaneities**: ~40% of chord hits spread by ~8ms (max 0.06
+  beat) — most of "sampled piano vs MIDI piano" for near-zero code. (Guitar
+  strum is the same effect applied at runtime instead — two mechanisms, one
+  percept.)
+- **Velocity bands per role**: bass loud/narrow (100±17), lead loud/wide
+  (98±24), comping quiet/wide (75±22) — respecting bands yields mix balance
+  for free.
+- **Swing is authored per-pattern, not a knob**: "Jazz Swing Feel" = 0.539 —
+  CONVERGES with our GMD measurement (+8.2% of a 16th ≈ 0.52-0.54). Light
+  jazz swing ≈ 0.54, not 0.667; "Uptempo Swing" mixes straight and swung
+  notes inside single patterns.
+- **Index-based patterns validated at scale**: noteIndex-into-chord-ladder on
+  all 37,790 events (never pitches) — our chord-relative lanes are the same
+  model; the keys role later needs the generalized ladder builder + voicing
+  profiles (Scaler's cheapest variety lever, with Rotate second).
+
 ### Pinned technical constraints for the future lens
 
 1. **`max_negative_groove_offset`** must be an explicit part of the lens
