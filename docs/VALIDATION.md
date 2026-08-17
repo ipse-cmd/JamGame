@@ -704,6 +704,36 @@ vocabulary fixed — one architectural change at a time.
 
 Validation: **371 unit tests green** (+21). **6/6 integration green.**
 
+## Riff/motif bank — the player's own lines become bot vocabulary (2026-08-17)
+
+`tools/corpus/harvest_riffs.py` reads HUMAN session logs (solo sessions —
+rights-clean by construction), extracts bass-state transitions across
+decision windows, filters by DWELL (windows a line survived — the implicit
+quality signal; one-window casualties drop), groups consecutive similar
+lines (event-jaccard >= 0.5) into MOTIFS with variants, dedupes across
+sessions, and commits `data/pattern_bank.json` (bank_schema 1). First
+harvest: 7 motifs / 9 variants from one day of play — the bank grows as a
+byproduct of jamming, never as homework.
+
+Realizer integration: `motif_variant` (VARY only, offered only when the
+current line actually belongs to a harvested motif — "same idea, another
+variant" instead of random cell mutation; repetition becomes musical
+identity) and `bank_pattern` (VARY + RESPOND — a known-good line as a
+candidate, reachable within an 8-op cap via the generalized `_diff_to`,
+which REVERT now shares). Bank candidates flow through the SAME evaluator +
+style prior — the bank proposes, it never decides — and the chosen pattern's
+bank id rides in every logged realization.
+
+Emergent improvement pinned: VARY on an out-of-band (crowded) line
+previously refused (cell edits can't fix a bad line); with the bank it
+escapes to a banked in-band riff instead.
+
+Validation: **396 unit tests green** (+25: bank schema/legality, bank
+candidates land EXACTLY on their banked variant, op cap, starter-groove
+motif membership, provenance id in realizations, the crowded-line escape;
+the whole-intent legality sweep covers the new candidates automatically).
+**6/6 integration green.**
+
 ## How to rebuild the extension
 
 ```

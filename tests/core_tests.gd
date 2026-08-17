@@ -56,6 +56,7 @@ func _initialize() -> void:
 	_test_intent_policy()
 	_test_bass_realizer()
 	_test_style_prior()
+	_test_pattern_bank()
 	_test_intent_bass_policy()
 	_test_pointer_picking()
 	_test_human_recorder()
@@ -1176,8 +1177,13 @@ func _test_bass_realizer() -> void:
 	var vary_notes := _apply_ops(mid, vary.ops)
 	check(vary_notes != mid.bass_notes and absi(vary_notes.size() - mid.bass_notes.size()) <= 1,
 		"VARY changes the pattern without changing its weight class")
-	check(Realizer.realize(dense, "VARY", 7).ops.is_empty(),
-		"VARY on an out-of-band line refuses — a crowded line needs SIMPLIFY, not novelty")
+	# With the riff bank present, VARY on a crowded line escapes to a banked
+	# in-band pattern instead of refusing (cell edits can't fix a bad line;
+	# switching to a known-good riff can) — pinned as the improved behavior.
+	var crowded_vary := Realizer.realize(dense, "VARY", 7)
+	var crowded_result := _apply_ops(dense, crowded_vary.ops)
+	check(crowded_vary.candidate == "bank_pattern" and crowded_result.size() <= 6,
+		"VARY on an out-of-band line escapes to a banked in-band riff")
 
 	# RESPOND from silence: the bandmate can enter an empty seat.
 	var empty_line = CommitModel.new(BassLine.new())
@@ -1272,6 +1278,52 @@ func _test_style_prior() -> void:
 	var wire := BotObservation.from_json(JSON.parse_string(JSON.stringify(obs)))
 	check(JSON.stringify(IntentBassPolicy.decide(wire, 7)) == JSON.stringify(IntentBassPolicy.decide(obs, 7)),
 		"styled pipeline replays identically through the JSON boundary")
+
+
+func _test_pattern_bank() -> void:
+	# The committed bank: every variant legal and playable.
+	var text := FileAccess.get_file_as_string("res://data/pattern_bank.json")
+	var bank: Dictionary = JSON.parse_string(text)
+	check(bank != null and bank.bank_schema == 1 and bank.motifs.size() >= 1,
+		"pattern bank loads with schema")
+	var all_legal := true
+	for m in bank.motifs:
+		for v in m.variants:
+			var n: Dictionary = v.notes
+			if n.size() < 2 or n.size() > 8:
+				all_legal = false
+			for k in n:
+				if int(str(k)) < 0 or int(str(k)) > 15 or int(n[k]) < 0 or int(n[k]) > 4:
+					all_legal = false
+	check(all_legal, "every banked variant is a legal, playable line")
+
+	# Bank candidates: applying the ops lands EXACTLY on a banked variant.
+	var models := _mk_models()
+	var line := BassLine.new()
+	line.notes = {0: 0, 8: 0, 12: 4} # the starter groove — a known motif member
+	var obs := BotObservation.build_bass(CommitModel.new(line), models.drums, models.chords, 1, 1)
+	var found_pattern := false
+	for c in Realizer.candidates(obs, "VARY", 3):
+		if not c.has("pattern_id"):
+			continue
+		found_pattern = true
+		var result := _apply_ops(obs, c.ops)
+		var is_banked := false
+		for m in bank.motifs:
+			for v in m.variants:
+				var vn := {}
+				for k in v.notes:
+					vn[int(str(k))] = int(v.notes[k])
+				if vn == result:
+					is_banked = true
+		check(is_banked, "bank candidate '%s' lands exactly on its banked variant" % c.pattern_id)
+		check(c.ops.size() <= Realizer.MAX_PATTERN_OPS, "bank candidate respects the op cap")
+	check(found_pattern, "the starter groove offers motif/bank candidates under VARY")
+
+	# Provenance: the winning pattern's id rides in the realization.
+	var real := Realizer.realize(obs, "VARY", 3)
+	if real.candidate in ["motif_variant", "bank_pattern"]:
+		check(real.pattern_id != null, "chosen pattern carries its bank id for the log")
 
 
 func _test_intent_bass_policy() -> void:

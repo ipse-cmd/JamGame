@@ -22,6 +22,13 @@ const REALIZER_VERSION := 1
 
 const TRACK_BASS := 1
 const NUM_STEPS := 16
+# Motif/riff bank: the player's own committed lines, harvested from human
+# session logs (tools/corpus/harvest_riffs.py) — rights-clean, chord-relative
+# by construction, quality-filtered by dwell. Bank candidates flow through
+# the SAME evaluator + style prior as everything else; the bank proposes,
+# it never decides.
+const BANK_PATH := "res://data/pattern_bank.json"
+const MAX_PATTERN_OPS := 8
 const TONE_R := 0
 const TONE_3 := 1
 const TONE_5 := 2
@@ -50,6 +57,8 @@ static func realize(obs: Dictionary, intent: String, seed_value: int,
 		var interaction := evaluate(obs, intent, c)
 		var final := interaction
 		var entry := {"name": c.name, "score": interaction}
+		if c.has("pattern_id"):
+			entry["pattern_id"] = c.pattern_id
 		if style_bass != null and w_style > 0.0 and not c.ops.is_empty():
 			var style = StylePrior.score_bass(style_bass, _simulate(_notes(obs), c.ops),
 				obs.get("chord_slots", []))
@@ -59,7 +68,8 @@ static func realize(obs: Dictionary, intent: String, seed_value: int,
 		entry["final"] = final
 		scores.append(entry)
 		if best == null or final > best.score:
-			best = {"name": c.name, "ops": c.ops, "score": final}
+			best = {"name": c.name, "ops": c.ops, "score": final,
+				"pattern_id": c.get("pattern_id", null)}
 		if best_plain == null or interaction > best_plain.score:
 			best_plain = {"name": c.name, "score": interaction}
 	if best == null:
@@ -69,6 +79,7 @@ static func realize(obs: Dictionary, intent: String, seed_value: int,
 		"intent": intent,
 		"candidate": best.name,
 		"ops": best.ops,
+		"pattern_id": best.get("pattern_id", null),
 		"scores": scores,
 		"interaction_choice": best_plain.name,
 		"style_disagreement": best.name != best_plain.name,
@@ -90,6 +101,7 @@ static func candidates(obs: Dictionary, intent: String, seed_value: int) -> Arra
 			_add(out, "add_seventh", _place_on_empty(notes, rng, _offbeats_first(), TONE_7))
 			_add(out, "align_kick", _align_kick(notes, kicks, rng))
 			_add(out, "recolor", _retune_one(notes, rng))
+			_add_pattern(out, "bank_pattern", _bank_pattern(notes, rng))
 		"SIMPLIFY":
 			_add(out, "strip_offbeat", _strip_offbeats(notes, kicks, rng, 2))
 			_add(out, "to_root_five", _to_root_five(notes, rng, 2))
@@ -102,6 +114,11 @@ static func candidates(obs: Dictionary, intent: String, seed_value: int) -> Arra
 			_add(out, "move_note", _move_one(notes, rng))
 			_add(out, "retune_note", _retune_one(notes, rng))
 			_add(out, "breathe_or_add", _breathe_or_add(notes, rng))
+			# Motif identity: if the current line belongs to a harvested motif,
+			# VARY can mean "same idea, another variant" — repetition becomes
+			# musical identity instead of random cell mutation.
+			_add_pattern(out, "motif_variant", _motif_variant(notes, rng))
+			_add_pattern(out, "bank_pattern", _bank_pattern(notes, rng))
 		"REVERT":
 			_add(out, "restore_prev", _restore(notes, obs.get("bass_notes_prev")))
 	return out
@@ -261,19 +278,97 @@ static func _breathe_or_add(notes: Dictionary, rng: RandomNumberGenerator) -> Ar
 static func _restore(notes: Dictionary, prev) -> Array:
 	if prev == null:
 		return []
-	var target := {}
-	for k in prev:
-		target[int(str(k))] = int(prev[k])
+	var ops := _diff_to(notes, _bank_notes(prev))
+	if ops.size() > MAX_REVERT_OPS:
+		ops.resize(MAX_REVERT_OPS) # partial revert beats a flood; next window continues
+	return ops
+
+
+## Ops transforming `notes` into exactly `target` (both int-keyed). Sorted
+## iteration keeps the op sequence deterministic.
+static func _diff_to(notes: Dictionary, target: Dictionary) -> Array:
 	var ops: Array = []
 	for s in _sorted_steps(notes):
 		if not target.has(int(s)):
 			ops.append(_op(int(s), int(notes[s]))) # remove extras
-	for s in target:
-		if int(notes.get(s, -1)) != target[s]:
-			ops.append(_op(s, target[s])) # re-place missing / retune changed
-	if ops.size() > MAX_REVERT_OPS:
-		ops.resize(MAX_REVERT_OPS) # partial revert beats a flood; next window continues
+	for s in _sorted_steps(target):
+		if int(notes.get(int(s), -1)) != int(target[s]):
+			ops.append(_op(int(s), int(target[s]))) # place missing / retune changed
 	return ops
+
+
+# ---------------------------------------------------------------- riff bank
+
+static var _bank = null
+static var _bank_loaded := false
+
+
+static func _pattern_bank():
+	if not _bank_loaded:
+		_bank_loaded = true
+		var text := FileAccess.get_file_as_string(BANK_PATH)
+		var parsed = JSON.parse_string(text) if text != "" else null
+		_bank = parsed if parsed is Dictionary and parsed.has("motifs") else null
+	return _bank
+
+
+static func _bank_notes(raw: Dictionary) -> Dictionary:
+	var out := {}
+	for k in raw:
+		out[int(str(k))] = int(raw[k])
+	return out
+
+
+## Same motif, another variant: only offered when the current line actually
+## belongs to a harvested motif (>= 0.5 event overlap with one of its variants).
+static func _motif_variant(notes: Dictionary, rng: RandomNumberGenerator) -> Dictionary:
+	var bank = _pattern_bank()
+	if bank == null or notes.is_empty():
+		return {}
+	for m in bank.motifs:
+		if m.variants.size() < 2:
+			continue
+		var member := false
+		for v in m.variants:
+			if _jaccard(notes, _bank_notes(v.notes)) >= 0.5:
+				member = true
+				break
+		if not member:
+			continue
+		var options: Array = []
+		for i in m.variants.size():
+			var vn := _bank_notes(m.variants[i].notes)
+			if vn != notes:
+				var ops := _diff_to(notes, vn)
+				if not ops.is_empty() and ops.size() <= MAX_PATTERN_OPS:
+					options.append({"ops": ops, "id": "%s#%d" % [m.id, i]})
+		if not options.is_empty():
+			return options[rng.randi() % options.size()]
+	return {}
+
+
+## Any bank line reachable within the op cap — a known-good idea as a candidate.
+static func _bank_pattern(notes: Dictionary, rng: RandomNumberGenerator) -> Dictionary:
+	var bank = _pattern_bank()
+	if bank == null:
+		return {}
+	var options: Array = []
+	for m in bank.motifs:
+		for i in m.variants.size():
+			var vn := _bank_notes(m.variants[i].notes)
+			if vn == notes:
+				continue
+			var ops := _diff_to(notes, vn)
+			if not ops.is_empty() and ops.size() <= MAX_PATTERN_OPS:
+				options.append({"ops": ops, "id": "%s#%d" % [m.id, i]})
+	if options.is_empty():
+		return {}
+	return options[rng.randi() % options.size()]
+
+
+static func _add_pattern(out: Array, name: String, pick: Dictionary) -> void:
+	if not pick.is_empty():
+		out.append({"name": name, "ops": pick.ops, "pattern_id": pick.id})
 
 
 # ---------------------------------------------------------------- utilities
