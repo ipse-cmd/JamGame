@@ -651,6 +651,25 @@ These distributions are the seed data for 3D JamStyleProfile (drum + bass
 profiles per style) and the renderer groove lens (nominal AGR shapes + these
 measured variances).
 
+## JamStyleProfile v1 + the separability gate — PASSED (2026-08-17)
+
+Converter v2 (example_schema 2) stores distributions, not means: per-step
+onset histograms per lane, timing-offset histograms per beat position,
+bass tone-given-beat splits, interval and tone-transition distributions.
+`tools/corpus/profiles.py` estimates PARTIAL, role-specific profiles with
+provenance and confidence — 17 style files; only jazz has a bass section
+(FiloBass, HIGH); drums range HIGH (rock/funk/jazz/latin/hiphop) to LOW;
+missing roles are absent, never fabricated.
+
+**The gate** (required before profiles may influence gameplay): held-out
+label-free classification of 115 GMD performances by nearest-profile
+likelihood over 7 styles — **51% vs 14% chance (3.6×)**. Confusions are
+musically legible: funk 82%, latin 83%, hiphop 88% (distinct vocabularies);
+rock 24% (the generic style — scatters everywhere); pop↔soul overlap; jazz
+56% . Verdict: the Jammin representation preserves stylistic identity where
+styles have identity — it is not washing performances into generic
+accompaniment. Profiles are cleared to become 3E scoring priors.
+
 ## How to rebuild the extension
 
 ```

@@ -33,8 +33,17 @@ FILOBASS_CSV = os.path.expanduser(
     "~/JamminCorpus/filobass/FiloBass ISMIR Publication/notebooks_and_scripts/note_data.csv")
 OUT_DIR = "/media/ipsedesktop/ShareDrive1/ModelData/JamminCorpusExamples"
 
-EXAMPLE_SCHEMA = 1
+# v2: distributions, not just means — per-step onset histograms, timing
+# deviation histograms per beat position, bass tone-given-beat splits,
+# interval histograms and tone transition counts. Two genres can share a mean
+# and differ entirely in vocabulary; profiles must inherit the distributions.
+EXAMPLE_SCHEMA = 2
 STEPS_PER_BAR = 16
+DEV_BINS = 10 # deviation histogram: 10 bins of 10% covering -50..+50 of a 16th
+
+
+def dev_bin(dev_pct: float) -> int:
+    return max(0, min(DEV_BINS - 1, int((dev_pct + 50.0) // 10)))
 
 # GM drum note -> Jammin lane (kick/snare/hat/perc), mirroring the game's 4 voices.
 GM_TO_LANE = {}
@@ -130,11 +139,20 @@ def convert_filobass():
         tone_counts = defaultdict(int)
         offbeat = Agg()
         midis = []
+        step_hist = [0] * STEPS_PER_BAR
+        tone_given_beat = {"beat": defaultdict(int), "off": defaultdict(int)}
+        transitions = defaultdict(lambda: defaultdict(int))
+        prev_token = None
         for r in rows:
             step, _dev = quantize(num(r["note_relative_offset"]))
             token = degree_to_token(r["note_degree"], r["chord_kind"])
             bars[int(r["measure_number"])][step] = token
             tone_counts[token] += 1
+            step_hist[step] += 1
+            tone_given_beat["beat" if step % 4 == 0 else "off"][token] += 1
+            if prev_token is not None:
+                transitions[prev_token][token] += 1
+            prev_token = token
             offbeat.add(offbeat_weight(step))
             if r["note_midi"]:
                 midis.append(int(float(r["note_midi"])))
@@ -156,10 +174,21 @@ def convert_filobass():
             "in_vocab_fraction": in_vocab / n_notes,
             "offbeat_mass": offbeat.mean(),
             "mean_interval_semitones": sum(intervals) / len(intervals) if intervals else 0.0,
+            "step_hist": step_hist,
+            "tone_given_beat": {k: dict(v) for k, v in tone_given_beat.items()},
+            "interval_hist": _interval_hist(intervals),
+            "tone_transitions": {a: dict(b) for a, b in transitions.items()},
             "bar_tokens": [{str(s): t for s, t in sorted(bars[m].items())}
                            for m in sorted(bars)],
         })
     return examples
+
+
+def _interval_hist(intervals):
+    hist = [0] * 13  # 0..11 semitones, last bin = octave+
+    for i in intervals:
+        hist[min(12, i)] += 1
+    return hist
 
 
 # ----------------------------------------------------------------------- GMD
@@ -187,6 +216,8 @@ def convert_gmd():
         groove_vel = defaultdict(Agg)
         offbeat = Agg()
         max_bar = -1
+        step_hist = {lane: [0] * STEPS_PER_BAR for lane in ("kick", "snare", "hat", "perc")}
+        dev_hist = {p: [0] * DEV_BINS for p in ("down", "e", "and", "a")}
         for track in mid.tracks:
             t = 0
             for msg in track:
@@ -201,6 +232,8 @@ def convert_gmd():
                     max_bar = max(max_bar, bar)
                     bars[bar][lane].add(step)
                     lane_hits[lane] += 1
+                    step_hist[lane][step] += 1
+                    dev_hist[pos_class(step)][dev_bin(dev)] += 1
                     groove_dev[pos_class(step)].add(dev)
                     groove_vel[pos_class(step)].add(msg.velocity)
                     offbeat.add(offbeat_weight(step))
@@ -217,8 +250,11 @@ def convert_gmd():
             "sub_style": r["style"],
             "role": "drums",
             "kind": r["beat_type"],   # beat | fill — never mix them blindly
+            "split": r["split"],      # GMD's own train/test/validation split
             "bpm": float(r["bpm"]),
             "bars": n_bars,
+            "step_hist": step_hist,
+            "dev_hist": dev_hist,
             "lane_density": {k: lane_hits[k] / n_bars / STEPS_PER_BAR
                              for k in ("kick", "snare", "hat", "perc")},
             "offbeat_mass": offbeat.mean(),

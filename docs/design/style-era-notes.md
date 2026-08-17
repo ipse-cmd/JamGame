@@ -79,6 +79,31 @@ peer computes identical sample stamps.
    cross bar/loop boundaries*. The future-buffered scheduler makes this easy
    to solve correctly — solve it there, not with per-peer randomness.
 
+## Profile contract decisions (adopted 2026-08-17, implemented in tools/corpus)
+
+- **Partial, role-specific profiles with provenance**: a style gets a role
+  section only when a corpus supplied one — `{profile, source, n, confidence}`
+  per role, absent otherwise. Never invent "roughly opposite numbers and call
+  it techno" (the Casio-preset failure mode re-entering through data's back
+  door).
+- **Distributions, not means**: per-step onset histograms, timing-offset
+  histograms per beat position (with n), tone-given-beat splits, interval and
+  transition distributions. Two genres can share a mean and differ entirely
+  in vocabulary. Profiles say "this is what we measured", never "this is what
+  jazz is" — the swing-sign finding stays a measurement, not a rule.
+- **Profiles are scoring PRIORS for the 3C candidate evaluator** (style
+  likelihood alongside the interaction score), never note generators.
+- **The separability gate** (passed 2026-08-17 before any gameplay use):
+  held-out label-free GMD classification by nearest-profile likelihood — 51%
+  over 7 styles vs 14% chance; funk 82 / latin 83 / hiphop 88; rock scatters
+  (generic vocabulary), pop↔soul overlap. The Jammin representation preserves
+  stylistic identity for vocabulary-distinct styles.
+- **V2 bass lanes (2/4/6) have empirical justification**: 26% of real jazz
+  bass notes are exactly the x2/x4/x6 color classes. After V2, STOP
+  auto-expanding — remaining OOV notes have semantics (chromatic approach,
+  enclosure, altered tones, passing, pedal) to analyze separately, not twelve
+  pitch classes to add.
+
 ## Reference-ingestion freeze
 
 Enough vocabulary exists (harmony banks, groove captures, corpora). No more
