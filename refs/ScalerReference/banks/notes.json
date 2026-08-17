@@ -1,0 +1,98 @@
+[
+  {
+    "pitch": 0,
+    "isAccidental": false,
+    "name": "C",
+    "flatName": "Dbb",
+    "sharpName": "B#",
+    "uuid": "ad72b5cb-571e-401b-a882-a686c8bdaec6"
+  },
+  {
+    "pitch": 1,
+    "isAccidental": true,
+    "name": "C#/Db",
+    "flatName": "Db",
+    "sharpName": "C#",
+    "uuid": "d7e9a48f-e82d-4e19-93a4-5123578431ca"
+  },
+  {
+    "pitch": 2,
+    "isAccidental": false,
+    "name": "D",
+    "flatName": "Ebb",
+    "sharpName": "C##",
+    "uuid": "cea7d06c-355e-4089-8945-b2b5091824f8"
+  },
+  {
+    "pitch": 3,
+    "isAccidental": true,
+    "name": "D#/Eb",
+    "flatName": "Eb",
+    "sharpName": "D#",
+    "uuid": "43540aa4-26e7-4d4d-81e6-43405d2e4b28"
+  },
+  {
+    "pitch": 4,
+    "isAccidental": false,
+    "name": "E",
+    "flatName": "Fb",
+    "sharpName": "D##",
+    "uuid": "e9e30a0e-2d8b-43f0-8801-f8ac9e202093"
+  },
+  {
+    "pitch": 5,
+    "isAccidental": false,
+    "name": "F",
+    "flatName": "Gbb",
+    "sharpName": "E#",
+    "uuid": "2a1ee224-8319-4723-8f15-4e83eb21f3c4"
+  },
+  {
+    "pitch": 6,
+    "isAccidental": true,
+    "name": "F#/Gb",
+    "flatName": "Gb",
+    "sharpName": "F#",
+    "uuid": "992a4689-fcbe-4823-bc03-b011f4734aa9"
+  },
+  {
+    "pitch": 7,
+    "isAccidental": false,
+    "name": "G",
+    "flatName": "Abb",
+    "sharpName": "F##",
+    "uuid": "2e88c13b-77fd-4677-a5aa-ab3b891467ed"
+  },
+  {
+    "pitch": 8,
+    "isAccidental": true,
+    "name": "G#/Ab",
+    "flatName": "Ab",
+    "sharpName": "G#",
+    "uuid": "44ecbf63-c6de-405c-8386-b33b8eb6a115"
+  },
+  {
+    "pitch": 9,
+    "isAccidental": false,
+    "name": "A",
+    "flatName": "Bbb",
+    "sharpName": "G##",
+    "uuid": "86cbd097-5128-43eb-b077-6bb6bcc9c99d"
+  },
+  {
+    "pitch": 10,
+    "isAccidental": true,
+    "name": "A#/Bb",
+    "flatName": "Bb",
+    "sharpName": "A#",
+    "uuid": "3fc5a065-7e11-4800-ae45-124b141bccac"
+  },
+  {
+    "pitch": 11,
+    "isAccidental": false,
+    "name": "B",
+    "flatName": "Cb",
+    "sharpName": "A##",
+    "uuid": "dfd64d32-7927-44aa-8da1-f2a3858a3a1d"
+  }
+]

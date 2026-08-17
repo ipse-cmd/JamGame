@@ -1,0 +1,5366 @@
+{
+  "maj": {
+    "name": "maj",
+    "uuid": "0e11ef88-c67d-4285-9b2b-b8b232386842",
+    "semitones": [
+      0,
+      4,
+      7
+    ],
+    "formula": [
+      "1",
+      "3",
+      "5"
+    ],
+    "isMinor": false,
+    "symbol": "M"
+  },
+  "min": {
+    "name": "min",
+    "uuid": "4425f04f-dac5-469c-90bf-a7201af10e6e",
+    "semitones": [
+      0,
+      3,
+      7
+    ],
+    "formula": [
+      "1",
+      "b3",
+      "5"
+    ],
+    "isMinor": true,
+    "symbol": "m"
+  },
+  "dim": {
+    "name": "dim",
+    "uuid": "c5dea2d4-58da-400d-b23c-d6af34fd47df",
+    "semitones": [
+      0,
+      3,
+      6
+    ],
+    "formula": [
+      "1",
+      "b3",
+      "b5"
+    ],
+    "isMinor": true,
+    "symbol": "o"
+  },
+  "aug": {
+    "name": "aug",
+    "uuid": "1fbf73c6-8c0d-416a-84d3-4c2386eb49f1",
+    "semitones": [
+      0,
+      4,
+      8
+    ],
+    "formula": [
+      "1",
+      "3",
+      "#5"
+    ],
+    "isMinor": false,
+    "symbol": "+"
+  },
+  "sus2": {
+    "name": "sus2",
+    "uuid": "e669c6ba-6da5-4db6-8e80-64d9173584e4",
+    "semitones": [
+      0,
+      2,
+      7
+    ],
+    "formula": [
+      "1",
+      "2",
+      "5"
+    ],
+    "isMinor": false,
+    "symbol": "sus2"
+  },
+  "sus4": {
+    "name": "sus4",
+    "uuid": "fcf56e7c-4b66-4fc5-a828-37e69d1f9260",
+    "semitones": [
+      0,
+      5,
+      7
+    ],
+    "formula": [
+      "1",
+      "4",
+      "5"
+    ],
+    "isMinor": false,
+    "symbol": "sus4"
+  },
+  "sus4 b9 #11": {
+    "name": "sus4 b9 #11",
+    "uuid": "9e698a28-07e9-43fc-882c-45a1b0cdb5e1",
+    "semitones": [
+      0,
+      5,
+      7,
+      13,
+      18
+    ],
+    "formula": [
+      "1",
+      "4",
+      "5",
+      "b9",
+      "#11"
+    ],
+    "isMinor": false,
+    "symbol": "sus4 b9 #11"
+  },
+  "maj7": {
+    "name": "maj7",
+    "uuid": "6941c58a-509d-4eef-9a69-cb2340b9d6c1",
+    "semitones": [
+      0,
+      4,
+      7,
+      11
+    ],
+    "formula": [
+      "1",
+      "3",
+      "5",
+      "7"
+    ],
+    "isMinor": false,
+    "symbol": "M7"
+  },
+  "maj7(sus2)": {
+    "name": "maj7(sus2)",
+    "uuid": "0b93efba-0926-4e9a-bb38-a36cc2e91631",
+    "semitones": [
+      0,
+      2,
+      7,
+      11
+    ],
+    "formula": [
+      "1",
+      "2",
+      "5",
+      "7"
+    ],
+    "isMinor": false,
+    "symbol": "M7(sus2)"
+  },
+  "maj7(sus4)": {
+    "name": "maj7(sus4)",
+    "uuid": "91cbcafb-2a2d-44e6-a557-84651b4a7676",
+    "semitones": [
+      0,
+      5,
+      7,
+      11
+    ],
+    "formula": [
+      "1",
+      "4",
+      "5",
+      "7"
+    ],
+    "isMinor": false,
+    "symbol": "M7(sus4)"
+  },
+  "maj7(sus4) b9": {
+    "name": "maj7(sus4) b9",
+    "uuid": "2be2cdb5-2d77-40da-b95b-c92073984582",
+    "semitones": [
+      0,
+      5,
+      7,
+      11,
+      13
+    ],
+    "formula": [
+      "1",
+      "4",
+      "5",
+      "7",
+      "b9"
+    ],
+    "isMinor": false,
+    "symbol": "M7(sus4) b9"
+  },
+  "maj7(sus2) 13": {
+    "name": "maj7(sus2) 13",
+    "uuid": "76892290-d115-412d-b33e-6ce3b7f0b8e8",
+    "semitones": [
+      0,
+      2,
+      7,
+      11,
+      21
+    ],
+    "formula": [
+      "1",
+      "2",
+      "5",
+      "7",
+      "13"
+    ],
+    "isMinor": false,
+    "symbol": "M7(sus2) 13"
+  },
+  "maj7(sus4) #11": {
+    "name": "maj7(sus4) #11",
+    "uuid": "bf84beb4-80e3-43b9-9efd-a6b75f68f202",
+    "semitones": [
+      0,
+      5,
+      7,
+      11,
+      18
+    ],
+    "formula": [
+      "1",
+      "4",
+      "5",
+      "7",
+      "#11"
+    ],
+    "isMinor": false,
+    "symbol": "M7(sus4) #11"
+  },
+  "maj7 b9": {
+    "name": "maj7 b9",
+    "uuid": "afa05fe1-502e-4556-8829-4cac56c79b45",
+    "semitones": [
+      0,
+      4,
+      7,
+      11,
+      13
+    ],
+    "formula": [
+      "1",
+      "3",
+      "5",
+      "7",
+      "b9"
+    ],
+    "isMinor": false,
+    "symbol": "M7 b9"
+  },
+  "maj7 #9": {
+    "name": "maj7 #9",
+    "uuid": "1a052bc3-a8cb-4100-bee5-45cad1386a67",
+    "semitones": [
+      0,
+      4,
+      7,
+      11,
+      15
+    ],
+    "formula": [
+      "1",
+      "3",
+      "5",
+      "7",
+      "#9"
+    ],
+    "isMinor": false,
+    "symbol": "M7 #9"
+  },
+  "maj7 #9 #11": {
+    "name": "maj7 #9 #11",
+    "uuid": "cc995ece-99d8-4e5f-bc02-d48c3ae2ef77",
+    "semitones": [
+      0,
+      4,
+      7,
+      11,
+      15,
+      18
+    ],
+    "formula": [
+      "1",
+      "3",
+      "5",
+      "7",
+      "#9",
+      "#11"
+    ],
+    "isMinor": false,
+    "symbol": "M7 #9 #11"
+  },
+  "maj7(b5)": {
+    "name": "maj7(b5)",
+    "uuid": "3145d4f5-ab26-41fd-80c6-21839529a5a6",
+    "semitones": [
+      0,
+      4,
+      6,
+      11
+    ],
+    "formula": [
+      "1",
+      "3",
+      "b5",
+      "7"
+    ],
+    "isMinor": false,
+    "symbol": "M7(b5)"
+  },
+  "maj7(b5) b9": {
+    "name": "maj7(b5) b9",
+    "uuid": "a510a0bd-3dc8-4a36-9e7a-d78534c82e57",
+    "semitones": [
+      0,
+      4,
+      6,
+      11,
+      13
+    ],
+    "formula": [
+      "1",
+      "3",
+      "b5",
+      "7",
+      "b9"
+    ],
+    "isMinor": false,
+    "symbol": "M7(b5) b9"
+  },
+  "maj7(b5) #9 13": {
+    "name": "maj7(b5) #9 13",
+    "uuid": "3f18e2f2-4df4-437c-bb34-6a597ed0d687",
+    "semitones": [
+      0,
+      4,
+      6,
+      11,
+      15,
+      21
+    ],
+    "formula": [
+      "1",
+      "3",
+      "b5",
+      "7",
+      "#9",
+      "13"
+    ],
+    "isMinor": false,
+    "symbol": "M7(b5) #9 13"
+  },
+  "min7": {
+    "name": "min7",
+    "uuid": "01280a07-b152-4590-a81a-7e0dd08ee06c",
+    "semitones": [
+      0,
+      3,
+      7,
+      10
+    ],
+    "formula": [
+      "1",
+      "b3",
+      "5",
+      "b7"
+    ],
+    "isMinor": true,
+    "symbol": "m7"
+  },
+  "min7(b5)": {
+    "name": "min7(b5)",
+    "uuid": "5fa6dbed-ebb8-4530-b54c-2e82df10b0c0",
+    "semitones": [
+      0,
+      3,
+      6,
+      10
+    ],
+    "formula": [
+      "1",
+      "b3",
+      "b5",
+      "b7"
+    ],
+    "isMinor": true,
+    "symbol": "m7(b5)"
+  },
+  "min7 b9": {
+    "name": "min7 b9",
+    "uuid": "a7624eb4-5f8b-4501-ac66-fa8750bf6ee0",
+    "semitones": [
+      0,
+      3,
+      7,
+      10,
+      13
+    ],
+    "formula": [
+      "1",
+      "b3",
+      "5",
+      "b7",
+      "b9"
+    ],
+    "isMinor": true,
+    "symbol": "m7 b9"
+  },
+  "min7 11": {
+    "name": "min7 11",
+    "uuid": "3db3a380-bf66-4577-b900-8d23f3b0a2b2",
+    "semitones": [
+      0,
+      3,
+      7,
+      10,
+      17
+    ],
+    "formula": [
+      "1",
+      "b3",
+      "5",
+      "b7",
+      "11"
+    ],
+    "isMinor": true,
+    "symbol": "m7 11"
+  },
+  "min7 13": {
+    "name": "min7 13",
+    "uuid": "80e643b0-7e43-4ef7-b324-09993573b983",
+    "semitones": [
+      0,
+      3,
+      7,
+      10,
+      21
+    ],
+    "formula": [
+      "1",
+      "b3",
+      "5",
+      "b7",
+      "13"
+    ],
+    "isMinor": true,
+    "symbol": "m7 13"
+  },
+  "min7 11 13": {
+    "name": "min7 11 13",
+    "uuid": "7e521781-5bbd-41fa-bd00-aff776cc6ed8",
+    "semitones": [
+      0,
+      3,
+      7,
+      10,
+      17,
+      21
+    ],
+    "formula": [
+      "1",
+      "b3",
+      "5",
+      "b7",
+      "11",
+      "13"
+    ],
+    "isMinor": true,
+    "symbol": "m7 11 13"
+  },
+  "min7 #11": {
+    "name": "min7 #11",
+    "uuid": "ec72e6d1-3e42-42f2-80ef-b5c5301b9d09",
+    "semitones": [
+      0,
+      3,
+      7,
+      10,
+      18
+    ],
+    "formula": [
+      "1",
+      "b3",
+      "5",
+      "b7",
+      "#11"
+    ],
+    "isMinor": true,
+    "symbol": "m7 #11"
+  },
+  "min11(b9)": {
+    "name": "min11(b9)",
+    "uuid": "27a00650-3e78-4102-b176-da1a49f8c36b",
+    "semitones": [
+      0,
+      3,
+      7,
+      10,
+      13,
+      17
+    ],
+    "formula": [
+      "1",
+      "b3",
+      "5",
+      "b7",
+      "b9",
+      "11"
+    ],
+    "isMinor": true,
+    "symbol": "m11(b9)"
+  },
+  "min11(b9) b13": {
+    "name": "min11(b9) b13",
+    "uuid": "f8282ef5-63c4-4447-bd13-eb4b527bc244",
+    "semitones": [
+      0,
+      3,
+      7,
+      10,
+      13,
+      17,
+      20
+    ],
+    "formula": [
+      "1",
+      "b3",
+      "5",
+      "b7",
+      "b9",
+      "11",
+      "b13"
+    ],
+    "isMinor": true,
+    "symbol": "m11(b9) b13"
+  },
+  "7 b9 #9": {
+    "name": "7 b9 #9",
+    "uuid": "c734d9fa-905c-4215-b6df-37627836a080",
+    "semitones": [
+      0,
+      4,
+      7,
+      10,
+      13,
+      15
+    ],
+    "formula": [
+      "1",
+      "3",
+      "5",
+      "b7",
+      "b9",
+      "#9"
+    ],
+    "isMinor": false,
+    "symbol": "7 b9 #9"
+  },
+  "min7 b9 #11": {
+    "name": "min7 b9 #11",
+    "uuid": "943b41a4-66f7-403f-9f00-0704740cf1be",
+    "semitones": [
+      0,
+      3,
+      7,
+      10,
+      13,
+      18
+    ],
+    "formula": [
+      "1",
+      "b3",
+      "5",
+      "b7",
+      "b9",
+      "#11"
+    ],
+    "isMinor": true,
+    "symbol": "m7 b9 #11"
+  },
+  "7 b9 #9 b13": {
+    "name": "7 b9 #9 b13",
+    "uuid": "65101bb0-17d5-4048-8a6d-487d4f0e9faf",
+    "semitones": [
+      0,
+      4,
+      7,
+      10,
+      13,
+      15,
+      20
+    ],
+    "formula": [
+      "1",
+      "3",
+      "5",
+      "b7",
+      "b9",
+      "#9",
+      "b13"
+    ],
+    "isMinor": false,
+    "symbol": "7 b9 #9 b13"
+  },
+  "min7 b9 #11 b13": {
+    "name": "min7 b9 #11 b13",
+    "uuid": "c3e5134b-1014-4b81-8eae-b5c264e376af",
+    "semitones": [
+      0,
+      3,
+      7,
+      10,
+      13,
+      18,
+      20
+    ],
+    "formula": [
+      "1",
+      "b3",
+      "5",
+      "b7",
+      "b9",
+      "#11",
+      "b13"
+    ],
+    "isMinor": true,
+    "symbol": "m7 b9 #11 b13"
+  },
+  "min11 b13": {
+    "name": "min11 b13",
+    "uuid": "fe50d5b8-9859-49e3-b69e-3bb332880ae6",
+    "semitones": [
+      0,
+      3,
+      7,
+      10,
+      14,
+      17,
+      20
+    ],
+    "formula": [
+      "1",
+      "b3",
+      "5",
+      "b7",
+      "9",
+      "11",
+      "b13"
+    ],
+    "isMinor": true,
+    "symbol": "m11 b13"
+  },
+  "min7(b5) b9": {
+    "name": "min7(b5) b9",
+    "uuid": "d51f8ce3-4e87-4d3b-917e-fa2751265a23",
+    "semitones": [
+      0,
+      3,
+      6,
+      10,
+      13
+    ],
+    "formula": [
+      "1",
+      "b3",
+      "b5",
+      "b7",
+      "b9"
+    ],
+    "isMinor": true,
+    "symbol": "m7(b5) b9"
+  },
+  "min11(b5 b9)": {
+    "name": "min11(b5 b9)",
+    "uuid": "e525b986-e0bf-4deb-9e36-e1f93c523696",
+    "semitones": [
+      0,
+      3,
+      6,
+      10,
+      13,
+      17
+    ],
+    "formula": [
+      "1",
+      "b3",
+      "b5",
+      "b7",
+      "b9",
+      "11"
+    ],
+    "isMinor": true,
+    "symbol": "m11(b5 b9)"
+  },
+  "7(b5) b9 #9": {
+    "name": "7(b5) b9 #9",
+    "uuid": "436e4d7d-68d4-4de1-b6e2-b094f3b97e7a",
+    "semitones": [
+      0,
+      4,
+      6,
+      10,
+      13,
+      15
+    ],
+    "formula": [
+      "1",
+      "3",
+      "b5",
+      "b7",
+      "b9",
+      "#9"
+    ],
+    "isMinor": false,
+    "symbol": "7(b5) b9 #9"
+  },
+  "min11(b5 b9) b13": {
+    "name": "min11(b5 b9) b13",
+    "uuid": "c50e518d-6ff4-45a0-9995-76d5316fb826",
+    "semitones": [
+      0,
+      3,
+      6,
+      10,
+      13,
+      17,
+      20
+    ],
+    "formula": [
+      "1",
+      "b3",
+      "b5",
+      "b7",
+      "b9",
+      "11",
+      "b13"
+    ],
+    "isMinor": true,
+    "symbol": "m11(b5 b9) b13"
+  },
+  "7(b5) b9 #9 b13": {
+    "name": "7(b5) b9 #9 b13",
+    "uuid": "91a4031b-b099-4c32-b4e9-c852fb699b5f",
+    "semitones": [
+      0,
+      4,
+      6,
+      10,
+      13,
+      15,
+      20
+    ],
+    "formula": [
+      "1",
+      "3",
+      "b5",
+      "b7",
+      "b9",
+      "#9",
+      "b13"
+    ],
+    "isMinor": false,
+    "symbol": "7(b5) b9 #9 b13"
+  },
+  "min13(b5 b9)": {
+    "name": "min13(b5 b9)",
+    "uuid": "2ee7843c-3fe2-43d5-ac7a-7a3e64915303",
+    "semitones": [
+      0,
+      3,
+      6,
+      10,
+      13,
+      17,
+      21
+    ],
+    "formula": [
+      "1",
+      "b3",
+      "b5",
+      "b7",
+      "b9",
+      "11",
+      "13"
+    ],
+    "isMinor": true,
+    "symbol": "m13(b5 b9)"
+  },
+  "min11 maj7 b13": {
+    "name": "min11 maj7 b13",
+    "uuid": "8fa86e98-3e3e-4cd7-a910-38425c7cb327",
+    "semitones": [
+      0,
+      3,
+      7,
+      10,
+      11,
+      14,
+      17,
+      20
+    ],
+    "formula": [
+      "1",
+      "b3",
+      "5",
+      "b7",
+      "7",
+      "9",
+      "11",
+      "b13"
+    ],
+    "isMinor": true,
+    "symbol": "m11 M7 b13"
+  },
+  "min7 maj7 #11": {
+    "name": "min7 maj7 #11",
+    "uuid": "75382745-a4ee-459d-bee2-c09011186923",
+    "semitones": [
+      0,
+      3,
+      7,
+      10,
+      11,
+      18
+    ],
+    "formula": [
+      "1",
+      "b3",
+      "5",
+      "b7",
+      "7",
+      "#11"
+    ],
+    "isMinor": true,
+    "symbol": "m7 M7 #11"
+  },
+  "min maj7": {
+    "name": "min maj7",
+    "uuid": "9accabdf-bac0-46f1-b5af-35ae43cf91e1",
+    "semitones": [
+      0,
+      3,
+      7,
+      11
+    ],
+    "formula": [
+      "1",
+      "b3",
+      "5",
+      "7"
+    ],
+    "isMinor": true,
+    "symbol": "m M7"
+  },
+  "min maj9": {
+    "name": "min maj9",
+    "uuid": "3073b282-f983-4461-a4a4-106750135b4b",
+    "semitones": [
+      0,
+      3,
+      7,
+      11,
+      14
+    ],
+    "formula": [
+      "1",
+      "b3",
+      "5",
+      "7",
+      "9"
+    ],
+    "isMinor": true,
+    "symbol": "m M9"
+  },
+  "min maj7 b9": {
+    "name": "min maj7 b9",
+    "uuid": "80ec4a2c-1b00-403c-a15b-0a8a9184d13e",
+    "semitones": [
+      0,
+      3,
+      7,
+      11,
+      13
+    ],
+    "formula": [
+      "1",
+      "b3",
+      "5",
+      "7",
+      "b9"
+    ],
+    "isMinor": true,
+    "symbol": "m M7 b9"
+  },
+  "min maj7 #11": {
+    "name": "min maj7 #11",
+    "uuid": "7038d87e-014f-4be3-a8af-2acd205d9c5f",
+    "semitones": [
+      0,
+      3,
+      7,
+      11,
+      18
+    ],
+    "formula": [
+      "1",
+      "b3",
+      "5",
+      "7",
+      "#11"
+    ],
+    "isMinor": true,
+    "symbol": "m M7 #11"
+  },
+  "min maj7 b9 #11": {
+    "name": "min maj7 b9 #11",
+    "uuid": "fb0a0ec1-0f9b-455b-9ecc-b760b1081ca6",
+    "semitones": [
+      0,
+      3,
+      7,
+      11,
+      13,
+      18
+    ],
+    "formula": [
+      "1",
+      "b3",
+      "5",
+      "7",
+      "b9",
+      "#11"
+    ],
+    "isMinor": true,
+    "symbol": "m M7 b9 #11"
+  },
+  "min maj7 b9 #11 b13": {
+    "name": "min maj7 b9 #11 b13",
+    "uuid": "d43845fe-aab4-4c19-b576-efe48182d98d",
+    "semitones": [
+      0,
+      3,
+      7,
+      11,
+      13,
+      18,
+      20
+    ],
+    "formula": [
+      "1",
+      "b3",
+      "5",
+      "7",
+      "b9",
+      "#11",
+      "b13"
+    ],
+    "isMinor": true,
+    "symbol": "m M7 b9 #11 b13"
+  },
+  "min maj9 #11": {
+    "name": "min maj9 #11",
+    "uuid": "f1dc629e-6df3-47af-8f1d-0e8733564825",
+    "semitones": [
+      0,
+      3,
+      7,
+      11,
+      14,
+      18
+    ],
+    "formula": [
+      "1",
+      "b3",
+      "5",
+      "7",
+      "9",
+      "#11"
+    ],
+    "isMinor": true,
+    "symbol": "m M9 #11"
+  },
+  "min maj11": {
+    "name": "min maj11",
+    "uuid": "8b8cd47b-7ca9-4100-bea3-6f596e19fe39",
+    "semitones": [
+      0,
+      3,
+      7,
+      11,
+      14,
+      17
+    ],
+    "formula": [
+      "1",
+      "b3",
+      "5",
+      "7",
+      "9",
+      "11"
+    ],
+    "isMinor": true,
+    "symbol": "m M11"
+  },
+  "min maj11(b9)": {
+    "name": "min maj11(b9)",
+    "uuid": "8286677a-e082-4221-951f-708f4f3793b1",
+    "semitones": [
+      0,
+      3,
+      7,
+      11,
+      13,
+      17
+    ],
+    "formula": [
+      "1",
+      "b3",
+      "5",
+      "7",
+      "b9",
+      "11"
+    ],
+    "isMinor": true,
+    "symbol": "m M11(b9)"
+  },
+  "min maj13(#11)": {
+    "name": "min maj13(#11)",
+    "uuid": "2abaa030-a709-4592-b1f4-98b0e530433b",
+    "semitones": [
+      0,
+      3,
+      7,
+      11,
+      14,
+      18,
+      21
+    ],
+    "formula": [
+      "1",
+      "b3",
+      "5",
+      "7",
+      "9",
+      "#11",
+      "13"
+    ],
+    "isMinor": true,
+    "symbol": "m M13(#11)"
+  },
+  "min maj9 #11 b13": {
+    "name": "min maj9 #11 b13",
+    "uuid": "368f0a71-aee5-4848-873f-d76f5d558d41",
+    "semitones": [
+      0,
+      3,
+      7,
+      11,
+      14,
+      18,
+      20
+    ],
+    "formula": [
+      "1",
+      "b3",
+      "5",
+      "7",
+      "9",
+      "#11",
+      "b13"
+    ],
+    "isMinor": true,
+    "symbol": "m M9 #11 b13"
+  },
+  "min maj13": {
+    "name": "min maj13",
+    "uuid": "e7b36dfe-1e40-46be-a576-adfe34ca0f33",
+    "semitones": [
+      0,
+      3,
+      7,
+      11,
+      14,
+      17,
+      21
+    ],
+    "formula": [
+      "1",
+      "b3",
+      "5",
+      "7",
+      "9",
+      "11",
+      "13"
+    ],
+    "isMinor": true,
+    "symbol": "m M13"
+  },
+  "min maj13(b9)": {
+    "name": "min maj13(b9)",
+    "uuid": "5a0f822d-0cde-4e1d-9c7f-d81da4406729",
+    "semitones": [
+      0,
+      3,
+      7,
+      11,
+      13,
+      17,
+      21
+    ],
+    "formula": [
+      "1",
+      "b3",
+      "5",
+      "7",
+      "b9",
+      "11",
+      "13"
+    ],
+    "isMinor": true,
+    "symbol": "m M13(b9)"
+  },
+  "min maj11 b13": {
+    "name": "min maj11 b13",
+    "uuid": "072ee3de-9dfb-4c1c-accb-21a5446c1863",
+    "semitones": [
+      0,
+      3,
+      7,
+      11,
+      14,
+      17,
+      20
+    ],
+    "formula": [
+      "1",
+      "b3",
+      "5",
+      "7",
+      "9",
+      "11",
+      "b13"
+    ],
+    "isMinor": true,
+    "symbol": "m M11 b13"
+  },
+  "min maj11(b9) b13": {
+    "name": "min maj11(b9) b13",
+    "uuid": "a9fa77b6-d752-400b-98ab-6a8940e7e370",
+    "semitones": [
+      0,
+      3,
+      7,
+      11,
+      13,
+      17,
+      20
+    ],
+    "formula": [
+      "1",
+      "b3",
+      "5",
+      "7",
+      "b9",
+      "11",
+      "b13"
+    ],
+    "isMinor": true,
+    "symbol": "m M11(b9) b13"
+  },
+  "7": {
+    "name": "7",
+    "uuid": "70b96823-2078-4949-8060-86c62883df2d",
+    "semitones": [
+      0,
+      4,
+      7,
+      10
+    ],
+    "formula": [
+      "1",
+      "3",
+      "5",
+      "b7"
+    ],
+    "isMinor": false,
+    "symbol": "7"
+  },
+  "7(sus2)": {
+    "name": "7(sus2)",
+    "uuid": "e240884a-71fc-4603-ae81-1dd0c1594e57",
+    "semitones": [
+      0,
+      2,
+      7,
+      10
+    ],
+    "formula": [
+      "1",
+      "2",
+      "5",
+      "b7"
+    ],
+    "isMinor": false,
+    "symbol": "7(sus2)"
+  },
+  "7(sus4)": {
+    "name": "7(sus4)",
+    "uuid": "36a55048-bc05-449f-8987-e056ed1cf975",
+    "semitones": [
+      0,
+      5,
+      7,
+      10
+    ],
+    "formula": [
+      "1",
+      "4",
+      "5",
+      "b7"
+    ],
+    "isMinor": false,
+    "symbol": "7(sus4)"
+  },
+  "7(sus2 b5)": {
+    "name": "7(sus2 b5)",
+    "uuid": "30d80b6e-a89d-4bd3-89ab-5ff0bd449c9d",
+    "semitones": [
+      0,
+      2,
+      6,
+      10
+    ],
+    "formula": [
+      "1",
+      "2",
+      "b5",
+      "b7"
+    ],
+    "isMinor": false,
+    "symbol": "7(sus2 b5)"
+  },
+  "7(sus2 b5) b9": {
+    "name": "7(sus2 b5) b9",
+    "uuid": "908a7e2b-27bd-4ddf-8cd0-3d6229e2aa12",
+    "semitones": [
+      0,
+      2,
+      6,
+      10,
+      13
+    ],
+    "formula": [
+      "1",
+      "2",
+      "b5",
+      "b7",
+      "b9"
+    ],
+    "isMinor": false,
+    "symbol": "7(sus2 b5) b9"
+  },
+  "9(b5) b9": {
+    "name": "9(b5) b9",
+    "uuid": "12053a31-ee64-42cb-be76-a3e632eda58a",
+    "semitones": [
+      0,
+      4,
+      6,
+      10,
+      13,
+      14
+    ],
+    "formula": [
+      "1",
+      "3",
+      "b5",
+      "b7",
+      "b9",
+      "9"
+    ],
+    "isMinor": false,
+    "symbol": "9(b5) b9"
+  },
+  "9(b5) b9 b13": {
+    "name": "9(b5) b9 b13",
+    "uuid": "08eaf60a-d288-4f2d-af0c-8c523bd412c5",
+    "semitones": [
+      0,
+      4,
+      6,
+      10,
+      13,
+      14,
+      20
+    ],
+    "formula": [
+      "1",
+      "3",
+      "b5",
+      "b7",
+      "b9",
+      "9",
+      "b13"
+    ],
+    "isMinor": false,
+    "symbol": "9(b5) b9 b13"
+  },
+  "7(sus2) #11": {
+    "name": "7(sus2) #11",
+    "uuid": "27d4433d-470e-4977-9e56-7a63db8bbb84",
+    "semitones": [
+      0,
+      2,
+      7,
+      10,
+      18
+    ],
+    "formula": [
+      "1",
+      "2",
+      "5",
+      "b7",
+      "#11"
+    ],
+    "isMinor": false,
+    "symbol": "7(sus2) #11"
+  },
+  "7(b5)": {
+    "name": "7(b5)",
+    "uuid": "65cf4f4e-1d12-400d-9a29-2b76e40d1373",
+    "semitones": [
+      0,
+      4,
+      6,
+      10
+    ],
+    "formula": [
+      "1",
+      "3",
+      "b5",
+      "b7"
+    ],
+    "isMinor": false,
+    "symbol": "7(b5)"
+  },
+  "7(b5) 11": {
+    "name": "7(b5) 11",
+    "uuid": "169ebdcd-78a7-405a-8d92-db761751eaa8",
+    "semitones": [
+      0,
+      4,
+      6,
+      10,
+      17
+    ],
+    "formula": [
+      "1",
+      "3",
+      "b5",
+      "b7",
+      "11"
+    ],
+    "isMinor": false,
+    "symbol": "7(b5) 11"
+  },
+  "7(b5) #11": {
+    "name": "7(b5) #11",
+    "uuid": "95d542d0-0eb7-4079-a624-8046e3592e59",
+    "semitones": [
+      0,
+      4,
+      6,
+      10,
+      18
+    ],
+    "formula": [
+      "1",
+      "3",
+      "b5",
+      "b7",
+      "#11"
+    ],
+    "isMinor": false,
+    "symbol": "7(b5) #11"
+  },
+  "9 13": {
+    "name": "9 13",
+    "uuid": "b5b934cb-d907-415a-9882-b4c0f529819c",
+    "semitones": [
+      0,
+      4,
+      7,
+      10,
+      14,
+      21
+    ],
+    "formula": [
+      "1",
+      "3",
+      "5",
+      "b7",
+      "9",
+      "13"
+    ],
+    "isMinor": false,
+    "symbol": "9 13"
+  },
+  "dim7": {
+    "name": "dim7",
+    "uuid": "e44f834f-6039-45e1-b8e0-b95d1e71ae89",
+    "semitones": [
+      0,
+      3,
+      6,
+      9
+    ],
+    "formula": [
+      "1",
+      "b3",
+      "b5",
+      "bb7"
+    ],
+    "isMinor": true,
+    "symbol": "o7"
+  },
+  "dim7 b9": {
+    "name": "dim7 b9",
+    "uuid": "0eaeee9e-fc4f-4065-924b-1cf9ac1d5f33",
+    "semitones": [
+      0,
+      3,
+      6,
+      9,
+      13
+    ],
+    "formula": [
+      "1",
+      "b3",
+      "b5",
+      "bb7",
+      "b9"
+    ],
+    "isMinor": true,
+    "symbol": "o7 b9"
+  },
+  "dim9": {
+    "name": "dim9",
+    "uuid": "483f65a7-9109-4911-b95b-f8c8065ea93b",
+    "semitones": [
+      0,
+      3,
+      6,
+      9,
+      14
+    ],
+    "formula": [
+      "1",
+      "b3",
+      "b5",
+      "bb7",
+      "9"
+    ],
+    "isMinor": true,
+    "symbol": "o9"
+  },
+  "dim7 b9 #11": {
+    "name": "dim7 b9 #11",
+    "uuid": "efd74afc-4e9f-4763-9166-bba9438da20e",
+    "semitones": [
+      0,
+      3,
+      6,
+      9,
+      13,
+      18
+    ],
+    "formula": [
+      "1",
+      "b3",
+      "b5",
+      "bb7",
+      "b9",
+      "#11"
+    ],
+    "isMinor": true,
+    "symbol": "o7 b9 #11"
+  },
+  "dim13(b9 #11)": {
+    "name": "dim13(b9 #11)",
+    "uuid": "75095d0c-9ccc-4ee5-9fb3-06453419e40d",
+    "semitones": [
+      0,
+      3,
+      6,
+      9,
+      13,
+      18,
+      21
+    ],
+    "formula": [
+      "1",
+      "b3",
+      "b5",
+      "bb7",
+      "b9",
+      "#11",
+      "13"
+    ],
+    "isMinor": true,
+    "symbol": "o13(b9 #11)"
+  },
+  "dim11": {
+    "name": "dim11",
+    "uuid": "6de038e6-a25a-43fe-8793-186ef2a45751",
+    "semitones": [
+      0,
+      3,
+      6,
+      9,
+      14,
+      17
+    ],
+    "formula": [
+      "1",
+      "b3",
+      "b5",
+      "bb7",
+      "9",
+      "11"
+    ],
+    "isMinor": true,
+    "symbol": "o11"
+  },
+  "dim7 b9 #11 b13": {
+    "name": "dim7 b9 #11 b13",
+    "uuid": "c2c0b87f-7748-41f3-a409-131c3e69fd3f",
+    "semitones": [
+      0,
+      3,
+      6,
+      9,
+      13,
+      18,
+      20
+    ],
+    "formula": [
+      "1",
+      "b3",
+      "b5",
+      "bb7",
+      "b9",
+      "#11",
+      "b13"
+    ],
+    "isMinor": true,
+    "symbol": "o7 b9 #11 b13"
+  },
+  "dim13": {
+    "name": "dim13",
+    "uuid": "3aa189fd-5a51-4e9d-a81f-f955143aa61f",
+    "semitones": [
+      0,
+      3,
+      6,
+      9,
+      14,
+      17,
+      21
+    ],
+    "formula": [
+      "1",
+      "b3",
+      "b5",
+      "bb7",
+      "9",
+      "11",
+      "13"
+    ],
+    "isMinor": true,
+    "symbol": "o13"
+  },
+  "6(b5) b9 #9": {
+    "name": "6(b5) b9 #9",
+    "uuid": "26303924-4f14-4c65-a548-60fad785764b",
+    "semitones": [
+      0,
+      4,
+      6,
+      9,
+      13,
+      15
+    ],
+    "formula": [
+      "1",
+      "3",
+      "b5",
+      "6",
+      "b9",
+      "#9"
+    ],
+    "isMinor": false,
+    "symbol": "6(b5) b9 #9"
+  },
+  "dim11(b9)": {
+    "name": "dim11(b9)",
+    "uuid": "04800c88-642a-41df-8f48-58c6161f21fd",
+    "semitones": [
+      0,
+      3,
+      6,
+      9,
+      13,
+      17
+    ],
+    "formula": [
+      "1",
+      "b3",
+      "b5",
+      "bb7",
+      "b9",
+      "11"
+    ],
+    "isMinor": true,
+    "symbol": "o11(b9)"
+  },
+  "dim13(b9)": {
+    "name": "dim13(b9)",
+    "uuid": "abc4f7bc-59c9-46fb-89e3-b80a93b6c8bc",
+    "semitones": [
+      0,
+      3,
+      6,
+      9,
+      13,
+      17,
+      21
+    ],
+    "formula": [
+      "1",
+      "b3",
+      "b5",
+      "bb7",
+      "b9",
+      "11",
+      "13"
+    ],
+    "isMinor": true,
+    "symbol": "o13(b9)"
+  },
+  "6(b5) b9 #9 b13": {
+    "name": "6(b5) b9 #9 b13",
+    "uuid": "f776db43-427d-412a-b4f3-c2d610dfb553",
+    "semitones": [
+      0,
+      4,
+      6,
+      9,
+      13,
+      15,
+      20
+    ],
+    "formula": [
+      "1",
+      "3",
+      "b5",
+      "6",
+      "b9",
+      "#9",
+      "b13"
+    ],
+    "isMinor": false,
+    "symbol": "6(b5) b9 #9 b13"
+  },
+  "dim11(b9) b13": {
+    "name": "dim11(b9) b13",
+    "uuid": "4f4cfa3f-37ee-4d50-a890-e0a5ab42a3a5",
+    "semitones": [
+      0,
+      3,
+      6,
+      9,
+      13,
+      17,
+      20
+    ],
+    "formula": [
+      "1",
+      "b3",
+      "b5",
+      "bb7",
+      "b9",
+      "11",
+      "b13"
+    ],
+    "isMinor": true,
+    "symbol": "o11(b9) b13"
+  },
+  "dim #5": {
+    "name": "dim #5",
+    "uuid": "4e728e3a-ac15-4323-9d43-a5416598b10c",
+    "semitones": [
+      0,
+      3,
+      6,
+      8
+    ],
+    "formula": [
+      "1",
+      "b3",
+      "b5",
+      "#5"
+    ],
+    "isMinor": true,
+    "symbol": "o #5"
+  },
+  "6": {
+    "name": "6",
+    "uuid": "7429e0e8-8932-452c-b57a-6b965349e04b",
+    "semitones": [
+      0,
+      4,
+      7,
+      9
+    ],
+    "formula": [
+      "1",
+      "3",
+      "5",
+      "6"
+    ],
+    "isMinor": false,
+    "symbol": "6"
+  },
+  "6 #9": {
+    "name": "6 #9",
+    "uuid": "6c0efb9a-7a00-4872-846a-c9cc3b76418b",
+    "semitones": [
+      0,
+      4,
+      7,
+      9,
+      15
+    ],
+    "formula": [
+      "1",
+      "3",
+      "5",
+      "6",
+      "#9"
+    ],
+    "isMinor": false,
+    "symbol": "6 #9"
+  },
+  "min6": {
+    "name": "min6",
+    "uuid": "e81e1237-9ea5-4d55-9457-dd96a8faf68c",
+    "semitones": [
+      0,
+      3,
+      7,
+      9
+    ],
+    "formula": [
+      "1",
+      "b3",
+      "5",
+      "6"
+    ],
+    "isMinor": true,
+    "symbol": "m6"
+  },
+  "min6 11": {
+    "name": "min6 11",
+    "uuid": "40d7eec2-5eab-44cd-a0a8-01cb73af8f31",
+    "semitones": [
+      0,
+      3,
+      7,
+      9,
+      17
+    ],
+    "formula": [
+      "1",
+      "b3",
+      "5",
+      "6",
+      "11"
+    ],
+    "isMinor": true,
+    "symbol": "m6 11"
+  },
+  "min6 b9": {
+    "name": "min6 b9",
+    "uuid": "27331497-7cf3-4250-abec-fb3912ee4c19",
+    "semitones": [
+      0,
+      3,
+      7,
+      9,
+      13
+    ],
+    "formula": [
+      "1",
+      "b3",
+      "5",
+      "6",
+      "b9"
+    ],
+    "isMinor": true,
+    "symbol": "m6 b9"
+  },
+  "min6 b9 b11": {
+    "name": "min6 b9 b11",
+    "uuid": "c17b6107-d9a2-491f-a345-a198e7b8d8dc",
+    "semitones": [
+      0,
+      3,
+      7,
+      9,
+      13,
+      16
+    ],
+    "formula": [
+      "1",
+      "b3",
+      "5",
+      "6",
+      "b9",
+      "b11"
+    ],
+    "isMinor": true,
+    "symbol": "m6 b9 b11"
+  },
+  "min6 b9 b11 b13": {
+    "name": "min6 b9 b11 b13",
+    "uuid": "037ad5bf-61d0-4b4d-8910-b7243db3043c",
+    "semitones": [
+      0,
+      3,
+      7,
+      9,
+      13,
+      16,
+      20
+    ],
+    "formula": [
+      "1",
+      "b3",
+      "5",
+      "6",
+      "b9",
+      "b11",
+      "b13"
+    ],
+    "isMinor": true,
+    "symbol": "m6 b9 b11 b13"
+  },
+  "maj9": {
+    "name": "maj9",
+    "uuid": "f730d79d-17bf-4954-ae4b-169d68ca559f",
+    "semitones": [
+      0,
+      4,
+      7,
+      11,
+      14
+    ],
+    "formula": [
+      "1",
+      "3",
+      "5",
+      "7",
+      "9"
+    ],
+    "isMinor": false,
+    "symbol": "M9"
+  },
+  "maj9(sus4)": {
+    "name": "maj9(sus4)",
+    "uuid": "c96173fd-a4a5-4c44-bf23-5e2979480883",
+    "semitones": [
+      0,
+      5,
+      7,
+      11,
+      14
+    ],
+    "formula": [
+      "1",
+      "4",
+      "5",
+      "7",
+      "9"
+    ],
+    "isMinor": false,
+    "symbol": "M9(sus4)"
+  },
+  "maj9(sus4) #11": {
+    "name": "maj9(sus4) #11",
+    "uuid": "7e43e653-b82c-48be-a536-86d0e3dd96cf",
+    "semitones": [
+      0,
+      5,
+      7,
+      11,
+      14,
+      18
+    ],
+    "formula": [
+      "1",
+      "4",
+      "5",
+      "7",
+      "9",
+      "#11"
+    ],
+    "isMinor": false,
+    "symbol": "M9(sus4) #11"
+  },
+  "maj13(sus4) #11": {
+    "name": "maj13(sus4) #11",
+    "uuid": "8431855a-2ca3-4314-b78e-e9095b49bbe7",
+    "semitones": [
+      0,
+      5,
+      7,
+      11,
+      14,
+      18,
+      21
+    ],
+    "formula": [
+      "1",
+      "4",
+      "5",
+      "7",
+      "9",
+      "#11",
+      "13"
+    ],
+    "isMinor": false,
+    "symbol": "M13(sus4) #11"
+  },
+  "maj9(sus4) b7 #11": {
+    "name": "maj9(sus4) b7 #11",
+    "uuid": "018c5985-2c7b-4c0a-b6ed-a04be3ced973",
+    "semitones": [
+      0,
+      5,
+      7,
+      10,
+      11,
+      14,
+      18
+    ],
+    "formula": [
+      "1",
+      "4",
+      "5",
+      "b7",
+      "7",
+      "9",
+      "#11"
+    ],
+    "isMinor": false,
+    "symbol": "M9(sus4) b7 #11"
+  },
+  "maj add 9": {
+    "name": "maj add 9",
+    "uuid": "5449cb3d-a0e4-49c5-9f8c-4c7edb14d48f",
+    "semitones": [
+      0,
+      4,
+      7,
+      14
+    ],
+    "formula": [
+      "1",
+      "3",
+      "5",
+      "9"
+    ],
+    "isMinor": false,
+    "symbol": "M add 9"
+  },
+  "maj add 13": {
+    "name": "maj add 13",
+    "uuid": "a9c6dd45-31dc-448a-b1c2-35f98817bc29",
+    "semitones": [
+      0,
+      4,
+      7,
+      21
+    ],
+    "formula": [
+      "1",
+      "3",
+      "5",
+      "13"
+    ],
+    "isMinor": false,
+    "symbol": "M add 13"
+  },
+  "maj b9": {
+    "name": "maj b9",
+    "uuid": "213ef7cf-6bab-4f97-9c83-17c9bd2f7d25",
+    "semitones": [
+      0,
+      4,
+      7,
+      13
+    ],
+    "formula": [
+      "1",
+      "3",
+      "5",
+      "b9"
+    ],
+    "isMinor": false,
+    "symbol": "M b9"
+  },
+  "6 9": {
+    "name": "6 9",
+    "uuid": "a9ffab8c-d98b-4c09-8321-5af978513057",
+    "semitones": [
+      0,
+      4,
+      7,
+      9,
+      14
+    ],
+    "formula": [
+      "1",
+      "3",
+      "5",
+      "6",
+      "9"
+    ],
+    "isMinor": false,
+    "symbol": "6 9"
+  },
+  "min9": {
+    "name": "min9",
+    "uuid": "ea321cbb-e3f9-4878-b934-c2ba0152bb56",
+    "semitones": [
+      0,
+      3,
+      7,
+      10,
+      14
+    ],
+    "formula": [
+      "1",
+      "b3",
+      "5",
+      "b7",
+      "9"
+    ],
+    "isMinor": true,
+    "symbol": "m9"
+  },
+  "min add 9 11": {
+    "name": "min add 9 11",
+    "uuid": "b698dfa1-ba1d-470b-a741-c5788e99d310",
+    "semitones": [
+      0,
+      3,
+      7,
+      14,
+      17
+    ],
+    "formula": [
+      "1",
+      "b3",
+      "5",
+      "9",
+      "11"
+    ],
+    "isMinor": true,
+    "symbol": "m add 9 11"
+  },
+  "min add 9": {
+    "name": "min add 9",
+    "uuid": "a64fc730-ae67-4b5d-aa6e-66d520dd73f6",
+    "semitones": [
+      0,
+      3,
+      7,
+      14
+    ],
+    "formula": [
+      "1",
+      "b3",
+      "5",
+      "9"
+    ],
+    "isMinor": true,
+    "symbol": "m add 9"
+  },
+  "min(no5) add 9": {
+    "name": "min(no5) add 9",
+    "uuid": "f0d6bd76-aac2-4c7d-9e9f-2c92e11d03cc",
+    "semitones": [
+      0,
+      3,
+      14
+    ],
+    "formula": [
+      "1",
+      "b3",
+      "9"
+    ],
+    "isMinor": true,
+    "symbol": "m(no5) add 9"
+  },
+  "min b9": {
+    "name": "min b9",
+    "uuid": "b6a9450a-defe-47bd-80f7-a1098461ff67",
+    "semitones": [
+      0,
+      3,
+      7,
+      13
+    ],
+    "formula": [
+      "1",
+      "b3",
+      "5",
+      "b9"
+    ],
+    "isMinor": true,
+    "symbol": "m b9"
+  },
+  "min add 11": {
+    "name": "min add 11",
+    "uuid": "c03cad04-c3fe-4172-9b4d-e3feacf95c2a",
+    "semitones": [
+      0,
+      3,
+      7,
+      17
+    ],
+    "formula": [
+      "1",
+      "b3",
+      "5",
+      "11"
+    ],
+    "isMinor": true,
+    "symbol": "m add 11"
+  },
+  "min add 13": {
+    "name": "min add 13",
+    "uuid": "14b25185-5901-4a51-8e72-e48e3adf3dba",
+    "semitones": [
+      0,
+      3,
+      7,
+      21
+    ],
+    "formula": [
+      "1",
+      "b3",
+      "5",
+      "13"
+    ],
+    "isMinor": true,
+    "symbol": "m add 13"
+  },
+  "min #11": {
+    "name": "min #11",
+    "uuid": "8aaf4a09-1d29-47f6-afdc-58507bdd4f15",
+    "semitones": [
+      0,
+      3,
+      7,
+      18
+    ],
+    "formula": [
+      "1",
+      "b3",
+      "5",
+      "#11"
+    ],
+    "isMinor": true,
+    "symbol": "m #11"
+  },
+  "min6 9": {
+    "name": "min6 9",
+    "uuid": "1386f23d-9e99-484f-8289-cb73445b67d0",
+    "semitones": [
+      0,
+      3,
+      7,
+      9,
+      14
+    ],
+    "formula": [
+      "1",
+      "b3",
+      "5",
+      "6",
+      "9"
+    ],
+    "isMinor": true,
+    "symbol": "m6 9"
+  },
+  "9(b5)": {
+    "name": "9(b5)",
+    "uuid": "c99e25a9-a1f0-4533-9784-4aff3294696e",
+    "semitones": [
+      0,
+      4,
+      6,
+      10,
+      14
+    ],
+    "formula": [
+      "1",
+      "3",
+      "b5",
+      "b7",
+      "9"
+    ],
+    "isMinor": false,
+    "symbol": "9(b5)"
+  },
+  "min9(b5)": {
+    "name": "min9(b5)",
+    "uuid": "6c32e8dc-c844-4867-9cc6-704d7de52838",
+    "semitones": [
+      0,
+      3,
+      6,
+      10,
+      14
+    ],
+    "formula": [
+      "1",
+      "b3",
+      "b5",
+      "b7",
+      "9"
+    ],
+    "isMinor": true,
+    "symbol": "m9(b5)"
+  },
+  "9(b5) #9": {
+    "name": "9(b5) #9",
+    "uuid": "c5876a7c-32c3-4454-8cf2-e1b11a330cc0",
+    "semitones": [
+      0,
+      4,
+      6,
+      10,
+      14,
+      15
+    ],
+    "formula": [
+      "1",
+      "3",
+      "b5",
+      "b7",
+      "9",
+      "#9"
+    ],
+    "isMinor": false,
+    "symbol": "9(b5) #9"
+  },
+  "9(b5) #9 b13": {
+    "name": "9(b5) #9 b13",
+    "uuid": "7da6e8d9-4e5a-4e4e-9fbc-09115f6417f1",
+    "semitones": [
+      0,
+      4,
+      6,
+      10,
+      14,
+      15,
+      20
+    ],
+    "formula": [
+      "1",
+      "3",
+      "b5",
+      "b7",
+      "9",
+      "#9",
+      "b13"
+    ],
+    "isMinor": false,
+    "symbol": "9(b5) #9 b13"
+  },
+  "9": {
+    "name": "9",
+    "uuid": "a376f013-c97d-4df6-808a-1b8e6e76fbe5",
+    "semitones": [
+      0,
+      4,
+      7,
+      10,
+      14
+    ],
+    "formula": [
+      "1",
+      "3",
+      "5",
+      "b7",
+      "9"
+    ],
+    "isMinor": false,
+    "symbol": "9"
+  },
+  "maj b9 #9": {
+    "name": "maj b9 #9",
+    "uuid": "fea2d904-0b89-45ee-916b-a5b3afea4f72",
+    "semitones": [
+      0,
+      4,
+      7,
+      13,
+      15
+    ],
+    "formula": [
+      "1",
+      "3",
+      "5",
+      "b9",
+      "#9"
+    ],
+    "isMinor": false,
+    "symbol": "M b9 #9"
+  },
+  "7 b9": {
+    "name": "7 b9",
+    "uuid": "4eeb7525-3ab4-4407-942c-a462e8d4b681",
+    "semitones": [
+      0,
+      4,
+      7,
+      10,
+      13
+    ],
+    "formula": [
+      "1",
+      "3",
+      "5",
+      "b7",
+      "b9"
+    ],
+    "isMinor": false,
+    "symbol": "7 b9"
+  },
+  "11(b9) b13": {
+    "name": "11(b9) b13",
+    "uuid": "ca8425b5-d4b8-4c56-871e-97c863403da1",
+    "semitones": [
+      0,
+      4,
+      7,
+      10,
+      13,
+      17,
+      20
+    ],
+    "formula": [
+      "1",
+      "3",
+      "5",
+      "b7",
+      "b9",
+      "11",
+      "b13"
+    ],
+    "isMinor": false,
+    "symbol": "11(b9) b13"
+  },
+  "7 b9 b11 b13": {
+    "name": "7 b9 b11 b13",
+    "uuid": "ff2c9f7c-b6a7-412d-a10b-6d02afab7e55",
+    "semitones": [
+      0,
+      4,
+      7,
+      10,
+      13,
+      16,
+      20
+    ],
+    "formula": [
+      "1",
+      "3",
+      "5",
+      "b7",
+      "b9",
+      "b11",
+      "b13"
+    ],
+    "isMinor": false,
+    "symbol": "7 b9 b11 b13"
+  },
+  "7 #9": {
+    "name": "7 #9",
+    "uuid": "8ef9d3d5-d055-49dc-84e9-7e4b1d3052d1",
+    "semitones": [
+      0,
+      4,
+      7,
+      10,
+      15
+    ],
+    "formula": [
+      "1",
+      "3",
+      "5",
+      "b7",
+      "#9"
+    ],
+    "isMinor": false,
+    "symbol": "7 #9"
+  },
+  "7 #11": {
+    "name": "7 #11",
+    "uuid": "429c7ea7-f55b-458d-a505-a4d9a94c3f90",
+    "semitones": [
+      0,
+      4,
+      7,
+      10,
+      18
+    ],
+    "formula": [
+      "1",
+      "3",
+      "5",
+      "b7",
+      "#11"
+    ],
+    "isMinor": false,
+    "symbol": "7 #11"
+  },
+  "7(b5) b9": {
+    "name": "7(b5) b9",
+    "uuid": "2c6fbe06-8cb8-408f-a241-40f836d09415",
+    "semitones": [
+      0,
+      4,
+      6,
+      10,
+      13
+    ],
+    "formula": [
+      "1",
+      "3",
+      "b5",
+      "b7",
+      "b9"
+    ],
+    "isMinor": false,
+    "symbol": "7(b5) b9"
+  },
+  "7(b5) #9": {
+    "name": "7(b5) #9",
+    "uuid": "4d8f908d-4e0a-4954-a939-f7b7126f1047",
+    "semitones": [
+      0,
+      4,
+      6,
+      10,
+      15
+    ],
+    "formula": [
+      "1",
+      "3",
+      "b5",
+      "b7",
+      "#9"
+    ],
+    "isMinor": false,
+    "symbol": "7(b5) #9"
+  },
+  "7(#5) b9": {
+    "name": "7(#5) b9",
+    "uuid": "bad30c97-7e95-4970-b0b8-a784eca41ac6",
+    "semitones": [
+      0,
+      4,
+      8,
+      10,
+      13
+    ],
+    "formula": [
+      "1",
+      "3",
+      "#5",
+      "b7",
+      "b9"
+    ],
+    "isMinor": false,
+    "symbol": "7(#5) b9"
+  },
+  "7(#5) #9": {
+    "name": "7(#5) #9",
+    "uuid": "068c65e2-5ee5-4ad7-bbd7-2d832c5b3063",
+    "semitones": [
+      0,
+      4,
+      8,
+      10,
+      15
+    ],
+    "formula": [
+      "1",
+      "3",
+      "#5",
+      "b7",
+      "#9"
+    ],
+    "isMinor": false,
+    "symbol": "7(#5) #9"
+  },
+  "9(#5)": {
+    "name": "9(#5)",
+    "uuid": "c480ce90-ffcc-4a15-9f8b-6668151e91a8",
+    "semitones": [
+      0,
+      4,
+      8,
+      10,
+      14
+    ],
+    "formula": [
+      "1",
+      "3",
+      "#5",
+      "b7",
+      "9"
+    ],
+    "isMinor": false,
+    "symbol": "9(#5)"
+  },
+  "9 b11": {
+    "name": "9 b11",
+    "uuid": "c1cebbbe-d0d9-4a1a-90c5-ca2df489aa3c",
+    "semitones": [
+      0,
+      4,
+      7,
+      10,
+      14,
+      16
+    ],
+    "formula": [
+      "1",
+      "3",
+      "5",
+      "b7",
+      "9",
+      "b11"
+    ],
+    "isMinor": false,
+    "symbol": "9 b11"
+  },
+  "9(#5) #11": {
+    "name": "9(#5) #11",
+    "uuid": "1079709e-8e9d-4d8e-82ac-4c98aba03731",
+    "semitones": [
+      0,
+      4,
+      8,
+      10,
+      14,
+      18
+    ],
+    "formula": [
+      "1",
+      "3",
+      "#5",
+      "b7",
+      "9",
+      "#11"
+    ],
+    "isMinor": false,
+    "symbol": "9(#5) #11"
+  },
+  "9(#5) #11 #13": {
+    "name": "9(#5) #11 #13",
+    "uuid": "dff1ab92-5f69-475e-bb89-a1c546c0e8b6",
+    "semitones": [
+      0,
+      4,
+      8,
+      10,
+      14,
+      18,
+      22
+    ],
+    "formula": [
+      "1",
+      "3",
+      "#5",
+      "b7",
+      "9",
+      "#11",
+      "#13"
+    ],
+    "isMinor": false,
+    "symbol": "9(#5) #11 #13"
+  },
+  "13(#5)": {
+    "name": "13(#5)",
+    "uuid": "b5738bc0-0bb4-444d-b658-7dc1598af30a",
+    "semitones": [
+      0,
+      4,
+      8,
+      10,
+      14,
+      17,
+      21
+    ],
+    "formula": [
+      "1",
+      "3",
+      "#5",
+      "b7",
+      "9",
+      "11",
+      "13"
+    ],
+    "isMinor": false,
+    "symbol": "13(#5)"
+  },
+  "13(b5)": {
+    "name": "13(b5)",
+    "uuid": "2356f5de-1dd0-4a04-99df-40830fd76352",
+    "semitones": [
+      0,
+      4,
+      6,
+      10,
+      14,
+      17,
+      21
+    ],
+    "formula": [
+      "1",
+      "3",
+      "b5",
+      "b7",
+      "9",
+      "11",
+      "13"
+    ],
+    "isMinor": false,
+    "symbol": "13(b5)"
+  },
+  "13(b5 b9)": {
+    "name": "13(b5 b9)",
+    "uuid": "0be72a5c-7114-4cd6-9d86-1347dc885dde",
+    "semitones": [
+      0,
+      4,
+      6,
+      10,
+      13,
+      17,
+      21
+    ],
+    "formula": [
+      "1",
+      "3",
+      "b5",
+      "b7",
+      "b9",
+      "11",
+      "13"
+    ],
+    "isMinor": false,
+    "symbol": "13(b5 b9)"
+  },
+  "13(b11)": {
+    "name": "13(b11)",
+    "uuid": "aa0fa999-701a-40b4-b874-05436793a944",
+    "semitones": [
+      0,
+      4,
+      7,
+      10,
+      14,
+      16,
+      21
+    ],
+    "formula": [
+      "1",
+      "3",
+      "5",
+      "b7",
+      "9",
+      "b11",
+      "13"
+    ],
+    "isMinor": false,
+    "symbol": "13(b11)"
+  },
+  "13(#5 #9)": {
+    "name": "13(#5 #9)",
+    "uuid": "7f0c4504-a004-45f7-824a-e8ce990b52b0",
+    "semitones": [
+      0,
+      4,
+      8,
+      10,
+      15,
+      17,
+      21
+    ],
+    "formula": [
+      "1",
+      "3",
+      "#5",
+      "b7",
+      "#9",
+      "11",
+      "13"
+    ],
+    "isMinor": false,
+    "symbol": "13(#5 #9)"
+  },
+  "13(#5 #11)": {
+    "name": "13(#5 #11)",
+    "uuid": "5fe5041e-eb3b-4679-bca4-949cb4e1eef1",
+    "semitones": [
+      0,
+      4,
+      8,
+      10,
+      14,
+      18,
+      21
+    ],
+    "formula": [
+      "1",
+      "3",
+      "#5",
+      "b7",
+      "9",
+      "#11",
+      "13"
+    ],
+    "isMinor": false,
+    "symbol": "13(#5 #11)"
+  },
+  "9(sus4)": {
+    "name": "9(sus4)",
+    "uuid": "621e1cc4-5dca-46e2-b53a-f63e963302f0",
+    "semitones": [
+      0,
+      5,
+      7,
+      10,
+      14
+    ],
+    "formula": [
+      "1",
+      "4",
+      "5",
+      "b7",
+      "9"
+    ],
+    "isMinor": false,
+    "symbol": "9(sus4)"
+  },
+  "7(sus4) b9": {
+    "name": "7(sus4) b9",
+    "uuid": "0553d51b-bfff-4a42-ae87-be34280d92c0",
+    "semitones": [
+      0,
+      5,
+      7,
+      10,
+      13
+    ],
+    "formula": [
+      "1",
+      "4",
+      "5",
+      "b7",
+      "b9"
+    ],
+    "isMinor": false,
+    "symbol": "7(sus4) b9"
+  },
+  "min9 #11": {
+    "name": "min9 #11",
+    "uuid": "2dcd528e-31e5-4d98-90c2-61d28d7f981c",
+    "semitones": [
+      0,
+      3,
+      7,
+      10,
+      14,
+      18
+    ],
+    "formula": [
+      "1",
+      "b3",
+      "5",
+      "b7",
+      "9",
+      "#11"
+    ],
+    "isMinor": true,
+    "symbol": "m9 #11"
+  },
+  "min9 b11": {
+    "name": "min9 b11",
+    "uuid": "9f382d69-832e-4101-bbe1-94a01f88924d",
+    "semitones": [
+      0,
+      3,
+      7,
+      10,
+      14,
+      16
+    ],
+    "formula": [
+      "1",
+      "b3",
+      "5",
+      "b7",
+      "9",
+      "b11"
+    ],
+    "isMinor": true,
+    "symbol": "m9 b11"
+  },
+  "min9 b11 b13": {
+    "name": "min9 b11 b13",
+    "uuid": "d82965bc-3622-41b3-a24d-6e104d669894",
+    "semitones": [
+      0,
+      3,
+      7,
+      10,
+      14,
+      16,
+      20
+    ],
+    "formula": [
+      "1",
+      "b3",
+      "5",
+      "b7",
+      "9",
+      "b11",
+      "b13"
+    ],
+    "isMinor": true,
+    "symbol": "m9 b11 b13"
+  },
+  "min9 #11 b13": {
+    "name": "min9 #11 b13",
+    "uuid": "01e11ad2-63d2-433b-a9fd-16c47702676b",
+    "semitones": [
+      0,
+      3,
+      7,
+      10,
+      14,
+      18,
+      20
+    ],
+    "formula": [
+      "1",
+      "b3",
+      "5",
+      "b7",
+      "9",
+      "#11",
+      "b13"
+    ],
+    "isMinor": true,
+    "symbol": "m9 #11 b13"
+  },
+  "maj9 #11": {
+    "name": "maj9 #11",
+    "uuid": "5e7c4967-ab73-43ca-bbc6-f8288f941315",
+    "semitones": [
+      0,
+      4,
+      7,
+      11,
+      14,
+      18
+    ],
+    "formula": [
+      "1",
+      "3",
+      "5",
+      "7",
+      "9",
+      "#11"
+    ],
+    "isMinor": false,
+    "symbol": "M9 #11"
+  },
+  "maj9 #11 b13": {
+    "name": "maj9 #11 b13",
+    "uuid": "bd290bd1-ab72-43d0-b701-d2debd92e68e",
+    "semitones": [
+      0,
+      4,
+      7,
+      11,
+      14,
+      18,
+      20
+    ],
+    "formula": [
+      "1",
+      "3",
+      "5",
+      "7",
+      "9",
+      "#11",
+      "b13"
+    ],
+    "isMinor": false,
+    "symbol": "M9 #11 b13"
+  },
+  "maj9 b7 #11": {
+    "name": "maj9 b7 #11",
+    "uuid": "b8ec40b4-bf29-435d-81f3-5c2dae6b305f",
+    "semitones": [
+      0,
+      4,
+      7,
+      10,
+      11,
+      14,
+      18
+    ],
+    "formula": [
+      "1",
+      "3",
+      "5",
+      "b7",
+      "7",
+      "9",
+      "#11"
+    ],
+    "isMinor": false,
+    "symbol": "M9 b7 #11"
+  },
+  "9 #11": {
+    "name": "9 #11",
+    "uuid": "8a34a587-7052-4467-a4af-52b8356920b8",
+    "semitones": [
+      0,
+      4,
+      7,
+      10,
+      14,
+      18
+    ],
+    "formula": [
+      "1",
+      "3",
+      "5",
+      "b7",
+      "9",
+      "#11"
+    ],
+    "isMinor": false,
+    "symbol": "9 #11"
+  },
+  "9 #11 b13": {
+    "name": "9 #11 b13",
+    "uuid": "1dff5412-41e5-4c53-84a6-73d3ba7dc4a1",
+    "semitones": [
+      0,
+      4,
+      7,
+      10,
+      14,
+      18,
+      20
+    ],
+    "formula": [
+      "1",
+      "3",
+      "5",
+      "b7",
+      "9",
+      "#11",
+      "b13"
+    ],
+    "isMinor": false,
+    "symbol": "9 #11 b13"
+  },
+  "11": {
+    "name": "11",
+    "uuid": "67e50796-54a2-489f-8eee-d6be9b7b592c",
+    "semitones": [
+      0,
+      4,
+      7,
+      10,
+      14,
+      17
+    ],
+    "formula": [
+      "1",
+      "3",
+      "5",
+      "b7",
+      "9",
+      "11"
+    ],
+    "isMinor": false,
+    "symbol": "11"
+  },
+  "11(b5)": {
+    "name": "11(b5)",
+    "uuid": "a2829308-f04a-4050-874e-eb4895f24c90",
+    "semitones": [
+      0,
+      4,
+      6,
+      10,
+      14,
+      17
+    ],
+    "formula": [
+      "1",
+      "3",
+      "b5",
+      "b7",
+      "9",
+      "11"
+    ],
+    "isMinor": false,
+    "symbol": "11(b5)"
+  },
+  "11(#5)": {
+    "name": "11(#5)",
+    "uuid": "31bc3c5e-64b3-42f7-994c-2198d3ac7b67",
+    "semitones": [
+      0,
+      4,
+      8,
+      10,
+      14,
+      17
+    ],
+    "formula": [
+      "1",
+      "3",
+      "#5",
+      "b7",
+      "9",
+      "11"
+    ],
+    "isMinor": false,
+    "symbol": "11(#5)"
+  },
+  "11(#5 #9)": {
+    "name": "11(#5 #9)",
+    "uuid": "1d931892-604c-4d4d-9fd5-7493576f8374",
+    "semitones": [
+      0,
+      4,
+      8,
+      10,
+      15,
+      17
+    ],
+    "formula": [
+      "1",
+      "3",
+      "#5",
+      "b7",
+      "#9",
+      "11"
+    ],
+    "isMinor": false,
+    "symbol": "11(#5 #9)"
+  },
+  "11(b5 b9)": {
+    "name": "11(b5 b9)",
+    "uuid": "62404c9e-33f8-4193-8765-f144eb28a7d6",
+    "semitones": [
+      0,
+      4,
+      6,
+      10,
+      13,
+      17
+    ],
+    "formula": [
+      "1",
+      "3",
+      "b5",
+      "b7",
+      "b9",
+      "11"
+    ],
+    "isMinor": false,
+    "symbol": "11(b5 b9)"
+  },
+  "11(b9)": {
+    "name": "11(b9)",
+    "uuid": "e597596b-9bfa-4b30-b863-977d8880f8ce",
+    "semitones": [
+      0,
+      4,
+      7,
+      10,
+      13,
+      17
+    ],
+    "formula": [
+      "1",
+      "3",
+      "5",
+      "b7",
+      "b9",
+      "11"
+    ],
+    "isMinor": false,
+    "symbol": "11(b9)"
+  },
+  "11(b5) b13": {
+    "name": "11(b5) b13",
+    "uuid": "f7046f6a-8150-4e7f-958e-db6d7b00a387",
+    "semitones": [
+      0,
+      4,
+      6,
+      10,
+      14,
+      17,
+      20
+    ],
+    "formula": [
+      "1",
+      "3",
+      "b5",
+      "b7",
+      "9",
+      "11",
+      "b13"
+    ],
+    "isMinor": false,
+    "symbol": "11(b5) b13"
+  },
+  "11(b5 b9) b13": {
+    "name": "11(b5 b9) b13",
+    "uuid": "88b802e9-3e43-4dea-8613-eb32052f6638",
+    "semitones": [
+      0,
+      4,
+      6,
+      10,
+      13,
+      17,
+      20
+    ],
+    "formula": [
+      "1",
+      "3",
+      "b5",
+      "b7",
+      "b9",
+      "11",
+      "b13"
+    ],
+    "isMinor": false,
+    "symbol": "11(b5 b9) b13"
+  },
+  "11(b5 b9) #13": {
+    "name": "11(b5 b9) #13",
+    "uuid": "13c25cb5-d019-4220-b834-b301a31319bc",
+    "semitones": [
+      0,
+      4,
+      6,
+      10,
+      13,
+      17,
+      22
+    ],
+    "formula": [
+      "1",
+      "3",
+      "b5",
+      "b7",
+      "b9",
+      "11",
+      "#13"
+    ],
+    "isMinor": false,
+    "symbol": "11(b5 b9) #13"
+  },
+  "11 b13": {
+    "name": "11 b13",
+    "uuid": "7d6efc36-6c5b-4e61-9ca0-c65d9bbf12e0",
+    "semitones": [
+      0,
+      4,
+      7,
+      10,
+      14,
+      17,
+      20
+    ],
+    "formula": [
+      "1",
+      "3",
+      "5",
+      "b7",
+      "9",
+      "11",
+      "b13"
+    ],
+    "isMinor": false,
+    "symbol": "11 b13"
+  },
+  "min11": {
+    "name": "min11",
+    "uuid": "8832f04b-4159-421a-9457-0f8c182c4c8e",
+    "semitones": [
+      0,
+      3,
+      7,
+      10,
+      14,
+      17
+    ],
+    "formula": [
+      "1",
+      "b3",
+      "5",
+      "b7",
+      "9",
+      "11"
+    ],
+    "isMinor": true,
+    "symbol": "m11"
+  },
+  "min11(b5)": {
+    "name": "min11(b5)",
+    "uuid": "036e5bd1-c647-4050-b6f4-fa49dfe93473",
+    "semitones": [
+      0,
+      3,
+      6,
+      10,
+      14,
+      17
+    ],
+    "formula": [
+      "1",
+      "b3",
+      "b5",
+      "b7",
+      "9",
+      "11"
+    ],
+    "isMinor": true,
+    "symbol": "m11(b5)"
+  },
+  "min11(b5) b13": {
+    "name": "min11(b5) b13",
+    "uuid": "17065a6d-6975-41ce-ad4c-32c202b1d1d6",
+    "semitones": [
+      0,
+      3,
+      6,
+      10,
+      14,
+      17,
+      20
+    ],
+    "formula": [
+      "1",
+      "b3",
+      "b5",
+      "b7",
+      "9",
+      "11",
+      "b13"
+    ],
+    "isMinor": true,
+    "symbol": "m11(b5) b13"
+  },
+  "maj11": {
+    "name": "maj11",
+    "uuid": "3c157ab9-3bda-4946-a11c-b5b25c424b7a",
+    "semitones": [
+      0,
+      4,
+      7,
+      11,
+      14,
+      17
+    ],
+    "formula": [
+      "1",
+      "3",
+      "5",
+      "7",
+      "9",
+      "11"
+    ],
+    "isMinor": false,
+    "symbol": "M11"
+  },
+  "maj add 11": {
+    "name": "maj add 11",
+    "uuid": "8edea64b-ff99-4927-ab05-26b89a9dd5ed",
+    "semitones": [
+      0,
+      4,
+      7,
+      17
+    ],
+    "formula": [
+      "1",
+      "3",
+      "5",
+      "11"
+    ],
+    "isMinor": false,
+    "symbol": "M add 11"
+  },
+  "maj add 9 11": {
+    "name": "maj add 9 11",
+    "uuid": "2dbebfd0-c109-4724-b92d-488676cd42df",
+    "semitones": [
+      0,
+      4,
+      7,
+      14,
+      17
+    ],
+    "formula": [
+      "1",
+      "3",
+      "5",
+      "9",
+      "11"
+    ],
+    "isMinor": false,
+    "symbol": "M add 9 11"
+  },
+  "maj #11": {
+    "name": "maj #11",
+    "uuid": "92d880d8-fe4d-4fd8-b94c-3d48d6a39f83",
+    "semitones": [
+      0,
+      4,
+      7,
+      18
+    ],
+    "formula": [
+      "1",
+      "3",
+      "5",
+      "#11"
+    ],
+    "isMinor": false,
+    "symbol": "M #11"
+  },
+  "maj13": {
+    "name": "maj13",
+    "uuid": "5a740f0b-ec60-4ad0-b4a2-6528b357b7d5",
+    "semitones": [
+      0,
+      4,
+      7,
+      11,
+      14,
+      17,
+      21
+    ],
+    "formula": [
+      "1",
+      "3",
+      "5",
+      "7",
+      "9",
+      "11",
+      "13"
+    ],
+    "isMinor": false,
+    "symbol": "M13"
+  },
+  "maj13(sus4)": {
+    "name": "maj13(sus4)",
+    "uuid": "926039cf-ad1b-4aa4-8b55-89b0f353d655",
+    "semitones": [
+      0,
+      5,
+      7,
+      11,
+      14,
+      17,
+      21
+    ],
+    "formula": [
+      "1",
+      "4",
+      "5",
+      "7",
+      "9",
+      "11",
+      "13"
+    ],
+    "isMinor": false,
+    "symbol": "M13(sus4)"
+  },
+  "maj13(#11)": {
+    "name": "maj13(#11)",
+    "uuid": "b2bb02f1-ce5b-403d-951c-26045611ae2c",
+    "semitones": [
+      0,
+      4,
+      7,
+      11,
+      14,
+      18,
+      21
+    ],
+    "formula": [
+      "1",
+      "3",
+      "5",
+      "7",
+      "9",
+      "#11",
+      "13"
+    ],
+    "isMinor": false,
+    "symbol": "M13(#11)"
+  },
+  "maj13(#9 #11)": {
+    "name": "maj13(#9 #11)",
+    "uuid": "3e327551-647a-4bef-aa0a-0a14d4a62675",
+    "semitones": [
+      0,
+      4,
+      7,
+      11,
+      15,
+      18,
+      21
+    ],
+    "formula": [
+      "1",
+      "3",
+      "5",
+      "7",
+      "#9",
+      "#11",
+      "13"
+    ],
+    "isMinor": false,
+    "symbol": "M13(#9 #11)"
+  },
+  "maj11 b13": {
+    "name": "maj11 b13",
+    "uuid": "5b82ded9-2b83-4d06-bcad-e4ec9e2d20f9",
+    "semitones": [
+      0,
+      4,
+      7,
+      11,
+      14,
+      17,
+      20
+    ],
+    "formula": [
+      "1",
+      "3",
+      "5",
+      "7",
+      "9",
+      "11",
+      "b13"
+    ],
+    "isMinor": false,
+    "symbol": "M11 b13"
+  },
+  "min13": {
+    "name": "min13",
+    "uuid": "24ed47bd-58c3-4d32-a553-77ff96fae25c",
+    "semitones": [
+      0,
+      3,
+      7,
+      10,
+      14,
+      17,
+      21
+    ],
+    "formula": [
+      "1",
+      "b3",
+      "5",
+      "b7",
+      "9",
+      "11",
+      "13"
+    ],
+    "isMinor": true,
+    "symbol": "m13"
+  },
+  "min13(#11)": {
+    "name": "min13(#11)",
+    "uuid": "801e4f37-9bbc-4298-9530-951243e654b2",
+    "semitones": [
+      0,
+      3,
+      7,
+      10,
+      14,
+      18,
+      21
+    ],
+    "formula": [
+      "1",
+      "b3",
+      "5",
+      "b7",
+      "9",
+      "#11",
+      "13"
+    ],
+    "isMinor": true,
+    "symbol": "m13(#11)"
+  },
+  "min13(#9 #11)": {
+    "name": "min13(#9 #11)",
+    "uuid": "923d8064-ff45-41e9-8808-26df9fe2d6a5",
+    "semitones": [
+      0,
+      3,
+      7,
+      10,
+      15,
+      18,
+      21
+    ],
+    "formula": [
+      "1",
+      "b3",
+      "5",
+      "b7",
+      "#9",
+      "#11",
+      "13"
+    ],
+    "isMinor": true,
+    "symbol": "m13(#9 #11)"
+  },
+  "min13(b5)": {
+    "name": "min13(b5)",
+    "uuid": "4fc57486-41ec-430d-b812-0d2a88504f37",
+    "semitones": [
+      0,
+      3,
+      6,
+      10,
+      14,
+      17,
+      21
+    ],
+    "formula": [
+      "1",
+      "b3",
+      "b5",
+      "b7",
+      "9",
+      "11",
+      "13"
+    ],
+    "isMinor": true,
+    "symbol": "m13(b5)"
+  },
+  "min13(b9)": {
+    "name": "min13(b9)",
+    "uuid": "2676bc15-cae0-4c3d-9993-483a41f0e87d",
+    "semitones": [
+      0,
+      3,
+      7,
+      10,
+      13,
+      17,
+      21
+    ],
+    "formula": [
+      "1",
+      "b3",
+      "5",
+      "b7",
+      "b9",
+      "11",
+      "13"
+    ],
+    "isMinor": true,
+    "symbol": "m13(b9)"
+  },
+  "13": {
+    "name": "13",
+    "uuid": "d9ef38fb-7219-44bf-8e17-1ec9bb66ee2f",
+    "semitones": [
+      0,
+      4,
+      7,
+      10,
+      14,
+      17,
+      21
+    ],
+    "formula": [
+      "1",
+      "3",
+      "5",
+      "b7",
+      "9",
+      "11",
+      "13"
+    ],
+    "isMinor": false,
+    "symbol": "13"
+  },
+  "13(b9)": {
+    "name": "13(b9)",
+    "uuid": "9501bbd7-b097-4937-83c3-99722f5c5f17",
+    "semitones": [
+      0,
+      4,
+      7,
+      10,
+      13,
+      17,
+      21
+    ],
+    "formula": [
+      "1",
+      "3",
+      "5",
+      "b7",
+      "b9",
+      "11",
+      "13"
+    ],
+    "isMinor": false,
+    "symbol": "13(b9)"
+  },
+  "13(#9 #11)": {
+    "name": "13(#9 #11)",
+    "uuid": "95de95fc-1018-4437-b393-38d9b4343a71",
+    "semitones": [
+      0,
+      4,
+      7,
+      10,
+      15,
+      18,
+      21
+    ],
+    "formula": [
+      "1",
+      "3",
+      "5",
+      "b7",
+      "#9",
+      "#11",
+      "13"
+    ],
+    "isMinor": false,
+    "symbol": "13(#9 #11)"
+  },
+  "13(b9 #11)": {
+    "name": "13(b9 #11)",
+    "uuid": "29787bf8-9e13-406b-ad70-89ce0be3ebeb",
+    "semitones": [
+      0,
+      4,
+      7,
+      10,
+      13,
+      18,
+      21
+    ],
+    "formula": [
+      "1",
+      "3",
+      "5",
+      "b7",
+      "b9",
+      "#11",
+      "13"
+    ],
+    "isMinor": false,
+    "symbol": "13(b9 #11)"
+  },
+  "13(#9)": {
+    "name": "13(#9)",
+    "uuid": "82e08ee3-d567-42a9-8238-5a9a9a21aa60",
+    "semitones": [
+      0,
+      4,
+      7,
+      10,
+      15,
+      17,
+      21
+    ],
+    "formula": [
+      "1",
+      "3",
+      "5",
+      "b7",
+      "#9",
+      "11",
+      "13"
+    ],
+    "isMinor": false,
+    "symbol": "13(#9)"
+  },
+  "13(#11)": {
+    "name": "13(#11)",
+    "uuid": "f456e392-0164-49f8-a28e-bcbc7ace3711",
+    "semitones": [
+      0,
+      4,
+      7,
+      10,
+      14,
+      18,
+      21
+    ],
+    "formula": [
+      "1",
+      "3",
+      "5",
+      "b7",
+      "9",
+      "#11",
+      "13"
+    ],
+    "isMinor": false,
+    "symbol": "13(#11)"
+  },
+  "13(sus4)": {
+    "name": "13(sus4)",
+    "uuid": "545d869c-de28-4e77-929c-8e8291655fa0",
+    "semitones": [
+      0,
+      5,
+      7,
+      10,
+      14,
+      17,
+      21
+    ],
+    "formula": [
+      "1",
+      "4",
+      "5",
+      "b7",
+      "9",
+      "11",
+      "13"
+    ],
+    "isMinor": false,
+    "symbol": "13(sus4)"
+  },
+  "7 11": {
+    "name": "7 11",
+    "uuid": "af35b861-a786-4e2d-ac1a-ec409fb9858c",
+    "semitones": [
+      0,
+      4,
+      7,
+      10,
+      17
+    ],
+    "formula": [
+      "1",
+      "3",
+      "5",
+      "b7",
+      "11"
+    ],
+    "isMinor": false,
+    "symbol": "7 11"
+  },
+  "7 13": {
+    "name": "7 13",
+    "uuid": "34c5b54a-95e8-4b72-8465-8afb9747d2ef",
+    "semitones": [
+      0,
+      4,
+      7,
+      10,
+      21
+    ],
+    "formula": [
+      "1",
+      "3",
+      "5",
+      "b7",
+      "13"
+    ],
+    "isMinor": false,
+    "symbol": "7 13"
+  },
+  "7 11 13": {
+    "name": "7 11 13",
+    "uuid": "074a6481-17ba-454e-9cb1-cb81343160f4",
+    "semitones": [
+      0,
+      4,
+      7,
+      10,
+      17,
+      21
+    ],
+    "formula": [
+      "1",
+      "3",
+      "5",
+      "b7",
+      "11",
+      "13"
+    ],
+    "isMinor": false,
+    "symbol": "7 11 13"
+  },
+  "7 maj7": {
+    "name": "7 maj7",
+    "uuid": "2c5416cf-203d-41ef-b734-cbc97fce6686",
+    "semitones": [
+      0,
+      4,
+      7,
+      10,
+      11
+    ],
+    "formula": [
+      "1",
+      "3",
+      "5",
+      "b7",
+      "7"
+    ],
+    "isMinor": false,
+    "symbol": "7 M7"
+  },
+  "5 maj7 #11": {
+    "name": "5 maj7 #11",
+    "uuid": "0f3ffc18-bdce-4f64-a90a-d05785dc6e0e",
+    "semitones": [
+      0,
+      7,
+      11,
+      18
+    ],
+    "formula": [
+      "1",
+      "5",
+      "7",
+      "#11"
+    ],
+    "isMinor": false,
+    "symbol": "5 M7 #11"
+  },
+  "7 maj7 #11": {
+    "name": "7 maj7 #11",
+    "uuid": "7a829ed0-7b1a-4b1e-b8dc-07d8a390610b",
+    "semitones": [
+      0,
+      4,
+      7,
+      10,
+      11,
+      18
+    ],
+    "formula": [
+      "1",
+      "3",
+      "5",
+      "b7",
+      "7",
+      "#11"
+    ],
+    "isMinor": false,
+    "symbol": "7 M7 #11"
+  },
+  "7 maj7 b9 #9": {
+    "name": "7 maj7 b9 #9",
+    "uuid": "973b2b7e-8a2a-4987-bfe2-6c8211c0df9a",
+    "semitones": [
+      0,
+      4,
+      7,
+      10,
+      11,
+      13,
+      15
+    ],
+    "formula": [
+      "1",
+      "3",
+      "5",
+      "b7",
+      "7",
+      "b9",
+      "#9"
+    ],
+    "isMinor": false,
+    "symbol": "7 M7 b9 #9"
+  },
+  "maj #9": {
+    "name": "maj #9",
+    "uuid": "71e25072-211e-4d8c-b315-f540bda2badd",
+    "semitones": [
+      0,
+      4,
+      7,
+      15
+    ],
+    "formula": [
+      "1",
+      "3",
+      "5",
+      "#9"
+    ],
+    "isMinor": false,
+    "symbol": "M #9"
+  },
+  "maj #9 b13": {
+    "name": "maj #9 b13",
+    "uuid": "4a648fd5-484a-4ab0-a988-1c6388904bae",
+    "semitones": [
+      0,
+      4,
+      7,
+      15,
+      20
+    ],
+    "formula": [
+      "1",
+      "3",
+      "5",
+      "#9",
+      "b13"
+    ],
+    "isMinor": false,
+    "symbol": "M #9 b13"
+  },
+  "maj7 11": {
+    "name": "maj7 11",
+    "uuid": "aac0cfac-72e5-47a2-9a07-25f30cb45d58",
+    "semitones": [
+      0,
+      4,
+      7,
+      11,
+      17
+    ],
+    "formula": [
+      "1",
+      "3",
+      "5",
+      "7",
+      "11"
+    ],
+    "isMinor": false,
+    "symbol": "M7 11"
+  },
+  "maj7 13": {
+    "name": "maj7 13",
+    "uuid": "0d2ce207-4a06-4f97-9e32-b86bc1e05656",
+    "semitones": [
+      0,
+      4,
+      7,
+      11,
+      21
+    ],
+    "formula": [
+      "1",
+      "3",
+      "5",
+      "7",
+      "13"
+    ],
+    "isMinor": false,
+    "symbol": "M7 13"
+  },
+  "maj7 11 13": {
+    "name": "maj7 11 13",
+    "uuid": "d022edb2-1506-4087-a53f-2241aad026f2",
+    "semitones": [
+      0,
+      4,
+      7,
+      11,
+      17,
+      21
+    ],
+    "formula": [
+      "1",
+      "3",
+      "5",
+      "7",
+      "11",
+      "13"
+    ],
+    "isMinor": false,
+    "symbol": "M7 11 13"
+  },
+  "maj7 #11": {
+    "name": "maj7 #11",
+    "uuid": "1ad1b93f-3b2c-48c0-bb27-945fa3add9e2",
+    "semitones": [
+      0,
+      4,
+      7,
+      11,
+      18
+    ],
+    "formula": [
+      "1",
+      "3",
+      "5",
+      "7",
+      "#11"
+    ],
+    "isMinor": false,
+    "symbol": "M7 #11"
+  },
+  "maj7 #11 b13": {
+    "name": "maj7 #11 b13",
+    "uuid": "e2252f25-308f-401b-8b24-b1596b5c08d7",
+    "semitones": [
+      0,
+      4,
+      7,
+      11,
+      18,
+      20
+    ],
+    "formula": [
+      "1",
+      "3",
+      "5",
+      "7",
+      "#11",
+      "b13"
+    ],
+    "isMinor": false,
+    "symbol": "M7 #11 b13"
+  },
+  "aug #9 #11": {
+    "name": "aug #9 #11",
+    "uuid": "4b102961-5870-489e-82cc-ae019cb98e33",
+    "semitones": [
+      0,
+      4,
+      8,
+      15,
+      18
+    ],
+    "formula": [
+      "1",
+      "3",
+      "#5",
+      "#9",
+      "#11"
+    ],
+    "isMinor": false,
+    "symbol": "+ #9 #11"
+  },
+  "7(#5)": {
+    "name": "7(#5)",
+    "uuid": "b9305258-617f-418f-be80-10371b2c9d0c",
+    "semitones": [
+      0,
+      4,
+      8,
+      10
+    ],
+    "formula": [
+      "1",
+      "3",
+      "#5",
+      "b7"
+    ],
+    "isMinor": false,
+    "symbol": "7(#5)"
+  },
+  "maj7(#5)": {
+    "name": "maj7(#5)",
+    "uuid": "fb83b6c1-d593-491b-a6cb-3b5e410e2ef6",
+    "semitones": [
+      0,
+      4,
+      8,
+      11
+    ],
+    "formula": [
+      "1",
+      "3",
+      "#5",
+      "7"
+    ],
+    "isMinor": false,
+    "symbol": "M7(#5)"
+  },
+  "7(#5) maj7 b9": {
+    "name": "7(#5) maj7 b9",
+    "uuid": "c0432a5e-724c-4ea0-bd6c-ccd7125673ce",
+    "semitones": [
+      0,
+      4,
+      8,
+      10,
+      11,
+      13
+    ],
+    "formula": [
+      "1",
+      "3",
+      "#5",
+      "b7",
+      "7",
+      "b9"
+    ],
+    "isMinor": false,
+    "symbol": "7(#5) M7 b9"
+  },
+  "aug add 9": {
+    "name": "aug add 9",
+    "uuid": "5eeda11c-b0f3-45b0-a2c7-639a51ef17f7",
+    "semitones": [
+      0,
+      4,
+      8,
+      14
+    ],
+    "formula": [
+      "1",
+      "3",
+      "#5",
+      "9"
+    ],
+    "isMinor": false,
+    "symbol": "+ add 9"
+  },
+  "aug add 11": {
+    "name": "aug add 11",
+    "uuid": "2ac495c3-0c8a-4467-867a-c6d458cef1cb",
+    "semitones": [
+      0,
+      4,
+      8,
+      17
+    ],
+    "formula": [
+      "1",
+      "3",
+      "#5",
+      "11"
+    ],
+    "isMinor": false,
+    "symbol": "+ add 11"
+  },
+  "aug add 9 11": {
+    "name": "aug add 9 11",
+    "uuid": "1c406dd5-c41f-4e16-b061-deebb0cd5ebb",
+    "semitones": [
+      0,
+      4,
+      8,
+      14,
+      17
+    ],
+    "formula": [
+      "1",
+      "3",
+      "#5",
+      "9",
+      "11"
+    ],
+    "isMinor": false,
+    "symbol": "+ add 9 11"
+  },
+  "aug add 13": {
+    "name": "aug add 13",
+    "uuid": "c9b38b33-5a32-42a7-8ac3-381e726cfc03",
+    "semitones": [
+      0,
+      4,
+      8,
+      21
+    ],
+    "formula": [
+      "1",
+      "3",
+      "#5",
+      "13"
+    ],
+    "isMinor": false,
+    "symbol": "+ add 13"
+  },
+  "maj9(#5)": {
+    "name": "maj9(#5)",
+    "uuid": "838641da-5954-481c-9521-5ab9b7fc8f2d",
+    "semitones": [
+      0,
+      4,
+      8,
+      11,
+      14
+    ],
+    "formula": [
+      "1",
+      "3",
+      "#5",
+      "7",
+      "9"
+    ],
+    "isMinor": false,
+    "symbol": "M9(#5)"
+  },
+  "maj11(#5)": {
+    "name": "maj11(#5)",
+    "uuid": "4bbd58bd-3b75-4146-893e-0b3100d5f9c7",
+    "semitones": [
+      0,
+      4,
+      8,
+      11,
+      14,
+      17
+    ],
+    "formula": [
+      "1",
+      "3",
+      "#5",
+      "7",
+      "9",
+      "11"
+    ],
+    "isMinor": false,
+    "symbol": "M11(#5)"
+  },
+  "maj11(#5 #9)": {
+    "name": "maj11(#5 #9)",
+    "uuid": "25824b81-ceb0-446d-8e15-0c96c0155a15",
+    "semitones": [
+      0,
+      4,
+      8,
+      11,
+      15,
+      17
+    ],
+    "formula": [
+      "1",
+      "3",
+      "#5",
+      "7",
+      "#9",
+      "11"
+    ],
+    "isMinor": false,
+    "symbol": "M11(#5 #9)"
+  },
+  "maj11(b5)": {
+    "name": "maj11(b5)",
+    "uuid": "5f27f74f-5815-4510-9b14-1e7f01d51be2",
+    "semitones": [
+      0,
+      4,
+      6,
+      11,
+      14,
+      17
+    ],
+    "formula": [
+      "1",
+      "3",
+      "b5",
+      "7",
+      "9",
+      "11"
+    ],
+    "isMinor": false,
+    "symbol": "M11(b5)"
+  },
+  "maj11(b9)": {
+    "name": "maj11(b9)",
+    "uuid": "87e67b90-ced6-457a-ae76-43e8df4e042e",
+    "semitones": [
+      0,
+      4,
+      7,
+      11,
+      13,
+      17
+    ],
+    "formula": [
+      "1",
+      "3",
+      "5",
+      "7",
+      "b9",
+      "11"
+    ],
+    "isMinor": false,
+    "symbol": "M11(b9)"
+  },
+  "maj11(b9) b13": {
+    "name": "maj11(b9) b13",
+    "uuid": "68b732ba-2ffe-4187-ade6-4397f880ac48",
+    "semitones": [
+      0,
+      4,
+      7,
+      11,
+      13,
+      17,
+      20
+    ],
+    "formula": [
+      "1",
+      "3",
+      "5",
+      "7",
+      "b9",
+      "11",
+      "b13"
+    ],
+    "isMinor": false,
+    "symbol": "M11(b9) b13"
+  },
+  "maj11(b5 b9)": {
+    "name": "maj11(b5 b9)",
+    "uuid": "3fa55f16-5da2-4709-9405-472ef8d3b94b",
+    "semitones": [
+      0,
+      4,
+      6,
+      11,
+      13,
+      17
+    ],
+    "formula": [
+      "1",
+      "3",
+      "b5",
+      "7",
+      "b9",
+      "11"
+    ],
+    "isMinor": false,
+    "symbol": "M11(b5 b9)"
+  },
+  "maj11(b5 b9) b13": {
+    "name": "maj11(b5 b9) b13",
+    "uuid": "aa4bd2eb-2952-46e5-9574-0c8e4d55d353",
+    "semitones": [
+      0,
+      4,
+      6,
+      11,
+      13,
+      17,
+      20
+    ],
+    "formula": [
+      "1",
+      "3",
+      "b5",
+      "7",
+      "b9",
+      "11",
+      "b13"
+    ],
+    "isMinor": false,
+    "symbol": "M11(b5 b9) b13"
+  },
+  "maj11(#9)": {
+    "name": "maj11(#9)",
+    "uuid": "1e3fd642-0bfb-49c3-9aa6-d659b6fd4912",
+    "semitones": [
+      0,
+      4,
+      7,
+      11,
+      15,
+      17
+    ],
+    "formula": [
+      "1",
+      "3",
+      "5",
+      "7",
+      "#9",
+      "11"
+    ],
+    "isMinor": false,
+    "symbol": "M11(#9)"
+  },
+  "maj11(#9) b7": {
+    "name": "maj11(#9) b7",
+    "uuid": "79197aa9-d4f0-4e03-9788-2014b5866048",
+    "semitones": [
+      0,
+      4,
+      7,
+      10,
+      11,
+      15,
+      17
+    ],
+    "formula": [
+      "1",
+      "3",
+      "5",
+      "b7",
+      "7",
+      "#9",
+      "11"
+    ],
+    "isMinor": false,
+    "symbol": "M11(#9) b7"
+  },
+  "maj11(#9) b13": {
+    "name": "maj11(#9) b13",
+    "uuid": "2ef7eb87-9707-4a69-89bd-6c04a50be22c",
+    "semitones": [
+      0,
+      4,
+      7,
+      11,
+      15,
+      17,
+      20
+    ],
+    "formula": [
+      "1",
+      "3",
+      "5",
+      "7",
+      "#9",
+      "11",
+      "b13"
+    ],
+    "isMinor": false,
+    "symbol": "M11(#9) b13"
+  },
+  "maj13(#5)": {
+    "name": "maj13(#5)",
+    "uuid": "c789fcb9-580d-44a5-84cb-cc7373673449",
+    "semitones": [
+      0,
+      4,
+      8,
+      11,
+      14,
+      17,
+      21
+    ],
+    "formula": [
+      "1",
+      "3",
+      "#5",
+      "7",
+      "9",
+      "11",
+      "13"
+    ],
+    "isMinor": false,
+    "symbol": "M13(#5)"
+  },
+  "maj13(#9)": {
+    "name": "maj13(#9)",
+    "uuid": "d3b14dde-7e69-4f51-b02f-ef677e3ed88e",
+    "semitones": [
+      0,
+      4,
+      7,
+      11,
+      15,
+      17,
+      21
+    ],
+    "formula": [
+      "1",
+      "3",
+      "5",
+      "7",
+      "#9",
+      "11",
+      "13"
+    ],
+    "isMinor": false,
+    "symbol": "M13(#9)"
+  },
+  "maj13(#5 #9)": {
+    "name": "maj13(#5 #9)",
+    "uuid": "4542d467-4c18-42f2-b978-8981d34bfd50",
+    "semitones": [
+      0,
+      4,
+      8,
+      11,
+      15,
+      17,
+      21
+    ],
+    "formula": [
+      "1",
+      "3",
+      "#5",
+      "7",
+      "#9",
+      "11",
+      "13"
+    ],
+    "isMinor": false,
+    "symbol": "M13(#5 #9)"
+  },
+  "maj9(#5) #11": {
+    "name": "maj9(#5) #11",
+    "uuid": "6aab9648-3a2a-4387-a841-c55ffa90ad57",
+    "semitones": [
+      0,
+      4,
+      8,
+      11,
+      14,
+      18
+    ],
+    "formula": [
+      "1",
+      "3",
+      "#5",
+      "7",
+      "9",
+      "#11"
+    ],
+    "isMinor": false,
+    "symbol": "M9(#5) #11"
+  },
+  "maj9(#5) b7 #11": {
+    "name": "maj9(#5) b7 #11",
+    "uuid": "e34ffcd9-fa9a-4449-8e85-3f8843797f19",
+    "semitones": [
+      0,
+      4,
+      8,
+      10,
+      11,
+      14,
+      18
+    ],
+    "formula": [
+      "1",
+      "3",
+      "#5",
+      "b7",
+      "7",
+      "9",
+      "#11"
+    ],
+    "isMinor": false,
+    "symbol": "M9(#5) b7 #11"
+  },
+  "maj9(#5) #11 b13": {
+    "name": "maj9(#5) #11 b13",
+    "uuid": "4f72411a-4043-417e-967e-6bdc87865b4c",
+    "semitones": [
+      0,
+      4,
+      8,
+      11,
+      14,
+      18,
+      20
+    ],
+    "formula": [
+      "1",
+      "3",
+      "#5",
+      "7",
+      "9",
+      "#11",
+      "b13"
+    ],
+    "isMinor": false,
+    "symbol": "M9(#5) #11 b13"
+  },
+  "maj13(#5 #11)": {
+    "name": "maj13(#5 #11)",
+    "uuid": "86054116-2b53-4b51-a5e0-f9aab543eac8",
+    "semitones": [
+      0,
+      4,
+      8,
+      11,
+      14,
+      18,
+      21
+    ],
+    "formula": [
+      "1",
+      "3",
+      "#5",
+      "7",
+      "9",
+      "#11",
+      "13"
+    ],
+    "isMinor": false,
+    "symbol": "M13(#5 #11)"
+  },
+  "maj7(#5) #9": {
+    "name": "maj7(#5) #9",
+    "uuid": "1fe3d1ab-9f6b-4a47-9a93-384043e1a08e",
+    "semitones": [
+      0,
+      4,
+      8,
+      11,
+      15
+    ],
+    "formula": [
+      "1",
+      "3",
+      "#5",
+      "7",
+      "#9"
+    ],
+    "isMinor": false,
+    "symbol": "M7(#5) #9"
+  },
+  "maj7(#5) #9 #11": {
+    "name": "maj7(#5) #9 #11",
+    "uuid": "dea4ccde-d97b-48b9-9995-003cbd0c04cc",
+    "semitones": [
+      0,
+      4,
+      8,
+      11,
+      15,
+      18
+    ],
+    "formula": [
+      "1",
+      "3",
+      "#5",
+      "7",
+      "#9",
+      "#11"
+    ],
+    "isMinor": false,
+    "symbol": "M7(#5) #9 #11"
+  },
+  "maj7(#5) #9 #11 #13": {
+    "name": "maj7(#5) #9 #11 #13",
+    "uuid": "35e55cc5-fab4-4940-8f2a-188e9a24dc07",
+    "semitones": [
+      0,
+      4,
+      8,
+      11,
+      15,
+      18,
+      22
+    ],
+    "formula": [
+      "1",
+      "3",
+      "#5",
+      "7",
+      "#9",
+      "#11",
+      "#13"
+    ],
+    "isMinor": false,
+    "symbol": "M7(#5) #9 #11 #13"
+  },
+  "maj13(#5 #9 #11)": {
+    "name": "maj13(#5 #9 #11)",
+    "uuid": "d77666fd-8864-442c-8df4-eec388447156",
+    "semitones": [
+      0,
+      4,
+      8,
+      11,
+      15,
+      18,
+      21
+    ],
+    "formula": [
+      "1",
+      "3",
+      "#5",
+      "7",
+      "#9",
+      "#11",
+      "13"
+    ],
+    "isMinor": false,
+    "symbol": "M13(#5 #9 #11)"
+  },
+  "maj7 #9 #11 #13": {
+    "name": "maj7 #9 #11 #13",
+    "uuid": "d08c941e-713a-4fd6-beda-8c0a454cd011",
+    "semitones": [
+      0,
+      4,
+      7,
+      11,
+      15,
+      18,
+      22
+    ],
+    "formula": [
+      "1",
+      "3",
+      "5",
+      "7",
+      "#9",
+      "#11",
+      "#13"
+    ],
+    "isMinor": false,
+    "symbol": "M7 #9 #11 #13"
+  },
+  "dim b9": {
+    "name": "dim b9",
+    "uuid": "e85fa7ef-d1c9-484c-b9ae-dc17721ed427",
+    "semitones": [
+      0,
+      3,
+      6,
+      13
+    ],
+    "formula": [
+      "1",
+      "b3",
+      "b5",
+      "b9"
+    ],
+    "isMinor": true,
+    "symbol": "o b9"
+  },
+  "dim b9 11": {
+    "name": "dim b9 11",
+    "uuid": "33642ee1-ee7f-4c85-9d32-77fea62d6b50",
+    "semitones": [
+      0,
+      3,
+      6,
+      13,
+      17
+    ],
+    "formula": [
+      "1",
+      "b3",
+      "b5",
+      "b9",
+      "11"
+    ],
+    "isMinor": true,
+    "symbol": "o b9 11"
+  },
+  "dim b9 11 b13": {
+    "name": "dim b9 11 b13",
+    "uuid": "1463e72c-63a1-477a-bc68-4d5c26e74bbe",
+    "semitones": [
+      0,
+      3,
+      6,
+      13,
+      17,
+      20
+    ],
+    "formula": [
+      "1",
+      "b3",
+      "b5",
+      "b9",
+      "11",
+      "b13"
+    ],
+    "isMinor": true,
+    "symbol": "o b9 11 b13"
+  },
+  "dim add 9": {
+    "name": "dim add 9",
+    "uuid": "73db8979-50c7-471e-9a92-beb4e521b557",
+    "semitones": [
+      0,
+      3,
+      6,
+      14
+    ],
+    "formula": [
+      "1",
+      "b3",
+      "b5",
+      "9"
+    ],
+    "isMinor": true,
+    "symbol": "o add 9"
+  },
+  "dim #9": {
+    "name": "dim #9",
+    "uuid": "42a532ef-6443-4733-84e1-b13c53c3d417",
+    "semitones": [
+      0,
+      3,
+      6,
+      15
+    ],
+    "formula": [
+      "1",
+      "b3",
+      "b5",
+      "#9"
+    ],
+    "isMinor": true,
+    "symbol": "o #9"
+  },
+  "5": {
+    "name": "5",
+    "uuid": "0b5fb63b-9c66-4f5b-bf1b-0540c8cc413c",
+    "semitones": [
+      0,
+      7
+    ],
+    "formula": [
+      "1",
+      "5"
+    ],
+    "isMinor": false,
+    "symbol": "5"
+  },
+  "5 #11": {
+    "name": "5 #11",
+    "uuid": "304ef0fc-eafe-4d93-9a80-24d1c46449d0",
+    "semitones": [
+      0,
+      7,
+      18
+    ],
+    "formula": [
+      "1",
+      "5",
+      "#11"
+    ],
+    "isMinor": false,
+    "symbol": "5 #11"
+  },
+  "7(no3)": {
+    "name": "7(no3)",
+    "uuid": "2e29cc88-7a3f-4982-a488-e6a56fab2faf",
+    "semitones": [
+      0,
+      7,
+      10
+    ],
+    "formula": [
+      "1",
+      "5",
+      "b7"
+    ],
+    "isMinor": false,
+    "symbol": "7(no3)"
+  },
+  "maj7(no3)": {
+    "name": "maj7(no3)",
+    "uuid": "d9a1d932-e25d-4184-abbb-61d806f6c00d",
+    "semitones": [
+      0,
+      7,
+      11
+    ],
+    "formula": [
+      "1",
+      "5",
+      "7"
+    ],
+    "isMinor": false,
+    "symbol": "M7(no3)"
+  },
+  "maj7(no3 b5)": {
+    "name": "maj7(no3 b5)",
+    "uuid": "a08e5ed9-b372-44ae-b873-9a596a668174",
+    "semitones": [
+      0,
+      6,
+      11
+    ],
+    "formula": [
+      "1",
+      "b5",
+      "7"
+    ],
+    "isMinor": false,
+    "symbol": "M7(no3 b5)"
+  },
+  "maj7(no3 #5)": {
+    "name": "maj7(no3 #5)",
+    "uuid": "110fb4a2-b389-4b0e-ab15-bca98d534dd5",
+    "semitones": [
+      0,
+      8,
+      11
+    ],
+    "formula": [
+      "1",
+      "#5",
+      "7"
+    ],
+    "isMinor": false,
+    "symbol": "M7(no3 #5)"
+  },
+  "maj(b5)": {
+    "name": "maj(b5)",
+    "uuid": "d8ccc054-3417-4ef0-9438-383583fc3672",
+    "semitones": [
+      0,
+      4,
+      6
+    ],
+    "formula": [
+      "1",
+      "3",
+      "b5"
+    ],
+    "isMinor": false,
+    "symbol": "M(b5)"
+  },
+  "maj(b5) b9": {
+    "name": "maj(b5) b9",
+    "uuid": "fdf43e74-301a-41c3-875d-c57227c7aaba",
+    "semitones": [
+      0,
+      4,
+      6,
+      13
+    ],
+    "formula": [
+      "1",
+      "3",
+      "b5",
+      "b9"
+    ],
+    "isMinor": false,
+    "symbol": "M(b5) b9"
+  },
+  "maj(b5) #9": {
+    "name": "maj(b5) #9",
+    "uuid": "8c9d608b-bc5e-4db5-8fa7-3c179dd9c6f3",
+    "semitones": [
+      0,
+      4,
+      6,
+      15
+    ],
+    "formula": [
+      "1",
+      "3",
+      "b5",
+      "#9"
+    ],
+    "isMinor": false,
+    "symbol": "M(b5) #9"
+  },
+  "maj(b5) 11": {
+    "name": "maj(b5) 11",
+    "uuid": "20458c05-1b6d-4e65-8885-cc93e25e9be0",
+    "semitones": [
+      0,
+      4,
+      6,
+      17
+    ],
+    "formula": [
+      "1",
+      "3",
+      "b5",
+      "11"
+    ],
+    "isMinor": false,
+    "symbol": "M(b5) 11"
+  },
+  "maj(no5)": {
+    "name": "maj(no5)",
+    "uuid": "e038ffaf-6dd3-47a3-93de-2ddc54c89a94",
+    "semitones": [
+      0,
+      4
+    ],
+    "formula": [
+      "1",
+      "3"
+    ],
+    "isMinor": false,
+    "symbol": "M(no5)"
+  },
+  "min(no5)": {
+    "name": "min(no5)",
+    "uuid": "5998db16-29a2-4880-b263-4c8aa4a30187",
+    "semitones": [
+      0,
+      3
+    ],
+    "formula": [
+      "1",
+      "b3"
+    ],
+    "isMinor": true,
+    "symbol": "m(no5)"
+  },
+  "min(no5) maj7": {
+    "name": "min(no5) maj7",
+    "uuid": "a005e375-7f89-43e7-a7cc-2db0efd507fa",
+    "semitones": [
+      0,
+      3,
+      11
+    ],
+    "formula": [
+      "1",
+      "b3",
+      "7"
+    ],
+    "isMinor": true,
+    "symbol": "m(no5) M7"
+  },
+  "min #11 b13": {
+    "name": "min #11 b13",
+    "uuid": "51776e92-43f2-4e84-ac54-9edb9bbbcea3",
+    "semitones": [
+      0,
+      3,
+      7,
+      18,
+      20
+    ],
+    "formula": [
+      "1",
+      "b3",
+      "5",
+      "#11",
+      "b13"
+    ],
+    "isMinor": true,
+    "symbol": "m #11 b13"
+  },
+  "maj(no5) 9": {
+    "name": "maj(no5) 9",
+    "uuid": "9159328e-52b1-4565-af47-509f79972e57",
+    "semitones": [
+      0,
+      4,
+      14
+    ],
+    "formula": [
+      "1",
+      "3",
+      "9"
+    ],
+    "isMinor": false,
+    "symbol": "M(no5) 9"
+  },
+  "sus2(b5)": {
+    "name": "sus2(b5)",
+    "uuid": "b2418155-1be6-4e76-9820-ac4d1117339d",
+    "semitones": [
+      0,
+      2,
+      6
+    ],
+    "formula": [
+      "1",
+      "2",
+      "b5"
+    ],
+    "isMinor": false,
+    "symbol": "sus2(b5)"
+  },
+  "6(sus4)": {
+    "name": "6(sus4)",
+    "uuid": "cc2d84bd-f83f-432a-a45b-1486e6d37162",
+    "semitones": [
+      0,
+      5,
+      7,
+      9
+    ],
+    "formula": [
+      "1",
+      "4",
+      "5",
+      "6"
+    ],
+    "isMinor": false,
+    "symbol": "6(sus4)"
+  },
+  "6(sus2)": {
+    "name": "6(sus2)",
+    "uuid": "8784fde2-4a55-4cf5-ae12-984c6fb83bc9",
+    "semitones": [
+      0,
+      2,
+      7,
+      9
+    ],
+    "formula": [
+      "1",
+      "2",
+      "5",
+      "6"
+    ],
+    "isMinor": false,
+    "symbol": "6(sus2)"
+  },
+  "6(sus2) b9": {
+    "name": "6(sus2) b9",
+    "uuid": "544744ce-100a-468f-80da-c17848565663",
+    "semitones": [
+      0,
+      2,
+      7,
+      9,
+      13
+    ],
+    "formula": [
+      "1",
+      "2",
+      "5",
+      "6",
+      "b9"
+    ],
+    "isMinor": false,
+    "symbol": "6(sus2) b9"
+  },
+  "6 9 b9": {
+    "name": "6 9 b9",
+    "uuid": "8c43e22b-1c18-41b8-a841-da2841c875f2",
+    "semitones": [
+      0,
+      4,
+      7,
+      9,
+      13,
+      14
+    ],
+    "formula": [
+      "1",
+      "3",
+      "5",
+      "6",
+      "b9",
+      "9"
+    ],
+    "isMinor": false,
+    "symbol": "6 9 b9"
+  },
+  "6 9 b9 b13": {
+    "name": "6 9 b9 b13",
+    "uuid": "1c3016a4-084e-462e-9305-486a8738445e",
+    "semitones": [
+      0,
+      4,
+      7,
+      9,
+      13,
+      14,
+      20
+    ],
+    "formula": [
+      "1",
+      "3",
+      "5",
+      "6",
+      "b9",
+      "9",
+      "b13"
+    ],
+    "isMinor": false,
+    "symbol": "6 9 b9 b13"
+  },
+  "6(sus2 b5)": {
+    "name": "6(sus2 b5)",
+    "uuid": "e0838e12-12ec-4263-a6b5-908f579525d0",
+    "semitones": [
+      0,
+      2,
+      6,
+      9
+    ],
+    "formula": [
+      "1",
+      "2",
+      "b5",
+      "6"
+    ],
+    "isMinor": false,
+    "symbol": "6(sus2 b5)"
+  },
+  "6(sus2 b5) b9": {
+    "name": "6(sus2 b5) b9",
+    "uuid": "8f517959-7e53-4bd6-b807-48834f9bb517",
+    "semitones": [
+      0,
+      2,
+      6,
+      9,
+      13
+    ],
+    "formula": [
+      "1",
+      "2",
+      "b5",
+      "6",
+      "b9"
+    ],
+    "isMinor": false,
+    "symbol": "6(sus2 b5) b9"
+  },
+  "6(sus2 b5) b9 11": {
+    "name": "6(sus2 b5) b9 11",
+    "uuid": "d0759da9-4a01-4fdd-ab41-357e0a26e366",
+    "semitones": [
+      0,
+      2,
+      6,
+      9,
+      13,
+      17
+    ],
+    "formula": [
+      "1",
+      "2",
+      "b5",
+      "6",
+      "b9",
+      "11"
+    ],
+    "isMinor": false,
+    "symbol": "6(sus2 b5) b9 11"
+  },
+  "6(sus2 b5) b9 11 b13": {
+    "name": "6(sus2 b5) b9 11 b13",
+    "uuid": "90d94d10-ea44-4d98-9a19-276a790353fb",
+    "semitones": [
+      0,
+      2,
+      6,
+      9,
+      13,
+      17,
+      20
+    ],
+    "formula": [
+      "1",
+      "2",
+      "b5",
+      "6",
+      "b9",
+      "11",
+      "b13"
+    ],
+    "isMinor": false,
+    "symbol": "6(sus2 b5) b9 11 b13"
+  },
+  "6(b5) 9 b9": {
+    "name": "6(b5) 9 b9",
+    "uuid": "82cfc8c9-6c83-4951-ae01-6695ebf4bb68",
+    "semitones": [
+      0,
+      4,
+      6,
+      9,
+      13,
+      14
+    ],
+    "formula": [
+      "1",
+      "3",
+      "b5",
+      "6",
+      "b9",
+      "9"
+    ],
+    "isMinor": false,
+    "symbol": "6(b5) 9 b9"
+  },
+  "6(b5) 9 b9 b13": {
+    "name": "6(b5) 9 b9 b13",
+    "uuid": "066f6d71-b77a-40cf-8b50-e5b572141458",
+    "semitones": [
+      0,
+      4,
+      6,
+      9,
+      13,
+      14,
+      20
+    ],
+    "formula": [
+      "1",
+      "3",
+      "b5",
+      "6",
+      "b9",
+      "9",
+      "b13"
+    ],
+    "isMinor": false,
+    "symbol": "6(b5) 9 b9 b13"
+  },
+  "6(sus2) b5 b9 11": {
+    "name": "6(sus2) b5 b9 11",
+    "uuid": "9997614a-8449-46d2-a373-3fb9bcf04f8b",
+    "semitones": [
+      0,
+      2,
+      7,
+      6,
+      9,
+      13,
+      17
+    ],
+    "formula": [
+      "1",
+      "2",
+      "5",
+      "b5",
+      "6",
+      "b9",
+      "11"
+    ],
+    "isMinor": false,
+    "symbol": "6(sus2) b5 b9 11"
+  }
+}

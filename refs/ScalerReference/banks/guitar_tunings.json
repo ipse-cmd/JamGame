@@ -1,0 +1,478 @@
+[
+  {
+    "name": "Standard",
+    "category": "Standard",
+    "uuid": "942e4e08-d172-482f-89f7-44c03267316d",
+    "id": 10,
+    "openStringMIDIPitchs": [
+      40,
+      45,
+      50,
+      55,
+      59,
+      64
+    ]
+  },
+  {
+    "name": "Open C",
+    "category": "Custom",
+    "uuid": "46973fba-035b-4055-bdd6-e2beb4685328",
+    "id": 100,
+    "openStringMIDIPitchs": [
+      36,
+      43,
+      48,
+      55,
+      60,
+      64
+    ]
+  },
+  {
+    "name": "Open D",
+    "category": "Custom",
+    "uuid": "2d40e8c4-9df5-4f0e-b1c5-ab072d08ab30",
+    "id": 200,
+    "openStringMIDIPitchs": [
+      38,
+      45,
+      50,
+      54,
+      57,
+      62
+    ]
+  },
+  {
+    "name": "Open D Minor",
+    "category": "Custom",
+    "uuid": "b041cef4-4c30-4f5c-a3b9-0f3d1a4b1990",
+    "id": 300,
+    "openStringMIDIPitchs": [
+      38,
+      45,
+      50,
+      53,
+      57,
+      62
+    ]
+  },
+  {
+    "name": "Open G",
+    "category": "Custom",
+    "uuid": "01a9675b-174c-4986-99a0-e15b6d99b28d",
+    "id": 400,
+    "openStringMIDIPitchs": [
+      38,
+      43,
+      50,
+      55,
+      59,
+      62
+    ]
+  },
+  {
+    "name": "Open G Minor",
+    "category": "Custom",
+    "uuid": "a2b609d9-5c10-459e-99a0-34a5e346bd8e",
+    "id": 500,
+    "openStringMIDIPitchs": [
+      38,
+      43,
+      50,
+      55,
+      58,
+      62
+    ]
+  },
+  {
+    "name": "Open A",
+    "category": "Custom",
+    "uuid": "69ce199b-8a15-4ac7-86c3-cc7612a640de",
+    "id": 600,
+    "openStringMIDIPitchs": [
+      40,
+      45,
+      49,
+      52,
+      57,
+      64
+    ]
+  },
+  {
+    "name": "Modal D",
+    "category": "Custom",
+    "uuid": "e3a01ee8-db4f-4dbb-a24f-46df5da504b4",
+    "id": 700,
+    "openStringMIDIPitchs": [
+      38,
+      45,
+      50,
+      55,
+      57,
+      62
+    ]
+  },
+  {
+    "name": "Modal G",
+    "category": "Custom",
+    "uuid": "c7963a3b-aaf6-4c47-8833-5316b6473811",
+    "id": 800,
+    "openStringMIDIPitchs": [
+      38,
+      43,
+      50,
+      55,
+      60,
+      62
+    ]
+  },
+  {
+    "name": "Drop C",
+    "category": "Custom",
+    "uuid": "635988e1-879e-49e0-8ee3-602d51ed2e25",
+    "id": 850,
+    "openStringMIDIPitchs": [
+      36,
+      43,
+      48,
+      53,
+      57,
+      62
+    ]
+  },
+  {
+    "name": "Drop D",
+    "category": "Custom",
+    "uuid": "a9086a4e-ebae-41a3-8649-c6154b30cbdc",
+    "id": 900,
+    "openStringMIDIPitchs": [
+      38,
+      45,
+      50,
+      55,
+      59,
+      64
+    ]
+  },
+  {
+    "name": "Eb",
+    "category": "Baritone",
+    "uuid": "395c360b-8e66-4d82-8637-a4db4fde54ed",
+    "id": 1000,
+    "openStringMIDIPitchs": [
+      39,
+      44,
+      49,
+      54,
+      58,
+      63
+    ]
+  },
+  {
+    "name": "D",
+    "category": "Baritone",
+    "uuid": "ac8e9dcd-d161-4420-872f-0d2776bc0ae1",
+    "id": 2000,
+    "openStringMIDIPitchs": [
+      38,
+      43,
+      48,
+      53,
+      57,
+      62
+    ]
+  },
+  {
+    "name": "Celtic",
+    "category": "Baritone",
+    "uuid": "955a3bf9-4703-40e2-b26c-5dc639e0647c",
+    "id": 3000,
+    "openStringMIDIPitchs": [
+      36,
+      43,
+      50,
+      55,
+      57,
+      62
+    ]
+  },
+  {
+    "name": "Minor Third",
+    "category": "Regular",
+    "uuid": "22fa20d1-a145-4591-aafa-8fd9f84481e3",
+    "id": 12000,
+    "openStringMIDIPitchs": [
+      48,
+      51,
+      54,
+      57,
+      60,
+      63
+    ]
+  },
+  {
+    "name": "Major Third",
+    "category": "Regular",
+    "uuid": "c348fc1e-2398-4246-8b65-9f13b0e5ec5e",
+    "id": 13000,
+    "openStringMIDIPitchs": [
+      48,
+      52,
+      56,
+      60,
+      64,
+      68
+    ]
+  },
+  {
+    "name": "All Fourths",
+    "category": "Regular",
+    "uuid": "46b3dac8-d889-4706-9bdc-b93630573525",
+    "id": 14000,
+    "openStringMIDIPitchs": [
+      40,
+      45,
+      50,
+      55,
+      60,
+      65
+    ]
+  },
+  {
+    "name": "All Fifths",
+    "category": "Regular",
+    "uuid": "83b8bf8c-25ce-4658-b185-d66b45ca6b9d",
+    "id": 15000,
+    "openStringMIDIPitchs": [
+      36,
+      43,
+      50,
+      57,
+      64,
+      71
+    ]
+  },
+  {
+    "name": "Augmented Fourths",
+    "category": "Regular",
+    "uuid": "67e0030a-a4b7-45e9-8b1f-e3b5c07a5c01",
+    "id": 16000,
+    "openStringMIDIPitchs": [
+      36,
+      42,
+      48,
+      54,
+      60,
+      66
+    ]
+  },
+  {
+    "name": "Minor Sixth",
+    "category": "Regular",
+    "uuid": "4175201f-ee02-44c2-accf-50ea7a26da43",
+    "id": 17000,
+    "openStringMIDIPitchs": [
+      36,
+      44,
+      52,
+      60,
+      68,
+      76
+    ]
+  },
+  {
+    "name": "Major Sixth",
+    "category": "Regular",
+    "uuid": "a4f7d4c3-98b4-42fe-bf76-2ae27fe38447",
+    "id": 18000,
+    "openStringMIDIPitchs": [
+      36,
+      45,
+      54,
+      63,
+      72,
+      81
+    ]
+  },
+  {
+    "name": "Standard 4 strings",
+    "category": "Bass",
+    "uuid": "d6c39b71-6b3a-4107-b680-81fd43140ac9",
+    "id": 50000,
+    "openStringMIDIPitchs": [
+      -1,
+      28,
+      33,
+      38,
+      43,
+      -1
+    ]
+  },
+  {
+    "name": "Tenor 4 strings",
+    "category": "Bass",
+    "uuid": "656972f0-3c37-43ed-b5a5-799e954e458f",
+    "id": 51000,
+    "openStringMIDIPitchs": [
+      -1,
+      -1,
+      33,
+      38,
+      43,
+      48
+    ]
+  },
+  {
+    "name": "Standard 5 strings",
+    "category": "Bass",
+    "uuid": "38312765-93e6-46f7-b0c0-ab037aa61b46",
+    "id": 52000,
+    "openStringMIDIPitchs": [
+      23,
+      28,
+      33,
+      38,
+      43,
+      -1
+    ]
+  },
+  {
+    "name": "Tenor 5 strings",
+    "category": "Bass",
+    "uuid": "063ab382-0623-436b-92f2-862ffe9c3eda",
+    "id": 53000,
+    "openStringMIDIPitchs": [
+      -1,
+      28,
+      33,
+      38,
+      43,
+      48
+    ]
+  },
+  {
+    "name": "Standard 6 strings",
+    "category": "Bass",
+    "uuid": "5f515f14-ec55-4c77-9758-649d1d912e4c",
+    "id": 54000,
+    "openStringMIDIPitchs": [
+      23,
+      28,
+      33,
+      38,
+      43,
+      48
+    ]
+  },
+  {
+    "name": "Standard (B)",
+    "category": "Baritone",
+    "uuid": "22cfe83b-e910-4264-89de-78cde6ddf63d",
+    "id": 60000,
+    "openStringMIDIPitchs": [
+      35,
+      40,
+      45,
+      50,
+      54,
+      59
+    ]
+  },
+  {
+    "name": "Drop A",
+    "category": "Baritone",
+    "uuid": "65873e90-1ede-4cf4-b827-305bd7177873",
+    "id": 61000,
+    "openStringMIDIPitchs": [
+      33,
+      40,
+      45,
+      50,
+      54,
+      59
+    ]
+  },
+  {
+    "name": "Double Drop A",
+    "category": "Baritone",
+    "uuid": "d790f345-251b-4e05-80fc-5b6bdfdd67a5",
+    "id": 62000,
+    "openStringMIDIPitchs": [
+      33,
+      40,
+      45,
+      50,
+      54,
+      57
+    ]
+  },
+  {
+    "name": "A",
+    "category": "Baritone",
+    "uuid": "6232fa7b-7c9e-4e81-9aa1-0b809a17ba97",
+    "id": 63000,
+    "openStringMIDIPitchs": [
+      33,
+      38,
+      43,
+      48,
+      52,
+      57
+    ]
+  },
+  {
+    "name": "Baritone DADGAD",
+    "category": "Baritone",
+    "uuid": "a3b70298-5233-4a5c-b9c2-0c82c3a4bd92",
+    "id": 64000,
+    "openStringMIDIPitchs": [
+      33,
+      40,
+      45,
+      50,
+      52,
+      57
+    ]
+  },
+  {
+    "name": "Celtic",
+    "category": "Baritone",
+    "uuid": "e9ae8daa-dac9-46b0-b3b4-60fdd1fb6bed",
+    "id": 65000,
+    "openStringMIDIPitchs": [
+      31,
+      38,
+      45,
+      50,
+      52,
+      57
+    ]
+  },
+  {
+    "name": "Banjo",
+    "category": "Other",
+    "uuid": "dc53bb21-6730-4a61-80c5-aabc9d635632",
+    "id": 100000,
+    "openStringMIDIPitchs": [
+      -1,
+      67,
+      50,
+      55,
+      59,
+      62
+    ]
+  },
+  {
+    "name": "Ukulele",
+    "category": "Other",
+    "uuid": "bd70f798-3246-456d-9823-cb56e021a9b5",
+    "id": 110000,
+    "openStringMIDIPitchs": [
+      -1,
+      -1,
+      67,
+      60,
+      64,
+      69
+    ]
+  }
+]

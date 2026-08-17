@@ -1,0 +1,322 @@
+{
+  "World Music": [
+    "Acoustic",
+    "Egyptian Pentatonic",
+    "Hirajoshi",
+    "Hungarian Gypsy",
+    "In",
+    "Insen",
+    "Iwato",
+    "Kumoi",
+    "Major Blues Hexatonic",
+    "Major Blues Hexatonic mode 2",
+    "Major Blues Hexatonic mode 3",
+    "Major Blues Hexatonic mode 4",
+    "Major Blues Hexatonic mode 5",
+    "Major Locrian",
+    "Major Pentatonic",
+    "Man Gong Pentatonic",
+    "Minor Blues Hexatonic",
+    "Minor Pentatonic",
+    "Minyo",
+    "Persian",
+    "Persian mode 2",
+    "Persian mode 3",
+    "Persian mode 4",
+    "Persian mode 5",
+    "Persian mode 6",
+    "Persian mode 7",
+    "Phrygian Dominant",
+    "Ritsu",
+    "Ritsusen Pentatonic",
+    "Ryo",
+    "Ukrainian Dorian",
+    "Yo"
+  ],
+  "Complex": [
+    "Half Diminished",
+    "Ionian #2",
+    "Locrian",
+    "Locrian Diminished bb3",
+    "Locrian nat. 3",
+    "Lydian Augmented Dominant",
+    "Lydian b3",
+    "Neapolitan Major",
+    "Neapolitan Minor",
+    "Super-Locrian Diminished",
+    "Super-Locrian nat. 2",
+    "Ultraphrygian",
+    "Whole"
+  ],
+  "Positive": [
+    "Acoustic",
+    "Lydian Augmented",
+    "Major",
+    "Major Blues Hexatonic",
+    "Major Blues Hexatonic mode 2",
+    "Major Blues Hexatonic mode 3",
+    "Major Blues Hexatonic mode 4",
+    "Major Blues Hexatonic mode 5",
+    "Major Locrian",
+    "Major Pentatonic",
+    "Minor Blues Hexatonic",
+    "Mixolydian"
+  ],
+  "Mysterious": [
+    "Dorian b5",
+    "Double Harmonic Major",
+    "Harmonic Major",
+    "Lydian Augmented",
+    "Lydian Augmented #2",
+    "Lydian Augmented #6",
+    "Lydian b6 Dominant",
+    "Major Locrian",
+    "Super-Locrian bb3",
+    "Ukrainian Dorian"
+  ],
+  "Unstable": [
+    "Dorian b5",
+    "Ionian #2",
+    "Locrian",
+    "Lydian Augmented #6",
+    "Lydian Augmented Dominant",
+    "Lydian b3",
+    "Lydian b6 Dominant",
+    "Super-Locrian nat. 2",
+    "Ultraphrygian",
+    "Whole"
+  ],
+  "Folk": [
+    "Acoustic",
+    "Major Blues Hexatonic",
+    "Major Blues Hexatonic mode 2",
+    "Major Blues Hexatonic mode 3",
+    "Major Blues Hexatonic mode 4",
+    "Major Blues Hexatonic mode 5",
+    "Major Pentatonic",
+    "Minor Blues Hexatonic",
+    "Minor Pentatonic"
+  ],
+  "Japanese": [
+    "Hirajoshi",
+    "In",
+    "Insen",
+    "Iwato",
+    "Kumoi",
+    "Minyo",
+    "Ritsu",
+    "Ryo",
+    "Yo"
+  ],
+  "Middle Eastern": [
+    "Hungarian Gypsy",
+    "Major Locrian",
+    "Persian",
+    "Persian mode 2",
+    "Persian mode 3",
+    "Persian mode 4",
+    "Persian mode 5",
+    "Persian mode 6",
+    "Persian mode 7"
+  ],
+  "Arabic": [
+    "Persian",
+    "Persian mode 2",
+    "Persian mode 3",
+    "Persian mode 4",
+    "Persian mode 5",
+    "Persian mode 6",
+    "Persian mode 7"
+  ],
+  "Latin": [
+    "Double Harmonic Major",
+    "Hungarian Minor",
+    "Neapolitan Major",
+    "Neapolitan Minor",
+    "Phrygian",
+    "Super-Locrian Diminished",
+    "Super-Locrian Diminished bb3"
+  ],
+  "Sad": [
+    "Half Diminished",
+    "Harmonic Minor",
+    "Melodic Minor (asc)",
+    "Minor",
+    "Mixolydian b6"
+  ],
+  "Sentimental": [
+    "Hungarian Minor",
+    "Locrian Diminished",
+    "Minor",
+    "Mixolydian b6",
+    "Phrygian b4"
+  ],
+  "Emotional": [
+    "Locrian Diminished",
+    "Lydian #2",
+    "Melodic Minor (asc)",
+    "Minor"
+  ],
+  "Exotic": [
+    "Double Harmonic Major",
+    "Locrian",
+    "Oriental",
+    "Phrygian"
+  ],
+  "Jazzy": [
+    "Acoustic",
+    "Altered",
+    "Dorian",
+    "Lydian Augmented"
+  ],
+  "Ambiguous": [
+    "Hungarian Minor",
+    "Mixolydian Augmented",
+    "Phrygian b4"
+  ],
+  "Dark": [
+    "Dorian b5",
+    "Lydian #2 #6",
+    "Super-Locrian Diminished bb3"
+  ],
+  "Heroic": [
+    "Harmonic Major",
+    "Mixolydian b2",
+    "Super-Locrian bb3"
+  ],
+  "Hopeful": [
+    "Ionian Augmented",
+    "Lydian",
+    "Melodic Minor (asc)"
+  ],
+  "Jazz": [
+    "Half Diminished",
+    "Locrian nat. 3",
+    "Whole"
+  ],
+  "Serious": [
+    "Lydian #2",
+    "Minor",
+    "Mixolydian Augmented"
+  ],
+  "Suspenseful": [
+    "Dorian b2",
+    "Ionian Augmented #2",
+    "Lydian #2 #6"
+  ],
+  "Bluesy": [
+    "Dorian",
+    "Mixolydian"
+  ],
+  "Classical": [
+    "Locrian Diminished",
+    "Melodic Minor (asc)"
+  ],
+  "Dreamy": [
+    "Lydian",
+    "Lydian #6"
+  ],
+  "Ethereal": [
+    "Lydian",
+    "Lydian #6"
+  ],
+  "Flamenco": [
+    "Hungarian Gypsy",
+    "Phrygian Dominant"
+  ],
+  "Gypsy": [
+    "Phrygian Dominant",
+    "Ukrainian Dorian"
+  ],
+  "Majestic": [
+    "Harmonic Major",
+    "Mixolydian b2"
+  ],
+  "Melancholic": [
+    "Neapolitan Major",
+    "Neapolitan Minor"
+  ],
+  "Rock": [
+    "Half Diminished",
+    "Minor Pentatonic"
+  ],
+  "Rocky": [
+    "Dorian",
+    "Mixolydian"
+  ],
+  "Sophisticated": [
+    "Altered",
+    "Dorian"
+  ],
+  "Uneasy": [
+    "Dorian b2",
+    "Ionian Augmented #2"
+  ],
+  "Yearning": [
+    "Lydian",
+    "Lydian #2"
+  ],
+  "Ancient": [
+    "Locrian nat. 6"
+  ],
+  "Bright": [
+    "Major"
+  ],
+  "Discordant": [
+    "Locrian Diminished bb3"
+  ],
+  "Eastern": [
+    "Oriental"
+  ],
+  "Eastern European": [
+    "Ukrainian Dorian"
+  ],
+  "Eccentric": [
+    "Lydian #2 #6"
+  ],
+  "Eerie": [
+    "Lydian Augmented #2"
+  ],
+  "Enigmatic": [
+    "Ultraphrygian"
+  ],
+  "Epic": [
+    "Harmonic Minor"
+  ],
+  "Ethnic": [
+    "Lydian Augmented"
+  ],
+  "Film Noir": [
+    "Dorian b2"
+  ],
+  "Happy": [
+    "Major"
+  ],
+  "Indian": [
+    "Hungarian Gypsy"
+  ],
+  "Intricate": [
+    "Oriental"
+  ],
+  "Jewish": [
+    "Phrygian Dominant"
+  ],
+  "Light": [
+    "Major"
+  ],
+  "Lively": [
+    "Phrygian"
+  ],
+  "Magical": [
+    "Lydian Augmented"
+  ],
+  "Open": [
+    "Ionian Augmented"
+  ],
+  "Poppy": [
+    "Mixolydian"
+  ],
+  "Tragic": [
+    "Harmonic Minor"
+  ]
+}

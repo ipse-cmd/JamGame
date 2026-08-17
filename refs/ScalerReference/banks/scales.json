@@ -1,0 +1,2398 @@
+{
+  "Major scale": {
+    "name": "Major scale",
+    "display": "Major",
+    "semitones": [
+      0,
+      2,
+      4,
+      5,
+      7,
+      9,
+      11
+    ],
+    "formula": [
+      "1",
+      "2",
+      "3",
+      "4",
+      "5",
+      "6",
+      "7"
+    ],
+    "parent": "MAJOR",
+    "degree": 1,
+    "moods": [
+      "Happy",
+      "Light",
+      "Bright",
+      "Positive"
+    ],
+    "altNames": [
+      "Ionian mode"
+    ]
+  },
+  "Dorian mode": {
+    "name": "Dorian mode",
+    "display": "Dorian",
+    "semitones": [
+      0,
+      2,
+      3,
+      5,
+      7,
+      9,
+      10
+    ],
+    "formula": [
+      "1",
+      "2",
+      "b3",
+      "4",
+      "5",
+      "6",
+      "b7"
+    ],
+    "parent": "MAJOR",
+    "degree": 2,
+    "moods": [
+      "Jazzy",
+      "Bluesy",
+      "Rocky",
+      "Sophisticated"
+    ],
+    "altNames": []
+  },
+  "Phrygian mode": {
+    "name": "Phrygian mode",
+    "display": "Phrygian",
+    "semitones": [
+      0,
+      1,
+      3,
+      5,
+      7,
+      8,
+      10
+    ],
+    "formula": [
+      "1",
+      "b2",
+      "b3",
+      "4",
+      "5",
+      "b6",
+      "b7"
+    ],
+    "parent": "MAJOR",
+    "degree": 3,
+    "moods": [
+      "Exotic",
+      "Latin",
+      "Lively"
+    ],
+    "altNames": []
+  },
+  "Lydian mode": {
+    "name": "Lydian mode",
+    "display": "Lydian",
+    "semitones": [
+      0,
+      2,
+      4,
+      6,
+      7,
+      9,
+      11
+    ],
+    "formula": [
+      "1",
+      "2",
+      "3",
+      "#4",
+      "5",
+      "6",
+      "7"
+    ],
+    "parent": "MAJOR",
+    "degree": 4,
+    "moods": [
+      "Hopeful",
+      "Dreamy",
+      "Yearning",
+      "Ethereal"
+    ],
+    "altNames": []
+  },
+  "Mixolydian mode": {
+    "name": "Mixolydian mode",
+    "display": "Mixolydian",
+    "semitones": [
+      0,
+      2,
+      4,
+      5,
+      7,
+      9,
+      10
+    ],
+    "formula": [
+      "1",
+      "2",
+      "3",
+      "4",
+      "5",
+      "6",
+      "b7"
+    ],
+    "parent": "MAJOR",
+    "degree": 5,
+    "moods": [
+      "Positive",
+      "Bluesy",
+      "Rocky",
+      "Poppy"
+    ],
+    "altNames": [
+      "Major b7",
+      "Ionian dominant"
+    ]
+  },
+  "Natural Minor scale": {
+    "name": "Minor scale",
+    "display": "Minor",
+    "semitones": [
+      0,
+      2,
+      3,
+      5,
+      7,
+      8,
+      10
+    ],
+    "formula": [
+      "1",
+      "2",
+      "b3",
+      "4",
+      "5",
+      "b6",
+      "b7"
+    ],
+    "parent": "MAJOR",
+    "degree": 6,
+    "moods": [
+      "Serious",
+      "Sad",
+      "Emotional",
+      "Sentimental"
+    ],
+    "altNames": [
+      "Natural Minor scale",
+      "Aeolian mode"
+    ]
+  },
+  "Locrian mode": {
+    "name": "Locrian mode",
+    "display": "Locrian",
+    "semitones": [
+      0,
+      1,
+      3,
+      5,
+      6,
+      8,
+      10
+    ],
+    "formula": [
+      "1",
+      "b2",
+      "b3",
+      "4",
+      "b5",
+      "b6",
+      "b7"
+    ],
+    "parent": "MAJOR",
+    "degree": 7,
+    "moods": [
+      "Complex",
+      "Unstable",
+      "Exotic"
+    ],
+    "altNames": []
+  },
+  "Harmonic Major scale": {
+    "name": "Harmonic Major scale",
+    "display": "Harmonic Major",
+    "semitones": [
+      0,
+      2,
+      4,
+      5,
+      7,
+      8,
+      11
+    ],
+    "formula": [
+      "1",
+      "2",
+      "3",
+      "4",
+      "5",
+      "b6",
+      "7"
+    ],
+    "parent": "HARMONIC MAJOR",
+    "degree": 1,
+    "moods": [
+      "Heroic",
+      "Mysterious",
+      "Majestic"
+    ],
+    "altNames": [
+      "Ionian b6"
+    ]
+  },
+  "Dorian b5 scale": {
+    "name": "Dorian b5 scale",
+    "display": "Dorian b5",
+    "semitones": [
+      0,
+      2,
+      3,
+      5,
+      6,
+      9,
+      10
+    ],
+    "formula": [
+      "1",
+      "2",
+      "b3",
+      "4",
+      "b5",
+      "6",
+      "b7"
+    ],
+    "parent": "HARMONIC MAJOR",
+    "degree": 2,
+    "moods": [
+      "Mysterious",
+      "Dark",
+      "Unstable"
+    ],
+    "altNames": [
+      "Locrian nat. 2 nat. 6"
+    ]
+  },
+  "Phrygian b4 scale": {
+    "name": "Phrygian b4 scale",
+    "display": "Phrygian b4",
+    "semitones": [
+      0,
+      1,
+      3,
+      4,
+      7,
+      8,
+      10
+    ],
+    "formula": [
+      "1",
+      "b2",
+      "b3",
+      "b4",
+      "5",
+      "b6",
+      "b7"
+    ],
+    "parent": "HARMONIC MAJOR",
+    "degree": 3,
+    "moods": [
+      "Sentimental",
+      "Ambiguous"
+    ],
+    "altNames": [
+      "Super-Phrygian",
+      "Super-Locrian nat. 5",
+      "Locrian b4 nat. 5"
+    ]
+  },
+  "Lydian b3 scale": {
+    "name": "Lydian b3 scale",
+    "display": "Lydian b3",
+    "semitones": [
+      0,
+      2,
+      3,
+      6,
+      7,
+      9,
+      11
+    ],
+    "formula": [
+      "1",
+      "2",
+      "b3",
+      "#4",
+      "5",
+      "6",
+      "7"
+    ],
+    "parent": "HARMONIC MAJOR",
+    "degree": 4,
+    "moods": [
+      "Unstable",
+      "Complex"
+    ],
+    "altNames": [
+      "Lydian Melodic Minor",
+      "Melodic Minor #4"
+    ]
+  },
+  "Mixolydian b2 scale": {
+    "name": "Mixolydian b2 scale",
+    "display": "Mixolydian b2",
+    "semitones": [
+      0,
+      1,
+      4,
+      5,
+      7,
+      9,
+      10
+    ],
+    "formula": [
+      "1",
+      "b2",
+      "3",
+      "4",
+      "5",
+      "6",
+      "b7"
+    ],
+    "parent": "HARMONIC MAJOR",
+    "degree": 5,
+    "moods": [
+      "Heroic",
+      "Majestic"
+    ],
+    "altNames": [
+      "Mixolydian b9"
+    ]
+  },
+  "Lydian Augmented #2 scale": {
+    "name": "Lydian Augmented #2 scale",
+    "display": "Lydian Augmented #2",
+    "semitones": [
+      0,
+      3,
+      4,
+      6,
+      8,
+      9,
+      11
+    ],
+    "formula": [
+      "1",
+      "#2",
+      "3",
+      "#4",
+      "#5",
+      "6",
+      "7"
+    ],
+    "parent": "HARMONIC MAJOR",
+    "degree": 6,
+    "moods": [
+      "Eerie",
+      "Mysterious"
+    ],
+    "altNames": [
+      "Lydian #2 #5"
+    ]
+  },
+  "Locrian Diminished scale": {
+    "name": "Locrian Diminished scale",
+    "display": "Locrian Diminished",
+    "semitones": [
+      0,
+      1,
+      3,
+      5,
+      6,
+      8,
+      9
+    ],
+    "formula": [
+      "1",
+      "b2",
+      "b3",
+      "4",
+      "b5",
+      "b6",
+      "bb7"
+    ],
+    "parent": "HARMONIC MAJOR",
+    "degree": 7,
+    "moods": [
+      "Classical",
+      "Emotional",
+      "Sentimental"
+    ],
+    "altNames": [
+      "Locrian diminished 7",
+      "Locrian bb7"
+    ]
+  },
+  "Harmonic Minor scale": {
+    "name": "Harmonic Minor scale",
+    "display": "Harmonic Minor",
+    "semitones": [
+      0,
+      2,
+      3,
+      5,
+      7,
+      8,
+      11
+    ],
+    "formula": [
+      "1",
+      "2",
+      "b3",
+      "4",
+      "5",
+      "b6",
+      "7"
+    ],
+    "parent": "HARMONIC MINOR",
+    "degree": 1,
+    "moods": [
+      "Sad",
+      "Epic",
+      "Tragic"
+    ],
+    "altNames": [
+      "Aeolian Major 7",
+      "Melodic Minor b6",
+      "Mohammedan"
+    ]
+  },
+  "Locrian nat. 6 scale": {
+    "name": "Locrian nat. 6 scale",
+    "display": "Locrian nat. 6",
+    "semitones": [
+      0,
+      1,
+      3,
+      5,
+      6,
+      9,
+      10
+    ],
+    "formula": [
+      "1",
+      "b2",
+      "b3",
+      "4",
+      "b5",
+      "6",
+      "b7"
+    ],
+    "parent": "HARMONIC MINOR",
+    "degree": 2,
+    "moods": [
+      "Ancient"
+    ],
+    "altNames": [
+      "Locrian #6",
+      "Dorian b2 b5"
+    ]
+  },
+  "Ionian Augmented scale": {
+    "name": "Ionian Augmented scale",
+    "display": "Ionian Augmented",
+    "semitones": [
+      0,
+      2,
+      4,
+      5,
+      8,
+      9,
+      11
+    ],
+    "formula": [
+      "1",
+      "2",
+      "3",
+      "4",
+      "#5",
+      "6",
+      "7"
+    ],
+    "parent": "HARMONIC MINOR",
+    "degree": 3,
+    "moods": [
+      "Hopeful",
+      "Open"
+    ],
+    "altNames": [
+      "Ionian #5"
+    ]
+  },
+  "Ukrainian Dorian scale": {
+    "name": "Ukrainian Dorian scale",
+    "display": "Ukrainian Dorian",
+    "semitones": [
+      0,
+      2,
+      3,
+      6,
+      7,
+      9,
+      10
+    ],
+    "formula": [
+      "1",
+      "2",
+      "b3",
+      "#4",
+      "5",
+      "6",
+      "b7"
+    ],
+    "parent": "HARMONIC MINOR",
+    "degree": 4,
+    "moods": [
+      "World Music",
+      "Gypsy",
+      "Eastern European",
+      "Mysterious"
+    ],
+    "altNames": [
+      "Dorian #4",
+      "Romanian",
+      "Misheberakh"
+    ]
+  },
+  "Phrygian Dominant scale": {
+    "name": "Phrygian Dominant scale",
+    "display": "Phrygian Dominant",
+    "semitones": [
+      0,
+      1,
+      4,
+      5,
+      7,
+      8,
+      10
+    ],
+    "formula": [
+      "1",
+      "b2",
+      "3",
+      "4",
+      "5",
+      "b6",
+      "b7"
+    ],
+    "parent": "HARMONIC MINOR",
+    "degree": 5,
+    "moods": [
+      "World Music",
+      "Gypsy",
+      "Flamenco",
+      "Jewish"
+    ],
+    "altNames": [
+      "Spanish Gypsy",
+      "Balkan",
+      "Jewish",
+      "Ahava Rabah",
+      "Phrygian Major",
+      "Mixolydian b2 b6"
+    ]
+  },
+  "Lydian #2 scale": {
+    "name": "Lydian #2 scale",
+    "display": "Lydian #2",
+    "semitones": [
+      0,
+      3,
+      4,
+      6,
+      7,
+      9,
+      11
+    ],
+    "formula": [
+      "1",
+      "#2",
+      "3",
+      "#4",
+      "5",
+      "6",
+      "7"
+    ],
+    "parent": "HARMONIC MINOR",
+    "degree": 6,
+    "moods": [
+      "Yearning",
+      "Emotional",
+      "Serious"
+    ],
+    "altNames": []
+  },
+  "Super-Locrian Diminished scale": {
+    "name": "Super-Locrian Diminished scale",
+    "display": "Super-Locrian Diminished",
+    "semitones": [
+      0,
+      1,
+      3,
+      4,
+      6,
+      8,
+      9
+    ],
+    "formula": [
+      "1",
+      "b2",
+      "b3",
+      "b4",
+      "b5",
+      "b6",
+      "bb7"
+    ],
+    "parent": "HARMONIC MINOR",
+    "degree": 7,
+    "moods": [
+      "Latin",
+      "Complex"
+    ],
+    "altNames": [
+      "Altered bb7 scale",
+      "Locrian b4 bb7",
+      "Locrian b4 diminished",
+      "Ultra-Locrian",
+      "Diminished",
+      "Super-Locrian bb7"
+    ]
+  },
+  "Melodic Minor scale (asc)": {
+    "name": "Melodic Minor scale (asc)",
+    "display": "Melodic Minor (asc)",
+    "semitones": [
+      0,
+      2,
+      3,
+      5,
+      7,
+      9,
+      11
+    ],
+    "formula": [
+      "1",
+      "2",
+      "b3",
+      "4",
+      "5",
+      "6",
+      "7"
+    ],
+    "parent": "MELODIC MINOR",
+    "degree": 1,
+    "moods": [
+      "Emotional",
+      "Classical",
+      "Sad",
+      "Hopeful"
+    ],
+    "altNames": [
+      "Minor-Major",
+      "Minor nat. 6 nat. 7",
+      "Jazz Minor",
+      "Ionian b3",
+      "Hawaiian"
+    ]
+  },
+  "Dorian b2 scale": {
+    "name": "Dorian b2 scale",
+    "display": "Dorian b2",
+    "semitones": [
+      0,
+      1,
+      3,
+      5,
+      7,
+      9,
+      10
+    ],
+    "formula": [
+      "1",
+      "b2",
+      "b3",
+      "4",
+      "5",
+      "6",
+      "b7"
+    ],
+    "parent": "MELODIC MINOR",
+    "degree": 2,
+    "moods": [
+      "Suspenseful",
+      "Uneasy",
+      "Film Noir"
+    ],
+    "altNames": [
+      "Dorian b9",
+      "Dorian b2",
+      "Phrygian nat. 6",
+      "Javanese"
+    ]
+  },
+  "Lydian Augmented scale": {
+    "name": "Lydian Augmented scale",
+    "display": "Lydian Augmented",
+    "semitones": [
+      0,
+      2,
+      4,
+      6,
+      8,
+      9,
+      11
+    ],
+    "formula": [
+      "1",
+      "2",
+      "3",
+      "#4",
+      "#5",
+      "6",
+      "7"
+    ],
+    "parent": "MELODIC MINOR",
+    "degree": 3,
+    "moods": [
+      "Positive",
+      "Magical",
+      "Mysterious",
+      "Jazzy",
+      "Ethnic"
+    ],
+    "altNames": [
+      "Lydian #5"
+    ]
+  },
+  "Acoustic scale": {
+    "name": "Acoustic scale",
+    "display": "Acoustic",
+    "semitones": [
+      0,
+      2,
+      4,
+      6,
+      7,
+      9,
+      10
+    ],
+    "formula": [
+      "1",
+      "2",
+      "3",
+      "#4",
+      "5",
+      "6",
+      "b7"
+    ],
+    "parent": "MELODIC MINOR",
+    "degree": 4,
+    "moods": [
+      "Positive",
+      "Folk",
+      "World Music",
+      "Jazzy"
+    ],
+    "altNames": [
+      "Overtone",
+      "Lydian dominant",
+      "Lydian b7",
+      "Mixolydian #4"
+    ]
+  },
+  "Mixolydian b6 scale": {
+    "name": "Mixolydian b6 scale",
+    "display": "Mixolydian b6",
+    "semitones": [
+      0,
+      2,
+      4,
+      5,
+      7,
+      8,
+      10
+    ],
+    "formula": [
+      "1",
+      "2",
+      "3",
+      "4",
+      "5",
+      "b6",
+      "b7"
+    ],
+    "parent": "MELODIC MINOR",
+    "degree": 5,
+    "moods": [
+      "Sad",
+      "Sentimental"
+    ],
+    "altNames": [
+      "Mixolydian b6",
+      "Hindu",
+      "Mixolydian b13",
+      "Aeolian nat. 3",
+      "Aeolian dominant"
+    ]
+  },
+  "Half Diminished scale": {
+    "name": "Half Diminished scale",
+    "display": "Half Diminished",
+    "semitones": [
+      0,
+      2,
+      3,
+      5,
+      6,
+      8,
+      10
+    ],
+    "formula": [
+      "1",
+      "2",
+      "b3",
+      "4",
+      "b5",
+      "b6",
+      "b7"
+    ],
+    "parent": "MELODIC MINOR",
+    "degree": 6,
+    "moods": [
+      "Jazz",
+      "Rock",
+      "Sad",
+      "Complex"
+    ],
+    "altNames": [
+      "Semi-Locrian",
+      "Locrian nat. 2",
+      "Aeolian b5"
+    ]
+  },
+  "Altered scale": {
+    "name": "Altered scale",
+    "display": "Altered",
+    "semitones": [
+      0,
+      1,
+      3,
+      4,
+      6,
+      8,
+      10
+    ],
+    "formula": [
+      "1",
+      "b2",
+      "b3",
+      "b4",
+      "b5",
+      "b6",
+      "b7"
+    ],
+    "parent": "MELODIC MINOR",
+    "degree": 7,
+    "moods": [
+      "Jazzy",
+      "Sophisticated"
+    ],
+    "altNames": [
+      "Super-Locrian",
+      "Diminished whole-tone",
+      "Locrian b4",
+      "Altered dominant",
+      "Ravel"
+    ]
+  },
+  "Neapolitan Major scale": {
+    "name": "Neapolitan Major scale",
+    "display": "Neapolitan Major",
+    "semitones": [
+      0,
+      1,
+      3,
+      5,
+      7,
+      9,
+      11
+    ],
+    "formula": [
+      "1",
+      "b2",
+      "b3",
+      "4",
+      "5",
+      "6",
+      "7"
+    ],
+    "parent": "NEAPOLITAN MAJOR",
+    "degree": 1,
+    "moods": [
+      "Complex",
+      "Latin",
+      "Melancholic"
+    ],
+    "altNames": [
+      "Melodic Minor b2"
+    ]
+  },
+  "Lydian Augmented #6 scale": {
+    "name": "Lydian Augmented #6 scale",
+    "display": "Lydian Augmented #6",
+    "semitones": [
+      0,
+      2,
+      4,
+      6,
+      8,
+      10,
+      11
+    ],
+    "formula": [
+      "1",
+      "2",
+      "3",
+      "#4",
+      "#5",
+      "#6",
+      "7"
+    ],
+    "parent": "NEAPOLITAN MAJOR",
+    "degree": 2,
+    "moods": [
+      "Mysterious",
+      "Unstable"
+    ],
+    "altNames": [
+      "Leading whole-tone",
+      "Lydian #5 #6"
+    ]
+  },
+  "Lydian Augmented Dominant scale": {
+    "name": "Lydian Augmented Dominant scale",
+    "display": "Lydian Augmented Dominant",
+    "semitones": [
+      0,
+      2,
+      4,
+      6,
+      8,
+      9,
+      10
+    ],
+    "formula": [
+      "1",
+      "2",
+      "3",
+      "#4",
+      "#5",
+      "6",
+      "b7"
+    ],
+    "parent": "NEAPOLITAN MAJOR",
+    "degree": 3,
+    "moods": [
+      "Unstable",
+      "Complex"
+    ],
+    "altNames": [
+      "Acoustic augmented",
+      "Lydian #5 b7",
+      "Mixolydian #4 #5"
+    ]
+  },
+  "Lydian b6 Dominant scale": {
+    "name": "Lydian b6 Dominant scale",
+    "display": "Lydian b6 Dominant",
+    "semitones": [
+      0,
+      2,
+      4,
+      6,
+      7,
+      8,
+      10
+    ],
+    "formula": [
+      "1",
+      "2",
+      "3",
+      "#4",
+      "5",
+      "b6",
+      "b7"
+    ],
+    "parent": "NEAPOLITAN MAJOR",
+    "degree": 4,
+    "moods": [
+      "Mysterious",
+      "Unstable"
+    ],
+    "altNames": [
+      "Acoustic b6",
+      "Lydian Minor",
+      "Lydian b6 b7"
+    ]
+  },
+  "Major Locrian scale": {
+    "name": "Major Locrian scale",
+    "display": "Major Locrian",
+    "semitones": [
+      0,
+      2,
+      4,
+      5,
+      6,
+      8,
+      10
+    ],
+    "formula": [
+      "1",
+      "2",
+      "3",
+      "4",
+      "b5",
+      "b6",
+      "b7"
+    ],
+    "parent": "NEAPOLITAN MAJOR",
+    "degree": 5,
+    "moods": [
+      "Positive",
+      "World Music",
+      "Mysterious",
+      "Middle Eastern"
+    ],
+    "altNames": [
+      "Locrian Major",
+      "Mixolydian b5 b6",
+      "Arabian"
+    ]
+  },
+  "Super-Locrian nat. 2 scale": {
+    "name": "Super-Locrian nat. 2 scale",
+    "display": "Super-Locrian nat. 2",
+    "semitones": [
+      0,
+      2,
+      3,
+      4,
+      6,
+      8,
+      10
+    ],
+    "formula": [
+      "1",
+      "2",
+      "b3",
+      "b4",
+      "b5",
+      "b6",
+      "b7"
+    ],
+    "parent": "NEAPOLITAN MAJOR",
+    "degree": 6,
+    "moods": [
+      "Complex",
+      "Unstable"
+    ],
+    "altNames": [
+      "Semi-Locrian b4",
+      "Locrian nat. 2 b4",
+      "Altered nat. 2"
+    ]
+  },
+  "Super-Locrian bb3 scale": {
+    "name": "Super-Locrian bb3 scale",
+    "display": "Super-Locrian bb3",
+    "semitones": [
+      0,
+      1,
+      2,
+      4,
+      6,
+      8,
+      10
+    ],
+    "formula": [
+      "1",
+      "b2",
+      "bb3",
+      "b4",
+      "b5",
+      "b6",
+      "b7"
+    ],
+    "parent": "NEAPOLITAN MAJOR",
+    "degree": 7,
+    "moods": [
+      "Heroic",
+      "Mysterious"
+    ],
+    "altNames": [
+      "Locrian bb3 b4",
+      "Altered bb3"
+    ]
+  },
+  "Neapolitan Minor scale": {
+    "name": "Neapolitan Minor scale",
+    "display": "Neapolitan Minor",
+    "semitones": [
+      0,
+      1,
+      3,
+      5,
+      7,
+      8,
+      11
+    ],
+    "formula": [
+      "1",
+      "b2",
+      "b3",
+      "4",
+      "5",
+      "b6",
+      "7"
+    ],
+    "parent": "NEAPOLITAN MINOR",
+    "degree": 1,
+    "moods": [
+      "Complex",
+      "Latin",
+      "Melancholic"
+    ],
+    "altNames": [
+      "Harmonic Minor b2"
+    ]
+  },
+  "Lydian #6 scale": {
+    "name": "Lydian #6 scale",
+    "display": "Lydian #6",
+    "semitones": [
+      0,
+      2,
+      4,
+      6,
+      7,
+      10,
+      11
+    ],
+    "formula": [
+      "1",
+      "2",
+      "3",
+      "#4",
+      "5",
+      "#6",
+      "7"
+    ],
+    "parent": "NEAPOLITAN MINOR",
+    "degree": 2,
+    "moods": [
+      "Ethereal",
+      "Dreamy"
+    ],
+    "altNames": []
+  },
+  "Mixolydian Augmented scale": {
+    "name": "Mixolydian Augmented scale",
+    "display": "Mixolydian Augmented",
+    "semitones": [
+      0,
+      2,
+      4,
+      5,
+      8,
+      9,
+      10
+    ],
+    "formula": [
+      "1",
+      "2",
+      "3",
+      "4",
+      "#5",
+      "6",
+      "b7"
+    ],
+    "parent": "NEAPOLITAN MINOR",
+    "degree": 3,
+    "moods": [
+      "Serious",
+      "Ambiguous"
+    ],
+    "altNames": [
+      "Mixolydian #5"
+    ]
+  },
+  "Hungarian Gypsy scale": {
+    "name": "Hungarian Gypsy scale",
+    "display": "Hungarian Gypsy",
+    "semitones": [
+      0,
+      2,
+      3,
+      6,
+      7,
+      8,
+      10
+    ],
+    "formula": [
+      "1",
+      "2",
+      "b3",
+      "#4",
+      "5",
+      "b6",
+      "b7"
+    ],
+    "parent": "NEAPOLITAN MINOR",
+    "degree": 4,
+    "moods": [
+      "World Music",
+      "Flamenco",
+      "Indian",
+      "Middle Eastern"
+    ],
+    "altNames": [
+      "Aeolian #4",
+      "Gypsy",
+      "Hungarian"
+    ]
+  },
+  "Locrian nat. 3 scale": {
+    "name": "Locrian nat. 3 scale",
+    "display": "Locrian nat. 3",
+    "semitones": [
+      0,
+      1,
+      4,
+      5,
+      6,
+      8,
+      10
+    ],
+    "formula": [
+      "1",
+      "b2",
+      "3",
+      "4",
+      "b5",
+      "b6",
+      "b7"
+    ],
+    "parent": "NEAPOLITAN MINOR",
+    "degree": 5,
+    "moods": [
+      "Complex",
+      "Jazz"
+    ],
+    "altNames": [
+      "Locrian dominant"
+    ]
+  },
+  "Ionian #2 scale": {
+    "name": "Ionian #2 scale",
+    "display": "Ionian #2",
+    "semitones": [
+      0,
+      3,
+      4,
+      5,
+      7,
+      9,
+      11
+    ],
+    "formula": [
+      "1",
+      "#2",
+      "3",
+      "4",
+      "5",
+      "6",
+      "7"
+    ],
+    "parent": "NEAPOLITAN MINOR",
+    "degree": 6,
+    "moods": [
+      "Unstable",
+      "Complex"
+    ],
+    "altNames": [
+      "Ionian #9"
+    ]
+  },
+  "Super-Locrian Diminished bb3 scale": {
+    "name": "Super-Locrian Diminished bb3 scale",
+    "display": "Super-Locrian Diminished bb3",
+    "semitones": [
+      0,
+      1,
+      2,
+      4,
+      6,
+      8,
+      9
+    ],
+    "formula": [
+      "1",
+      "b2",
+      "bb3",
+      "b4",
+      "b5",
+      "b6",
+      "bb7"
+    ],
+    "parent": "NEAPOLITAN MINOR",
+    "degree": 7,
+    "moods": [
+      "Latin",
+      "Dark"
+    ],
+    "altNames": [
+      "Altered bb3 bb7",
+      "Ultra-Locrian bb3",
+      "Locrian bb3 b4 bb7",
+      "Super-Locrian bb3 bb7 "
+    ]
+  },
+  "Double Harmonic Major scale": {
+    "name": "Double Harmonic Major scale",
+    "display": "Double Harmonic Major",
+    "semitones": [
+      0,
+      1,
+      4,
+      5,
+      7,
+      8,
+      11
+    ],
+    "formula": [
+      "1",
+      "b2",
+      "3",
+      "4",
+      "5",
+      "b6",
+      "7"
+    ],
+    "parent": "DOUBLE HARMONIC MAJOR",
+    "degree": 1,
+    "moods": [
+      "Exotic",
+      "Mysterious",
+      "Latin"
+    ],
+    "altNames": [
+      "Harmonic Major b2",
+      "Double harmonic Major",
+      "Mayamalavagowla",
+      "Bhairav (Raga)",
+      "Byzantine scale",
+      "Arabic",
+      "Gypsy Major",
+      "Flamenco mode",
+      "Ionian b2 b6",
+      "Double Harmonic",
+      "Bizantine",
+      "Major Gypsy",
+      "Charhargah"
+    ]
+  },
+  "Lydian #2 #6 scale": {
+    "name": "Lydian #2 #6 scale",
+    "display": "Lydian #2 #6",
+    "semitones": [
+      0,
+      3,
+      4,
+      6,
+      7,
+      10,
+      11
+    ],
+    "formula": [
+      "1",
+      "#2",
+      "3",
+      "#4",
+      "5",
+      "#6",
+      "7"
+    ],
+    "parent": "DOUBLE HARMONIC MAJOR",
+    "degree": 2,
+    "moods": [
+      "Dark",
+      "Eccentric",
+      "Suspenseful"
+    ],
+    "altNames": []
+  },
+  "Ultraphrygian scale": {
+    "name": "Ultraphrygian scale",
+    "display": "Ultraphrygian",
+    "semitones": [
+      0,
+      1,
+      3,
+      4,
+      7,
+      8,
+      9
+    ],
+    "formula": [
+      "1",
+      "b2",
+      "b3",
+      "b4",
+      "5",
+      "b6",
+      "bb7"
+    ],
+    "parent": "DOUBLE HARMONIC MAJOR",
+    "degree": 3,
+    "moods": [
+      "Enigmatic",
+      "Complex",
+      "Unstable"
+    ],
+    "altNames": [
+      "Ultra Locrian nat. 5",
+      "Phrygian b4 bb7",
+      "Altered bb7 nat. 3"
+    ]
+  },
+  "Hungarian Minor scale": {
+    "name": "Hungarian Minor scale",
+    "display": "Hungarian Minor",
+    "semitones": [
+      0,
+      2,
+      3,
+      6,
+      7,
+      8,
+      11
+    ],
+    "formula": [
+      "1",
+      "2",
+      "b3",
+      "#4",
+      "5",
+      "b6",
+      "7"
+    ],
+    "parent": "DOUBLE HARMONIC MAJOR",
+    "degree": 4,
+    "moods": [
+      "Latin",
+      "Sentimental",
+      "Ambiguous"
+    ],
+    "altNames": [
+      "Double Harmonic Minor",
+      "Gypsy Minor",
+      "Harmonic Minor #4",
+      "Lydian b3 b6",
+      "Double Harmonic Minor",
+      "Algerian",
+      "Minor Gypsy"
+    ]
+  },
+  "Oriental scale": {
+    "name": "Oriental scale",
+    "display": "Oriental",
+    "semitones": [
+      0,
+      1,
+      4,
+      5,
+      6,
+      9,
+      10
+    ],
+    "formula": [
+      "1",
+      "b2",
+      "3",
+      "4",
+      "b5",
+      "6",
+      "b7"
+    ],
+    "parent": "DOUBLE HARMONIC MAJOR",
+    "degree": 5,
+    "moods": [
+      "Eastern",
+      "Intricate",
+      "Exotic"
+    ],
+    "altNames": [
+      "Mixolydian b5 b9",
+      "Mixolydian b2 b5"
+    ]
+  },
+  "Ionian Augmented #2 scale": {
+    "name": "Ionian Augmented #2 scale",
+    "display": "Ionian Augmented #2",
+    "semitones": [
+      0,
+      3,
+      4,
+      5,
+      8,
+      9,
+      11
+    ],
+    "formula": [
+      "1",
+      "#2",
+      "3",
+      "4",
+      "#5",
+      "6",
+      "7"
+    ],
+    "parent": "DOUBLE HARMONIC MAJOR",
+    "degree": 6,
+    "moods": [
+      "Suspenseful",
+      "Uneasy"
+    ],
+    "altNames": [
+      "Ionian #2 #5"
+    ]
+  },
+  "Locrian Diminished bb3 scale": {
+    "name": "Locrian Diminished bb3 scale",
+    "display": "Locrian Diminished bb3",
+    "semitones": [
+      0,
+      1,
+      2,
+      5,
+      6,
+      8,
+      9
+    ],
+    "formula": [
+      "1",
+      "b2",
+      "bb3",
+      "4",
+      "b5",
+      "b6",
+      "bb7"
+    ],
+    "parent": "DOUBLE HARMONIC MAJOR",
+    "degree": 7,
+    "moods": [
+      "Discordant",
+      "Complex"
+    ],
+    "altNames": [
+      "Locrian bb3 bb7"
+    ]
+  },
+  "Persian scale": {
+    "name": "Persian scale",
+    "display": "Persian",
+    "semitones": [
+      0,
+      1,
+      4,
+      5,
+      6,
+      8,
+      11
+    ],
+    "formula": [
+      "1",
+      "b2",
+      "3",
+      "4",
+      "b5",
+      "b6",
+      "7"
+    ],
+    "parent": "PERSIAN SCALE",
+    "degree": 1,
+    "moods": [
+      "World Music",
+      "Middle Eastern",
+      "Arabic"
+    ],
+    "altNames": []
+  },
+  "Persian mode 2": {
+    "name": "Persian mode 2",
+    "display": "Persian mode 2",
+    "semitones": [
+      0,
+      3,
+      4,
+      5,
+      7,
+      10,
+      11
+    ],
+    "formula": [
+      "1",
+      "#2",
+      "3",
+      "4",
+      "5",
+      "#6",
+      "7"
+    ],
+    "parent": "PERSIAN SCALE",
+    "degree": 2,
+    "moods": [
+      "World Music",
+      "Middle Eastern",
+      "Arabic"
+    ],
+    "altNames": []
+  },
+  "Persian mode 3": {
+    "name": "Persian mode 3",
+    "display": "Persian mode 3",
+    "semitones": [
+      0,
+      1,
+      2,
+      4,
+      7,
+      8,
+      9
+    ],
+    "formula": [
+      "1",
+      "b2",
+      "bb3",
+      "b4",
+      "5",
+      "b6",
+      "bb7"
+    ],
+    "parent": "PERSIAN SCALE",
+    "degree": 3,
+    "moods": [
+      "World Music",
+      "Middle Eastern",
+      "Arabic"
+    ],
+    "altNames": []
+  },
+  "Persian mode 4": {
+    "name": "Persian mode 4",
+    "display": "Persian mode 4",
+    "semitones": [
+      0,
+      1,
+      3,
+      6,
+      7,
+      8,
+      11
+    ],
+    "formula": [
+      "1",
+      "b2",
+      "b3",
+      "#4",
+      "5",
+      "b6",
+      "7"
+    ],
+    "parent": "PERSIAN SCALE",
+    "degree": 4,
+    "moods": [
+      "World Music",
+      "Middle Eastern",
+      "Arabic"
+    ],
+    "altNames": []
+  },
+  "Persian mode 5": {
+    "name": "Persian mode 5",
+    "display": "Persian mode 5",
+    "semitones": [
+      0,
+      2,
+      5,
+      6,
+      7,
+      10,
+      11
+    ],
+    "formula": [
+      "1",
+      "2",
+      "#3",
+      "#4",
+      "5",
+      "#6",
+      "7"
+    ],
+    "parent": "PERSIAN SCALE",
+    "degree": 5,
+    "moods": [
+      "World Music",
+      "Middle Eastern",
+      "Arabic"
+    ],
+    "altNames": []
+  },
+  "Persian mode 6": {
+    "name": "Persian mode 6",
+    "display": "Persian mode 6",
+    "semitones": [
+      0,
+      3,
+      4,
+      5,
+      8,
+      9,
+      10
+    ],
+    "formula": [
+      "1",
+      "#2",
+      "3",
+      "4",
+      "#5",
+      "6",
+      "b7"
+    ],
+    "parent": "PERSIAN SCALE",
+    "degree": 6,
+    "moods": [
+      "World Music",
+      "Middle Eastern",
+      "Arabic"
+    ],
+    "altNames": []
+  },
+  "Persian mode 7": {
+    "name": "Persian mode 7",
+    "display": "Persian mode 7",
+    "semitones": [
+      0,
+      1,
+      2,
+      5,
+      6,
+      7,
+      9
+    ],
+    "formula": [
+      "1",
+      "b2",
+      "bb3",
+      "4",
+      "b5",
+      "bb6",
+      "bb7"
+    ],
+    "parent": "PERSIAN SCALE",
+    "degree": 7,
+    "moods": [
+      "World Music",
+      "Middle Eastern",
+      "Arabic"
+    ],
+    "altNames": []
+  },
+  "Major Pentatonic scale": {
+    "name": "Major Pentatonic scale",
+    "display": "Major Pentatonic",
+    "semitones": [
+      0,
+      2,
+      4,
+      7,
+      9
+    ],
+    "formula": [
+      "1",
+      "2",
+      "3",
+      "5",
+      "6"
+    ],
+    "parent": "MAJOR PENTATONIC",
+    "degree": 1,
+    "moods": [
+      "Positive",
+      "Folk",
+      "World Music"
+    ],
+    "altNames": []
+  },
+  "Egyptian Pentatonic scale": {
+    "name": "Egyptian Pentatonic scale",
+    "display": "Egyptian Pentatonic",
+    "semitones": [
+      0,
+      2,
+      5,
+      7,
+      10
+    ],
+    "formula": [
+      "1",
+      "2",
+      "4",
+      "5",
+      "b7"
+    ],
+    "parent": "MAJOR PENTATONIC",
+    "degree": 2,
+    "moods": [
+      "World Music"
+    ],
+    "altNames": [
+      "Suspended Pentatonic",
+      "‘Dorian’ Pentatonic"
+    ]
+  },
+  "Man Gong Pentatonic scale": {
+    "name": "Man Gong Pentatonic scale",
+    "display": "Man Gong Pentatonic",
+    "semitones": [
+      0,
+      3,
+      5,
+      8,
+      10
+    ],
+    "formula": [
+      "1",
+      "b3",
+      "4",
+      "b6",
+      "b7"
+    ],
+    "parent": "MAJOR PENTATONIC",
+    "degree": 3,
+    "moods": [
+      "World Music"
+    ],
+    "altNames": [
+      "Blues Minor Pentatonic",
+      "‘Phrygian’ Pentatonic"
+    ]
+  },
+  "Ritsusen Pentatonic scale": {
+    "name": "Ritsusen Pentatonic scale",
+    "display": "Ritsusen Pentatonic",
+    "semitones": [
+      0,
+      2,
+      5,
+      7,
+      9
+    ],
+    "formula": [
+      "1",
+      "2",
+      "4",
+      "5",
+      "6"
+    ],
+    "parent": "MAJOR PENTATONIC",
+    "degree": 4,
+    "moods": [
+      "World Music"
+    ],
+    "altNames": [
+      "Blues Major Pentatonic",
+      "'Mixolydian’ Pentatonic",
+      "Scottish"
+    ]
+  },
+  "Minor Pentatonic scale": {
+    "name": "Minor Pentatonic scale",
+    "display": "Minor Pentatonic",
+    "semitones": [
+      0,
+      3,
+      5,
+      7,
+      10
+    ],
+    "formula": [
+      "1",
+      "b3",
+      "4",
+      "5",
+      "b7"
+    ],
+    "parent": "MAJOR PENTATONIC",
+    "degree": 5,
+    "moods": [
+      "Rock",
+      "Folk",
+      "World Music"
+    ],
+    "altNames": []
+  },
+  "Major Blues Hexatonic Scale": {
+    "name": "Major Blues Hexatonic Scale",
+    "display": "Major Blues Hexatonic",
+    "semitones": [
+      0,
+      2,
+      3,
+      4,
+      7,
+      9
+    ],
+    "formula": [
+      "1",
+      "2",
+      "b3",
+      "3",
+      "5",
+      "6"
+    ],
+    "parent": "MAJOR BLUES HEXATONIC",
+    "degree": 1,
+    "moods": [
+      "Positive",
+      "Folk",
+      "World Music"
+    ],
+    "altNames": []
+  },
+  "Major Blues Hexatonic mode 2": {
+    "name": "Major Blues Hexatonic mode 2",
+    "display": "Major Blues Hexatonic mode 2",
+    "semitones": [
+      0,
+      1,
+      2,
+      5,
+      7,
+      10
+    ],
+    "formula": [
+      "1",
+      "b2",
+      "2",
+      "4",
+      "5",
+      "b7"
+    ],
+    "parent": "MAJOR BLUES HEXATONIC",
+    "degree": 2,
+    "moods": [
+      "Positive",
+      "Folk",
+      "World Music"
+    ],
+    "altNames": []
+  },
+  "Major Blues Hexatonic mode 3": {
+    "name": "Major Blues Hexatonic mode 3",
+    "display": "Major Blues Hexatonic mode 3",
+    "semitones": [
+      0,
+      1,
+      4,
+      6,
+      9,
+      11
+    ],
+    "formula": [
+      "1",
+      "b2",
+      "3",
+      "#4",
+      "6",
+      "7"
+    ],
+    "parent": "MAJOR BLUES HEXATONIC",
+    "degree": 3,
+    "moods": [
+      "Positive",
+      "Folk",
+      "World Music"
+    ],
+    "altNames": []
+  },
+  "Major Blues Hexatonic mode 4": {
+    "name": "Major Blues Hexatonic mode 4",
+    "display": "Major Blues Hexatonic mode 4",
+    "semitones": [
+      0,
+      3,
+      5,
+      8,
+      10,
+      11
+    ],
+    "formula": [
+      "1",
+      "#2",
+      "#3",
+      "#5",
+      "b7",
+      "7"
+    ],
+    "parent": "MAJOR BLUES HEXATONIC",
+    "degree": 4,
+    "moods": [
+      "Positive",
+      "Folk",
+      "World Music"
+    ],
+    "altNames": []
+  },
+  "Major Blues Hexatonic mode 5": {
+    "name": "Major Blues Hexatonic mode 5",
+    "display": "Major Blues Hexatonic mode 5",
+    "semitones": [
+      0,
+      2,
+      5,
+      7,
+      8,
+      9
+    ],
+    "formula": [
+      "1",
+      "2",
+      "4",
+      "5",
+      "b6",
+      "6"
+    ],
+    "parent": "MAJOR BLUES HEXATONIC",
+    "degree": 5,
+    "moods": [
+      "Positive",
+      "Folk",
+      "World Music"
+    ],
+    "altNames": []
+  },
+  "Minor Blues Hexatonic Scale": {
+    "name": "Minor Blues Hexatonic Scale",
+    "display": "Minor Blues Hexatonic",
+    "semitones": [
+      0,
+      3,
+      5,
+      6,
+      7,
+      10
+    ],
+    "formula": [
+      "1",
+      "b3",
+      "4",
+      "b5",
+      "5",
+      "b7"
+    ],
+    "parent": "MAJOR BLUES HEXATONIC",
+    "degree": 6,
+    "moods": [
+      "Positive",
+      "Folk",
+      "World Music"
+    ],
+    "altNames": []
+  },
+  "Hirajoshi Scale": {
+    "name": "Hirajoshi Scale",
+    "display": "Hirajoshi",
+    "semitones": [
+      0,
+      4,
+      6,
+      7,
+      11
+    ],
+    "formula": [
+      "1",
+      "3",
+      "#4",
+      "5",
+      "7"
+    ],
+    "parent": "HIRAJOSHI",
+    "degree": 1,
+    "moods": [
+      "Japanese",
+      "World Music"
+    ],
+    "altNames": []
+  },
+  "Iwato Scale": {
+    "name": "Iwato Scale",
+    "display": "Iwato",
+    "semitones": [
+      0,
+      2,
+      3,
+      7,
+      8
+    ],
+    "formula": [
+      "1",
+      "2",
+      "b3",
+      "5",
+      "b6"
+    ],
+    "parent": "HIRAJOSHI",
+    "degree": 2,
+    "moods": [
+      "Japanese",
+      "World Music"
+    ],
+    "altNames": []
+  },
+  "Kumoi Scale": {
+    "name": "Kumoi Scale",
+    "display": "Kumoi",
+    "semitones": [
+      0,
+      2,
+      3,
+      7,
+      9
+    ],
+    "formula": [
+      "1",
+      "2",
+      "b3",
+      "5",
+      "6"
+    ],
+    "parent": "KUMOI",
+    "degree": 1,
+    "moods": [
+      "Japanese",
+      "World Music"
+    ],
+    "altNames": []
+  },
+  "Insen Scale": {
+    "name": "Insen Scale",
+    "display": "Insen",
+    "semitones": [
+      0,
+      1,
+      5,
+      7,
+      10
+    ],
+    "formula": [
+      "1",
+      "b2",
+      "4",
+      "5",
+      "b7"
+    ],
+    "parent": "KUMOI",
+    "degree": 2,
+    "moods": [
+      "Japanese",
+      "World Music"
+    ],
+    "altNames": []
+  },
+  "Ritsu Scale": {
+    "name": "Ritsu Scale",
+    "display": "Ritsu",
+    "semitones": [
+      0,
+      2,
+      3,
+      5,
+      7,
+      9,
+      10
+    ],
+    "formula": [
+      "1",
+      "2",
+      "b3",
+      "4",
+      "5",
+      "6",
+      "b7"
+    ],
+    "parent": "RITSU",
+    "degree": 1,
+    "moods": [
+      "Japanese",
+      "World Music"
+    ],
+    "altNames": []
+  },
+  "In Scale": {
+    "name": "In Scale",
+    "display": "In",
+    "semitones": [
+      0,
+      1,
+      3,
+      5,
+      7,
+      8,
+      10
+    ],
+    "formula": [
+      "1",
+      "b2",
+      "b3",
+      "4",
+      "5",
+      "b6",
+      "b7"
+    ],
+    "parent": "RITSU",
+    "degree": 2,
+    "moods": [
+      "Japanese",
+      "World Music"
+    ],
+    "altNames": []
+  },
+  "Ryo Scale": {
+    "name": "Ryo Scale",
+    "display": "Ryo",
+    "semitones": [
+      0,
+      2,
+      4,
+      7,
+      9
+    ],
+    "formula": [
+      "1",
+      "2",
+      "3",
+      "5",
+      "6"
+    ],
+    "parent": "RYO",
+    "degree": 1,
+    "moods": [
+      "Japanese",
+      "World Music"
+    ],
+    "altNames": []
+  },
+  "Minyo Scale": {
+    "name": "Minyo Scale",
+    "display": "Minyo",
+    "semitones": [
+      0,
+      3,
+      5,
+      8,
+      10
+    ],
+    "formula": [
+      "1",
+      "b3",
+      "4",
+      "b6",
+      "b7"
+    ],
+    "parent": "RYO",
+    "degree": 3,
+    "moods": [
+      "Japanese",
+      "World Music"
+    ],
+    "altNames": []
+  },
+  "Yo Scale": {
+    "name": "Yo Scale",
+    "display": "Yo",
+    "semitones": [
+      0,
+      2,
+      5,
+      7,
+      9
+    ],
+    "formula": [
+      "1",
+      "2",
+      "4",
+      "5",
+      "6"
+    ],
+    "parent": "RYO",
+    "degree": 4,
+    "moods": [
+      "Japanese",
+      "World Music"
+    ],
+    "altNames": []
+  },
+  "Whole Tone scale": {
+    "name": "Whole Tone",
+    "display": "Whole",
+    "semitones": [
+      0,
+      2,
+      4,
+      6,
+      8,
+      10
+    ],
+    "formula": [
+      "1",
+      "2",
+      "3",
+      "#4",
+      "#5",
+      "b7"
+    ],
+    "parent": "WHOLE",
+    "degree": 1,
+    "moods": [
+      "Complex",
+      "Jazz",
+      "Unstable"
+    ],
+    "altNames": []
+  }
+}

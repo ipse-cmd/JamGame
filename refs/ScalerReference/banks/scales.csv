@@ -1,0 +1,78 @@
+Name,Display,Semitones,Parent,Degree,Moods,AltNames
+Major scale,Major,0 2 4 5 7 9 11,MAJOR,1,"Happy, Light, Bright, Positive",Ionian mode
+Dorian mode,Dorian,0 2 3 5 7 9 10,MAJOR,2,"Jazzy, Bluesy, Rocky, Sophisticated",
+Phrygian mode,Phrygian,0 1 3 5 7 8 10,MAJOR,3,"Exotic, Latin, Lively",
+Lydian mode,Lydian,0 2 4 6 7 9 11,MAJOR,4,"Hopeful, Dreamy, Yearning, Ethereal",
+Mixolydian mode,Mixolydian,0 2 4 5 7 9 10,MAJOR,5,"Positive, Bluesy, Rocky, Poppy",Major b7; Ionian dominant
+Natural Minor scale,Minor,0 2 3 5 7 8 10,MAJOR,6,"Serious, Sad, Emotional, Sentimental",Natural Minor scale; Aeolian mode
+Locrian mode,Locrian,0 1 3 5 6 8 10,MAJOR,7,"Complex, Unstable, Exotic",
+Harmonic Major scale,Harmonic Major,0 2 4 5 7 8 11,HARMONIC MAJOR,1,"Heroic, Mysterious, Majestic",Ionian b6
+Dorian b5 scale,Dorian b5,0 2 3 5 6 9 10,HARMONIC MAJOR,2,"Mysterious, Dark, Unstable",Locrian nat. 2 nat. 6
+Phrygian b4 scale,Phrygian b4,0 1 3 4 7 8 10,HARMONIC MAJOR,3,"Sentimental, Ambiguous",Super-Phrygian; Super-Locrian nat. 5; Locrian b4 nat. 5
+Lydian b3 scale,Lydian b3,0 2 3 6 7 9 11,HARMONIC MAJOR,4,"Unstable, Complex",Lydian Melodic Minor; Melodic Minor #4
+Mixolydian b2 scale,Mixolydian b2,0 1 4 5 7 9 10,HARMONIC MAJOR,5,"Heroic, Majestic",Mixolydian b9
+Lydian Augmented #2 scale,Lydian Augmented #2,0 3 4 6 8 9 11,HARMONIC MAJOR,6,"Eerie, Mysterious",Lydian #2 #5
+Locrian Diminished scale,Locrian Diminished,0 1 3 5 6 8 9,HARMONIC MAJOR,7,"Classical, Emotional, Sentimental",Locrian diminished 7; Locrian bb7
+Harmonic Minor scale,Harmonic Minor,0 2 3 5 7 8 11,HARMONIC MINOR,1,"Sad, Epic, Tragic",Aeolian Major 7; Melodic Minor b6; Mohammedan
+Locrian nat. 6 scale,Locrian nat. 6,0 1 3 5 6 9 10,HARMONIC MINOR,2,Ancient,Locrian #6; Dorian b2 b5
+Ionian Augmented scale,Ionian Augmented,0 2 4 5 8 9 11,HARMONIC MINOR,3,"Hopeful, Open",Ionian #5
+Ukrainian Dorian scale,Ukrainian Dorian,0 2 3 6 7 9 10,HARMONIC MINOR,4,"World Music, Gypsy, Eastern European, Mysterious",Dorian #4; Romanian; Misheberakh
+Phrygian Dominant scale,Phrygian Dominant,0 1 4 5 7 8 10,HARMONIC MINOR,5,"World Music, Gypsy, Flamenco, Jewish",Spanish Gypsy; Balkan; Jewish; Ahava Rabah; Phrygian Major; Mixolydian b2 b6
+Lydian #2 scale,Lydian #2,0 3 4 6 7 9 11,HARMONIC MINOR,6,"Yearning, Emotional, Serious",
+Super-Locrian Diminished scale,Super-Locrian Diminished,0 1 3 4 6 8 9,HARMONIC MINOR,7,"Latin, Complex",Altered bb7 scale; Locrian b4 bb7; Locrian b4 diminished; Ultra-Locrian; Diminished; Super-Locrian bb7
+Melodic Minor scale (asc),Melodic Minor (asc),0 2 3 5 7 9 11,MELODIC MINOR,1,"Emotional, Classical, Sad, Hopeful",Minor-Major; Minor nat. 6 nat. 7; Jazz Minor; Ionian b3; Hawaiian
+Dorian b2 scale,Dorian b2,0 1 3 5 7 9 10,MELODIC MINOR,2,"Suspenseful, Uneasy, Film Noir",Dorian b9; Dorian b2; Phrygian nat. 6; Javanese
+Lydian Augmented scale,Lydian Augmented,0 2 4 6 8 9 11,MELODIC MINOR,3,"Positive, Magical, Mysterious, Jazzy, Ethnic",Lydian #5
+Acoustic scale,Acoustic,0 2 4 6 7 9 10,MELODIC MINOR,4,"Positive, Folk, World Music, Jazzy",Overtone; Lydian dominant; Lydian b7; Mixolydian #4
+Mixolydian b6 scale,Mixolydian b6,0 2 4 5 7 8 10,MELODIC MINOR,5,"Sad, Sentimental",Mixolydian b6; Hindu; Mixolydian b13; Aeolian nat. 3; Aeolian dominant
+Half Diminished scale,Half Diminished,0 2 3 5 6 8 10,MELODIC MINOR,6,"Jazz, Rock, Sad, Complex",Semi-Locrian; Locrian nat. 2; Aeolian b5
+Altered scale,Altered,0 1 3 4 6 8 10,MELODIC MINOR,7,"Jazzy, Sophisticated",Super-Locrian; Diminished whole-tone; Locrian b4; Altered dominant; Ravel
+Neapolitan Major scale,Neapolitan Major,0 1 3 5 7 9 11,NEAPOLITAN MAJOR,1,"Complex, Latin, Melancholic",Melodic Minor b2
+Lydian Augmented #6 scale,Lydian Augmented #6,0 2 4 6 8 10 11,NEAPOLITAN MAJOR,2,"Mysterious, Unstable",Leading whole-tone; Lydian #5 #6
+Lydian Augmented Dominant scale,Lydian Augmented Dominant,0 2 4 6 8 9 10,NEAPOLITAN MAJOR,3,"Unstable, Complex",Acoustic augmented; Lydian #5 b7; Mixolydian #4 #5
+Lydian b6 Dominant scale,Lydian b6 Dominant,0 2 4 6 7 8 10,NEAPOLITAN MAJOR,4,"Mysterious, Unstable",Acoustic b6; Lydian Minor; Lydian b6 b7
+Major Locrian scale,Major Locrian,0 2 4 5 6 8 10,NEAPOLITAN MAJOR,5,"Positive, World Music, Mysterious, Middle Eastern",Locrian Major; Mixolydian b5 b6; Arabian
+Super-Locrian nat. 2 scale,Super-Locrian nat. 2,0 2 3 4 6 8 10,NEAPOLITAN MAJOR,6,"Complex, Unstable",Semi-Locrian b4; Locrian nat. 2 b4; Altered nat. 2
+Super-Locrian bb3 scale,Super-Locrian bb3,0 1 2 4 6 8 10,NEAPOLITAN MAJOR,7,"Heroic, Mysterious",Locrian bb3 b4; Altered bb3
+Neapolitan Minor scale,Neapolitan Minor,0 1 3 5 7 8 11,NEAPOLITAN MINOR,1,"Complex, Latin, Melancholic",Harmonic Minor b2
+Lydian #6 scale,Lydian #6,0 2 4 6 7 10 11,NEAPOLITAN MINOR,2,"Ethereal, Dreamy",
+Mixolydian Augmented scale,Mixolydian Augmented,0 2 4 5 8 9 10,NEAPOLITAN MINOR,3,"Serious, Ambiguous",Mixolydian #5
+Hungarian Gypsy scale,Hungarian Gypsy,0 2 3 6 7 8 10,NEAPOLITAN MINOR,4,"World Music, Flamenco, Indian, Middle Eastern",Aeolian #4; Gypsy; Hungarian
+Locrian nat. 3 scale,Locrian nat. 3,0 1 4 5 6 8 10,NEAPOLITAN MINOR,5,"Complex, Jazz",Locrian dominant
+Ionian #2 scale,Ionian #2,0 3 4 5 7 9 11,NEAPOLITAN MINOR,6,"Unstable, Complex",Ionian #9
+Super-Locrian Diminished bb3 scale,Super-Locrian Diminished bb3,0 1 2 4 6 8 9,NEAPOLITAN MINOR,7,"Latin, Dark",Altered bb3 bb7; Ultra-Locrian bb3; Locrian bb3 b4 bb7; Super-Locrian bb3 bb7 
+Double Harmonic Major scale,Double Harmonic Major,0 1 4 5 7 8 11,DOUBLE HARMONIC MAJOR,1,"Exotic, Mysterious, Latin",Harmonic Major b2; Double harmonic Major; Mayamalavagowla; Bhairav (Raga); Byzantine scale; Arabic; Gypsy Major; Flamenco mode; Ionian b2 b6; Double Harmonic; Bizantine; Major Gypsy; Charhargah
+Lydian #2 #6 scale,Lydian #2 #6,0 3 4 6 7 10 11,DOUBLE HARMONIC MAJOR,2,"Dark, Eccentric, Suspenseful",
+Ultraphrygian scale,Ultraphrygian,0 1 3 4 7 8 9,DOUBLE HARMONIC MAJOR,3,"Enigmatic, Complex, Unstable",Ultra Locrian nat. 5; Phrygian b4 bb7; Altered bb7 nat. 3
+Hungarian Minor scale,Hungarian Minor,0 2 3 6 7 8 11,DOUBLE HARMONIC MAJOR,4,"Latin, Sentimental, Ambiguous",Double Harmonic Minor; Gypsy Minor; Harmonic Minor #4; Lydian b3 b6; Double Harmonic Minor; Algerian; Minor Gypsy
+Oriental scale,Oriental,0 1 4 5 6 9 10,DOUBLE HARMONIC MAJOR,5,"Eastern, Intricate, Exotic",Mixolydian b5 b9; Mixolydian b2 b5
+Ionian Augmented #2 scale,Ionian Augmented #2,0 3 4 5 8 9 11,DOUBLE HARMONIC MAJOR,6,"Suspenseful, Uneasy",Ionian #2 #5
+Locrian Diminished bb3 scale,Locrian Diminished bb3,0 1 2 5 6 8 9,DOUBLE HARMONIC MAJOR,7,"Discordant, Complex",Locrian bb3 bb7
+Persian scale,Persian,0 1 4 5 6 8 11,PERSIAN SCALE,1,"World Music, Middle Eastern, Arabic",
+Persian mode 2,Persian mode 2,0 3 4 5 7 10 11,PERSIAN SCALE,2,"World Music, Middle Eastern, Arabic",
+Persian mode 3,Persian mode 3,0 1 2 4 7 8 9,PERSIAN SCALE,3,"World Music, Middle Eastern, Arabic",
+Persian mode 4,Persian mode 4,0 1 3 6 7 8 11,PERSIAN SCALE,4,"World Music, Middle Eastern, Arabic",
+Persian mode 5,Persian mode 5,0 2 5 6 7 10 11,PERSIAN SCALE,5,"World Music, Middle Eastern, Arabic",
+Persian mode 6,Persian mode 6,0 3 4 5 8 9 10,PERSIAN SCALE,6,"World Music, Middle Eastern, Arabic",
+Persian mode 7,Persian mode 7,0 1 2 5 6 7 9,PERSIAN SCALE,7,"World Music, Middle Eastern, Arabic",
+Major Pentatonic scale,Major Pentatonic,0 2 4 7 9,MAJOR PENTATONIC,1,"Positive, Folk, World Music",
+Egyptian Pentatonic scale,Egyptian Pentatonic,0 2 5 7 10,MAJOR PENTATONIC,2,World Music,Suspended Pentatonic; ‘Dorian’ Pentatonic
+Man Gong Pentatonic scale,Man Gong Pentatonic,0 3 5 8 10,MAJOR PENTATONIC,3,World Music,Blues Minor Pentatonic; ‘Phrygian’ Pentatonic
+Ritsusen Pentatonic scale,Ritsusen Pentatonic,0 2 5 7 9,MAJOR PENTATONIC,4,World Music,Blues Major Pentatonic; 'Mixolydian’ Pentatonic; Scottish
+Minor Pentatonic scale,Minor Pentatonic,0 3 5 7 10,MAJOR PENTATONIC,5,"Rock, Folk, World Music",
+Major Blues Hexatonic Scale,Major Blues Hexatonic,0 2 3 4 7 9,MAJOR BLUES HEXATONIC,1,"Positive, Folk, World Music",
+Major Blues Hexatonic mode 2,Major Blues Hexatonic mode 2,0 1 2 5 7 10,MAJOR BLUES HEXATONIC,2,"Positive, Folk, World Music",
+Major Blues Hexatonic mode 3,Major Blues Hexatonic mode 3,0 1 4 6 9 11,MAJOR BLUES HEXATONIC,3,"Positive, Folk, World Music",
+Major Blues Hexatonic mode 4,Major Blues Hexatonic mode 4,0 3 5 8 10 11,MAJOR BLUES HEXATONIC,4,"Positive, Folk, World Music",
+Major Blues Hexatonic mode 5,Major Blues Hexatonic mode 5,0 2 5 7 8 9,MAJOR BLUES HEXATONIC,5,"Positive, Folk, World Music",
+Minor Blues Hexatonic Scale,Minor Blues Hexatonic,0 3 5 6 7 10,MAJOR BLUES HEXATONIC,6,"Positive, Folk, World Music",
+Hirajoshi Scale,Hirajoshi,0 4 6 7 11,HIRAJOSHI,1,"Japanese, World Music",
+Iwato Scale,Iwato,0 2 3 7 8,HIRAJOSHI,2,"Japanese, World Music",
+Kumoi Scale,Kumoi,0 2 3 7 9,KUMOI,1,"Japanese, World Music",
+Insen Scale,Insen,0 1 5 7 10,KUMOI,2,"Japanese, World Music",
+Ritsu Scale,Ritsu,0 2 3 5 7 9 10,RITSU,1,"Japanese, World Music",
+In Scale,In,0 1 3 5 7 8 10,RITSU,2,"Japanese, World Music",
+Ryo Scale,Ryo,0 2 4 7 9,RYO,1,"Japanese, World Music",
+Minyo Scale,Minyo,0 3 5 8 10,RYO,3,"Japanese, World Music",
+Yo Scale,Yo,0 2 5 7 9,RYO,4,"Japanese, World Music",
+Whole Tone scale,Whole,0 2 4 6 8 10,WHOLE,1,"Complex, Jazz, Unstable",

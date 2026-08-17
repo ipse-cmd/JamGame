@@ -1,0 +1,7717 @@
+[
+  {
+    "suffix_uuid": "0e11ef88-c67d-4285-9b2b-b8b232386842",
+    "positions": [
+      {
+        "frets": [
+          0,
+          2,
+          2,
+          1,
+          0,
+          0
+        ],
+        "fingers": [
+          1,
+          3,
+          4,
+          2,
+          1,
+          1
+        ],
+        "openFingers": [
+          -1,
+          2,
+          3,
+          1,
+          -1,
+          -1
+        ],
+        "barres": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "tonicString": 1,
+        "transposable": true,
+        "position_uuid": "a9dcd718-b2ba-49cd-aecb-a9afd558b50a"
+      },
+      {
+        "frets": [
+          3,
+          2,
+          0,
+          0,
+          0,
+          3
+        ],
+        "fingers": [
+          2,
+          1,
+          -1,
+          -1,
+          -1,
+          4
+        ],
+        "openFingers": [
+          2,
+          1,
+          -1,
+          -1,
+          -1,
+          4
+        ],
+        "barres": [
+          -1,
+          -1,
+          0,
+          0,
+          0,
+          -1
+        ],
+        "tonicString": 1,
+        "transposable": false,
+        "position_uuid": "61d1abe1-3406-403f-b33b-cf5af0a2739a"
+      },
+      {
+        "frets": [
+          -1,
+          3,
+          2,
+          0,
+          1,
+          0
+        ],
+        "fingers": [
+          -1,
+          4,
+          3,
+          1,
+          2,
+          1
+        ],
+        "openFingers": [
+          -1,
+          3,
+          2,
+          -1,
+          1,
+          -1
+        ],
+        "barres": [
+          -1,
+          -1,
+          -1,
+          0,
+          0,
+          0
+        ],
+        "tonicString": 2,
+        "transposable": true,
+        "position_uuid": "d56b46dd-527a-4080-8510-56f7408f539a"
+      },
+      {
+        "frets": [
+          -1,
+          0,
+          2,
+          2,
+          2,
+          0
+        ],
+        "fingers": [
+          -1,
+          1,
+          2,
+          3,
+          4,
+          1
+        ],
+        "openFingers": [
+          -1,
+          -1,
+          1,
+          2,
+          3,
+          -1
+        ],
+        "barres": [
+          -1,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "tonicString": 2,
+        "transposable": true,
+        "position_uuid": "26b570c2-64c8-4158-b725-5e8cf04d2b7e"
+      },
+      {
+        "frets": [
+          -1,
+          -1,
+          0,
+          2,
+          3,
+          2
+        ],
+        "fingers": [
+          -1,
+          -1,
+          1,
+          2,
+          4,
+          3
+        ],
+        "openFingers": [
+          -1,
+          -1,
+          -1,
+          1,
+          3,
+          2
+        ],
+        "barres": [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        "tonicString": 3,
+        "transposable": true,
+        "position_uuid": "0fb1ec49-20d5-4986-9a9d-1163728d2c99"
+      },
+      {
+        "frets": [
+          -1,
+          -1,
+          2,
+          1,
+          0,
+          0
+        ],
+        "fingers": [
+          -1,
+          -1,
+          3,
+          2,
+          1,
+          1
+        ],
+        "openFingers": [
+          -1,
+          -1,
+          2,
+          1,
+          -1,
+          -1
+        ],
+        "barres": [
+          -1,
+          -1,
+          -1,
+          -1,
+          0,
+          0
+        ],
+        "tonicString": 3,
+        "transposable": true,
+        "position_uuid": "2e797c8a-bd72-4132-936f-8896ba01acf8"
+      }
+    ]
+  },
+  {
+    "suffix_uuid": "4425f04f-dac5-469c-90bf-a7201af10e6e",
+    "positions": [
+      {
+        "frets": [
+          0,
+          2,
+          2,
+          0,
+          0,
+          0
+        ],
+        "fingers": [
+          1,
+          3,
+          4,
+          1,
+          1,
+          1
+        ],
+        "openFingers": [
+          -1,
+          2,
+          3,
+          -1,
+          -1,
+          -1
+        ],
+        "barres": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "tonicString": 1,
+        "transposable": true,
+        "position_uuid": "994a88fa-9afe-4865-b697-cd79f4afeae5"
+      },
+      {
+        "frets": [
+          -1,
+          0,
+          2,
+          2,
+          1,
+          0
+        ],
+        "fingers": [
+          -1,
+          1,
+          3,
+          4,
+          2,
+          1
+        ],
+        "openFingers": [
+          -1,
+          -1,
+          2,
+          3,
+          1,
+          -1
+        ],
+        "barres": [
+          -1,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "tonicString": 2,
+        "transposable": true,
+        "position_uuid": "f26c0b69-65b0-4bb4-9556-e4731a17040e"
+      },
+      {
+        "frets": [
+          -1,
+          -1,
+          0,
+          2,
+          3,
+          1
+        ],
+        "fingers": [
+          -1,
+          -1,
+          1,
+          3,
+          4,
+          2
+        ],
+        "openFingers": [
+          -1,
+          -1,
+          -1,
+          2,
+          3,
+          1
+        ],
+        "barres": [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        "tonicString": 3,
+        "transposable": true,
+        "position_uuid": "60824128-7faf-44d0-b10e-64f448901a6d"
+      }
+    ]
+  },
+  {
+    "suffix_uuid": "c5dea2d4-58da-400d-b23c-d6af34fd47df",
+    "positions": [
+      {
+        "frets": [
+          0,
+          1,
+          2,
+          0,
+          -1,
+          -1
+        ],
+        "fingers": [
+          1,
+          2,
+          3,
+          1,
+          -1,
+          -1
+        ],
+        "openFingers": [
+          -1,
+          1,
+          2,
+          -1,
+          -1,
+          -1
+        ],
+        "barres": [
+          0,
+          0,
+          0,
+          0,
+          -1,
+          -1
+        ],
+        "tonicString": 1,
+        "transposable": true,
+        "position_uuid": "edec9f80-ae7b-4fdf-bcd0-34c0af9046e0"
+      },
+      {
+        "frets": [
+          -1,
+          0,
+          1,
+          2,
+          1,
+          -1
+        ],
+        "fingers": [
+          -1,
+          1,
+          2,
+          4,
+          3,
+          -1
+        ],
+        "openFingers": [
+          -1,
+          -1,
+          1,
+          3,
+          2,
+          -1
+        ],
+        "barres": [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        "tonicString": 2,
+        "transposable": true,
+        "position_uuid": "dcb4b086-3844-475e-b0f8-9d46307486ca"
+      },
+      {
+        "frets": [
+          -1,
+          -1,
+          0,
+          1,
+          3,
+          1
+        ],
+        "fingers": [
+          -1,
+          -1,
+          1,
+          2,
+          4,
+          3
+        ],
+        "openFingers": [
+          -1,
+          -1,
+          -1,
+          1,
+          4,
+          2
+        ],
+        "barres": [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        "tonicString": 3,
+        "transposable": true,
+        "position_uuid": "3d4b4057-a2ae-4b95-87a3-ba35d09a5ecc"
+      }
+    ]
+  },
+  {
+    "suffix_uuid": "1fbf73c6-8c0d-416a-84d3-4c2386eb49f1",
+    "positions": [
+      {
+        "frets": [
+          3,
+          2,
+          1,
+          0,
+          -1,
+          -1
+        ],
+        "fingers": [
+          4,
+          3,
+          2,
+          1,
+          -1,
+          -1
+        ],
+        "openFingers": [
+          3,
+          2,
+          1,
+          -1,
+          -1,
+          -1
+        ],
+        "barres": [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        "tonicString": 1,
+        "transposable": true,
+        "position_uuid": "6f4d49cb-1476-4d51-85d1-ee1b4986024a"
+      },
+      {
+        "frets": [
+          -1,
+          2,
+          1,
+          0,
+          0,
+          -1
+        ],
+        "fingers": [
+          -1,
+          3,
+          2,
+          1,
+          1,
+          -1
+        ],
+        "openFingers": [
+          -1,
+          2,
+          1,
+          -1,
+          -1,
+          -1
+        ],
+        "barres": [
+          -1,
+          -1,
+          -1,
+          0,
+          0,
+          -1
+        ],
+        "tonicString": 2,
+        "transposable": true,
+        "position_uuid": "cfe3b8dd-1a2a-4704-8635-a9103cb62f48"
+      },
+      {
+        "frets": [
+          -1,
+          -1,
+          2,
+          1,
+          1,
+          0
+        ],
+        "fingers": [
+          -1,
+          -1,
+          4,
+          2,
+          3,
+          1
+        ],
+        "openFingers": [
+          -1,
+          -1,
+          3,
+          1,
+          2,
+          -1
+        ],
+        "barres": [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        "tonicString": 3,
+        "transposable": true,
+        "position_uuid": "11bd57c9-5be6-42a6-9a6c-9783665addf8"
+      }
+    ]
+  },
+  {
+    "suffix_uuid": "e669c6ba-6da5-4db6-8e80-64d9173584e4",
+    "positions": [
+      {
+        "frets": [
+          -1,
+          0,
+          2,
+          2,
+          0,
+          0
+        ],
+        "fingers": [
+          -1,
+          1,
+          3,
+          4,
+          1,
+          1
+        ],
+        "openFingers": [
+          -1,
+          -1,
+          2,
+          3,
+          -1,
+          -1
+        ],
+        "barres": [
+          -1,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "tonicString": 2,
+        "transposable": true,
+        "position_uuid": "6ae24667-e5bd-4a9a-b67f-1f7efd486dbe"
+      },
+      {
+        "frets": [
+          -1,
+          -1,
+          0,
+          2,
+          3,
+          0
+        ],
+        "fingers": [
+          -1,
+          -1,
+          1,
+          3,
+          4,
+          1
+        ],
+        "openFingers": [
+          -1,
+          -1,
+          -1,
+          2,
+          3,
+          -1
+        ],
+        "barres": [
+          -1,
+          -1,
+          0,
+          0,
+          0,
+          0
+        ],
+        "tonicString": 3,
+        "transposable": true,
+        "position_uuid": "bf866db5-ef8e-4ab1-be59-ea63bb3ea922"
+      }
+    ]
+  },
+  {
+    "suffix_uuid": "fcf56e7c-4b66-4fc5-a828-37e69d1f9260",
+    "positions": [
+      {
+        "frets": [
+          0,
+          2,
+          2,
+          2,
+          0,
+          0
+        ],
+        "fingers": [
+          1,
+          2,
+          3,
+          4,
+          1,
+          1
+        ],
+        "openFingers": [
+          -1,
+          1,
+          2,
+          3,
+          -1,
+          -1
+        ],
+        "barres": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "tonicString": 1,
+        "transposable": true,
+        "position_uuid": "0cc18c11-2f66-49d9-9f36-c04f95abbf99"
+      },
+      {
+        "frets": [
+          -1,
+          3,
+          3,
+          0,
+          1,
+          -1
+        ],
+        "fingers": [
+          -1,
+          3,
+          4,
+          1,
+          2,
+          -1
+        ],
+        "openFingers": [
+          -1,
+          3,
+          4,
+          -1,
+          1,
+          -1
+        ],
+        "barres": [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        "tonicString": 2,
+        "transposable": false,
+        "position_uuid": "a7a2213f-fb31-4e5b-baab-70fdb726b266"
+      },
+      {
+        "frets": [
+          -1,
+          0,
+          2,
+          2,
+          3,
+          -1
+        ],
+        "fingers": [
+          -1,
+          1,
+          2,
+          3,
+          4,
+          -1
+        ],
+        "openFingers": [
+          -1,
+          -1,
+          1,
+          2,
+          3,
+          -1
+        ],
+        "barres": [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        "tonicString": 2,
+        "transposable": true,
+        "position_uuid": "d6759355-0aa2-4b71-850d-1e1551821f3d"
+      },
+      {
+        "frets": [
+          -1,
+          -1,
+          0,
+          2,
+          3,
+          3
+        ],
+        "fingers": [
+          -1,
+          -1,
+          1,
+          3,
+          4,
+          4
+        ],
+        "openFingers": [
+          -1,
+          -1,
+          -1,
+          1,
+          2,
+          2
+        ],
+        "barres": [
+          -1,
+          -1,
+          -1,
+          -1,
+          3,
+          3
+        ],
+        "tonicString": 3,
+        "transposable": true,
+        "position_uuid": "246478ea-d182-459e-9813-840d260e9261"
+      }
+    ]
+  },
+  {
+    "suffix_uuid": "6941c58a-509d-4eef-9a69-cb2340b9d6c1",
+    "positions": [
+      {
+        "frets": [
+          0,
+          -1,
+          1,
+          1,
+          0,
+          -1
+        ],
+        "fingers": [
+          1,
+          -1,
+          3,
+          4,
+          2,
+          -1
+        ],
+        "openFingers": [
+          -1,
+          -1,
+          2,
+          3,
+          -1,
+          -1
+        ],
+        "barres": [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        "tonicString": 1,
+        "transposable": true,
+        "position_uuid": "17e74f84-0b3a-44e6-b25b-88bdb83fdee8"
+      },
+      {
+        "frets": [
+          -1,
+          0,
+          2,
+          1,
+          2,
+          -1
+        ],
+        "fingers": [
+          -1,
+          1,
+          3,
+          2,
+          4,
+          -1
+        ],
+        "openFingers": [
+          -1,
+          -1,
+          2,
+          1,
+          3,
+          -1
+        ],
+        "barres": [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        "tonicString": 2,
+        "transposable": true,
+        "position_uuid": "07b45a0f-7c59-4e89-8505-a074e8d50e7e"
+      },
+      {
+        "frets": [
+          -1,
+          -1,
+          0,
+          2,
+          2,
+          2
+        ],
+        "fingers": [
+          -1,
+          -1,
+          1,
+          4,
+          4,
+          4
+        ],
+        "openFingers": [
+          -1,
+          -1,
+          -1,
+          1,
+          1,
+          1
+        ],
+        "barres": [
+          -1,
+          -1,
+          -1,
+          2,
+          2,
+          2
+        ],
+        "tonicString": 3,
+        "transposable": true,
+        "position_uuid": "6f6b197f-ca96-46d7-9b92-bb6570848fbc"
+      },
+      {
+        "frets": [
+          -1,
+          3,
+          2,
+          0,
+          0,
+          0
+        ],
+        "fingers": [
+          -1,
+          3,
+          2,
+          -1,
+          -1,
+          -1
+        ],
+        "openFingers": [
+          -1,
+          3,
+          2,
+          -1,
+          -1,
+          -1
+        ],
+        "barres": [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        "tonicString": 2,
+        "transposable": false,
+        "position_uuid": "d49c404e-b117-4dff-ae39-65bf15728535"
+      }
+    ]
+  },
+  {
+    "suffix_uuid": "01280a07-b152-4590-a81a-7e0dd08ee06c",
+    "positions": [
+      {
+        "frets": [
+          0,
+          2,
+          2,
+          0,
+          3,
+          0
+        ],
+        "fingers": [
+          -1,
+          2,
+          3,
+          -1,
+          4,
+          -1
+        ],
+        "openFingers": [
+          -1,
+          2,
+          3,
+          -1,
+          4,
+          -1
+        ],
+        "barres": [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        "tonicString": 1,
+        "transposable": false,
+        "position_uuid": "fb455d5a-cfdf-4b3f-9564-d3917f4b5c30"
+      },
+      {
+        "frets": [
+          0,
+          -1,
+          0,
+          0,
+          0,
+          0
+        ],
+        "fingers": [
+          2,
+          -1,
+          3,
+          3,
+          3,
+          3
+        ],
+        "openFingers": [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        "barres": [
+          -1,
+          -1,
+          0,
+          0,
+          0,
+          0
+        ],
+        "tonicString": 1,
+        "transposable": true,
+        "position_uuid": "958f5098-30cc-4ee0-8d6d-383d3cdc08c4"
+      },
+      {
+        "frets": [
+          -1,
+          0,
+          2,
+          0,
+          1,
+          -1
+        ],
+        "fingers": [
+          -1,
+          1,
+          3,
+          1,
+          2,
+          -1
+        ],
+        "openFingers": [
+          -1,
+          -1,
+          2,
+          -1,
+          1,
+          -1
+        ],
+        "barres": [
+          -1,
+          0,
+          0,
+          0,
+          0,
+          -1
+        ],
+        "tonicString": 2,
+        "transposable": true,
+        "position_uuid": "3e72fa47-e782-4307-afb6-9b527691d385"
+      },
+      {
+        "frets": [
+          -1,
+          -1,
+          0,
+          2,
+          1,
+          1
+        ],
+        "fingers": [
+          -1,
+          -1,
+          1,
+          3,
+          2,
+          2
+        ],
+        "openFingers": [
+          -1,
+          -1,
+          -1,
+          2,
+          1,
+          1
+        ],
+        "barres": [
+          -1,
+          -1,
+          -1,
+          -1,
+          1,
+          1
+        ],
+        "tonicString": 3,
+        "transposable": true,
+        "position_uuid": "ceb78d8f-1db0-4bff-905b-2aeba4821589"
+      }
+    ]
+  },
+  {
+    "suffix_uuid": "5fa6dbed-ebb8-4530-b54c-2e82df10b0c0",
+    "positions": [
+      {
+        "frets": [
+          1,
+          -1,
+          1,
+          1,
+          0,
+          -1
+        ],
+        "fingers": [
+          1,
+          -1,
+          3,
+          4,
+          2,
+          -1
+        ],
+        "openFingers": [
+          1,
+          -1,
+          2,
+          3,
+          -1,
+          -1
+        ],
+        "barres": [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        "tonicString": 1,
+        "transposable": true,
+        "position_uuid": "c035b422-41ff-48db-adb4-312b3ac718ed"
+      },
+      {
+        "frets": [
+          -1,
+          0,
+          1,
+          0,
+          1,
+          -1
+        ],
+        "fingers": [
+          -1,
+          1,
+          3,
+          2,
+          4,
+          -1
+        ],
+        "openFingers": [
+          -1,
+          -1,
+          1,
+          -1,
+          2,
+          -1
+        ],
+        "barres": [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        "tonicString": 2,
+        "transposable": true,
+        "position_uuid": "641050ea-b573-4d43-9e3f-9fdf29e9f177"
+      },
+      {
+        "frets": [
+          -1,
+          -1,
+          0,
+          1,
+          1,
+          1
+        ],
+        "fingers": [
+          -1,
+          -1,
+          1,
+          2,
+          2,
+          2
+        ],
+        "openFingers": [
+          -1,
+          -1,
+          -1,
+          1,
+          1,
+          1
+        ],
+        "barres": [
+          -1,
+          -1,
+          -1,
+          1,
+          1,
+          1
+        ],
+        "tonicString": 3,
+        "transposable": true,
+        "position_uuid": "266b9716-12c7-47c1-8a41-4b9250be930f"
+      }
+    ]
+  },
+  {
+    "suffix_uuid": "e44f834f-6039-45e1-b8e0-b95d1e71ae89",
+    "positions": [
+      {
+        "frets": [
+          1,
+          -1,
+          0,
+          1,
+          0,
+          -1
+        ],
+        "fingers": [
+          2,
+          -1,
+          1,
+          3,
+          1,
+          -1
+        ],
+        "openFingers": [
+          2,
+          -1,
+          -1,
+          3,
+          -1,
+          -1
+        ],
+        "barres": [
+          -1,
+          -1,
+          0,
+          0,
+          0,
+          -1
+        ],
+        "tonicString": 1,
+        "transposable": true,
+        "position_uuid": "c53e4ce8-631e-4870-875b-2cc02ed6b251"
+      },
+      {
+        "frets": [
+          -1,
+          1,
+          2,
+          0,
+          2,
+          -1
+        ],
+        "fingers": [
+          -1,
+          2,
+          3,
+          1,
+          4,
+          -1
+        ],
+        "openFingers": [
+          -1,
+          1,
+          2,
+          -1,
+          3,
+          -1
+        ],
+        "barres": [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        "tonicString": 2,
+        "transposable": true,
+        "position_uuid": "3f75139e-fd38-4721-8b9e-d62f833bcd1b"
+      },
+      {
+        "frets": [
+          -1,
+          -1,
+          0,
+          1,
+          0,
+          1
+        ],
+        "fingers": [
+          -1,
+          -1,
+          1,
+          3,
+          2,
+          4
+        ],
+        "openFingers": [
+          -1,
+          -1,
+          -1,
+          1,
+          -1,
+          2
+        ],
+        "barres": [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        "tonicString": 3,
+        "transposable": true,
+        "position_uuid": "a03d395c-ff33-4cbf-a63d-21bdbadb3d8f"
+      }
+    ]
+  },
+  {
+    "suffix_uuid": "70b96823-2078-4949-8060-86c62883df2d",
+    "positions": [
+      {
+        "frets": [
+          0,
+          2,
+          0,
+          1,
+          0,
+          0
+        ],
+        "fingers": [
+          1,
+          3,
+          1,
+          2,
+          1,
+          1
+        ],
+        "openFingers": [
+          -1,
+          2,
+          -1,
+          1,
+          -1,
+          -1
+        ],
+        "barres": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "tonicString": 1,
+        "transposable": true,
+        "position_uuid": "5ad62e1a-cf80-4861-b359-ef53352ed8ea"
+      },
+      {
+        "frets": [
+          0,
+          2,
+          2,
+          1,
+          3,
+          0
+        ],
+        "fingers": [
+          -1,
+          2,
+          3,
+          1,
+          4,
+          -1
+        ],
+        "openFingers": [
+          -1,
+          2,
+          3,
+          1,
+          4,
+          -1
+        ],
+        "barres": [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        "tonicString": 1,
+        "transposable": false,
+        "position_uuid": "d5d74cd4-3fd4-4fd3-98c2-97d810bd867f"
+      },
+      {
+        "frets": [
+          -1,
+          2,
+          1,
+          2,
+          0,
+          2
+        ],
+        "fingers": [
+          -1,
+          2,
+          1,
+          3,
+          -1,
+          4
+        ],
+        "openFingers": [
+          -1,
+          2,
+          1,
+          3,
+          -1,
+          4
+        ],
+        "barres": [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        "tonicString": 2,
+        "transposable": false,
+        "position_uuid": "9ede0c83-7c24-46c4-bb83-47254b0abd79"
+      },
+      {
+        "frets": [
+          3,
+          2,
+          0,
+          0,
+          0,
+          1
+        ],
+        "fingers": [
+          3,
+          2,
+          -1,
+          -1,
+          -1,
+          1
+        ],
+        "openFingers": [
+          3,
+          2,
+          -1,
+          -1,
+          -1,
+          1
+        ],
+        "barres": [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        "tonicString": 1,
+        "transposable": false,
+        "position_uuid": "fa66f7af-88b7-4b09-937c-be7969263655"
+      },
+      {
+        "frets": [
+          0,
+          -1,
+          0,
+          1,
+          0,
+          -1
+        ],
+        "fingers": [
+          1,
+          -1,
+          2,
+          4,
+          3,
+          -1
+        ],
+        "openFingers": [
+          -1,
+          -1,
+          -1,
+          1,
+          -1,
+          -1
+        ],
+        "barres": [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        "tonicString": 1,
+        "transposable": true,
+        "position_uuid": "5bc05815-8cc3-458f-ae20-7cbcb298b98b"
+      },
+      {
+        "frets": [
+          -1,
+          0,
+          2,
+          0,
+          2,
+          -1
+        ],
+        "fingers": [
+          -1,
+          1,
+          3,
+          1,
+          4,
+          -1
+        ],
+        "openFingers": [
+          -1,
+          -1,
+          1,
+          -1,
+          2,
+          -1
+        ],
+        "barres": [
+          -1,
+          0,
+          0,
+          0,
+          0,
+          -1
+        ],
+        "tonicString": 2,
+        "transposable": true,
+        "position_uuid": "1a898668-ba6e-4733-bd61-666cb48000a2"
+      },
+      {
+        "frets": [
+          -1,
+          -1,
+          0,
+          2,
+          1,
+          2
+        ],
+        "fingers": [
+          -1,
+          -1,
+          1,
+          3,
+          2,
+          4
+        ],
+        "openFingers": [
+          -1,
+          -1,
+          -1,
+          2,
+          1,
+          3
+        ],
+        "barres": [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        "tonicString": 3,
+        "transposable": true,
+        "position_uuid": "4a8504b4-dce6-4b06-b86c-76b834543701"
+      },
+      {
+        "frets": [
+          -1,
+          3,
+          2,
+          3,
+          1,
+          0
+        ],
+        "fingers": [
+          -1,
+          3,
+          2,
+          4,
+          1,
+          -1
+        ],
+        "openFingers": [
+          -1,
+          3,
+          2,
+          4,
+          1,
+          -1
+        ],
+        "barres": [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        "tonicString": 2,
+        "transposable": false,
+        "position_uuid": "b7bbee8a-3f14-4e88-a4ed-4b156dbaf55b"
+      }
+    ]
+  },
+  {
+    "suffix_uuid": "d8ccc054-3417-4ef0-9438-383583fc3672",
+    "positions": [
+      {
+        "frets": [
+          0,
+          1,
+          2,
+          1,
+          -1,
+          -1
+        ],
+        "fingers": [
+          1,
+          2,
+          4,
+          3,
+          -1,
+          -1
+        ],
+        "openFingers": [
+          -1,
+          1,
+          3,
+          2,
+          -1,
+          -1
+        ],
+        "barres": [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        "tonicString": 1,
+        "transposable": true,
+        "position_uuid": "ac5b3ae2-1fe5-4997-8b43-df4910d6ddeb"
+      },
+      {
+        "frets": [
+          -1,
+          4,
+          3,
+          0,
+          2,
+          -1
+        ],
+        "fingers": [
+          -1,
+          4,
+          3,
+          1,
+          2,
+          -1
+        ],
+        "openFingers": [
+          -1,
+          3,
+          2,
+          -1,
+          1,
+          -1
+        ],
+        "barres": [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        "tonicString": 2,
+        "transposable": false,
+        "position_uuid": "420a4060-1b8a-44cf-9810-8ebe19cf8f5a"
+      },
+      {
+        "frets": [
+          -1,
+          0,
+          1,
+          2,
+          2,
+          -1
+        ],
+        "fingers": [
+          -1,
+          1,
+          2,
+          3,
+          4,
+          -1
+        ],
+        "openFingers": [
+          -1,
+          -1,
+          1,
+          2,
+          3,
+          -1
+        ],
+        "barres": [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        "tonicString": 2,
+        "transposable": true,
+        "position_uuid": "8fce4f15-d362-49ed-8af2-a2aa338b4f32"
+      },
+      {
+        "frets": [
+          -1,
+          -1,
+          0,
+          1,
+          3,
+          2
+        ],
+        "fingers": [
+          -1,
+          -1,
+          1,
+          2,
+          4,
+          3
+        ],
+        "openFingers": [
+          -1,
+          -1,
+          -1,
+          1,
+          3,
+          2
+        ],
+        "barres": [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        "tonicString": 3,
+        "transposable": true,
+        "position_uuid": "6e72c21a-42ee-4f68-9b34-75c6b616a139"
+      }
+    ]
+  },
+  {
+    "suffix_uuid": "b2418155-1be6-4e76-9820-ac4d1117339d",
+    "positions": [
+      {
+        "frets": [
+          1,
+          2,
+          3,
+          0,
+          -1,
+          -1
+        ],
+        "fingers": [
+          2,
+          4,
+          3,
+          1,
+          -1,
+          -1
+        ],
+        "openFingers": [
+          1,
+          2,
+          3,
+          -1,
+          -1,
+          -1
+        ],
+        "barres": [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        "tonicString": 1,
+        "transposable": true,
+        "position_uuid": "001b69ba-1f05-4d9f-8a79-ba114b01bf14"
+      },
+      {
+        "frets": [
+          -1,
+          0,
+          1,
+          2,
+          0,
+          -1
+        ],
+        "fingers": [
+          -1,
+          1,
+          3,
+          4,
+          2,
+          -1
+        ],
+        "openFingers": [
+          -1,
+          -1,
+          1,
+          2,
+          -1,
+          -1
+        ],
+        "barres": [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        "tonicString": 2,
+        "transposable": true,
+        "position_uuid": "2254a24d-7356-4025-ab9d-3467072d23d1"
+      },
+      {
+        "frets": [
+          -1,
+          -1,
+          0,
+          1,
+          3,
+          0
+        ],
+        "fingers": [
+          -1,
+          -1,
+          1,
+          2,
+          4,
+          1
+        ],
+        "openFingers": [
+          -1,
+          -1,
+          -1,
+          1,
+          3,
+          -1
+        ],
+        "barres": [
+          -1,
+          -1,
+          0,
+          0,
+          0,
+          0
+        ],
+        "tonicString": 3,
+        "transposable": true,
+        "position_uuid": "feb19c68-3fcf-44a9-8d42-2b5697532117"
+      }
+    ]
+  },
+  {
+    "suffix_uuid": "0b5fb63b-9c66-4f5b-bf1b-0540c8cc413c",
+    "positions": [
+      {
+        "frets": [
+          0,
+          2,
+          2,
+          -1,
+          -1,
+          -1
+        ],
+        "fingers": [
+          1,
+          3,
+          3,
+          -1,
+          -1,
+          -1
+        ],
+        "openFingers": [
+          -1,
+          1,
+          1,
+          -1,
+          -1,
+          -1
+        ],
+        "barres": [
+          -1,
+          2,
+          2,
+          -1,
+          -1,
+          -1
+        ],
+        "tonicString": 1,
+        "transposable": true,
+        "position_uuid": "ab8ad963-eb4e-40a7-91ce-550a4cbc80cb"
+      },
+      {
+        "frets": [
+          -1,
+          0,
+          2,
+          2,
+          -1,
+          -1
+        ],
+        "fingers": [
+          -1,
+          1,
+          3,
+          3,
+          -1,
+          -1
+        ],
+        "openFingers": [
+          -1,
+          -1,
+          1,
+          1,
+          -1,
+          -1
+        ],
+        "barres": [
+          -1,
+          -1,
+          2,
+          2,
+          -1,
+          -1
+        ],
+        "tonicString": 2,
+        "transposable": true,
+        "position_uuid": "6c969a8b-ac40-46d2-a707-31c17cc5cd55"
+      },
+      {
+        "frets": [
+          -1,
+          -1,
+          0,
+          2,
+          3,
+          -1
+        ],
+        "fingers": [
+          -1,
+          -1,
+          1,
+          3,
+          4,
+          -1
+        ],
+        "openFingers": [
+          -1,
+          -1,
+          -1,
+          1,
+          2,
+          -1
+        ],
+        "barres": [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        "tonicString": 3,
+        "transposable": true,
+        "position_uuid": "e3073172-9888-48c7-85ff-f385e74ac6ba"
+      }
+    ]
+  },
+  {
+    "suffix_uuid": "65cf4f4e-1d12-400d-9a29-2b76e40d1373",
+    "positions": [
+      {
+        "frets": [
+          1,
+          -1,
+          1,
+          2,
+          0,
+          -1
+        ],
+        "fingers": [
+          2,
+          -1,
+          3,
+          4,
+          1,
+          -1
+        ],
+        "openFingers": [
+          1,
+          -1,
+          2,
+          3,
+          -1,
+          -1
+        ],
+        "barres": [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        "tonicString": 1,
+        "transposable": true,
+        "position_uuid": "fe4d6fde-3ebe-40d7-97f7-7fa0545b560e"
+      },
+      {
+        "frets": [
+          -1,
+          0,
+          1,
+          0,
+          2,
+          -1
+        ],
+        "fingers": [
+          -1,
+          1,
+          2,
+          1,
+          4,
+          -1
+        ],
+        "openFingers": [
+          -1,
+          -1,
+          1,
+          -1,
+          2,
+          -1
+        ],
+        "barres": [
+          -1,
+          0,
+          0,
+          0,
+          0,
+          -1
+        ],
+        "tonicString": 2,
+        "transposable": true,
+        "position_uuid": "03f7312e-bd3f-41e4-84d2-832308ce30e9"
+      },
+      {
+        "frets": [
+          -1,
+          -1,
+          0,
+          1,
+          1,
+          2
+        ],
+        "fingers": [
+          -1,
+          -1,
+          1,
+          2,
+          3,
+          4
+        ],
+        "openFingers": [
+          -1,
+          -1,
+          -1,
+          1,
+          2,
+          3
+        ],
+        "barres": [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        "tonicString": 3,
+        "transposable": true,
+        "position_uuid": "40d218e7-e796-486e-bfc6-01c41988de55"
+      }
+    ]
+  },
+  {
+    "suffix_uuid": "b9305258-617f-418f-be80-10371b2c9d0c",
+    "positions": [
+      {
+        "frets": [
+          0,
+          -1,
+          0,
+          1,
+          1,
+          -1
+        ],
+        "fingers": [
+          1,
+          -1,
+          2,
+          3,
+          4,
+          -1
+        ],
+        "openFingers": [
+          -1,
+          -1,
+          -1,
+          1,
+          1,
+          -1
+        ],
+        "barres": [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        "tonicString": 1,
+        "transposable": true,
+        "position_uuid": "75dd4835-1fb4-4525-bf38-98ef47fc23c3"
+      },
+      {
+        "frets": [
+          -1,
+          0,
+          3,
+          0,
+          2,
+          -1
+        ],
+        "fingers": [
+          -1,
+          1,
+          4,
+          1,
+          3,
+          -1
+        ],
+        "openFingers": [
+          -1,
+          -1,
+          2,
+          -1,
+          1,
+          -1
+        ],
+        "barres": [
+          -1,
+          0,
+          0,
+          0,
+          0,
+          -1
+        ],
+        "tonicString": 2,
+        "transposable": true,
+        "position_uuid": "29cb82dc-402e-428a-9368-11c9bbb7b985"
+      },
+      {
+        "frets": [
+          -1,
+          -1,
+          0,
+          3,
+          1,
+          2
+        ],
+        "fingers": [
+          -1,
+          -1,
+          1,
+          4,
+          2,
+          3
+        ],
+        "openFingers": [
+          -1,
+          -1,
+          -1,
+          3,
+          1,
+          2
+        ],
+        "barres": [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        "tonicString": 3,
+        "transposable": true,
+        "position_uuid": "92dd7a4d-6269-4ba6-b0c2-78f0d3c0f732"
+      }
+    ]
+  },
+  {
+    "suffix_uuid": "5998db16-29a2-4880-b263-4c8aa4a30187",
+    "positions": [
+      {
+        "frets": [
+          0,
+          -1,
+          2,
+          0,
+          -1,
+          -1
+        ],
+        "fingers": [
+          1,
+          -1,
+          4,
+          2,
+          -1,
+          -1
+        ],
+        "openFingers": [
+          -1,
+          -1,
+          1,
+          -1,
+          -1,
+          -1
+        ],
+        "barres": [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        "tonicString": 1,
+        "transposable": true,
+        "position_uuid": "0c1e42bc-ebce-4ccf-b5b1-8c5abe3b1da5"
+      },
+      {
+        "frets": [
+          -1,
+          0,
+          -1,
+          2,
+          1,
+          -1
+        ],
+        "fingers": [
+          -1,
+          1,
+          -1,
+          3,
+          2,
+          -1
+        ],
+        "openFingers": [
+          -1,
+          -1,
+          -1,
+          2,
+          1,
+          -1
+        ],
+        "barres": [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        "tonicString": 2,
+        "transposable": true,
+        "position_uuid": "1953a1f1-4fa1-4096-8f5c-a21078ab3163"
+      },
+      {
+        "frets": [
+          -1,
+          -1,
+          0,
+          -1,
+          3,
+          1
+        ],
+        "fingers": [
+          -1,
+          -1,
+          1,
+          -1,
+          4,
+          2
+        ],
+        "openFingers": [
+          -1,
+          -1,
+          -1,
+          -1,
+          3,
+          1
+        ],
+        "barres": [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        "tonicString": 3,
+        "transposable": true,
+        "position_uuid": "e3b243a2-c4b7-4ce0-9442-5f440c424d44"
+      }
+    ]
+  },
+  {
+    "suffix_uuid": "e038ffaf-6dd3-47a3-93de-2ddc54c89a94",
+    "positions": [
+      {
+        "frets": [
+          0,
+          -1,
+          2,
+          1,
+          -1,
+          -1
+        ],
+        "fingers": [
+          1,
+          -1,
+          3,
+          2,
+          -1,
+          -1
+        ],
+        "openFingers": [
+          -1,
+          -1,
+          2,
+          1,
+          -1,
+          -1
+        ],
+        "barres": [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        "tonicString": 1,
+        "transposable": true,
+        "position_uuid": "9bcfb0b0-c37b-4720-ab14-234fc47a8db3"
+      },
+      {
+        "frets": [
+          -1,
+          0,
+          -1,
+          2,
+          2,
+          -1
+        ],
+        "fingers": [
+          -1,
+          1,
+          -1,
+          3,
+          4,
+          -1
+        ],
+        "openFingers": [
+          -1,
+          -1,
+          -1,
+          1,
+          2,
+          -1
+        ],
+        "barres": [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        "tonicString": 2,
+        "transposable": true,
+        "position_uuid": "6d174781-32ae-4524-8753-700da594801b"
+      },
+      {
+        "frets": [
+          -1,
+          -1,
+          0,
+          -1,
+          3,
+          2
+        ],
+        "fingers": [
+          -1,
+          -1,
+          1,
+          -1,
+          4,
+          3
+        ],
+        "openFingers": [
+          -1,
+          -1,
+          -1,
+          -1,
+          2,
+          1
+        ],
+        "barres": [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        "tonicString": 3,
+        "transposable": true,
+        "position_uuid": "f78733c8-c4e4-41a8-997b-28ba17326e2d"
+      }
+    ]
+  },
+  {
+    "suffix_uuid": "9accabdf-bac0-46f1-b5af-35ae43cf91e1",
+    "positions": [
+      {
+        "frets": [
+          0,
+          -1,
+          1,
+          0,
+          0,
+          -1
+        ],
+        "fingers": [
+          1,
+          -1,
+          4,
+          2,
+          3,
+          -1
+        ],
+        "openFingers": [
+          -1,
+          -1,
+          1,
+          -1,
+          -1,
+          -1
+        ],
+        "barres": [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        "tonicString": 1,
+        "transposable": true,
+        "position_uuid": "77822031-1b41-4560-bfb8-a612c2d8f28f"
+      },
+      {
+        "frets": [
+          -1,
+          0,
+          2,
+          1,
+          1,
+          -1
+        ],
+        "fingers": [
+          -1,
+          1,
+          4,
+          2,
+          3,
+          -1
+        ],
+        "openFingers": [
+          -1,
+          -1,
+          3,
+          1,
+          2,
+          -1
+        ],
+        "barres": [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        "tonicString": 2,
+        "transposable": true,
+        "position_uuid": "2e10c1c3-e23b-4013-a432-5185098e371b"
+      },
+      {
+        "frets": [
+          -1,
+          -1,
+          0,
+          2,
+          2,
+          1
+        ],
+        "fingers": [
+          -1,
+          -1,
+          1,
+          3,
+          4,
+          2
+        ],
+        "openFingers": [
+          -1,
+          -1,
+          -1,
+          2,
+          3,
+          1
+        ],
+        "barres": [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        "tonicString": 3,
+        "transposable": true,
+        "position_uuid": "d5f4f4cf-fd92-48af-9bce-ad8baf8c0314"
+      }
+    ]
+  },
+  {
+    "suffix_uuid": "e81e1237-9ea5-4d55-9457-dd96a8faf68c",
+    "positions": [
+      {
+        "frets": [
+          1,
+          -1,
+          0,
+          1,
+          1,
+          -1
+        ],
+        "fingers": [
+          2,
+          -1,
+          1,
+          3,
+          3,
+          -1
+        ],
+        "openFingers": [
+          2,
+          -1,
+          -1,
+          3,
+          3,
+          -1
+        ],
+        "barres": [
+          -1,
+          -1,
+          -1,
+          1,
+          1,
+          -1
+        ],
+        "tonicString": 1,
+        "transposable": true,
+        "position_uuid": "4a465c9c-af0c-4764-b6ff-88d210738aa6"
+      },
+      {
+        "frets": [
+          -1,
+          1,
+          -1,
+          0,
+          2,
+          1
+        ],
+        "fingers": [
+          -1,
+          2,
+          -1,
+          1,
+          4,
+          3
+        ],
+        "openFingers": [
+          -1,
+          2,
+          -1,
+          -1,
+          4,
+          3
+        ],
+        "barres": [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        "tonicString": 2,
+        "transposable": true,
+        "position_uuid": "174fbe8a-560c-452a-8707-332d2dbb0ce0"
+      },
+      {
+        "frets": [
+          -1,
+          -1,
+          0,
+          2,
+          0,
+          1
+        ],
+        "fingers": [
+          -1,
+          -1,
+          1,
+          4,
+          2,
+          3
+        ],
+        "openFingers": [
+          -1,
+          -1,
+          -1,
+          2,
+          -1,
+          1
+        ],
+        "barres": [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        "tonicString": 3,
+        "transposable": true,
+        "position_uuid": "469c1393-d4c1-4690-876a-d40cea632337"
+      }
+    ]
+  },
+  {
+    "suffix_uuid": "a9c6dd45-31dc-448a-b1c2-35f98817bc29",
+    "positions": [
+      {
+        "frets": [
+          1,
+          -1,
+          0,
+          2,
+          1,
+          -1
+        ],
+        "fingers": [
+          2,
+          -1,
+          1,
+          4,
+          3,
+          -1
+        ],
+        "openFingers": [
+          1,
+          -1,
+          -1,
+          3,
+          2,
+          -1
+        ],
+        "barres": [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        "tonicString": 1,
+        "transposable": true,
+        "position_uuid": "198461b0-877f-44c5-9a49-39d65aa0a9a9"
+      },
+      {
+        "frets": [
+          -1,
+          1,
+          3,
+          0,
+          3,
+          -1
+        ],
+        "fingers": [
+          -1,
+          2,
+          3,
+          1,
+          4,
+          -1
+        ],
+        "openFingers": [
+          -1,
+          1,
+          3,
+          -1,
+          4,
+          -1
+        ],
+        "barres": [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        "tonicString": 2,
+        "transposable": true,
+        "position_uuid": "505c7f37-f98c-42c4-9eb7-f5eec39caa63"
+      },
+      {
+        "frets": [
+          -1,
+          0,
+          2,
+          2,
+          2,
+          2
+        ],
+        "fingers": [
+          -1,
+          1,
+          4,
+          4,
+          4,
+          4
+        ],
+        "openFingers": [
+          -1,
+          -1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "barres": [
+          -1,
+          -1,
+          2,
+          2,
+          2,
+          2
+        ],
+        "tonicString": 2,
+        "transposable": true,
+        "position_uuid": "27a9923c-9379-4fd0-83b0-c56f9343f0bd"
+      },
+      {
+        "frets": [
+          -1,
+          -1,
+          0,
+          2,
+          0,
+          2
+        ],
+        "fingers": [
+          -1,
+          -1,
+          1,
+          3,
+          1,
+          4
+        ],
+        "openFingers": [
+          -1,
+          -1,
+          -1,
+          1,
+          -1,
+          2
+        ],
+        "barres": [
+          -1,
+          -1,
+          0,
+          0,
+          0,
+          0
+        ],
+        "tonicString": 3,
+        "transposable": true,
+        "position_uuid": "a3a7e943-0772-44d6-b117-f59189b4942b"
+      }
+    ]
+  },
+  {
+    "suffix_uuid": "fb83b6c1-d593-491b-a6cb-3b5e410e2ef6",
+    "positions": [
+      {
+        "frets": [
+          0,
+          -1,
+          1,
+          1,
+          1,
+          -1
+        ],
+        "fingers": [
+          1,
+          -1,
+          2,
+          3,
+          4,
+          -1
+        ],
+        "openFingers": [
+          -1,
+          -1,
+          1,
+          2,
+          3,
+          -1
+        ],
+        "barres": [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        "tonicString": 1,
+        "transposable": true,
+        "position_uuid": "b8977af2-8ba6-4aa9-b24f-7f88dceddd9a"
+      },
+      {
+        "frets": [
+          -1,
+          0,
+          3,
+          1,
+          2,
+          -1
+        ],
+        "fingers": [
+          -1,
+          1,
+          4,
+          2,
+          3,
+          -1
+        ],
+        "openFingers": [
+          -1,
+          -1,
+          3,
+          1,
+          2,
+          -1
+        ],
+        "barres": [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        "tonicString": 2,
+        "transposable": true,
+        "position_uuid": "39830e96-9d10-44cc-84eb-78ddf3fa9642"
+      },
+      {
+        "frets": [
+          -1,
+          -1,
+          0,
+          3,
+          2,
+          2
+        ],
+        "fingers": [
+          -1,
+          -1,
+          1,
+          4,
+          2,
+          3
+        ],
+        "openFingers": [
+          -1,
+          -1,
+          -1,
+          3,
+          1,
+          2
+        ],
+        "barres": [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        "tonicString": 3,
+        "transposable": true,
+        "position_uuid": "9c523d6e-671d-4420-ab85-5d439e4b828f"
+      }
+    ]
+  },
+  {
+    "suffix_uuid": "3145d4f5-ab26-41fd-80c6-21839529a5a6",
+    "positions": [
+      {
+        "frets": [
+          1,
+          -1,
+          2,
+          2,
+          0,
+          -1
+        ],
+        "fingers": [
+          2,
+          -1,
+          3,
+          4,
+          1,
+          -1
+        ],
+        "openFingers": [
+          1,
+          -1,
+          2,
+          3,
+          -1,
+          -1
+        ],
+        "barres": [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        "tonicString": 1,
+        "transposable": true,
+        "position_uuid": "27cecf71-4ca7-4a5b-b7bc-804214af756a"
+      },
+      {
+        "frets": [
+          -1,
+          0,
+          1,
+          1,
+          2,
+          -1
+        ],
+        "fingers": [
+          -1,
+          1,
+          2,
+          3,
+          4,
+          -1
+        ],
+        "openFingers": [
+          -1,
+          -1,
+          1,
+          2,
+          3,
+          -1
+        ],
+        "barres": [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        "tonicString": 2,
+        "transposable": true,
+        "position_uuid": "c209cbe5-96d1-436d-8ba7-dd43ec7b3641"
+      },
+      {
+        "frets": [
+          -1,
+          -1,
+          0,
+          1,
+          2,
+          2
+        ],
+        "fingers": [
+          -1,
+          -1,
+          1,
+          2,
+          3,
+          3
+        ],
+        "openFingers": [
+          -1,
+          -1,
+          -1,
+          1,
+          2,
+          2
+        ],
+        "barres": [
+          -1,
+          -1,
+          -1,
+          -1,
+          2,
+          2
+        ],
+        "tonicString": 3,
+        "transposable": true,
+        "position_uuid": "bca9f4c4-4eac-458e-b1c7-4ea72e8fe016"
+      }
+    ]
+  },
+  {
+    "suffix_uuid": "0b93efba-0926-4e9a-bb38-a36cc2e91631",
+    "positions": [
+      {
+        "frets": [
+          1,
+          -1,
+          2,
+          0,
+          1,
+          -1
+        ],
+        "fingers": [
+          2,
+          -1,
+          4,
+          1,
+          3,
+          -1
+        ],
+        "openFingers": [
+          1,
+          -1,
+          3,
+          -1,
+          2,
+          -1
+        ],
+        "barres": [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        "tonicString": 1,
+        "transposable": true,
+        "position_uuid": "41a9a74f-db95-4c2c-9cc5-2e8014407bb4"
+      },
+      {
+        "frets": [
+          -1,
+          0,
+          2,
+          1,
+          0,
+          -1
+        ],
+        "fingers": [
+          -1,
+          1,
+          4,
+          3,
+          2,
+          -1
+        ],
+        "openFingers": [
+          -1,
+          -1,
+          2,
+          1,
+          -1,
+          -1
+        ],
+        "barres": [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        "tonicString": 2,
+        "transposable": true,
+        "position_uuid": "c6d70b47-87e3-4d6e-91bc-cdd44f557ff4"
+      },
+      {
+        "frets": [
+          -1,
+          -1,
+          0,
+          2,
+          2,
+          0
+        ],
+        "fingers": [
+          -1,
+          -1,
+          1,
+          3,
+          4,
+          1
+        ],
+        "openFingers": [
+          -1,
+          -1,
+          -1,
+          1,
+          2,
+          -1
+        ],
+        "barres": [
+          -1,
+          -1,
+          0,
+          0,
+          0,
+          0
+        ],
+        "tonicString": 3,
+        "transposable": true,
+        "position_uuid": "d2019caf-3c0a-45c7-966a-cf03b0e89c27"
+      }
+    ]
+  },
+  {
+    "suffix_uuid": "36a55048-bc05-449f-8987-e056ed1cf975",
+    "positions": [
+      {
+        "frets": [
+          0,
+          2,
+          0,
+          2,
+          -1,
+          -1
+        ],
+        "fingers": [
+          1,
+          3,
+          1,
+          4,
+          -1,
+          -1
+        ],
+        "openFingers": [
+          -1,
+          1,
+          -1,
+          2,
+          -1,
+          -1
+        ],
+        "barres": [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        "tonicString": 1,
+        "transposable": true,
+        "position_uuid": "750fd2c3-f3db-466e-8d1c-e33a55107022"
+      },
+      {
+        "frets": [
+          -1,
+          0,
+          2,
+          0,
+          3,
+          -1
+        ],
+        "fingers": [
+          -1,
+          1,
+          3,
+          1,
+          4,
+          -1
+        ],
+        "openFingers": [
+          -1,
+          -1,
+          1,
+          -1,
+          2,
+          -1
+        ],
+        "barres": [
+          -1,
+          0,
+          0,
+          0,
+          0,
+          -1
+        ],
+        "tonicString": 2,
+        "transposable": true,
+        "position_uuid": "ca23e518-9b8b-4279-bf0b-c930b8b9e01a"
+      },
+      {
+        "frets": [
+          -1,
+          -1,
+          0,
+          2,
+          1,
+          3
+        ],
+        "fingers": [
+          -1,
+          -1,
+          1,
+          3,
+          2,
+          4
+        ],
+        "openFingers": [
+          -1,
+          -1,
+          -1,
+          2,
+          1,
+          3
+        ],
+        "barres": [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        "tonicString": 3,
+        "transposable": true,
+        "position_uuid": "ee7e434b-6b67-4dc7-8adb-c6541c14e0be"
+      }
+    ]
+  },
+  {
+    "suffix_uuid": "e240884a-71fc-4603-ae81-1dd0c1594e57",
+    "positions": [
+      {
+        "frets": [
+          1,
+          3,
+          1,
+          0,
+          -1,
+          -1
+        ],
+        "fingers": [
+          2,
+          4,
+          3,
+          1,
+          -1,
+          -1
+        ],
+        "openFingers": [
+          1,
+          4,
+          2,
+          -1,
+          -1,
+          -1
+        ],
+        "barres": [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        "tonicString": 1,
+        "transposable": true,
+        "position_uuid": "1af7969e-3183-46e0-9cbb-bddd56e67ecc"
+      },
+      {
+        "frets": [
+          -1,
+          0,
+          2,
+          0,
+          0,
+          -1
+        ],
+        "fingers": [
+          -1,
+          1,
+          3,
+          1,
+          1,
+          -1
+        ],
+        "openFingers": [
+          -1,
+          -1,
+          1,
+          -1,
+          -1,
+          -1
+        ],
+        "barres": [
+          -1,
+          0,
+          0,
+          0,
+          0,
+          -1
+        ],
+        "tonicString": 2,
+        "transposable": true,
+        "position_uuid": "4421deb4-a95e-43d8-8ba4-cf24326943e4"
+      },
+      {
+        "frets": [
+          -1,
+          -1,
+          0,
+          2,
+          1,
+          0
+        ],
+        "fingers": [
+          -1,
+          -1,
+          1,
+          3,
+          2,
+          1
+        ],
+        "openFingers": [
+          -1,
+          -1,
+          -1,
+          2,
+          1,
+          -1
+        ],
+        "barres": [
+          -1,
+          -1,
+          0,
+          0,
+          0,
+          0
+        ],
+        "tonicString": 3,
+        "transposable": true,
+        "position_uuid": "d351c3d9-6734-4f26-ac68-bac3422ee9da"
+      }
+    ]
+  },
+  {
+    "suffix_uuid": "30d80b6e-a89d-4bd3-89ab-5ff0bd449c9d",
+    "positions": [
+      {
+        "frets": [
+          1,
+          2,
+          1,
+          0,
+          -1,
+          -1
+        ],
+        "fingers": [
+          2,
+          4,
+          3,
+          1,
+          -1,
+          -1
+        ],
+        "openFingers": [
+          1,
+          3,
+          2,
+          -1,
+          -1,
+          -1
+        ],
+        "barres": [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        "tonicString": 1,
+        "transposable": true,
+        "position_uuid": "7745814c-cd15-44f0-83d5-86ee91a1b198"
+      },
+      {
+        "frets": [
+          -1,
+          0,
+          1,
+          0,
+          0,
+          -1
+        ],
+        "fingers": [
+          -1,
+          1,
+          2,
+          1,
+          1,
+          -1
+        ],
+        "openFingers": [
+          -1,
+          -1,
+          1,
+          -1,
+          -1,
+          -1
+        ],
+        "barres": [
+          -1,
+          0,
+          0,
+          0,
+          0,
+          -1
+        ],
+        "tonicString": 2,
+        "transposable": true,
+        "position_uuid": "c2d2e35e-84f7-4803-be6b-1b6e2ff1de82"
+      },
+      {
+        "frets": [
+          -1,
+          -1,
+          0,
+          1,
+          1,
+          0
+        ],
+        "fingers": [
+          -1,
+          -1,
+          1,
+          2,
+          3,
+          1
+        ],
+        "openFingers": [
+          -1,
+          -1,
+          -1,
+          1,
+          2,
+          -1
+        ],
+        "barres": [
+          -1,
+          -1,
+          0,
+          0,
+          0,
+          0
+        ],
+        "tonicString": 3,
+        "transposable": true,
+        "position_uuid": "14fda222-02f3-4e98-bfe1-d1fc921926c4"
+      }
+    ]
+  },
+  {
+    "suffix_uuid": "a376f013-c97d-4df6-808a-1b8e6e76fbe5",
+    "positions": [
+      {
+        "frets": [
+          3,
+          -1,
+          3,
+          2,
+          0,
+          -1
+        ],
+        "fingers": [
+          3,
+          -1,
+          4,
+          2,
+          1,
+          -1
+        ],
+        "openFingers": [
+          2,
+          -1,
+          3,
+          1,
+          -1,
+          -1
+        ],
+        "barres": [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        "tonicString": 1,
+        "transposable": true,
+        "position_uuid": "4e939149-5430-4180-b8b6-1cf8651e19dc"
+      },
+      {
+        "frets": [
+          -1,
+          1,
+          0,
+          1,
+          1,
+          1
+        ],
+        "fingers": [
+          -1,
+          2,
+          1,
+          3,
+          3,
+          3
+        ],
+        "openFingers": [
+          -1,
+          2,
+          -1,
+          3,
+          3,
+          3
+        ],
+        "barres": [
+          -1,
+          -1,
+          -1,
+          1,
+          1,
+          1
+        ],
+        "tonicString": 2,
+        "transposable": true,
+        "position_uuid": "b25f9259-040d-4fd1-8b71-6a62db320bbc"
+      },
+      {
+        "frets": [
+          -1,
+          -1,
+          1,
+          0,
+          2,
+          1
+        ],
+        "fingers": [
+          -1,
+          -1,
+          2,
+          1,
+          4,
+          3
+        ],
+        "openFingers": [
+          -1,
+          -1,
+          1,
+          -1,
+          3,
+          2
+        ],
+        "barres": [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        "tonicString": 3,
+        "transposable": true,
+        "position_uuid": "5a367448-0957-4daf-bfed-dad85c758c64"
+      }
+    ]
+  },
+  {
+    "suffix_uuid": "f730d79d-17bf-4954-ae4b-169d68ca559f",
+    "positions": [
+      {
+        "frets": [
+          1,
+          0,
+          2,
+          0,
+          -1,
+          -1
+        ],
+        "fingers": [
+          2,
+          1,
+          4,
+          1,
+          -1,
+          -1
+        ],
+        "openFingers": [
+          1,
+          -1,
+          2,
+          -1,
+          -1,
+          -1
+        ],
+        "barres": [
+          -1,
+          0,
+          0,
+          0,
+          -1,
+          -1
+        ],
+        "tonicString": 1,
+        "transposable": true,
+        "position_uuid": "08d3577f-a456-4064-8380-a695cbf7868a"
+      },
+      {
+        "frets": [
+          -1,
+          1,
+          0,
+          2,
+          1,
+          -1
+        ],
+        "fingers": [
+          -1,
+          2,
+          1,
+          4,
+          3,
+          -1
+        ],
+        "openFingers": [
+          -1,
+          1,
+          -1,
+          3,
+          2,
+          -1
+        ],
+        "barres": [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        "tonicString": 2,
+        "transposable": true,
+        "position_uuid": "e6151290-c8fb-4786-872a-a9f41a116940"
+      },
+      {
+        "frets": [
+          -1,
+          -1,
+          1,
+          0,
+          3,
+          1
+        ],
+        "fingers": [
+          -1,
+          -1,
+          2,
+          1,
+          4,
+          3
+        ],
+        "openFingers": [
+          -1,
+          -1,
+          1,
+          -1,
+          4,
+          2
+        ],
+        "barres": [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        "tonicString": 3,
+        "transposable": true,
+        "position_uuid": "bab98b33-b64c-4116-84b0-01c7aa07ec6c"
+      }
+    ]
+  },
+  {
+    "suffix_uuid": "ea321cbb-e3f9-4878-b934-c2ba0152bb56",
+    "positions": [
+      {
+        "frets": [
+          0,
+          2,
+          0,
+          0,
+          0,
+          2
+        ],
+        "fingers": [
+          1,
+          2,
+          1,
+          1,
+          1,
+          3
+        ],
+        "openFingers": [
+          -1,
+          1,
+          -1,
+          -1,
+          -1,
+          2
+        ],
+        "barres": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "tonicString": 1,
+        "transposable": true,
+        "position_uuid": "b2bc6af2-a9dd-44ac-a3be-96650e334456"
+      },
+      {
+        "frets": [
+          -1,
+          2,
+          0,
+          2,
+          2,
+          -1
+        ],
+        "fingers": [
+          -1,
+          2,
+          1,
+          3,
+          4,
+          -1
+        ],
+        "openFingers": [
+          -1,
+          1,
+          -1,
+          2,
+          3,
+          -1
+        ],
+        "barres": [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        "tonicString": 2,
+        "transposable": true,
+        "position_uuid": "2a5082b0-0f0d-41d5-89e7-ea3edec26154"
+      },
+      {
+        "frets": [
+          -1,
+          -1,
+          2,
+          0,
+          3,
+          2
+        ],
+        "fingers": [
+          -1,
+          -1,
+          2,
+          1,
+          4,
+          3
+        ],
+        "openFingers": [
+          -1,
+          -1,
+          1,
+          -1,
+          3,
+          2
+        ],
+        "barres": [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        "tonicString": 3,
+        "transposable": true,
+        "position_uuid": "db4a0c24-b1c9-46be-8ba2-cfa8e32906c8"
+      }
+    ]
+  },
+  {
+    "suffix_uuid": "8784fde2-4a55-4cf5-ae12-984c6fb83bc9",
+    "positions": [
+      {
+        "frets": [
+          1,
+          -1,
+          0,
+          0,
+          1,
+          -1
+        ],
+        "fingers": [
+          2,
+          -1,
+          1,
+          1,
+          3,
+          -1
+        ],
+        "openFingers": [
+          2,
+          -1,
+          -1,
+          -1,
+          3,
+          -1
+        ],
+        "barres": [
+          -1,
+          -1,
+          0,
+          0,
+          -1,
+          -1
+        ],
+        "tonicString": 1,
+        "transposable": true,
+        "position_uuid": "47572c06-3a9a-4525-b3ee-9f055dd8929e"
+      },
+      {
+        "frets": [
+          -1,
+          1,
+          -1,
+          0,
+          1,
+          1
+        ],
+        "fingers": [
+          -1,
+          2,
+          -1,
+          1,
+          3,
+          4
+        ],
+        "openFingers": [
+          -1,
+          1,
+          -1,
+          -1,
+          2,
+          3
+        ],
+        "barres": [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        "tonicString": 2,
+        "transposable": true,
+        "position_uuid": "2bb4b3cb-3502-4a89-a248-35e10ce07903"
+      },
+      {
+        "frets": [
+          -1,
+          -1,
+          0,
+          2,
+          0,
+          0
+        ],
+        "fingers": [
+          -1,
+          -1,
+          1,
+          3,
+          1,
+          1
+        ],
+        "openFingers": [
+          -1,
+          -1,
+          -1,
+          1,
+          -1,
+          -1
+        ],
+        "barres": [
+          -1,
+          -1,
+          0,
+          -1,
+          0,
+          0
+        ],
+        "tonicString": 3,
+        "transposable": true,
+        "position_uuid": "ed22c058-3c0e-4235-880a-48149c3b17e8"
+      }
+    ]
+  },
+  {
+    "suffix_uuid": "5449cb3d-a0e4-49c5-9f8c-4c7edb14d48f",
+    "positions": [
+      {
+        "frets": [
+          0,
+          -1,
+          -1,
+          1,
+          0,
+          2
+        ],
+        "fingers": [
+          1,
+          -1,
+          -1,
+          3,
+          2,
+          4
+        ],
+        "openFingers": [
+          -1,
+          -1,
+          -1,
+          1,
+          -1,
+          3
+        ],
+        "barres": [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        "tonicString": 1,
+        "transposable": true,
+        "position_uuid": "da4d3b4e-96a1-487f-a0e9-ca98d50faf70"
+      },
+      {
+        "frets": [
+          -1,
+          3,
+          2,
+          0,
+          3,
+          -1
+        ],
+        "fingers": [
+          -1,
+          3,
+          2,
+          1,
+          4,
+          -1
+        ],
+        "openFingers": [
+          -1,
+          3,
+          2,
+          -1,
+          4,
+          -1
+        ],
+        "barres": [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        "tonicString": 2,
+        "transposable": true,
+        "position_uuid": "c17c7586-5c06-4b7c-b863-40624cff582a"
+      },
+      {
+        "frets": [
+          -1,
+          -1,
+          2,
+          1,
+          0,
+          2
+        ],
+        "fingers": [
+          -1,
+          -1,
+          3,
+          2,
+          1,
+          4
+        ],
+        "openFingers": [
+          -1,
+          -1,
+          2,
+          1,
+          -1,
+          3
+        ],
+        "barres": [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        "tonicString": 3,
+        "transposable": true,
+        "position_uuid": "19ae692b-ee77-4ae5-9eec-f99de85665b9"
+      }
+    ]
+  },
+  {
+    "suffix_uuid": "3db3a380-bf66-4577-b900-8d23f3b0a2b2",
+    "positions": [
+      {
+        "frets": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          -1
+        ],
+        "fingers": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          -1
+        ],
+        "openFingers": [
+          -1,
+          -1,
+          -1,
+          1,
+          -1,
+          -1
+        ],
+        "barres": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          -1
+        ],
+        "tonicString": 1,
+        "transposable": true,
+        "position_uuid": "5b143029-9d9e-447f-a062-d72801fb1a9b"
+      },
+      {
+        "frets": [
+          -1,
+          0,
+          0,
+          0,
+          1,
+          0
+        ],
+        "fingers": [
+          -1,
+          1,
+          1,
+          1,
+          2,
+          1
+        ],
+        "openFingers": [
+          -1,
+          -1,
+          -1,
+          -1,
+          1,
+          -1
+        ],
+        "barres": [
+          -1,
+          0,
+          0,
+          0,
+          -1,
+          0
+        ],
+        "tonicString": 2,
+        "transposable": true,
+        "position_uuid": "84148dc4-ae9b-4d7f-80a1-faf1ab7b7a96"
+      }
+    ]
+  },
+  {
+    "suffix_uuid": "40d7eec2-5eab-44cd-a0a8-01cb73af8f31",
+    "positions": [
+      {
+        "frets": [
+          2,
+          -1,
+          1,
+          2,
+          0,
+          -1
+        ],
+        "fingers": [
+          3,
+          -1,
+          2,
+          4,
+          1,
+          -1
+        ],
+        "openFingers": [
+          2,
+          -1,
+          1,
+          3,
+          -1,
+          -1
+        ],
+        "barres": [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        "tonicString": 1,
+        "transposable": true,
+        "position_uuid": "5bffdf4a-91ea-4534-b792-8495001a6d6c"
+      },
+      {
+        "frets": [
+          -1,
+          1,
+          1,
+          0,
+          2,
+          -1
+        ],
+        "fingers": [
+          -1,
+          2,
+          3,
+          1,
+          4,
+          -1
+        ],
+        "openFingers": [
+          -1,
+          1,
+          2,
+          -1,
+          4,
+          -1
+        ],
+        "barres": [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        "tonicString": 2,
+        "transposable": true,
+        "position_uuid": "408e1234-6779-41b5-8c85-89996e12a84f"
+      },
+      {
+        "frets": [
+          -1,
+          -1,
+          0,
+          0,
+          0,
+          1
+        ],
+        "fingers": [
+          -1,
+          -1,
+          1,
+          1,
+          1,
+          2
+        ],
+        "openFingers": [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          1
+        ],
+        "barres": [
+          -1,
+          -1,
+          0,
+          0,
+          0,
+          0
+        ],
+        "tonicString": 3,
+        "transposable": true,
+        "position_uuid": "aae3b12b-73d9-4c32-ae7f-4458d77990d9"
+      }
+    ]
+  },
+  {
+    "suffix_uuid": "4eeb7525-3ab4-4407-942c-a462e8d4b681",
+    "positions": [
+      {
+        "frets": [
+          0,
+          2,
+          0,
+          1,
+          0,
+          1
+        ],
+        "fingers": [
+          1,
+          4,
+          1,
+          2,
+          1,
+          3
+        ],
+        "openFingers": [
+          -1,
+          3,
+          -1,
+          1,
+          -1,
+          2
+        ],
+        "barres": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "tonicString": 1,
+        "transposable": true,
+        "position_uuid": "e39c0cbc-3fd6-4ca0-8907-95189b376a32"
+      },
+      {
+        "frets": [
+          -1,
+          1,
+          0,
+          1,
+          0,
+          1
+        ],
+        "fingers": [
+          -1,
+          2,
+          1,
+          3,
+          1,
+          4
+        ],
+        "openFingers": [
+          -1,
+          1,
+          -1,
+          2,
+          -1,
+          3
+        ],
+        "barres": [
+          -1,
+          -1,
+          0,
+          0,
+          0,
+          0
+        ],
+        "tonicString": 2,
+        "transposable": true,
+        "position_uuid": "c14e7a55-393f-417a-875e-116a2ab72ff0"
+      },
+      {
+        "frets": [
+          -1,
+          -1,
+          1,
+          0,
+          2,
+          0
+        ],
+        "fingers": [
+          -1,
+          -1,
+          2,
+          1,
+          4,
+          1
+        ],
+        "openFingers": [
+          -1,
+          -1,
+          1,
+          -1,
+          3,
+          -1
+        ],
+        "barres": [
+          -1,
+          -1,
+          -1,
+          0,
+          0,
+          0
+        ],
+        "tonicString": 3,
+        "transposable": true,
+        "position_uuid": "901d5e01-10ef-4870-84cc-a58810c1ec84"
+      }
+    ]
+  },
+  {
+    "suffix_uuid": "621e1cc4-5dca-46e2-b53a-f63e963302f0",
+    "positions": [
+      {
+        "frets": [
+          2,
+          -1,
+          2,
+          1,
+          0,
+          -1
+        ],
+        "fingers": [
+          3,
+          -1,
+          4,
+          2,
+          1,
+          -1
+        ],
+        "openFingers": [
+          2,
+          -1,
+          3,
+          1,
+          -1,
+          -1
+        ],
+        "barres": [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        "tonicString": 1,
+        "transposable": true,
+        "position_uuid": "65e9aa2b-d0b0-4b5d-99ae-f482ffab0f17"
+      },
+      {
+        "frets": [
+          -1,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "fingers": [
+          -1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "openFingers": [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        "barres": [
+          -1,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "tonicString": 2,
+        "transposable": true,
+        "position_uuid": "ccab7ee1-79bf-4772-901c-ca1a09a2cdea"
+      },
+      {
+        "frets": [
+          -1,
+          -1,
+          0,
+          0,
+          1,
+          0
+        ],
+        "fingers": [
+          -1,
+          -1,
+          1,
+          1,
+          2,
+          1
+        ],
+        "openFingers": [
+          -1,
+          -1,
+          -1,
+          -1,
+          1,
+          -1
+        ],
+        "barres": [
+          -1,
+          -1,
+          0,
+          0,
+          0,
+          0
+        ],
+        "tonicString": 3,
+        "transposable": true,
+        "position_uuid": "2da3f513-eaf1-40e1-b1a3-e8cf6b99b9c5"
+      }
+    ]
+  },
+  {
+    "suffix_uuid": "cc2d84bd-f83f-432a-a45b-1486e6d37162",
+    "positions": [
+      {
+        "frets": [
+          0,
+          2,
+          -1,
+          2,
+          2,
+          -1
+        ],
+        "fingers": [
+          1,
+          2,
+          -1,
+          3,
+          4,
+          -1
+        ],
+        "openFingers": [
+          -1,
+          1,
+          -1,
+          2,
+          3,
+          -1
+        ],
+        "barres": [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        "tonicString": 1,
+        "transposable": true,
+        "position_uuid": "e2759496-27d3-485f-8b83-9e0e2c2d7041"
+      },
+      {
+        "frets": [
+          -1,
+          0,
+          2,
+          -1,
+          3,
+          2
+        ],
+        "fingers": [
+          -1,
+          1,
+          2,
+          -1,
+          4,
+          3
+        ],
+        "openFingers": [
+          -1,
+          -1,
+          1,
+          -1,
+          3,
+          2
+        ],
+        "barres": [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        "tonicString": 2,
+        "transposable": true,
+        "position_uuid": "356a86bd-0477-4a2f-812a-bde9327efb5f"
+      },
+      {
+        "frets": [
+          -1,
+          -1,
+          0,
+          2,
+          0,
+          3
+        ],
+        "fingers": [
+          -1,
+          -1,
+          1,
+          3,
+          1,
+          4
+        ],
+        "openFingers": [
+          -1,
+          -1,
+          -1,
+          1,
+          -1,
+          2
+        ],
+        "barres": [
+          -1,
+          -1,
+          0,
+          0,
+          0,
+          0
+        ],
+        "tonicString": 3,
+        "transposable": true,
+        "position_uuid": "3262b9e4-c02e-4498-9020-4894f6e8ac9a"
+      }
+    ]
+  },
+  {
+    "suffix_uuid": "a9ffab8c-d98b-4c09-8321-5af978513057",
+    "positions": [
+      {
+        "frets": [
+          1,
+          0,
+          0,
+          0,
+          1,
+          1
+        ],
+        "fingers": [
+          2,
+          1,
+          1,
+          1,
+          3,
+          4
+        ],
+        "openFingers": [
+          1,
+          -1,
+          -1,
+          -1,
+          2,
+          3
+        ],
+        "barres": [
+          -1,
+          0,
+          0,
+          0,
+          -1,
+          -1
+        ],
+        "tonicString": 1,
+        "transposable": true,
+        "position_uuid": "10ec19f8-981c-4c29-a606-3f41979304ab"
+      },
+      {
+        "frets": [
+          -1,
+          1,
+          0,
+          0,
+          1,
+          1
+        ],
+        "fingers": [
+          -1,
+          2,
+          1,
+          1,
+          3,
+          4
+        ],
+        "openFingers": [
+          -1,
+          1,
+          -1,
+          -1,
+          2,
+          3
+        ],
+        "barres": [
+          -1,
+          -1,
+          0,
+          0,
+          -1,
+          -1
+        ],
+        "tonicString": 2,
+        "transposable": true,
+        "position_uuid": "17ba830f-5e48-44e8-b078-f61b62bc2c66"
+      }
+    ]
+  },
+  {
+    "suffix_uuid": "6c0efb9a-7a00-4872-846a-c9cc3b76418b",
+    "positions": [
+      {
+        "frets": [
+          1,
+          0,
+          0,
+          1,
+          1,
+          -1
+        ],
+        "fingers": [
+          2,
+          1,
+          1,
+          3,
+          4,
+          -1
+        ],
+        "openFingers": [
+          1,
+          -1,
+          -1,
+          2,
+          3,
+          -1
+        ],
+        "barres": [
+          -1,
+          0,
+          0,
+          -1,
+          -1,
+          -1
+        ],
+        "tonicString": 1,
+        "transposable": true,
+        "position_uuid": "1d461866-c088-45dd-93d2-22720e2dbfb3"
+      },
+      {
+        "frets": [
+          -1,
+          1,
+          0,
+          0,
+          2,
+          1
+        ],
+        "fingers": [
+          -1,
+          2,
+          1,
+          1,
+          4,
+          3
+        ],
+        "openFingers": [
+          -1,
+          1,
+          -1,
+          -1,
+          3,
+          2
+        ],
+        "barres": [
+          -1,
+          -1,
+          0,
+          0,
+          -1,
+          -1
+        ],
+        "tonicString": 2,
+        "transposable": true,
+        "position_uuid": "b43b834a-6621-4744-8781-385f66a85174"
+      }
+    ]
+  },
+  {
+    "suffix_uuid": "c480ce90-ffcc-4a15-9f8b-6668151e91a8",
+    "positions": [
+      {
+        "frets": [
+          1,
+          0,
+          1,
+          0,
+          2,
+          -1
+        ],
+        "fingers": [
+          2,
+          1,
+          3,
+          1,
+          4,
+          -1
+        ],
+        "openFingers": [
+          1,
+          -1,
+          2,
+          -1,
+          3,
+          -1
+        ],
+        "barres": [
+          -1,
+          0,
+          -1,
+          0,
+          -1,
+          -1
+        ],
+        "tonicString": 1,
+        "transposable": true,
+        "position_uuid": "9cdee7c6-22be-45e3-aa7a-f172fb57c2b7"
+      },
+      {
+        "frets": [
+          -1,
+          1,
+          0,
+          1,
+          1,
+          2
+        ],
+        "fingers": [
+          -1,
+          2,
+          1,
+          3,
+          3,
+          4
+        ],
+        "openFingers": [
+          -1,
+          1,
+          -1,
+          2,
+          3,
+          4
+        ],
+        "barres": [
+          -1,
+          -1,
+          -1,
+          1,
+          1,
+          -1
+        ],
+        "tonicString": 2,
+        "transposable": true,
+        "position_uuid": "4ba8f268-79eb-437b-8136-08ca15f81d4c"
+      }
+    ]
+  },
+  {
+    "suffix_uuid": "c99e25a9-a1f0-4533-9784-4aff3294696e",
+    "positions": [
+      {
+        "frets": [
+          1,
+          0,
+          1,
+          0,
+          0,
+          1
+        ],
+        "fingers": [
+          2,
+          1,
+          3,
+          1,
+          1,
+          4
+        ],
+        "openFingers": [
+          1,
+          -1,
+          2,
+          -1,
+          -1,
+          3
+        ],
+        "barres": [
+          -1,
+          0,
+          -1,
+          0,
+          0,
+          -1
+        ],
+        "tonicString": 1,
+        "transposable": true,
+        "position_uuid": "df4b1572-bfb9-4b26-a9e6-88d53439d81d"
+      },
+      {
+        "frets": [
+          -1,
+          1,
+          0,
+          1,
+          1,
+          0
+        ],
+        "fingers": [
+          -1,
+          2,
+          1,
+          3,
+          4,
+          1
+        ],
+        "openFingers": [
+          -1,
+          1,
+          -1,
+          2,
+          3,
+          -1
+        ],
+        "barres": [
+          -1,
+          -1,
+          0,
+          -1,
+          -1,
+          0
+        ],
+        "tonicString": 2,
+        "transposable": true,
+        "position_uuid": "1e462c31-08fb-4074-a81f-533c038e9dbb"
+      },
+      {
+        "frets": [
+          -1,
+          -1,
+          0,
+          1,
+          1,
+          0
+        ],
+        "fingers": [
+          -1,
+          -1,
+          1,
+          3,
+          4,
+          2
+        ],
+        "openFingers": [
+          -1,
+          -1,
+          -1,
+          1,
+          2,
+          -1
+        ],
+        "barres": [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        "tonicString": 3,
+        "transposable": true,
+        "position_uuid": "f159f068-bed0-4745-8d10-4c1becb3622e"
+      }
+    ]
+  },
+  {
+    "suffix_uuid": "8ef9d3d5-d055-49dc-84e9-7e4b1d3052d1",
+    "positions": [
+      {
+        "frets": [
+          1,
+          0,
+          1,
+          1,
+          1,
+          -1
+        ],
+        "fingers": [
+          2,
+          1,
+          3,
+          3,
+          3,
+          -1
+        ],
+        "openFingers": [
+          2,
+          -1,
+          3,
+          3,
+          3,
+          -1
+        ],
+        "barres": [
+          -1,
+          -1,
+          1,
+          1,
+          1,
+          -1
+        ],
+        "tonicString": 1,
+        "transposable": true,
+        "position_uuid": "8acc5f9e-eb71-4fbf-ad9a-f57923d42830"
+      },
+      {
+        "frets": [
+          -1,
+          1,
+          0,
+          1,
+          2,
+          -1
+        ],
+        "fingers": [
+          -1,
+          2,
+          1,
+          3,
+          4,
+          -1
+        ],
+        "openFingers": [
+          -1,
+          1,
+          -1,
+          2,
+          3,
+          -1
+        ],
+        "barres": [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        "tonicString": 2,
+        "transposable": true,
+        "position_uuid": "e5230f80-eed1-4dd4-a96f-982772cad809"
+      }
+    ]
+  },
+  {
+    "suffix_uuid": "67e50796-54a2-489f-8eee-d6be9b7b592c",
+    "positions": [
+      {
+        "frets": [
+          2,
+          -1,
+          2,
+          1,
+          0,
+          0
+        ],
+        "fingers": [
+          3,
+          -1,
+          4,
+          2,
+          1,
+          1
+        ],
+        "openFingers": [
+          2,
+          -1,
+          3,
+          1,
+          -1,
+          -1
+        ],
+        "barres": [
+          -1,
+          -1,
+          -1,
+          -1,
+          0,
+          0
+        ],
+        "tonicString": 1,
+        "transposable": true,
+        "position_uuid": "ed421fcb-b40b-4aa8-a17f-e150973d7b24"
+      },
+      {
+        "frets": [
+          -1,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "fingers": [
+          -1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "openFingers": [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        "barres": [
+          -1,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "tonicString": 2,
+        "transposable": true,
+        "position_uuid": "98b74e6f-7b63-4461-92bd-9415da495bbf"
+      },
+      {
+        "frets": [
+          -1,
+          2,
+          -1,
+          2,
+          2,
+          0
+        ],
+        "fingers": [
+          -1,
+          2,
+          -1,
+          3,
+          4,
+          1
+        ],
+        "openFingers": [
+          -1,
+          1,
+          -1,
+          2,
+          3,
+          -1
+        ],
+        "barres": [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        "tonicString": 2,
+        "transposable": true,
+        "position_uuid": "b69b3e37-3248-4f5d-8763-1c51e370f960"
+      },
+      {
+        "frets": [
+          -1,
+          -1,
+          0,
+          0,
+          1,
+          0
+        ],
+        "fingers": [
+          -1,
+          -1,
+          1,
+          1,
+          2,
+          1
+        ],
+        "openFingers": [
+          -1,
+          -1,
+          -1,
+          -1,
+          1,
+          -1
+        ],
+        "barres": [
+          -1,
+          -1,
+          0,
+          0,
+          -1,
+          0
+        ],
+        "tonicString": 3,
+        "transposable": true,
+        "position_uuid": "1ef53055-d61c-44aa-99d2-ab9de94dcbf8"
+      }
+    ]
+  },
+  {
+    "suffix_uuid": "5a740f0b-ec60-4ad0-b4a2-6528b357b7d5",
+    "positions": [
+      {
+        "frets": [
+          0,
+          -1,
+          1,
+          1,
+          2,
+          -1
+        ],
+        "fingers": [
+          1,
+          -1,
+          2,
+          3,
+          4,
+          -1
+        ],
+        "openFingers": [
+          -1,
+          -1,
+          1,
+          2,
+          3,
+          -1
+        ],
+        "barres": [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        "tonicString": 1,
+        "transposable": true,
+        "position_uuid": "28b2d105-e4d0-4d14-94db-b2f279a04253"
+      },
+      {
+        "frets": [
+          -1,
+          0,
+          -1,
+          1,
+          2,
+          2
+        ],
+        "fingers": [
+          -1,
+          1,
+          -1,
+          2,
+          3,
+          4
+        ],
+        "openFingers": [
+          -1,
+          -1,
+          -1,
+          1,
+          2,
+          3
+        ],
+        "barres": [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        "tonicString": 2,
+        "transposable": true,
+        "position_uuid": "4eac5486-92bc-43a3-8a44-e4f8f55ddb25"
+      },
+      {
+        "frets": [
+          -1,
+          0,
+          2,
+          1,
+          0,
+          2
+        ],
+        "fingers": [
+          -1,
+          1,
+          3,
+          2,
+          1,
+          4
+        ],
+        "openFingers": [
+          -1,
+          -1,
+          2,
+          1,
+          -1,
+          3
+        ],
+        "barres": [
+          -1,
+          0,
+          -1,
+          -1,
+          0,
+          -1
+        ],
+        "tonicString": 2,
+        "transposable": true,
+        "position_uuid": "4ac54607-5cba-4043-956f-d37d1b91875a"
+      }
+    ]
+  },
+  {
+    "suffix_uuid": "a7624eb4-5f8b-4501-ac66-fa8750bf6ee0",
+    "positions": [
+      {
+        "frets": [
+          0,
+          -1,
+          0,
+          0,
+          0,
+          1
+        ],
+        "fingers": [
+          1,
+          -1,
+          1,
+          1,
+          1,
+          2
+        ],
+        "openFingers": [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          1
+        ],
+        "barres": [
+          0,
+          -1,
+          0,
+          0,
+          0,
+          -1
+        ],
+        "tonicString": 1,
+        "transposable": true,
+        "position_uuid": "1fda8dab-dbba-4881-879a-bbaf4a80eec6"
+      },
+      {
+        "frets": [
+          -1,
+          2,
+          0,
+          2,
+          1,
+          -1
+        ],
+        "fingers": [
+          -1,
+          3,
+          1,
+          4,
+          2,
+          -1
+        ],
+        "openFingers": [
+          -1,
+          2,
+          -1,
+          3,
+          1,
+          -1
+        ],
+        "barres": [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        "tonicString": 2,
+        "transposable": true,
+        "position_uuid": "f1ce178b-040a-4392-96a4-baffe4db5537"
+      },
+      {
+        "frets": [
+          -1,
+          -1,
+          2,
+          0,
+          3,
+          1
+        ],
+        "fingers": [
+          -1,
+          -1,
+          3,
+          1,
+          4,
+          2
+        ],
+        "openFingers": [
+          -1,
+          -1,
+          2,
+          -1,
+          3,
+          1
+        ],
+        "barres": [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        "tonicString": 3,
+        "transposable": true,
+        "position_uuid": "f79b9203-3a26-4d50-a26c-72cc22cf90ca"
+      }
+    ]
+  },
+  {
+    "suffix_uuid": "d51f8ce3-4e87-4d3b-917e-fa2751265a23",
+    "positions": [
+      {
+        "frets": [
+          2,
+          0,
+          2,
+          0,
+          1,
+          -1
+        ],
+        "fingers": [
+          3,
+          1,
+          4,
+          1,
+          2,
+          -1
+        ],
+        "openFingers": [
+          2,
+          -1,
+          3,
+          -1,
+          1,
+          -1
+        ],
+        "barres": [
+          -1,
+          0,
+          -1,
+          0,
+          -1,
+          -1
+        ],
+        "tonicString": 1,
+        "transposable": true,
+        "position_uuid": "390632a9-d100-4f12-a931-a8929f993d6a"
+      },
+      {
+        "frets": [
+          -1,
+          2,
+          0,
+          2,
+          1,
+          1
+        ],
+        "fingers": [
+          -1,
+          3,
+          1,
+          4,
+          2,
+          2
+        ],
+        "openFingers": [
+          -1,
+          3,
+          -1,
+          4,
+          1,
+          2
+        ],
+        "barres": [
+          -1,
+          -1,
+          -1,
+          -1,
+          1,
+          1
+        ],
+        "tonicString": 2,
+        "transposable": true,
+        "position_uuid": "e886020a-71f5-4c44-a3b9-6f7476af997e"
+      }
+    ]
+  },
+  {
+    "suffix_uuid": "3073b282-f983-4461-a4a4-106750135b4b",
+    "positions": [
+      {
+        "frets": [
+          2,
+          0,
+          3,
+          1,
+          -1,
+          -1
+        ],
+        "fingers": [
+          3,
+          1,
+          4,
+          2,
+          -1,
+          -1
+        ],
+        "openFingers": [
+          2,
+          -1,
+          3,
+          1,
+          -1,
+          -1
+        ],
+        "barres": [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        "tonicString": 1,
+        "transposable": true,
+        "position_uuid": "43175f9e-cc89-4874-968b-464fe97b72a7"
+      },
+      {
+        "frets": [
+          -1,
+          2,
+          0,
+          3,
+          2,
+          -1
+        ],
+        "fingers": [
+          -1,
+          2,
+          1,
+          4,
+          3,
+          -1
+        ],
+        "openFingers": [
+          -1,
+          1,
+          -1,
+          3,
+          2,
+          -1
+        ],
+        "barres": [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        "tonicString": 2,
+        "transposable": true,
+        "position_uuid": "b02fca0b-1a7d-4c0a-afab-2c2df67cb909"
+      },
+      {
+        "frets": [
+          -1,
+          -1,
+          2,
+          0,
+          4,
+          2
+        ],
+        "fingers": [
+          -1,
+          -1,
+          2,
+          1,
+          4,
+          3
+        ],
+        "openFingers": [
+          -1,
+          -1,
+          1,
+          -1,
+          4,
+          2
+        ],
+        "barres": [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        "tonicString": 3,
+        "transposable": true,
+        "position_uuid": "5a3afd1a-415d-459b-a9bd-1deb35e23dee"
+      }
+    ]
+  },
+  {
+    "suffix_uuid": "838641da-5954-481c-9521-5ab9b7fc8f2d",
+    "positions": [
+      {
+        "frets": [
+          1,
+          0,
+          2,
+          0,
+          2,
+          0
+        ],
+        "fingers": [
+          2,
+          1,
+          3,
+          1,
+          4,
+          1
+        ],
+        "openFingers": [
+          1,
+          -1,
+          2,
+          -1,
+          3,
+          -1
+        ],
+        "barres": [
+          -1,
+          0,
+          -1,
+          0,
+          -1,
+          0
+        ],
+        "tonicString": 1,
+        "transposable": true,
+        "position_uuid": "c1347233-36dd-4fff-b93c-0130b694dae5"
+      },
+      {
+        "frets": [
+          -1,
+          3,
+          0,
+          1,
+          0,
+          0
+        ],
+        "fingers": [
+          -1,
+          4,
+          1,
+          2,
+          1,
+          1
+        ],
+        "openFingers": [
+          -1,
+          3,
+          -1,
+          1,
+          -1,
+          -1
+        ],
+        "barres": [
+          -1,
+          -1,
+          0,
+          -1,
+          0,
+          0
+        ],
+        "tonicString": 2,
+        "transposable": true,
+        "position_uuid": "86b7f88e-f207-491c-b3b0-1a6880faad40"
+      },
+      {
+        "frets": [
+          -1,
+          -1,
+          2,
+          0,
+          4,
+          2
+        ],
+        "fingers": [
+          -1,
+          -1,
+          2,
+          1,
+          4,
+          3
+        ],
+        "openFingers": [
+          -1,
+          -1,
+          1,
+          -1,
+          4,
+          2
+        ],
+        "barres": [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        "tonicString": 3,
+        "transposable": true,
+        "position_uuid": "bb106e07-9377-431c-ac9a-6741a07ebaab"
+      }
+    ]
+  },
+  {
+    "suffix_uuid": "1a052bc3-a8cb-4100-bee5-45cad1386a67",
+    "positions": [
+      {
+        "frets": [
+          1,
+          0,
+          2,
+          1,
+          -1,
+          -1
+        ],
+        "fingers": [
+          2,
+          1,
+          4,
+          3,
+          -1,
+          -1
+        ],
+        "openFingers": [
+          1,
+          -1,
+          3,
+          2,
+          -1,
+          -1
+        ],
+        "barres": [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        "tonicString": 1,
+        "transposable": true,
+        "position_uuid": "18759fb7-1c85-409b-a209-5538b81e51a9"
+      },
+      {
+        "frets": [
+          -1,
+          1,
+          0,
+          2,
+          2,
+          -1
+        ],
+        "fingers": [
+          -1,
+          2,
+          1,
+          3,
+          4,
+          -1
+        ],
+        "openFingers": [
+          -1,
+          1,
+          -1,
+          2,
+          3,
+          -1
+        ],
+        "barres": [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        "tonicString": 2,
+        "transposable": true,
+        "position_uuid": "ff7b1c4b-8b79-4658-8972-c716640edf5c"
+      },
+      {
+        "frets": [
+          -1,
+          -1,
+          1,
+          0,
+          3,
+          2
+        ],
+        "fingers": [
+          -1,
+          -1,
+          2,
+          1,
+          4,
+          3
+        ],
+        "openFingers": [
+          -1,
+          -1,
+          1,
+          -1,
+          4,
+          3
+        ],
+        "barres": [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        "tonicString": 3,
+        "transposable": true,
+        "position_uuid": "8481764b-0d02-4cb2-90e9-f2224f8b65be"
+      }
+    ]
+  },
+  {
+    "suffix_uuid": "0eaeee9e-fc4f-4065-924b-1cf9ac1d5f33",
+    "positions": [
+      {
+        "frets": [
+          1,
+          -1,
+          0,
+          1,
+          0,
+          2
+        ],
+        "fingers": [
+          2,
+          -1,
+          1,
+          3,
+          1,
+          4
+        ],
+        "openFingers": [
+          1,
+          -1,
+          -1,
+          2,
+          -1,
+          4
+        ],
+        "barres": [
+          -1,
+          -1,
+          0,
+          -1,
+          0,
+          -1
+        ],
+        "tonicString": 1,
+        "transposable": true,
+        "position_uuid": "2da740c1-e569-4751-bcdd-ac0be5d80ff5"
+      },
+      {
+        "frets": [
+          -1,
+          2,
+          0,
+          1,
+          1,
+          1
+        ],
+        "fingers": [
+          -1,
+          4,
+          1,
+          2,
+          2,
+          2
+        ],
+        "openFingers": [
+          -1,
+          2,
+          -1,
+          1,
+          1,
+          1
+        ],
+        "barres": [
+          -1,
+          -1,
+          -1,
+          1,
+          1,
+          1
+        ],
+        "tonicString": 2,
+        "transposable": true,
+        "position_uuid": "eac637f1-2b29-4d4f-98c9-ab73fd76471f"
+      }
+    ]
+  },
+  {
+    "suffix_uuid": "6c32e8dc-c844-4867-9cc6-704d7de52838",
+    "positions": [
+      {
+        "frets": [
+          0,
+          -1,
+          0,
+          1,
+          1,
+          1
+        ],
+        "fingers": [
+          1,
+          -1,
+          2,
+          4,
+          4,
+          4
+        ],
+        "openFingers": [
+          -1,
+          -1,
+          -1,
+          1,
+          1,
+          1
+        ],
+        "barres": [
+          -1,
+          -1,
+          -1,
+          1,
+          1,
+          1
+        ],
+        "tonicString": 3,
+        "transposable": true,
+        "position_uuid": "fa77a5ad-fd9b-4672-a730-8ca21d791a4d"
+      },
+      {
+        "frets": [
+          -1,
+          1,
+          0,
+          1,
+          0,
+          2
+        ],
+        "fingers": [
+          -1,
+          2,
+          1,
+          3,
+          1,
+          4
+        ],
+        "openFingers": [
+          -1,
+          1,
+          -1,
+          2,
+          -1,
+          4
+        ],
+        "barres": [
+          -1,
+          -1,
+          0,
+          -1,
+          0,
+          -1
+        ],
+        "tonicString": 4,
+        "transposable": true,
+        "position_uuid": "7407bd62-1e2a-4d35-b605-074fa7b84e16"
+      },
+      {
+        "frets": [
+          -1,
+          2,
+          1,
+          0,
+          2,
+          0
+        ],
+        "fingers": [
+          -1,
+          3,
+          2,
+          1,
+          4,
+          1
+        ],
+        "openFingers": [
+          -1,
+          2,
+          1,
+          -1,
+          3,
+          -1
+        ],
+        "barres": [
+          -1,
+          -1,
+          -1,
+          0,
+          -1,
+          0
+        ],
+        "tonicString": 5,
+        "transposable": true,
+        "position_uuid": "37c4e236-0702-4ec4-966e-34962f6072d0"
+      }
+    ]
+  },
+  {
+    "suffix_uuid": "a64fc730-ae67-4b5d-aa6e-66d520dd73f6",
+    "positions": [
+      {
+        "frets": [
+          0,
+          2,
+          4,
+          0,
+          0,
+          0
+        ],
+        "fingers": [
+          -1,
+          2,
+          4,
+          -1,
+          -1,
+          -1
+        ],
+        "openFingers": [
+          -1,
+          2,
+          4,
+          -1,
+          -1,
+          -1
+        ],
+        "barres": [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        "tonicString": 1,
+        "transposable": false,
+        "position_uuid": "d1600778-a691-4b37-90ec-0ecff4c1ad4a"
+      },
+      {
+        "frets": [
+          0,
+          2,
+          2,
+          0,
+          0,
+          2
+        ],
+        "fingers": [
+          -1,
+          2,
+          3,
+          -1,
+          -1,
+          4
+        ],
+        "openFingers": [
+          -1,
+          2,
+          3,
+          -1,
+          -1,
+          4
+        ],
+        "barres": [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        "tonicString": 1,
+        "transposable": false,
+        "position_uuid": "dd3c954b-4849-47db-bd18-84065bb2fca9"
+      },
+      {
+        "frets": [
+          0,
+          -1,
+          -1,
+          0,
+          0,
+          2
+        ],
+        "fingers": [
+          1,
+          -1,
+          -1,
+          2,
+          3,
+          4
+        ],
+        "openFingers": [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          1
+        ],
+        "barres": [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        "tonicString": 1,
+        "transposable": true,
+        "position_uuid": "593143b6-ffd7-4288-bba8-304d4b960c95"
+      },
+      {
+        "frets": [
+          -1,
+          3,
+          1,
+          0,
+          3,
+          -1
+        ],
+        "fingers": [
+          -1,
+          3,
+          2,
+          1,
+          4,
+          -1
+        ],
+        "openFingers": [
+          -1,
+          3,
+          1,
+          -1,
+          4,
+          -1
+        ],
+        "barres": [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        "tonicString": 2,
+        "transposable": true,
+        "position_uuid": "028f1d41-dae5-4b00-bf7f-7364c6b08d21"
+      },
+      {
+        "frets": [
+          -1,
+          -1,
+          2,
+          0,
+          0,
+          2
+        ],
+        "fingers": [
+          -1,
+          -1,
+          3,
+          1,
+          1,
+          4
+        ],
+        "openFingers": [
+          -1,
+          -1,
+          1,
+          -1,
+          -1,
+          2
+        ],
+        "barres": [
+          -1,
+          -1,
+          -1,
+          0,
+          0,
+          -1
+        ],
+        "tonicString": 3,
+        "transposable": true,
+        "position_uuid": "2a3157a2-df81-4ec1-a3ae-4117ff735b97"
+      }
+    ]
+  },
+  {
+    "suffix_uuid": "2e29cc88-7a3f-4982-a488-e6a56fab2faf",
+    "positions": [
+      {
+        "frets": [
+          0,
+          -1,
+          0,
+          -1,
+          0,
+          -1
+        ],
+        "fingers": [
+          1,
+          -1,
+          2,
+          -1,
+          3,
+          -1
+        ],
+        "openFingers": [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        "barres": [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        "tonicString": 1,
+        "transposable": true,
+        "position_uuid": "9107d553-3e9e-4a65-ac0a-984fe17e806e"
+      },
+      {
+        "frets": [
+          -1,
+          0,
+          2,
+          0,
+          -1,
+          -1
+        ],
+        "fingers": [
+          -1,
+          1,
+          3,
+          1,
+          -1,
+          -1
+        ],
+        "openFingers": [
+          -1,
+          -1,
+          1,
+          -1,
+          -1,
+          -1
+        ],
+        "barres": [
+          -1,
+          0,
+          0,
+          0,
+          -1,
+          -1
+        ],
+        "tonicString": 2,
+        "transposable": true,
+        "position_uuid": "7b707ec2-3160-4955-a537-8d323a359e78"
+      },
+      {
+        "frets": [
+          -1,
+          -1,
+          0,
+          2,
+          1,
+          -1
+        ],
+        "fingers": [
+          -1,
+          -1,
+          1,
+          3,
+          2,
+          -1
+        ],
+        "openFingers": [
+          -1,
+          -1,
+          -1,
+          2,
+          1,
+          -1
+        ],
+        "barres": [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        "tonicString": 3,
+        "transposable": true,
+        "position_uuid": "c78be56e-a4ab-4a51-a8df-204f9d0a17e0"
+      }
+    ]
+  },
+  {
+    "suffix_uuid": "1386f23d-9e99-484f-8289-cb73445b67d0",
+    "positions": [
+      {
+        "frets": [
+          1,
+          -1,
+          0,
+          1,
+          1,
+          3
+        ],
+        "fingers": [
+          2,
+          -1,
+          1,
+          3,
+          3,
+          4
+        ],
+        "openFingers": [
+          1,
+          -1,
+          -1,
+          2,
+          3,
+          4
+        ],
+        "barres": [
+          -1,
+          -1,
+          -1,
+          1,
+          1,
+          -1
+        ],
+        "tonicString": 1,
+        "transposable": true,
+        "position_uuid": "2e42c844-8fa0-4d26-b057-af2f579d04f1"
+      },
+      {
+        "frets": [
+          0,
+          1,
+          1,
+          1,
+          2,
+          -1
+        ],
+        "fingers": [
+          1,
+          2,
+          2,
+          2,
+          3,
+          -1
+        ],
+        "openFingers": [
+          -1,
+          1,
+          2,
+          3,
+          4,
+          -1
+        ],
+        "barres": [
+          -1,
+          1,
+          1,
+          1,
+          -1,
+          -1
+        ],
+        "tonicString": 5,
+        "transposable": true,
+        "position_uuid": "b276e69b-1384-4ff0-b348-28018097b615"
+      },
+      {
+        "frets": [
+          -1,
+          0,
+          1,
+          1,
+          2,
+          2
+        ],
+        "fingers": [
+          -1,
+          1,
+          2,
+          2,
+          3,
+          3
+        ],
+        "openFingers": [
+          -1,
+          -1,
+          1,
+          1,
+          2,
+          2
+        ],
+        "barres": [
+          -1,
+          -1,
+          1,
+          1,
+          2,
+          2
+        ],
+        "tonicString": 6,
+        "transposable": true,
+        "position_uuid": "022598c3-f181-431b-b275-861e1dbc9248"
+      }
+    ]
+  },
+  {
+    "suffix_uuid": "8a34a587-7052-4467-a4af-52b8356920b8",
+    "positions": [
+      {
+        "frets": [
+          1,
+          0,
+          1,
+          0,
+          0,
+          -1
+        ],
+        "fingers": [
+          2,
+          1,
+          3,
+          1,
+          1,
+          -1
+        ],
+        "openFingers": [
+          1,
+          -1,
+          2,
+          -1,
+          -1,
+          -1
+        ],
+        "barres": [
+          -1,
+          0,
+          -1,
+          0,
+          0,
+          -1
+        ],
+        "tonicString": 1,
+        "transposable": true,
+        "position_uuid": "a30b0c7a-bc30-4f42-880b-415cbd5a3b43"
+      },
+      {
+        "frets": [
+          -1,
+          1,
+          0,
+          1,
+          1,
+          0
+        ],
+        "fingers": [
+          -1,
+          2,
+          1,
+          3,
+          4,
+          1
+        ],
+        "openFingers": [
+          -1,
+          1,
+          -1,
+          2,
+          3,
+          -1
+        ],
+        "barres": [
+          -1,
+          -1,
+          0,
+          -1,
+          -1,
+          0
+        ],
+        "tonicString": 2,
+        "transposable": true,
+        "position_uuid": "62e02716-4802-4174-b6e9-4c60d381d87f"
+      },
+      {
+        "frets": [
+          -1,
+          -1,
+          0,
+          1,
+          1,
+          0
+        ],
+        "fingers": [
+          -1,
+          -1,
+          1,
+          3,
+          4,
+          2
+        ],
+        "openFingers": [
+          -1,
+          -1,
+          -1,
+          1,
+          2,
+          -1
+        ],
+        "barres": [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        "tonicString": 3,
+        "transposable": true,
+        "position_uuid": "d0291e77-03e6-4603-bd0d-c51ad5d710ec"
+      }
+    ]
+  },
+  {
+    "suffix_uuid": "d9ef38fb-7219-44bf-8e17-1ec9bb66ee2f",
+    "positions": [
+      {
+        "frets": [
+          0,
+          -1,
+          0,
+          1,
+          2,
+          -1
+        ],
+        "fingers": [
+          1,
+          -1,
+          2,
+          3,
+          4,
+          -1
+        ],
+        "openFingers": [
+          -1,
+          -1,
+          -1,
+          1,
+          2,
+          -1
+        ],
+        "barres": [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        "tonicString": 1,
+        "transposable": true,
+        "position_uuid": "2b727c19-de60-4ef9-a008-d4a9d9bdfe9d"
+      },
+      {
+        "frets": [
+          -1,
+          1,
+          0,
+          1,
+          1,
+          3
+        ],
+        "fingers": [
+          -1,
+          2,
+          1,
+          3,
+          3,
+          4
+        ],
+        "openFingers": [
+          -1,
+          1,
+          -1,
+          2,
+          3,
+          4
+        ],
+        "barres": [
+          -1,
+          -1,
+          -1,
+          1,
+          1,
+          -1
+        ],
+        "tonicString": 2,
+        "transposable": true,
+        "position_uuid": "012f04e3-3869-4b81-800b-f76faf28bc0b"
+      },
+      {
+        "frets": [
+          3,
+          -1,
+          3,
+          2,
+          0,
+          0
+        ],
+        "fingers": [
+          3,
+          -1,
+          4,
+          2,
+          1,
+          1
+        ],
+        "openFingers": [
+          2,
+          -1,
+          3,
+          1,
+          -1,
+          -1
+        ],
+        "barres": [
+          -1,
+          -1,
+          -1,
+          -1,
+          0,
+          0
+        ],
+        "tonicString": 1,
+        "transposable": true,
+        "position_uuid": "c6841b53-4081-4e68-9efd-279b3ee7e1a5"
+      }
+    ]
+  },
+  {
+    "suffix_uuid": "8832f04b-4159-421a-9457-0f8c182c4c8e",
+    "positions": [
+      {
+        "frets": [
+          2,
+          -1,
+          2,
+          2,
+          0,
+          -1
+        ],
+        "fingers": [
+          2,
+          -1,
+          3,
+          4,
+          1,
+          -1
+        ],
+        "openFingers": [
+          1,
+          -1,
+          2,
+          3,
+          -1,
+          -1
+        ],
+        "barres": [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        "tonicString": 1,
+        "transposable": true,
+        "position_uuid": "79ee42b5-f38a-497a-9330-8ad92fa2c3ff"
+      },
+      {
+        "frets": [
+          -1,
+          2,
+          -1,
+          2,
+          3,
+          0
+        ],
+        "fingers": [
+          -1,
+          2,
+          -1,
+          3,
+          4,
+          1
+        ],
+        "openFingers": [
+          -1,
+          1,
+          -1,
+          2,
+          3,
+          -1
+        ],
+        "barres": [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        "tonicString": 2,
+        "transposable": true,
+        "position_uuid": "f8d4b576-efa5-4e20-9de6-f7b844295b2c"
+      },
+      {
+        "frets": [
+          -1,
+          0,
+          0,
+          0,
+          1,
+          0
+        ],
+        "fingers": [
+          -1,
+          1,
+          1,
+          1,
+          2,
+          1
+        ],
+        "openFingers": [
+          -1,
+          -1,
+          -1,
+          -1,
+          1,
+          -1
+        ],
+        "barres": [
+          -1,
+          0,
+          0,
+          0,
+          -1,
+          0
+        ],
+        "tonicString": 2,
+        "transposable": true,
+        "position_uuid": "3479b6d1-350e-43f9-b25f-777f6d59b8d6"
+      },
+      {
+        "frets": [
+          -1,
+          -1,
+          0,
+          0,
+          1,
+          1
+        ],
+        "fingers": [
+          -1,
+          -1,
+          1,
+          1,
+          2,
+          2
+        ],
+        "openFingers": [
+          -1,
+          -1,
+          -1,
+          -1,
+          1,
+          1
+        ],
+        "barres": [
+          -1,
+          -1,
+          0,
+          0,
+          1,
+          1
+        ],
+        "tonicString": 3,
+        "transposable": true,
+        "position_uuid": "c3826e1e-914a-487e-a688-5f745080e0c7"
+      }
+    ]
+  },
+  {
+    "suffix_uuid": "3c157ab9-3bda-4946-a11c-b5b25c424b7a",
+    "positions": [
+      {
+        "frets": [
+          2,
+          -1,
+          3,
+          3,
+          0,
+          -1
+        ],
+        "fingers": [
+          2,
+          -1,
+          3,
+          4,
+          1,
+          -1
+        ],
+        "openFingers": [
+          1,
+          -1,
+          2,
+          3,
+          -1,
+          -1
+        ],
+        "barres": [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        "tonicString": 1,
+        "transposable": true,
+        "position_uuid": "bcc109a0-f878-4fa0-99a7-4638aa43034d"
+      },
+      {
+        "frets": [
+          -1,
+          2,
+          -1,
+          3,
+          4,
+          0
+        ],
+        "fingers": [
+          -1,
+          2,
+          -1,
+          3,
+          4,
+          1
+        ],
+        "openFingers": [
+          -1,
+          1,
+          -1,
+          2,
+          3,
+          -1
+        ],
+        "barres": [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        "tonicString": 2,
+        "transposable": true,
+        "position_uuid": "d391726d-58e3-4dc0-896c-69b818d2ca7d"
+      },
+      {
+        "frets": [
+          2,
+          -1,
+          3,
+          1,
+          0,
+          -1
+        ],
+        "fingers": [
+          3,
+          -1,
+          4,
+          2,
+          1,
+          -1
+        ],
+        "openFingers": [
+          2,
+          -1,
+          3,
+          1,
+          -1,
+          -1
+        ],
+        "barres": [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        "tonicString": 1,
+        "transposable": true,
+        "position_uuid": "f14c2f92-02d9-457a-b415-bbf9c86d3887"
+      },
+      {
+        "frets": [
+          -1,
+          2,
+          -1,
+          3,
+          2,
+          0
+        ],
+        "fingers": [
+          -1,
+          2,
+          -1,
+          4,
+          3,
+          1
+        ],
+        "openFingers": [
+          -1,
+          1,
+          -1,
+          3,
+          2,
+          -1
+        ],
+        "barres": [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        "tonicString": 2,
+        "transposable": true,
+        "position_uuid": "ee8c6ed6-f4f5-4b1a-95e7-faad7bbcb48a"
+      }
+    ]
+  },
+  {
+    "suffix_uuid": "8b8cd47b-7ca9-4100-bea3-6f596e19fe39",
+    "positions": [
+      {
+        "frets": [
+          2,
+          -1,
+          3,
+          2,
+          0,
+          -1
+        ],
+        "fingers": [
+          2,
+          -1,
+          4,
+          3,
+          1,
+          -1
+        ],
+        "openFingers": [
+          1,
+          -1,
+          3,
+          2,
+          -1,
+          -1
+        ],
+        "barres": [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        "tonicString": 1,
+        "transposable": true,
+        "position_uuid": "c25b22b5-4ef0-489f-aa30-fc848293bd64"
+      },
+      {
+        "frets": [
+          -1,
+          2,
+          -1,
+          3,
+          3,
+          0
+        ],
+        "fingers": [
+          -1,
+          2,
+          -1,
+          3,
+          4,
+          1
+        ],
+        "openFingers": [
+          -1,
+          1,
+          -1,
+          2,
+          3,
+          -1
+        ],
+        "barres": [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        "tonicString": 2,
+        "transposable": true,
+        "position_uuid": "1e3f36e7-d323-4559-b847-06d9afb967a7"
+      },
+      {
+        "frets": [
+          -1,
+          0,
+          0,
+          1,
+          1,
+          0
+        ],
+        "fingers": [
+          -1,
+          1,
+          1,
+          2,
+          3,
+          1
+        ],
+        "openFingers": [
+          -1,
+          -1,
+          -1,
+          1,
+          2,
+          -1
+        ],
+        "barres": [
+          -1,
+          0,
+          0,
+          -1,
+          -1,
+          0
+        ],
+        "tonicString": 2,
+        "transposable": true,
+        "position_uuid": "3e0f1232-cec5-441b-9d1d-27d10469800f"
+      },
+      {
+        "frets": [
+          -1,
+          -1,
+          0,
+          0,
+          2,
+          1
+        ],
+        "fingers": [
+          -1,
+          -1,
+          1,
+          1,
+          3,
+          2
+        ],
+        "openFingers": [
+          -1,
+          -1,
+          -1,
+          -1,
+          2,
+          1
+        ],
+        "barres": [
+          -1,
+          -1,
+          0,
+          0,
+          -1,
+          -1
+        ],
+        "tonicString": 3,
+        "transposable": true,
+        "position_uuid": "a6493215-3e67-496b-a713-df529770c276"
+      }
+    ]
+  },
+  {
+    "suffix_uuid": "213ef7cf-6bab-4f97-9c83-17c9bd2f7d25",
+    "positions": [
+      {
+        "frets": [
+          0,
+          2,
+          3,
+          1,
+          0,
+          0
+        ],
+        "fingers": [
+          1,
+          3,
+          4,
+          2,
+          1,
+          1
+        ],
+        "openFingers": [
+          -1,
+          2,
+          3,
+          1,
+          -1,
+          -1
+        ],
+        "barres": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "tonicString": 1,
+        "transposable": true,
+        "position_uuid": "43e7f94a-bf3c-4733-b268-cda2f46153e6"
+      },
+      {
+        "frets": [
+          -1,
+          3,
+          2,
+          0,
+          2,
+          -1
+        ],
+        "fingers": [
+          -1,
+          4,
+          2,
+          1,
+          3,
+          -1
+        ],
+        "openFingers": [
+          -1,
+          3,
+          1,
+          -1,
+          2,
+          -1
+        ],
+        "barres": [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        "tonicString": 2,
+        "transposable": true,
+        "position_uuid": "aed65ea1-98fa-4898-9184-0c275b762fad"
+      },
+      {
+        "frets": [
+          -1,
+          0,
+          2,
+          3,
+          2,
+          -1
+        ],
+        "fingers": [
+          -1,
+          1,
+          2,
+          4,
+          3,
+          -1
+        ],
+        "openFingers": [
+          -1,
+          -1,
+          1,
+          3,
+          2,
+          -1
+        ],
+        "barres": [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        "tonicString": 2,
+        "transposable": true,
+        "position_uuid": "99b21185-c6cf-4b36-b1f3-b3d1b2730938"
+      },
+      {
+        "frets": [
+          -1,
+          -1,
+          0,
+          2,
+          4,
+          2
+        ],
+        "fingers": [
+          -1,
+          -1,
+          1,
+          2,
+          4,
+          3
+        ],
+        "openFingers": [
+          -1,
+          -1,
+          -1,
+          1,
+          3,
+          2
+        ],
+        "barres": [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        "tonicString": 3,
+        "transposable": true,
+        "position_uuid": "b1ec53e8-86dd-4e20-866f-2c23d96dac28"
+      },
+      {
+        "frets": [
+          -1,
+          -1,
+          2,
+          1,
+          0,
+          1
+        ],
+        "fingers": [
+          -1,
+          -1,
+          4,
+          2,
+          1,
+          3
+        ],
+        "openFingers": [
+          -1,
+          -1,
+          3,
+          1,
+          -1,
+          2
+        ],
+        "barres": [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        "tonicString": 3,
+        "transposable": true,
+        "position_uuid": "d72f448f-3d3e-4d3c-bbb6-df63e12feb33"
+      }
+    ]
+  },
+  {
+    "suffix_uuid": "91cbcafb-2a2d-44e6-a557-84651b4a7676",
+    "positions": [
+      {
+        "frets": [
+          0,
+          -1,
+          1,
+          2,
+          0,
+          -1
+        ],
+        "fingers": [
+          1,
+          -1,
+          3,
+          4,
+          2,
+          -1
+        ],
+        "openFingers": [
+          -1,
+          -1,
+          2,
+          3,
+          -1,
+          -1
+        ],
+        "barres": [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        "tonicString": 1,
+        "transposable": true,
+        "position_uuid": "77a1bd53-953c-427c-ac59-679061926cb7"
+      },
+      {
+        "frets": [
+          -1,
+          0,
+          2,
+          1,
+          3,
+          -1
+        ],
+        "fingers": [
+          -1,
+          1,
+          3,
+          2,
+          4,
+          -1
+        ],
+        "openFingers": [
+          -1,
+          -1,
+          2,
+          1,
+          3,
+          -1
+        ],
+        "barres": [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        "tonicString": 2,
+        "transposable": true,
+        "position_uuid": "42703930-2318-4619-8a0e-22f3356cf706"
+      },
+      {
+        "frets": [
+          -1,
+          -1,
+          0,
+          2,
+          2,
+          3
+        ],
+        "fingers": [
+          -1,
+          -1,
+          1,
+          2,
+          3,
+          4
+        ],
+        "openFingers": [
+          -1,
+          -1,
+          -1,
+          1,
+          2,
+          3
+        ],
+        "barres": [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        "tonicString": 3,
+        "transposable": true,
+        "position_uuid": "c41cc294-d947-4a4d-8f0d-7ea9ff4269e3"
+      }
+    ]
+  },
+  {
+    "suffix_uuid": "24ed47bd-58c3-4d32-a553-77ff96fae25c",
+    "positions": [
+      {
+        "frets": [
+          0,
+          2,
+          0,
+          0,
+          2,
+          2
+        ],
+        "fingers": [
+          1,
+          2,
+          1,
+          1,
+          3,
+          4
+        ],
+        "openFingers": [
+          -1,
+          1,
+          -1,
+          -1,
+          2,
+          3
+        ],
+        "barres": [
+          0,
+          -1,
+          0,
+          0,
+          -1,
+          -1
+        ],
+        "tonicString": 1,
+        "transposable": true,
+        "position_uuid": "3bbe4056-112e-4e79-9b3b-a5f96f4c2948"
+      },
+      {
+        "frets": [
+          -1,
+          0,
+          2,
+          0,
+          1,
+          2
+        ],
+        "fingers": [
+          -1,
+          1,
+          3,
+          1,
+          2,
+          4
+        ],
+        "openFingers": [
+          -1,
+          -1,
+          2,
+          -1,
+          1,
+          3
+        ],
+        "barres": [
+          -1,
+          0,
+          -1,
+          0,
+          -1,
+          -1
+        ],
+        "tonicString": 2,
+        "transposable": true,
+        "position_uuid": "00e3dd4f-215c-4de9-b62d-abefe4234e36"
+      }
+    ]
+  },
+  {
+    "suffix_uuid": "1ad1b93f-3b2c-48c0-bb27-945fa3add9e2",
+    "positions": [
+      {
+        "frets": [
+          1,
+          3,
+          3,
+          2,
+          0,
+          0
+        ],
+        "fingers": [
+          1,
+          3,
+          4,
+          2,
+          -1,
+          -1
+        ],
+        "openFingers": [
+          1,
+          3,
+          4,
+          2,
+          -1,
+          -1
+        ],
+        "barres": [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        "tonicString": 1,
+        "transposable": false,
+        "position_uuid": "390b65b0-8536-425d-ace7-c0e82aef8812"
+      },
+      {
+        "frets": [
+          -1,
+          -1,
+          4,
+          3,
+          1,
+          1
+        ],
+        "fingers": [
+          -1,
+          -1,
+          4,
+          3,
+          1,
+          1
+        ],
+        "openFingers": [
+          -1,
+          -1,
+          4,
+          3,
+          1,
+          1
+        ],
+        "barres": [
+          -1,
+          -1,
+          -1,
+          -1,
+          1,
+          1
+        ],
+        "tonicString": 3,
+        "transposable": true,
+        "position_uuid": "7e3c9172-91fc-48f8-8883-550b3d28458d"
+      }
+    ]
+  }
+]
