@@ -23,6 +23,11 @@ const ChordStrip := preload("res://scripts/ui/chord_strip.gd")
 const RadialBloom := preload("res://scripts/ui/radial_bloom.gd")
 const BotPeer := preload("res://scripts/ai/bot_peer.gd")
 const DecisionLog := preload("res://scripts/ai/decision_log.gd")
+const HumanRecorder := preload("res://scripts/ai/human_recorder.gd")
+
+## Emitted for every locally accepted edit (keyboard, pointer, or mounted bot) —
+## the tap point for decision recording. Fires AFTER local application.
+signal edit_dispatched(track: int, op: String, args: Dictionary)
 
 const BARS_PER_LOOP := 4
 const STEPS_PER_BAR := 16
@@ -116,6 +121,7 @@ var bar_in_loop := 0
 var step_in_bar := 0
 var _sched_loop := -1 # loop index in the SCHEDULE domain (runs ahead by the lookahead)
 var hitch_mode := false # F9: deliberately stall the main thread to prove timing immunity
+var _is_bot_instance := false # --bot mounts an autonomous player; no human to record
 
 
 func _ready() -> void:
@@ -154,6 +160,38 @@ func _ready() -> void:
 			})
 			bot.decision_log = dlog
 			add_child(bot)
+			_is_bot_instance = true
+		elif arg == "--shadow" or arg.begins_with("--shadow-seed="):
+			# Phase 2.5 shadow policy: decides + logs proposals on the human's
+			# observations, never dispatches. Mount alongside the human UI.
+			var sbot := BotPeer.new()
+			sbot.room = self
+			sbot.shadow = true
+			if arg.begins_with("--shadow-seed="):
+				sbot.session_seed = int(arg.trim_prefix("--shadow-seed="))
+			var slog := DecisionLog.new()
+			slog.open({
+				"session_id": "shadow_%d" % int(Time.get_unix_time_from_system()),
+				"session_seed": sbot.session_seed,
+				"source": DecisionLog.SOURCE_RULE_BOT,
+			})
+			sbot.decision_log = slog
+			add_child(sbot)
+
+	# Human decision recording is ALWAYS on for player instances — you cannot
+	# reconstruct human decisions from sessions you failed to record. Bass-role
+	# windows only (bass-first roadmap); zero-op HOLDs included.
+	if not _is_bot_instance:
+		var rec := HumanRecorder.new()
+		rec.room = self
+		var hlog := DecisionLog.new()
+		hlog.open({
+			"session_id": "human_%d" % int(Time.get_unix_time_from_system()),
+			"source": DecisionLog.SOURCE_HUMAN,
+		})
+		rec.decision_log = hlog
+		edit_dispatched.connect(rec._on_edit_dispatched)
+		add_child(rec)
 	_refresh_ui()
 
 
@@ -355,6 +393,7 @@ func _dispatch(track: int, op: String, args: Dictionary) -> void:
 	if not net.can_edit(track):
 		return # not your instrument in this room (also enforced server-side)
 	apply_edit(track, op, args)
+	edit_dispatched.emit(track, op, args)
 	if net.active:
 		if net.is_server:
 			if track == Focus.DRUMS and op in NetSession.DRUM_STATE_OPS:

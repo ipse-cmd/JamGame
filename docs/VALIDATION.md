@@ -373,6 +373,39 @@ layout; chord-strip slot picking incl. margins; bloom gesture resolution for
 dead zone/center/all option directions/outside; `set_slot` range guards;
 chord "set" through TrackOps editing pending only). **6/6 integration green.**
 
+## Phase 2.5 groundwork — human decision recording + shadow policy (2026-08-17)
+
+Two passive recorders, both mandated by the design docs before the
+observation schema freezes:
+
+**Human recording (always on for player instances).** "You cannot reconstruct
+human decisions from sessions you failed to record." `JamHumanRecorder` gives
+HUMAN bass play the same window semantics as the bot: the observation is built
+when the editable window OPENS (pre-edit, same `JamBotObservation` contract),
+raw ops accumulate in submission order off the room's new `edit_dispatched`
+signal (emitted for every locally accepted edit), and the frame is written
+when the boundary closes — zero-op windows are first-class HOLD frames.
+Attention proxies (`window_focused`, `input_events`) distinguish a deliberate
+hold from an AFK one. Records only seats the local player owns; `--bot`
+instances mount no recorder. Logs to `human_<ts>.jsonl`, source `human`,
+policy tag `human_ui` — never mixed with bot sources.
+
+**Shadow policy (`--shadow` / `--shadow-seed=N`).** The rule policy mounted on
+a peer that does NOT own bass: the role gate is bypassed for OBSERVING only —
+it decides and logs proposals (`"shadow": true` frames, `shadow_<ts>.jsonl`)
+but never dispatches, never sets a pending-commit key, and its staleness clock
+keeps running since its proposals never resolve. Result: human frames and
+policy proposals over IDENTICAL windows and observations — the raw material
+for the 2.5 divergence analysis ("what did the human know that the observation
+doesn't contain?") and later preference/counterfactual experiments.
+
+Validation: **260 unit tests green** (+25: ops grouped into their window,
+pre-edit observation ordering, foreign-role ops ignored, HOLD frames,
+state-version advance across commits, attention-proxy fields, seat gating for
+recorders; shadow never dispatches, all 8 windows logged with proposals,
+stale pressure forces proposals, zero commit events). **6/6 integration
+green.**
+
 ## How to rebuild the extension
 
 ```

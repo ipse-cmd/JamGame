@@ -30,6 +30,11 @@ var role := TRACK_BASS
 var session_seed := 1
 var source := DecisionLog.SOURCE_RULE_BOT
 var decision_log # JamDecisionLog or null — windows go unrecorded without one
+# Shadow mode (Phase 2.5): observe + decide + LOG, never dispatch. Mounts on a
+# peer that does NOT own the seat, so a human plays bass while the policy's
+# proposals are recorded against the identical observations — the raw material
+# for human-vs-policy comparison and preference data.
+var shadow := false
 
 # observability
 var decisions := 0
@@ -71,8 +76,8 @@ func on_loop(loop: int) -> void:
 	])
 
 	var net = room.net
-	if net != null and net.active and not net.can_edit(role):
-		return # not our seat in this room — also enforced server-side
+	if net != null and net.active and not net.can_edit(role) and not shadow:
+		return # not our seat in this room — also enforced server-side (shadow only watches)
 
 	var model = room.model_for(role)
 	if model.version_id != _last_version:
@@ -107,25 +112,28 @@ func on_loop(loop: int) -> void:
 	var logged_ops := []
 	for op in ops:
 		_op_seq += 1
-		room.dispatch(op.track, op.op, op.args)
+		if not shadow:
+			room.dispatch(op.track, op.op, op.args)
 		var entry: Dictionary = op.duplicate(true)
 		entry["seq"] = _op_seq
 		logged_ops.append(entry)
 	var t1 := Time.get_ticks_usec()
 
 	decisions += 1
-	ops_sent += ops.size()
 	_windows_since_change += 1
 	if ops.is_empty():
 		holds += 1
 	else:
 		edits += 1
-		_pending_commit_key = key
+		if not shadow:
+			ops_sent += ops.size()
+			_pending_commit_key = key # shadow proposals never commit — nothing to resolve
 
 	if decision_log != null:
+		var extra := {"shadow": true} if shadow else {}
 		decision_log.write(DecisionLog.build_frame(
 			key, source, RuleBassPolicy.POLICY_NAME, RuleBassPolicy.POLICY_VERSION,
-			seed_value, obs, logged_ops, t0, t1, _deadline_margin_steps(), obs.features))
+			seed_value, obs, logged_ops, t0, t1, _deadline_margin_steps(), obs.features, extra))
 
 
 ## Steps of headroom left before the lock horizon of the loop being authored

@@ -21,6 +21,7 @@ const DecisionLog := preload("res://scripts/ai/decision_log.gd")
 const BotPeer := preload("res://scripts/ai/bot_peer.gd")
 const Features := preload("res://scripts/core/jam_features.gd")
 const History := preload("res://scripts/core/jam_history.gd")
+const HumanRecorder := preload("res://scripts/ai/human_recorder.gd")
 const StepRing := preload("res://scripts/ui/step_ring.gd")
 const ChordStrip := preload("res://scripts/ui/chord_strip.gd")
 const RadialBloom := preload("res://scripts/ui/radial_bloom.gd")
@@ -47,6 +48,8 @@ func _initialize() -> void:
 	_test_temporal_features()
 	_test_observation_contract()
 	_test_pointer_picking()
+	_test_human_recorder()
+	_test_shadow_bot()
 	print("TESTS: %d passed, %d failed" % [passed, failed])
 	quit(1 if failed > 0 else 0)
 
@@ -598,6 +601,101 @@ func _test_bot_peer() -> void:
 	DirAccess.remove_absolute(log.path)
 	bot.free()
 	run_bot.free()
+
+
+func _test_human_recorder() -> void:
+	var room := FakeRoom.new()
+	var net := FakeNet.new()
+	net.editable = {1: true}
+	room.net = net
+	var rec = HumanRecorder.new()
+	rec.room = room
+	var log = DecisionLog.new()
+	check(log.open({"session_id": "t_human"}, "user://test_decision_logs") == OK, "human log opens")
+	rec.decision_log = log
+
+	# Window opens at the boundary; ops accumulate; frame written at the close.
+	rec.on_loop(0)
+	check(rec.frames == 0, "open window is not yet a frame")
+	room.dispatch(1, "place", {"step": 2, "degree": 1})
+	rec._on_edit_dispatched(1, "place", {"step": 2, "degree": 1})
+	rec._on_edit_dispatched(0, "toggle", {"voice": 0, "step": 3}) # not our role
+	room.commit_boundary(1)
+	rec.on_loop(1)
+	rec.on_loop(2) # no edits in window 2 -> HOLD frame
+	log.close()
+
+	check(rec.frames == 2 and rec.edit_frames == 1 and rec.holds == 1 and rec.ops_captured == 1,
+		"two windows: one edit frame, one zero-op HOLD; foreign-role ops ignored")
+	var frames_read := []
+	for e in DecisionLog.read_events(log.path):
+		if e.type == "decision":
+			frames_read.append(e)
+	check(frames_read.size() == 2, "both windows recorded")
+	var f0: Dictionary = frames_read[0]
+	check(f0.source == DecisionLog.SOURCE_HUMAN and f0.policy_name == "human_ui",
+		"human frames carry human source + policy tag")
+	check(int(f0.decision_key.target_loop) == 1 and f0.ops.size() == 1
+		and int(f0.ops[0].args.step) == 2 and int(f0.ops[0].args.degree) == 1,
+		"raw ops grouped into their editable window")
+	check(not f0.observation.bass_notes.has(2) and not f0.observation.bass_notes.has("2"),
+		"observation is pre-edit: built at window open, before the human's op")
+	check(f0.analysis.has("kick_bass_alignment") and f0.has("window_focused")
+		and int(f0.input_events) == 0,
+		"frames carry features and attention proxies")
+	var f1: Dictionary = frames_read[1]
+	check(f1.ops.is_empty() and int(f1.decision_key.target_loop) == 2,
+		"deliberate hold is a zero-op frame")
+	check(int(f1.decision_key.state_version) > int(f0.decision_key.state_version),
+		"post-commit window observes the bumped version")
+	DirAccess.remove_absolute(log.path)
+
+	# Not this player's seat -> nothing recorded.
+	var squatter = HumanRecorder.new()
+	squatter.room = room
+	net.editable = {1: false}
+	squatter.on_loop(3)
+	squatter.on_loop(4)
+	check(squatter.frames == 0, "recorder is silent for seats the player does not own")
+	rec.free()
+	squatter.free()
+
+
+func _test_shadow_bot() -> void:
+	var room := FakeRoom.new()
+	var net := FakeNet.new()
+	net.editable = {1: false} # the HUMAN owns bass; shadow only watches
+	room.net = net
+	var bot = BotPeer.new()
+	bot.room = room
+	bot.shadow = true
+	bot.session_seed = 5
+	var log = DecisionLog.new()
+	check(log.open({"session_id": "t_shadow"}, "user://test_decision_logs") == OK, "shadow log opens")
+	bot.decision_log = log
+
+	for loop in 8:
+		room.commit_boundary(loop)
+		bot.on_loop(loop)
+	log.close()
+
+	check(room.dispatched.is_empty() and bot.ops_sent == 0, "shadow NEVER dispatches")
+	check(bot.decisions == 8, "shadow still takes every window (role gate bypassed for observing)")
+	check(bot.edits >= 1, "unresolved staleness keeps forcing proposals")
+	var proposal_frames := 0
+	var proposed_ops := 0
+	var commits := 0
+	for e in DecisionLog.read_events(log.path):
+		if e.type == "decision":
+			proposal_frames += 1
+			proposed_ops += e.ops.size()
+			check(e.get("shadow", false) == true, "every shadow frame is marked shadow")
+		elif e.type == "commit":
+			commits += 1
+	check(proposal_frames == 8 and proposed_ops >= 1, "all windows logged, proposals included")
+	check(commits == 0, "shadow proposals never resolve into commit events")
+	DirAccess.remove_absolute(log.path)
+	bot.free()
 
 
 func _test_jam_features() -> void:
