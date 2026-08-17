@@ -22,6 +22,8 @@ const BotPeer := preload("res://scripts/ai/bot_peer.gd")
 const Features := preload("res://scripts/core/jam_features.gd")
 const Analysis := preload("res://scripts/core/jam_analysis.gd")
 const IntentPolicy := preload("res://scripts/ai/intent_policy.gd")
+const Realizer := preload("res://scripts/ai/bass_realizer.gd")
+const IntentBassPolicy := preload("res://scripts/ai/intent_bass_policy.gd")
 const History := preload("res://scripts/core/jam_history.gd")
 const HumanRecorder := preload("res://scripts/ai/human_recorder.gd")
 const StepRing := preload("res://scripts/ui/step_ring.gd")
@@ -51,6 +53,8 @@ func _initialize() -> void:
 	_test_observation_contract()
 	_test_jam_analysis()
 	_test_intent_policy()
+	_test_bass_realizer()
+	_test_intent_bass_policy()
 	_test_pointer_picking()
 	_test_human_recorder()
 	_test_shadow_bot()
@@ -1111,6 +1115,153 @@ func _test_intent_policy() -> void:
 	check(styled.intent == IntentPolicy.VARY and styled.style == "default"
 		and styled.style_requested == "jazz",
 		"unknown style falls back to default weights, request logged")
+
+
+func _test_bass_realizer() -> void:
+	var models := _mk_models()
+	var sparse := BotObservation.build_bass(models.bass, models.drums, models.chords, 1, 1)
+	# A dense, colorful line for SIMPLIFY/VARY to bite into.
+	var dense_line := BassLine.new()
+	dense_line.notes = {0: 0, 2: 1, 4: 0, 6: 3, 8: 0, 10: 3, 12: 4, 14: 1}
+	var dense_model = CommitModel.new(dense_line)
+	var dense := BotObservation.build_bass(dense_model, models.drums, models.chords, 1, 1)
+
+	# Every candidate op, every intent, many seeds: legal by construction.
+	var all_legal := true
+	for intent in ["RESPOND", "SIMPLIFY", "INTENSIFY", "VARY", "REVERT"]:
+		for s in 30:
+			for obs in [sparse, dense]:
+				var o: Dictionary = obs.duplicate(true)
+				o.bass_notes_prev = {0: 0, 8: 0}
+				for c in Realizer.candidates(o, intent, s):
+					for op in c.ops:
+						if not _valid_bass_op(op):
+							all_legal = false
+	check(all_legal, "every candidate op for every intent/seed passes hostile-peer validation")
+
+	# Determinism: same (obs, intent, seed) -> identical realization.
+	check(JSON.stringify(Realizer.realize(dense, "VARY", 42)) == JSON.stringify(Realizer.realize(dense, "VARY", 42)),
+		"realization is deterministic")
+
+	# Intent faithfulness, judged by SIMULATING the chosen ops.
+	var simp := Realizer.realize(dense, "SIMPLIFY", 7)
+	var simp_notes := _apply_ops(dense, simp.ops)
+	check(simp_notes.size() < dense.bass_notes.size(), "SIMPLIFY thins the dense line")
+	check(Realizer.realize(sparse, "SIMPLIFY", 7).ops.is_empty(),
+		"SIMPLIFY on an already-sparse line holds (nothing to thin)")
+
+	var intens := Realizer.realize(sparse, "INTENSIFY", 7)
+	check(_apply_ops(sparse, intens.ops).size() == sparse.bass_notes.size() + 1,
+		"INTENSIFY adds exactly one note")
+
+	# VARY wants an in-band line: on the 8-note dense line the evaluator
+	# correctly refuses (every variation keeps a crowded line crowded).
+	var mid_line := BassLine.new()
+	mid_line.notes = {0: 0, 4: 2, 6: 3, 8: 0, 12: 4}
+	var mid := BotObservation.build_bass(CommitModel.new(mid_line), models.drums, models.chords, 1, 1)
+	var vary := Realizer.realize(mid, "VARY", 7)
+	var vary_notes := _apply_ops(mid, vary.ops)
+	check(vary_notes != mid.bass_notes and absi(vary_notes.size() - mid.bass_notes.size()) <= 1,
+		"VARY changes the pattern without changing its weight class")
+	check(Realizer.realize(dense, "VARY", 7).ops.is_empty(),
+		"VARY on an out-of-band line refuses — a crowded line needs SIMPLIFY, not novelty")
+
+	# RESPOND from silence: the bandmate can enter an empty seat.
+	var empty_line = CommitModel.new(BassLine.new())
+	var silent := BotObservation.build_bass(empty_line, models.drums, models.chords, 1, 1)
+	var resp := Realizer.realize(silent, "RESPOND", 7)
+	check(not resp.ops.is_empty() and _apply_ops(silent, resp.ops).size() >= 1,
+		"RESPOND on an empty line enters rather than holding forever")
+
+	# REVERT restores the actual previous pattern — bass_notes_prev's realizer.
+	var rev_obs: Dictionary = dense.duplicate(true)
+	rev_obs.bass_notes_prev = {0: 0, 8: 0, 12: 4}
+	var rev := Realizer.realize(rev_obs, "REVERT", 7)
+	check(rev.candidate == "restore_prev" and _apply_ops(rev_obs, rev.ops) == {0: 0, 8: 0, 12: 4},
+		"REVERT restores the previous committed line exactly")
+	var no_prev: Dictionary = dense.duplicate(true)
+	no_prev.bass_notes_prev = null
+	check(Realizer.realize(no_prev, "REVERT", 7).ops.is_empty(),
+		"REVERT without a previous pattern holds")
+	check(rev.ops.size() <= Realizer.MAX_REVERT_OPS, "revert op count is capped")
+
+	check(Realizer.realize(dense, "HOLD", 7).ops.is_empty(), "HOLD realizes to nothing")
+	check(not Realizer.realize(dense, "VARY", 7).scores.is_empty(),
+		"realization reports candidate scores (the 3E swap point)")
+
+
+func _test_intent_bass_policy() -> void:
+	var models := _mk_models()
+	var h := History.new()
+	for loop in 3:
+		h.push(loop, {
+			"drums": models.drums.active.to_dict(),
+			"bass": models.bass.active.to_dict(),
+			"chords": models.chords.active.to_dict(),
+		}, [0, 0, 0])
+	var obs := BotObservation.build_bass(models.bass, models.drums, models.chords, 3, 1, h)
+
+	# Quiet room, nothing pressing -> the pipeline holds.
+	check(IntentBassPolicy.decide(obs, 11).is_empty(), "calm room: pipeline holds")
+
+	# External harmony change -> the pipeline acts, and replays through JSON.
+	var resp_obs: Dictionary = obs.duplicate(true)
+	resp_obs.last_change_by = {"drums": "none", "bass": "none", "chords": "other"}
+	resp_obs.temporal = obs.temporal.duplicate(true)
+	resp_obs.temporal["loops_since_chord_change"] = 0
+	var ops: Array = IntentBassPolicy.decide(resp_obs, 11)
+	check(not ops.is_empty(), "external harmony change: pipeline acts")
+	for op in ops:
+		check(_valid_bass_op(op), "pipeline ops are legal")
+	var wire := BotObservation.from_json(JSON.parse_string(JSON.stringify(resp_obs)))
+	check(JSON.stringify(IntentBassPolicy.decide(wire, 11)) == JSON.stringify(ops),
+		"full pipeline replays identically through the JSON boundary")
+
+	# The explained decision carries the whole why.
+	var real := IntentBassPolicy.realization(resp_obs, 11)
+	check(real.intent == "RESPOND" and real.has("candidate") and real.has("scores")
+		and real.drivers.has("external_change_pressure"),
+		"realization explains intent, drivers, candidate, and scores")
+
+	# Own fresh edit -> hold (bandmate does not fidget).
+	var self_obs: Dictionary = obs.duplicate(true)
+	self_obs.last_change_by = {"drums": "none", "bass": "self", "chords": "none"}
+	self_obs.temporal = obs.temporal.duplicate(true)
+	self_obs.temporal["loops_since_bass_change"] = 0
+	check(IntentBassPolicy.decide(self_obs, 11).is_empty(), "own fresh edit: pipeline holds")
+
+	# Mounted on a BotPeer: an ordinary peer that listens first, then acts.
+	var room := FakeRoom.new()
+	var net := FakeNet.new()
+	net.editable = {1: true}
+	room.net = net
+	var bot = BotPeer.new()
+	bot.room = room
+	bot.policy = IntentBassPolicy
+	bot.log_realization = true
+	bot.session_seed = 9
+	var log = DecisionLog.new()
+	check(log.open({"session_id": "t_intentbot"}, "user://test_decision_logs") == OK, "intent bot log opens")
+	bot.decision_log = log
+	for loop in 12:
+		room.commit_boundary(loop)
+		bot.on_loop(loop)
+	log.close()
+	check(bot.holds >= 4, "intent bot listens before it plays")
+	check(bot.edits >= 1, "room-wide staleness eventually draws the intent bot in")
+	for d in room.dispatched:
+		check(_valid_bass_op({"track": d.track, "op": d.op, "args": d.args}), "intent bot dispatches only legal ops")
+	var saw := false
+	for e in DecisionLog.read_events(log.path):
+		if e.type == "decision":
+			check(e.policy_name == "intent_bass", "frames carry the intent policy name")
+			if not e.ops.is_empty():
+				saw = true
+				check(e.realization.intent != "HOLD" and e.realization.has("candidate"),
+					"edit frames carry the full realization explanation")
+	check(saw, "at least one explained edit frame was logged")
+	DirAccess.remove_absolute(log.path)
+	bot.free()
 
 
 func _test_pointer_picking() -> void:

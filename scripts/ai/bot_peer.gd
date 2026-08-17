@@ -29,6 +29,10 @@ const LOCK_HORIZON_STEPS := 2
 
 var room # duck-typed: loop_index, model_for(), dispatch(), net (optional), transport (optional)
 var role := TRACK_BASS
+# The mounted policy script: any pure static decide(obs, seed) -> ops with
+# POLICY_NAME/POLICY_VERSION consts. Default = the frozen baseline.
+var policy = RuleBassPolicy
+var log_realization := false # policy also exposes realization(obs, seed) -> log it per frame
 var session_seed := 1
 var source := DecisionLog.SOURCE_RULE_BOT
 var decision_log # JamDecisionLog or null — windows go unrecorded without one
@@ -125,7 +129,7 @@ func on_loop(loop: int) -> void:
 	var seed_value := DecisionLog.derive_seed(session_seed, epoch, role, target)
 
 	var t0 := Time.get_ticks_usec()
-	var ops := RuleBassPolicy.decide(obs, seed_value)
+	var ops: Array = policy.decide(obs, seed_value)
 	var logged_ops := []
 	for op in ops:
 		_op_seq += 1
@@ -153,8 +157,10 @@ func on_loop(loop: int) -> void:
 		var extra := {"interpretation": interp, "intent": IntentPolicy.decide(obs, interp)}
 		if shadow:
 			extra["shadow"] = true
+		if log_realization:
+			extra["realization"] = policy.realization(obs, seed_value)
 		decision_log.write(DecisionLog.build_frame(
-			key, source, RuleBassPolicy.POLICY_NAME, RuleBassPolicy.POLICY_VERSION,
+			key, source, policy.POLICY_NAME, policy.POLICY_VERSION,
 			seed_value, obs, logged_ops, t0, t1, _deadline_margin_steps(), obs.features, extra))
 
 

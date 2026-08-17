@@ -22,6 +22,7 @@ const StepRing := preload("res://scripts/ui/step_ring.gd")
 const ChordStrip := preload("res://scripts/ui/chord_strip.gd")
 const RadialBloom := preload("res://scripts/ui/radial_bloom.gd")
 const BotPeer := preload("res://scripts/ai/bot_peer.gd")
+const IntentBassPolicy := preload("res://scripts/ai/intent_bass_policy.gd")
 const DecisionLog := preload("res://scripts/ai/decision_log.gd")
 const HumanRecorder := preload("res://scripts/ai/human_recorder.gd")
 
@@ -152,10 +153,14 @@ func _ready() -> void:
 			bot.room = self
 			if arg.begins_with("--bot-seed="):
 				bot.session_seed = int(arg.trim_prefix("--bot-seed="))
+			if "--bot-policy=intent" in OS.get_cmdline_user_args():
+				bot.policy = IntentBassPolicy
+				bot.log_realization = true
 			var dlog := DecisionLog.new()
 			dlog.open({
 				"session_id": "bot_%d" % int(Time.get_unix_time_from_system()),
 				"session_seed": bot.session_seed,
+				"policy": bot.policy.POLICY_NAME,
 				"source": DecisionLog.SOURCE_RULE_BOT,
 			})
 			bot.decision_log = dlog

@@ -539,6 +539,57 @@ common representation (chord-relative bass, features, style tags).
 
 Validation: **307 unit tests green** (+11). **6/6 integration green.**
 
+## Phase 3B gate — first live session results (2026-08-17)
+
+One instrumented solo session (53 windows, 13 human edit windows, 3 chord
+changes): the intent policy keyed RESPOND (driver
+`external_change_pressure=1.0`) to BOTH of the human's harmonic responses —
+including the one the frozen baseline missed entirely — and stayed quiet at
+the chord change the human ignored, where the baseline fired from staleness.
+SIMPLIFY correctly tracked a density pile-up (0.78) where the baseline sprayed
+an identical 10-op removal flood every window. Naive per-window act/hold match
+was a wash (29% vs 31%), dominated by idle-tail windows — response timing at
+events is the discriminating metric. Attention proxies resolved three
+engagement states (focused+input / focused-idle / away). Verdict: mechanism
+proven on the flagship divergence, n too small for statistics — which the 3C
+duet makes moot: the intent policy now plays audibly and every jam produces
+richer human-reacting-to-bot data as a byproduct.
+
+## Phase 3C — intent-conditioned candidate realization (2026-08-17)
+
+`scripts/ai/bass_realizer.gd` + `scripts/ai/intent_bass_policy.gd`: the full
+perception → intention → realization pipeline as a policy with the SAME
+contract as the frozen baseline (pure `decide(obs, seed) -> ops`), mounted via
+`--bot --bot-policy=intent`. RuleBassPolicy remains untouched as the
+comparison baseline.
+
+- **Candidates per intent** (each set includes "hold" — the line may already
+  serve the intent): RESPOND = anchor root / add diatonic 7th / align to kick
+  / recolor one note; SIMPLIFY = strip offbeats / retune color to R-5 / strip
+  to band; INTENSIFY = root on beat / double a kick / octave lift; VARY =
+  move / retune / breathe-or-add; REVERT = restore `bass_notes_prev` exactly
+  (op-capped: partial revert beats a flood).
+- **Deterministic evaluator** (the 3D/3E swap point): simulates each
+  candidate's ops and scores the RESULT — shared house style (density band,
+  kick alignment) + intent-specific terms (thinner for SIMPLIFY, novelty for
+  VARY, downbeat grounding for RESPOND). Seeds choose only WITHIN candidates;
+  scoring is seed-free; ties resolve by generation order.
+- Emergent judgments the tests pin: VARY on an out-of-band line REFUSES (a
+  crowded line needs SIMPLIFY, not novelty); RESPOND can enter from an empty
+  seat; SIMPLIFY on a sparse line holds; the mounted bot listens ~5 windows
+  before room-wide staleness draws it in, then breathes after its own commits
+  (self-pressure) — bandmate pacing emerging from the pipeline, not scripted.
+- **Auditability**: every edit frame logs the full realization —
+  interpretation vector, intent + drivers, candidate scores, winner. The
+  reason IS the log.
+- Replay: the whole pipeline (interpret → intend → generate → evaluate)
+  reproduces byte-identically from a JSON-round-tripped observation + seed.
+
+Validation: **348 unit tests green** (+41: full-legality sweep across every
+intent×seed×state, determinism, per-intent faithfulness by simulation, revert
+restoration + cap, empty-seat entry, pipeline JSON replay, mounted-bot
+listen-then-act pacing, explained frames). **6/6 integration green.**
+
 ## How to rebuild the extension
 
 ```
