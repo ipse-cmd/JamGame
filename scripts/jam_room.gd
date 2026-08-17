@@ -356,11 +356,25 @@ func _on_schedule_sixteenth(abs_step: int, at_sample: int) -> void:
 		audio.schedule_drum(at_sample, h.voice, h.velocity, h.accent)
 	if bass.active.notes.has(sb):
 		audio.schedule_bass(at_sample,
-			Harmony.chord_tone_midi(BASS_ROOT_MIDI, chords.active.slots[bar], bass.active.notes[sb]), 0.8)
+			Harmony.chord_tone_midi(BASS_ROOT_MIDI, chords.active.slots[bar], bass.active.notes[sb]),
+			0.8, _bass_gate_seconds(sb))
 	if sb == 0:
 		var deg: int = chords.active.slots[bar]
 		if deg >= 0:
 			audio.schedule_chord(at_sample, Harmony.triad_midi(CHORD_ROOT_MIDI, deg), 0.7)
+
+
+## Gate length for the bass note at step sb: hold until the next occupied step
+## (wrapping), capped at 4 sixteenths — walking legato without smear. The
+## DaisySP bass voice gates its ADSR on this and adds its own release tail.
+func _bass_gate_seconds(sb: int) -> float:
+	var gap := STEPS_PER_BAR
+	for d in range(1, STEPS_PER_BAR + 1):
+		if bass.active.notes.has((sb + d) % STEPS_PER_BAR):
+			gap = d
+			break
+	var sec_per_step := (60.0 / transport.bpm) / 4.0
+	return minf(float(gap), 4.0) * sec_per_step * 0.95
 
 
 func _try_commits(at_loop: int) -> void:

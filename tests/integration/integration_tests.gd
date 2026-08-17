@@ -104,12 +104,10 @@ func _process(_delta: float) -> void:
 # ---------------------------------------------------------------- audio tests
 
 func _make_stream_player() -> Array:
+	# Voices are the DaisySP rack now (kick used as the click); the timing
+	# assertions read the (intended, actual) diagnostics ring, so they are
+	# voice-agnostic — placement is what is under test.
 	var stream = ClassDB.instantiate("JamAudioStream")
-	var click := PackedFloat32Array()
-	click.resize(256)
-	for i in 256:
-		click[i] = 1.0 - float(i) / 256.0
-	stream.set_voice_table(0, click)
 	var player := AudioStreamPlayer.new()
 	player.stream = stream
 	player.volume_db = -30.0
@@ -148,7 +146,7 @@ func _test_audio_timing_under_hitches() -> void:
 	var n := 32
 	var spacing := 3000
 	for i in n:
-		stream.schedule_trigger(base + i * spacing, 0, 0.2, 1.0, false)
+		stream.schedule_note(base + i * spacing, 0, 0, 0.2, 0.25, 0)
 	_hitching = true
 	var done := await await_until(
 		func(): return stream.get_sample_cursor() > base + n * spacing + 8000, 8.0)
@@ -186,7 +184,7 @@ func _test_delay_invariant_placement() -> void:
 		prev_submit = submit_at
 		while Time.get_ticks_msec() < submit_at:
 			await get_tree().process_frame
-		stream.schedule_trigger(base + i * spacing, 0, 0.2, 1.0, false)
+		stream.schedule_note(base + i * spacing, 0, 0, 0.2, 0.25, 0)
 	var done := await await_until(
 		func(): return stream.get_sample_cursor() > base + n * spacing + 8000, 8.0)
 	check(done, "click train window elapsed")

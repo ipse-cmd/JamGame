@@ -3,14 +3,16 @@ extends Node
 
 # Audio boundary for the room. Two modes:
 #
-#  NATIVE (G2): the JamAudioStream GDExtension. The game thread submits triggers
-#  stamped with ABSOLUTE sample numbers via schedule_*(); the native _mix() places
-#  each onset at the exact sample offset inside whatever block it renders. This is
-#  the seam where Jammin's DaisySP engine eventually lands.
+#  NATIVE (G2+DaisySP): the JamAudioStream GDExtension running Jammin's real
+#  voice rack — DaisySP synthesis with the original Unreal presets, pools, and
+#  mix gains. The game thread submits triggers stamped with ABSOLUTE sample
+#  numbers via schedule_*(); the native _mix() fires each voice at the exact
+#  sample offset inside whatever block it renders. The native rack owns the
+#  mix (Unreal base gains); velocities passed here are pure musical dynamics.
 #
-#  LEGACY (G0 fallback, native class absent): pooled AudioStreamPlayers triggered
-#  immediately — frame-quantized timing, kept only so the project still runs
-#  without a compiled extension.
+#  LEGACY (G0 fallback, native class absent): pooled AudioStreamPlayers over
+#  procedural PCM tables, triggered immediately — frame-quantized timing, kept
+#  only so the project still runs without a compiled extension.
 
 enum Voice { KICK, SNARE, HAT, PERC, BASS, PLUCK }
 
@@ -45,31 +47,26 @@ func _ready() -> void:
 
 func _setup_native() -> void:
 	stream = ClassDB.instantiate("JamAudioStream")
-	stream.set_voice_table(Voice.KICK, JamSampleFactory.kick_samples())
-	stream.set_voice_table(Voice.SNARE, JamSampleFactory.snare_samples())
-	stream.set_voice_table(Voice.HAT, JamSampleFactory.hat_samples())
-	stream.set_voice_table(Voice.PERC, JamSampleFactory.perc_samples())
-	stream.set_voice_table(Voice.BASS, JamSampleFactory.bass_samples())
-	stream.set_voice_table(Voice.PLUCK, JamSampleFactory.pluck_samples())
 	_player = AudioStreamPlayer.new()
 	_player.stream = stream
 	add_child(_player)
 	_player.play()
 	mix_rate = stream.get_mix_rate()
-	_rate_ratio = float(JamSampleFactory.MIX_RATE) / mix_rate
 
 
 # ---------------------------------------------------------------- kit variants
 
-## Load the (lane, variant) voice table. Native path is a thread-safe table swap
-## (the ready-flag handshake in the extension); the sound changes from the next
-## trigger without touching the trigger protocol.
+var _kit := [0, 0, 0, 0] # current kit variant per drum lane (native: passed per trigger)
+
+
+## Select the (lane, variant) kit sound. Native: DaisySP drum voices take the
+## variant on each Trigger (D9), so this just records it — the sound changes
+## from the next hit. Legacy: swap the PCM table.
 func set_kit_variant(lane: int, variant: int) -> void:
 	if lane < 0 or lane >= 4:
 		return
-	if native:
-		stream.set_voice_table(lane, JamSampleFactory.drum_samples(lane, variant))
-	elif lane < _drum_pools.size():
+	_kit[lane] = variant
+	if not native and lane < _drum_pools.size():
 		var wav := JamSampleFactory._to_wav(JamSampleFactory.drum_samples(lane, variant))
 		for p in _drum_pools[lane].players:
 			p.stream = wav
@@ -88,22 +85,18 @@ func sample_cursor() -> int:
 
 func schedule_drum(at_sample: int, voice: int, velocity: float, accent: bool) -> void:
 	var vel := maxf(velocity, ACCENT_FLOOR) if accent else velocity
-	var gain: float = db_to_linear(channel_db[_drum_channel_names[voice]]) * clampf(vel, 0.05, 1.0)
-	stream.schedule_trigger(at_sample, voice, gain, _rate_ratio, false)
+	stream.schedule_note(at_sample, voice, 0, clampf(vel, 0.05, 1.0), 0.25, _kit[voice])
 
 
-func schedule_bass(at_sample: int, midi: int, velocity: float) -> void:
-	var gain: float = db_to_linear(channel_db["bass"]) * clampf(velocity, 0.05, 1.0)
-	var pitch: float = _rate_ratio * pow(2.0, float(midi - BASS_BASE_MIDI) / 12.0)
-	# choke=true: monophonic by design — a new bass note cuts the previous one.
-	stream.schedule_trigger(at_sample, Voice.BASS, gain, pitch, true)
+## duration: gate length in seconds — the ADSR holds until it elapses, then
+## releases. Overlapping release tails are legato, not a bug (pool of 4).
+func schedule_bass(at_sample: int, midi: int, velocity: float, duration := 0.25) -> void:
+	stream.schedule_note(at_sample, Voice.BASS, midi, clampf(velocity, 0.05, 1.0), duration, 0)
 
 
 func schedule_chord(at_sample: int, midis: Array, velocity: float) -> void:
-	var gain: float = db_to_linear(channel_db["chords"]) * clampf(velocity, 0.05, 1.0)
 	for midi in midis:
-		var pitch: float = _rate_ratio * pow(2.0, float(midi - PLUCK_BASE_MIDI) / 12.0)
-		stream.schedule_trigger(at_sample, Voice.PLUCK, gain, pitch, false)
+		stream.schedule_note(at_sample, Voice.PLUCK, midi, clampf(velocity, 0.05, 1.0), 1.0, 0)
 
 
 func diagnostics() -> Dictionary:

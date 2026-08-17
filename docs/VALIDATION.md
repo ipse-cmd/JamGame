@@ -734,6 +734,42 @@ motif membership, provenance id in realizations, the crowded-line escape;
 the whole-intent legality sweep covers the new candidates automatically).
 **6/6 integration green.**
 
+## DaisySP voice engine — the game sounds like Jammin now (2026-08-17)
+
+The PCM-table spike voices are replaced by **Jammin's real DaisySP rack,
+ported verbatim from the Unreal original** (`Plugins/JamAudioCore/.../
+JamSynthVoices.h` → `native/src/jam_voices.h`): same DSP modules, same
+parameter presets, same pool sizes (kick 4 / snare 4 / hat 8 / perc 4 /
+bass 4 / pluck 16, steal-oldest), same base mix gains
+(0.8/0.5/0.25/0.45/0.35/0.25). DaisySP itself (MIT) is vendored at
+`native/daisysp/` from the same tree the Unreal build used.
+
+- Kick/snare/hat/perc: DaisySP analog/synthetic drum models with the three
+  kit variants per lane as Trigger-time presets — kit switching is now
+  per-hit parameter hopping, no table swaps.
+- Bass: poly-blep saw → ADSR (5ms/100ms/0.7/100ms) → SVF low-pass @1200Hz.
+  **Real gated durations at last**: the room computes each note's gate as
+  hold-until-next-note (capped at 4 sixteenths), so bass is legato instead
+  of a resampled one-shot — and pitch no longer shifts timbre across octaves.
+- Pluck (chords): Karplus-Strong with a 3ms deterministic xorshift noise
+  burst — polyphonic, naturally ringing. This unblocks chord performance
+  (sustained comp patterns need gated/ringing voices).
+- Extension contract: `schedule_note(sample, voice, midi, velocity,
+  duration, variant)` replaces the table API; the SPSC queue, absolute-sample
+  stamps, per-sample onset placement, and (intended, actual) diagnostics ring
+  are unchanged — the integration timing gates run against the same
+  invariants on the new engine. The native rack owns the mix; GDScript passes
+  pure musical velocities. Legacy fallback (no extension) keeps the PCM path.
+
+**Cross-platform status** (all-C++ portable, per-platform builds required):
+- linux x86_64: built + committed (`libjam_audio.linux.template_debug.x86_64.so`).
+- windows: **existing DLL is STALE** (old table API) — rebuild on the Windows
+  partition: `python -m SCons platform=windows target=template_debug arch=x86_64 -j8`.
+- macos: build on the MacBook: `scons platform=macos target=template_debug`
+  (universal dylib path already wired in the .gdextension).
+- ios: entries added to the .gdextension;
+  `scons platform=ios target=template_debug` on the Mac when packaging.
+
 ## How to rebuild the extension
 
 ```

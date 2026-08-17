@@ -8,9 +8,8 @@ namespace godot {
 // ---------------------------------------------------------------- JamAudioStream
 
 void JamAudioStream::_bind_methods() {
-	ClassDB::bind_method(D_METHOD("set_voice_table", "voice", "samples"), &JamAudioStream::set_voice_table);
-	ClassDB::bind_method(D_METHOD("schedule_trigger", "sample", "voice", "velocity", "pitch", "choke"),
-			&JamAudioStream::schedule_trigger, DEFVAL(false));
+	ClassDB::bind_method(D_METHOD("schedule_note", "sample", "voice", "midi", "velocity", "duration", "variant"),
+			&JamAudioStream::schedule_note, DEFVAL(0));
 	ClassDB::bind_method(D_METHOD("get_sample_cursor"), &JamAudioStream::get_sample_cursor);
 	ClassDB::bind_method(D_METHOD("get_mix_rate"), &JamAudioStream::get_mix_rate);
 	ClassDB::bind_method(D_METHOD("get_launched_count"), &JamAudioStream::get_launched_count);
@@ -19,21 +18,9 @@ void JamAudioStream::_bind_methods() {
 	ClassDB::bind_method(D_METHOD("drain_onsets"), &JamAudioStream::drain_onsets);
 }
 
-void JamAudioStream::set_voice_table(int p_voice, const PackedFloat32Array &p_samples) {
-	ERR_FAIL_INDEX(p_voice, MAX_VOICES);
-	VoiceTable &vt = voices_[p_voice];
-	vt.ready.store(false, std::memory_order_release);
-	const int64_t n = p_samples.size();
-	vt.data.resize((size_t)n);
-	const float *src = p_samples.ptr();
-	for (int64_t i = 0; i < n; i++) {
-		vt.data[(size_t)i] = src[i];
-	}
-	vt.ready.store(true, std::memory_order_release);
-}
-
-bool JamAudioStream::schedule_trigger(int64_t p_sample, int p_voice, float p_velocity, float p_pitch, bool p_choke) {
-	if (p_voice < 0 || p_voice >= MAX_VOICES) {
+bool JamAudioStream::schedule_note(int64_t p_sample, int p_voice, int p_midi, float p_velocity,
+		float p_duration, int p_variant) {
+	if (p_voice < 0 || p_voice >= NUM_VOICE_TYPES) {
 		return false;
 	}
 	const uint32_t w = q_write_.load(std::memory_order_relaxed);
@@ -45,9 +32,10 @@ bool JamAudioStream::schedule_trigger(int64_t p_sample, int p_voice, float p_vel
 	TriggerEvent &ev = queue_[w & (QUEUE_CAP - 1)];
 	ev.sample = p_sample;
 	ev.voice = p_voice;
+	ev.midi = p_midi;
 	ev.velocity = p_velocity;
-	ev.pitch = p_pitch;
-	ev.choke = p_choke ? 1 : 0;
+	ev.duration = p_duration;
+	ev.variant = p_variant;
 	q_write_.store(w + 1, std::memory_order_release);
 	return true;
 }
@@ -106,10 +94,21 @@ bool JamAudioStream::_is_monophonic() const {
 // ---------------------------------------------------------------- JamAudioStreamPlayback
 
 void JamAudioStreamPlayback::_start(double p_from_pos) {
-	for (int i = 0; i < MAX_ACTIVE; i++) {
-		active_[i].on = false;
-	}
+	rack_.Init((float)AudioServer::get_singleton()->get_mix_rate());
+	rack_ready_ = true;
 	playing_ = true;
+}
+
+void JamAudioStreamPlayback::fire(const JamAudioStream::TriggerEvent &ev) {
+	switch (ev.voice) {
+		case JamAudioStream::VOICE_KICK: rack_.kick.Allocate().Trigger(ev.velocity, ev.variant); break;
+		case JamAudioStream::VOICE_SNARE: rack_.snare.Allocate().Trigger(ev.velocity, ev.variant); break;
+		case JamAudioStream::VOICE_HAT: rack_.hat.Allocate().Trigger(ev.velocity, ev.variant); break;
+		case JamAudioStream::VOICE_PERC: rack_.perc.Allocate().Trigger(ev.velocity, ev.variant); break;
+		case JamAudioStream::VOICE_BASS: rack_.bass.Allocate().NoteOn(ev.midi, ev.velocity, ev.duration); break;
+		case JamAudioStream::VOICE_PLUCK: rack_.pluck.Allocate().Pluck(ev.midi, ev.velocity, 0.5f); break;
+		default: break;
+	}
 }
 
 void JamAudioStreamPlayback::_stop() {
@@ -149,10 +148,18 @@ int32_t JamAudioStreamPlayback::_mix(AudioFrame *p_buffer, float p_rate_scale, i
 	const int64_t cursor = s->sample_cursor_.load(std::memory_order_relaxed);
 	const int64_t block_end = cursor + p_frames;
 
-	// Launch every event whose stamp falls inside this block (stamps are non-decreasing).
+	// Collect every event whose stamp falls inside this block (stamps are
+	// non-decreasing, so collection order == launch order).
+	struct Pending {
+		int32_t offset;
+		JamAudioStream::TriggerEvent ev;
+	};
+	Pending pending[MAX_BLOCK_EVENTS];
+	int n_pending = 0;
+
 	uint32_t r = s->q_read_.load(std::memory_order_relaxed);
 	const uint32_t w = s->q_write_.load(std::memory_order_acquire);
-	while (r != w) {
+	while (r != w && n_pending < MAX_BLOCK_EVENTS) {
 		const JamAudioStream::TriggerEvent &ev = s->queue_[r & (JamAudioStream::QUEUE_CAP - 1)];
 		if (ev.sample >= block_end) {
 			break; // future block
@@ -162,24 +169,9 @@ int32_t JamAudioStreamPlayback::_mix(AudioFrame *p_buffer, float p_rate_scale, i
 			s->late_.fetch_add(1, std::memory_order_relaxed);
 			offset = 0; // degrade to block start, like Jammin's late-trigger path
 		}
-		if (ev.choke) {
-			for (int a = 0; a < MAX_ACTIVE; a++) {
-				if (active_[a].on && active_[a].voice == ev.voice) {
-					active_[a].on = false;
-				}
-			}
-		}
-		for (int a = 0; a < MAX_ACTIVE; a++) {
-			if (!active_[a].on) {
-				active_[a].on = true;
-				active_[a].voice = ev.voice;
-				active_[a].pos = 0.0;
-				active_[a].step = (double)ev.pitch;
-				active_[a].gain = ev.velocity;
-				active_[a].start_offset = (int32_t)offset;
-				break;
-			}
-		}
+		pending[n_pending].offset = (int32_t)offset;
+		pending[n_pending].ev = ev;
+		n_pending++;
 		s->launched_.fetch_add(1, std::memory_order_relaxed);
 		// Record (intended, actual) for the game thread's timing verification.
 		const uint32_t dw = s->d_write_.load(std::memory_order_relaxed);
@@ -193,36 +185,18 @@ int32_t JamAudioStreamPlayback::_mix(AudioFrame *p_buffer, float p_rate_scale, i
 	}
 	s->q_read_.store(r, std::memory_order_release);
 
-	// Advance and mix active voices.
-	for (int a = 0; a < MAX_ACTIVE; a++) {
-		ActiveVoice &v = active_[a];
-		if (!v.on) {
-			continue;
-		}
-		const JamAudioStream::VoiceTable &vt = s->voices_[v.voice];
-		if (!vt.ready.load(std::memory_order_acquire)) {
-			v.on = false;
-			continue;
-		}
-		const float *data = vt.data.data();
-		const int64_t n = (int64_t)vt.data.size();
-		const int32_t begin = v.start_offset;
-		v.start_offset = 0;
-		double pos = v.pos;
-		bool alive = true;
-		for (int32_t i = begin; i < p_frames; i++) {
-			const int64_t ip = (int64_t)pos;
-			if (ip >= n) {
-				alive = false;
-				break;
+	// Per-sample render: fire due events at their exact offset, then sum the rack.
+	if (rack_ready_) {
+		int idx = 0;
+		for (int32_t i = 0; i < p_frames; i++) {
+			while (idx < n_pending && pending[idx].offset <= i) {
+				fire(pending[idx].ev);
+				idx++;
 			}
-			const float smp = data[ip] * v.gain;
+			const float smp = rack_.Render();
 			p_buffer[i].left += smp;
 			p_buffer[i].right += smp;
-			pos += v.step;
 		}
-		v.pos = pos;
-		v.on = alive && ((int64_t)pos < n);
 	}
 
 	s->sample_cursor_.store(block_end, std::memory_order_release);

@@ -9,17 +9,19 @@
 // Audio-thread rules (enforced by construction): no allocation, no locks, no engine
 // calls, no GDScript — consume ready events, advance voices, mix floats, bump cursor.
 //
-// This is the seam where Jammin's DaisySP voice engine will eventually live; for the
-// spike, voices are pre-rendered PCM tables handed over from GDScript at startup.
+// Voices are Jammin's DaisySP rack (jam_voices.h) — the same synthesis, presets,
+// pool sizes, and mix gains as the Unreal original, rendered live per sample.
+// The scheduling contract is unchanged: absolute-sample stamps, SPSC queue,
+// sample-exact onset placement inside whatever block the audio thread renders.
 
 #include <godot_cpp/classes/audio_stream.hpp>
 #include <godot_cpp/classes/audio_stream_playback.hpp>
-#include <godot_cpp/variant/packed_float32_array.hpp>
 #include <godot_cpp/variant/packed_int64_array.hpp>
 
 #include <atomic>
 #include <cstdint>
-#include <vector>
+
+#include "jam_voices.h"
 
 namespace godot {
 
@@ -31,15 +33,18 @@ class JamAudioStream : public AudioStream {
 
 	struct TriggerEvent {
 		int64_t sample = 0;
-		int32_t voice = 0;
+		int32_t voice = 0; // 0 kick, 1 snare, 2 hat, 3 perc, 4 bass, 5 pluck
+		int32_t midi = 60; // tonal voices only
 		float velocity = 1.0f;
-		float pitch = 1.0f;
-		int32_t choke = 0; // kill other active instances of this voice first (mono bass)
+		float duration = 0.25f; // seconds; bass gate length (drums/pluck self-time)
+		int32_t variant = 0; // drum kit preset
 	};
 
 	static constexpr uint32_t QUEUE_CAP = 2048; // power of two
 	static constexpr uint32_t DIAG_CAP = 8192; // power of two, holds (intended, actual) pairs
-	static constexpr int MAX_VOICES = 8;
+	static constexpr int VOICE_KICK = 0, VOICE_SNARE = 1, VOICE_HAT = 2,
+			VOICE_PERC = 3, VOICE_BASS = 4, VOICE_PLUCK = 5;
+	static constexpr int NUM_VOICE_TYPES = 6;
 
 	// SPSC trigger queue: game thread writes, audio thread reads.
 	// Contract: sample stamps must be non-decreasing (the scheduler emits steps in order).
@@ -57,19 +62,13 @@ class JamAudioStream : public AudioStream {
 	std::atomic<int64_t> late_{0};
 	std::atomic<int64_t> dropped_{0};
 
-	struct VoiceTable {
-		std::vector<float> data;
-		std::atomic<bool> ready{false};
-	};
-	VoiceTable voices_[MAX_VOICES];
-
 protected:
 	static void _bind_methods();
 
 public:
 	// ---- game-thread API ----
-	void set_voice_table(int p_voice, const PackedFloat32Array &p_samples);
-	bool schedule_trigger(int64_t p_sample, int p_voice, float p_velocity, float p_pitch, bool p_choke);
+	bool schedule_note(int64_t p_sample, int p_voice, int p_midi, float p_velocity,
+			float p_duration, int p_variant);
 	int64_t get_sample_cursor() const;
 	double get_mix_rate() const;
 	int64_t get_launched_count() const;
@@ -89,19 +88,15 @@ class JamAudioStreamPlayback : public AudioStreamPlayback {
 	GDCLASS(JamAudioStreamPlayback, AudioStreamPlayback)
 	friend class JamAudioStream;
 
-	struct ActiveVoice {
-		bool on = false;
-		int32_t voice = 0;
-		double pos = 0.0;
-		double step = 1.0;
-		float gain = 1.0f;
-		int32_t start_offset = 0; // offset inside the current mix block; 0 afterwards
-	};
-	static constexpr int MAX_ACTIVE = 32;
-	ActiveVoice active_[MAX_ACTIVE];
+	static constexpr int MAX_BLOCK_EVENTS = 64; // events launched within one mix block
+
+	jam::VoiceRack rack_;
+	bool rack_ready_ = false;
 
 	Ref<JamAudioStream> stream_;
 	bool playing_ = false;
+
+	void fire(const JamAudioStream::TriggerEvent &ev);
 
 protected:
 	static void _bind_methods() {}

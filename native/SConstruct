@@ -1,8 +1,15 @@
 #!/usr/bin/env python
 env = SConscript("godot-cpp/SConstruct")
 
-env.Append(CPPPATH=["src/"])
+env.Append(CPPPATH=["src/", "daisysp/Source/"])
 sources = Glob("src/*.cpp")
+# DaisySP (vendored, MIT) — Jammin's synthesis library, portable C++. Its
+# internal includes are flat ("dsp.h"), so every module dir goes on the path.
+daisy_subdirs = ["Control", "Drums", "Dynamics", "Effects", "Filters", "Noise",
+                 "PhysicalModeling", "Sampling", "Synthesis", "Utility"]
+for subdir in daisy_subdirs:
+    env.Append(CPPPATH=["daisysp/Source/%s/" % subdir])
+    sources += Glob("daisysp/Source/%s/*.cpp" % subdir)
 
 library = env.SharedLibrary(
     "bin/jam_audio{}{}".format(env["suffix"], env["SHLIBSUFFIX"]),
