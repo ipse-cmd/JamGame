@@ -231,7 +231,9 @@ func _make_label(pos: Vector2, font_size: int, color: Color) -> Label:
 func _bass_lane_names() -> Array:
 	var names: Array = []
 	for d in BassLine.NUM_DEGREES:
-		names.append("%d · %s" % [d + 1, Harmony.pitch_class_name(Harmony.degree_to_midi(BASS_ROOT_MIDI, d))])
+		# Lanes are chord-relative roles (R/3/5/7/O), not fixed pitches — the
+		# sounding note follows the bar's chord at render time.
+		names.append("%d · %s" % [d + 1, Harmony.BASS_TONE_NAMES[d]])
 	return names
 
 
@@ -257,7 +259,8 @@ func _on_sixteenth(abs_step: int) -> void:
 			if h.step == step_in_bar:
 				audio.trigger_drum(h.voice, h.velocity, h.accent)
 		if bass.active.notes.has(step_in_bar):
-			audio.trigger_bass(Harmony.degree_to_midi(BASS_ROOT_MIDI, bass.active.notes[step_in_bar]), 0.8)
+			audio.trigger_bass(
+				Harmony.chord_tone_midi(BASS_ROOT_MIDI, chords.active.slots[bar_in_loop], bass.active.notes[step_in_bar]), 0.8)
 		if step_in_bar == 0:
 			var deg: int = chords.active.slots[bar_in_loop]
 			if deg >= 0:
@@ -290,7 +293,8 @@ func _on_schedule_sixteenth(abs_step: int, at_sample: int) -> void:
 	for h in rendered:
 		audio.schedule_drum(at_sample, h.voice, h.velocity, h.accent)
 	if bass.active.notes.has(sb):
-		audio.schedule_bass(at_sample, Harmony.degree_to_midi(BASS_ROOT_MIDI, bass.active.notes[sb]), 0.8)
+		audio.schedule_bass(at_sample,
+			Harmony.chord_tone_midi(BASS_ROOT_MIDI, chords.active.slots[bar], bass.active.notes[sb]), 0.8)
 	if sb == 0:
 		var deg: int = chords.active.slots[bar]
 		if deg >= 0:

@@ -602,16 +602,43 @@ func _test_jam_features() -> void:
 	check(is_equal_approx(f.hat_density, 8.0 / 16.0), "hat density 8/16")
 	check(is_equal_approx(f.perc_density, 0.0), "perc density 0")
 	check(is_equal_approx(f.bass_density, 3.0 / 16.0), "bass density 3/16")
-	check(is_equal_approx(f.bass_pitch_mean, (36.0 + 36.0 + 43.0) / 3.0), "bass pitch mean")
-	check(f.bass_pitch_range == 7, "bass pitch range = a fifth")
-	check(is_equal_approx(f.bass_mean_interval, (0.0 + 7.0) / 2.0), "bass mean interval 3.5 semitones")
+
+	# SEMANTIC family: two notes on R, one on O -> fractions and entropy over lanes.
+	check(is_equal_approx(f.bass_root_fraction, 2.0 / 3.0) and is_equal_approx(f.bass_octave_fraction, 1.0 / 3.0),
+		"lane fractions 2/3 R, 1/3 O")
+	check(is_equal_approx(f.bass_third_fraction, 0.0) and is_equal_approx(f.bass_fifth_fraction, 0.0)
+		and is_equal_approx(f.bass_seventh_fraction, 0.0), "unused lanes are 0")
+	check(is_equal_approx(f.bass_lane_entropy,
+		-(2.0 / 3.0 * log(2.0 / 3.0) + 1.0 / 3.0 * log(1.0 / 3.0)) / log(5.0)),
+		"lane entropy normalized over 5 lanes")
+
+	# SOUNDING family: motif R.R.O rendered over I|vi|IV|V through the same
+	# resolver as playback -> 36,36,48 / 45,45,57 / 41,41,53 / 43,43,55.
+	check(is_equal_approx(f.sounding_pitch_mean, 543.0 / 12.0), "sounding mean over all 4 bars")
+	check(f.sounding_pitch_range == 21, "sounding range 36..57")
+	check(is_equal_approx(f.sounding_mean_interval, 77.0 / 11.0), "sounding mean interval 7 semitones")
+	check(f.sounding_max_interval == 16, "largest melodic leap O(vi) -> R(IV)")
+	check(is_equal_approx(f.sounding_direction_change_rate, 6.0 / 10.0),
+		"6 direction reversals over 10 interval pairs")
 	check(is_equal_approx(f.kick_bass_alignment, 2.0 / 3.0), "2 of 3 bass onsets sit on kicks")
 	check(f.chord_slot_count == 4 and f.active_roles == 3, "chord slots and active roles counted")
 
+	# The doc's motivating case: R R R R is semantically static (root_fraction 1,
+	# entropy 0) yet sounds moderate melodic motion under a moving progression.
+	var pedal := Features.extract({
+		"bass": {"num_steps": 16, "notes": {0: 0}},
+		"chords": models.chords.active.to_dict(),
+	})
+	check(is_equal_approx(pedal.bass_root_fraction, 1.0) and is_equal_approx(pedal.bass_lane_entropy, 0.0),
+		"all-root motif is semantically static")
+	check(pedal.sounding_pitch_range == 9 and is_equal_approx(pedal.sounding_mean_interval, (9.0 + 4.0 + 2.0) / 3.0),
+		"...but sounds C2 A2 F2 G2 under I|vi|IV|V")
+
 	# Empty state: all zeros, no NaNs, nothing active.
 	var empty := Features.extract({})
-	check(is_equal_approx(empty.drum_density, 0.0) and is_equal_approx(empty.bass_pitch_mean, 0.0)
-		and is_equal_approx(empty.bass_mean_interval, 0.0) and empty.active_roles == 0,
+	check(is_equal_approx(empty.drum_density, 0.0) and is_equal_approx(empty.sounding_pitch_mean, 0.0)
+		and is_equal_approx(empty.sounding_mean_interval, 0.0) and is_equal_approx(empty.bass_root_fraction, 0.0)
+		and is_equal_approx(empty.bass_lane_entropy, 0.0) and empty.active_roles == 0,
 		"empty state measures to zeros")
 
 	# Similarity: identical -> 1; one drum toggle -> jaccard 12/13; disjoint bass -> 0.
@@ -634,7 +661,8 @@ func _test_jam_features() -> void:
 	var wire: Dictionary = JSON.parse_string(JSON.stringify(state))
 	var f2 := Features.extract(wire)
 	check(is_equal_approx(f2.kick_bass_alignment, f.kick_bass_alignment)
-		and is_equal_approx(f2.bass_pitch_mean, f.bass_pitch_mean),
+		and is_equal_approx(f2.sounding_pitch_mean, f.sounding_pitch_mean)
+		and is_equal_approx(f2.bass_lane_entropy, f.bass_lane_entropy),
 		"features identical on JSON-round-tripped state")
 
 
@@ -698,7 +726,7 @@ func _test_observation_contract() -> void:
 			"chords": models.chords.active.to_dict(),
 		}, [0, 0, 0])
 	var obs := BotObservation.build_bass(models.bass, models.drums, models.chords, 3, 1, h)
-	check(obs.observation_schema == 2, "observation carries its schema version")
+	check(obs.observation_schema == 3, "observation carries its schema version")
 	check(obs.features.has("kick_bass_alignment"), "observation carries snapshot features")
 	check(obs.temporal.has("loops_since_bass_change") and obs.temporal.has("bass_event_jaccard_prev_1"),
 		"observation carries temporal context")
@@ -729,3 +757,28 @@ func _test_harmony() -> void:
 	check(Harmony.note_name(60) == "C4", "MIDI 60 is C4")
 	check(Harmony.note_name(36) == "C2", "MIDI 36 is C2 (bass root)")
 	check(Harmony.ROMAN.size() == 7, "seven roman numerals")
+
+	# Chord-relative bass vocabulary: one stored motif (all five lanes) sounds
+	# different pitch classes under each chord of V | vi | IV | V — the whole
+	# semantic reinterpretation captured in one table.
+	var expected := {
+		4: ["G", "B", "D", "F", "G"], # V
+		5: ["A", "C", "E", "G", "A"], # vi
+		3: ["F", "A", "C", "E", "F"], # IV
+	}
+	for chord_deg in expected:
+		for lane in 5:
+			var midi := Harmony.chord_tone_midi(36, chord_deg, lane)
+			check(Harmony.pitch_class_name(midi) == expected[chord_deg][lane],
+				"chord %s lane %s sounds %s" % [Harmony.ROMAN[chord_deg], Harmony.BASS_TONE_NAMES[lane], expected[chord_deg][lane]])
+	# Same lane, different bars -> different sounding MIDI (the bug this fixes).
+	check(Harmony.chord_tone_midi(36, 4, 0) != Harmony.chord_tone_midi(36, 5, 0),
+		"identical stored lane follows the progression")
+	# O is the one lane that isn't "stack another diatonic third".
+	for chord_deg in 7:
+		check(Harmony.chord_tone_midi(36, chord_deg, 4) == Harmony.chord_tone_midi(36, chord_deg, 0) + 12,
+			"octave lane = chord root + 12 (degree %d)" % chord_deg)
+	# Empty chord slot resolves against the tonic, and the diatonic seventh needs
+	# no explicit 7th-chord spelling: R/3/5/7 over an empty (tonic) bar = C E G B.
+	check(Harmony.chord_tone_midi(36, -1, 0) == 36 and Harmony.chord_tone_midi(36, -1, 3) == 47,
+		"empty slot falls back to tonic; diatonic seventh derived from the key")

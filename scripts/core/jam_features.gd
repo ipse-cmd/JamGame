@@ -11,7 +11,13 @@ extends RefCounted
 # JamAnalysis.interpret layer that CONSUMES these features — keep the
 # measurement/opinion boundary hard.
 
-const FEATURES_SCHEMA := 1
+# v2: bass lanes became chord-relative (R/3/5/7/O). Bass pitch measurements
+# split into two families answering different questions — SEMANTIC (what kind
+# of bass behavior was written: lane fractions, lane entropy) and SOUNDING
+# (what that behavior produces under this progression: the pattern virtually
+# rendered across all chord slots through the SAME Harmony resolver the
+# scheduler uses, so analysis can never disagree with the audio).
+const FEATURES_SCHEMA := 2
 
 const VOICE_KICK := 0
 const VOICE_SNARE := 1
@@ -50,22 +56,51 @@ static func extract(state: Dictionary) -> Dictionary:
 		if v == VOICE_KICK:
 			kick_steps[int(h.step)] = true
 
-	# Bass pitch measurements over the line in step order.
 	var ordered_steps: Array = notes.keys()
 	ordered_steps.sort()
-	var midis: Array = []
+
+	# SEMANTIC family: distribution over harmonic roles, chord-independent.
+	var lane_counts := [0, 0, 0, 0, 0]
 	for s in ordered_steps:
-		midis.append(_degree_to_midi(int(notes[s])))
+		var lane := int(notes[s])
+		if lane >= 0 and lane < lane_counts.size():
+			lane_counts[lane] += 1
+	var lane_entropy := 0.0
+	if not notes.is_empty():
+		for c in lane_counts:
+			if c > 0:
+				var p := float(c) / float(notes.size())
+				lane_entropy -= p * log(p)
+		lane_entropy /= log(float(lane_counts.size())) # normalize to 0..1
+
+	# SOUNDING family: the one-bar motif virtually rendered across every chord
+	# slot, in time order — the complete phrase the bass + harmony actually
+	# produce. R R R R over G|Am|F|G is semantically static but sounds G A F G.
+	var midis: Array = []
+	for bar in slots.size():
+		for s in ordered_steps:
+			midis.append(Harmony.chord_tone_midi(BASS_ROOT_MIDI, int(slots[bar]), int(notes[s])))
 	var pitch_sum := 0
 	var pitch_min := 0
 	var pitch_max := 0
 	var interval_sum := 0
+	var interval_max := 0
+	var direction_changes := 0
+	var last_sign := 0
 	for i in midis.size():
 		pitch_sum += midis[i]
 		pitch_min = midis[i] if i == 0 else mini(pitch_min, midis[i])
 		pitch_max = midis[i] if i == 0 else maxi(pitch_max, midis[i])
 		if i > 0:
-			interval_sum += absi(midis[i] - midis[i - 1])
+			var d: int = midis[i] - midis[i - 1]
+			interval_sum += absi(d)
+			interval_max = maxi(interval_max, absi(d))
+			# Repeated pitches carry the previous direction; only a real reversal counts.
+			if d != 0:
+				if last_sign != 0 and signi(d) != last_sign:
+					direction_changes += 1
+				last_sign = signi(d)
+	var interval_count := maxi(0, midis.size() - 1)
 
 	var on_kick := 0
 	for s in ordered_steps:
@@ -94,9 +129,17 @@ static func extract(state: Dictionary) -> Dictionary:
 		"hat_density": float(voice_counts[VOICE_HAT]) / float(steps),
 		"perc_density": float(voice_counts[VOICE_PERC]) / float(steps),
 		"bass_density": float(notes.size()) / float(int(bass.get("num_steps", 16))),
-		"bass_pitch_mean": float(pitch_sum) / float(midis.size()) if not midis.is_empty() else 0.0,
-		"bass_pitch_range": pitch_max - pitch_min,
-		"bass_mean_interval": float(interval_sum) / float(midis.size() - 1) if midis.size() > 1 else 0.0,
+		"bass_root_fraction": _lane_fraction(lane_counts, 0, notes.size()),
+		"bass_third_fraction": _lane_fraction(lane_counts, 1, notes.size()),
+		"bass_fifth_fraction": _lane_fraction(lane_counts, 2, notes.size()),
+		"bass_seventh_fraction": _lane_fraction(lane_counts, 3, notes.size()),
+		"bass_octave_fraction": _lane_fraction(lane_counts, 4, notes.size()),
+		"bass_lane_entropy": lane_entropy,
+		"sounding_pitch_mean": float(pitch_sum) / float(midis.size()) if not midis.is_empty() else 0.0,
+		"sounding_pitch_range": pitch_max - pitch_min,
+		"sounding_mean_interval": float(interval_sum) / float(interval_count) if interval_count > 0 else 0.0,
+		"sounding_max_interval": interval_max,
+		"sounding_direction_change_rate": float(direction_changes) / float(interval_count - 1) if interval_count > 1 else 0.0,
 		"kick_bass_alignment": float(on_kick) / float(maxi(1, notes.size())),
 		"chord_slot_count": slot_count,
 		"active_roles": active_roles,
@@ -106,7 +149,10 @@ static func extract(state: Dictionary) -> Dictionary:
 ## Numeric features that make sense as deltas between two snapshots.
 const DELTA_KEYS := [
 	"drum_density", "kick_density", "snare_density", "hat_density", "perc_density",
-	"bass_density", "bass_pitch_mean", "bass_pitch_range", "bass_mean_interval",
+	"bass_density", "bass_root_fraction", "bass_third_fraction", "bass_fifth_fraction",
+	"bass_seventh_fraction", "bass_octave_fraction", "bass_lane_entropy",
+	"sounding_pitch_mean", "sounding_pitch_range", "sounding_mean_interval",
+	"sounding_max_interval", "sounding_direction_change_rate",
 	"kick_bass_alignment", "chord_slot_count", "active_roles",
 ]
 
@@ -151,8 +197,8 @@ static func similarity(a: Dictionary, b: Dictionary) -> Dictionary:
 	}
 
 
-static func _degree_to_midi(degree: int) -> int:
-	return Harmony.degree_to_midi(BASS_ROOT_MIDI, degree)
+static func _lane_fraction(lane_counts: Array, lane: int, total: int) -> float:
+	return float(lane_counts[lane]) / float(total) if total > 0 else 0.0
 
 
 static func _drum_set(state: Dictionary) -> Dictionary:

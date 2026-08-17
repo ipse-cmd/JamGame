@@ -21,7 +21,9 @@ extends RefCounted
 # commit lands at or before the bot's target loop (that IS the state the bot's
 # edit will coexist with), otherwise the active one.
 
-const OBSERVATION_SCHEMA := 2
+# v3: bass lanes reinterpreted as chord-relative roles (R/3/5/7/O);
+# features moved to FEATURES_SCHEMA 2 (semantic + sounding bass families).
+const OBSERVATION_SCHEMA := 3
 
 const Features := preload("res://scripts/core/jam_features.gd")
 

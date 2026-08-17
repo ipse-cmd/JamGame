@@ -1,11 +1,12 @@
 class_name JamBassLine
 extends RefCounted
 
-# Monophonic bass ring line (Jammin M-B0): the pattern stores only rhythm + scale degree;
-# pitch is playback state derived from the room's key, so a key change re-tunes everything.
-# One note per step by construction (Dictionary keyed by step).
+# Monophonic bass ring line (Jammin M-B0): the pattern stores only rhythm + a
+# CHORD-RELATIVE tone index; sounding pitch is resolved at render time against
+# the current bar's chord (Harmony.chord_tone_midi), so one stored motif follows
+# the whole progression. One note per step by construction (Dictionary keyed by step).
 
-const NUM_DEGREES := 5 # lanes = diatonic degrees 1..5 ascending from the root
+const NUM_DEGREES := 5 # lanes = harmonic roles R / 3 / 5 / 7 / O against the bar's chord
 
 var num_steps: int = 16
 var notes: Dictionary = {} # step:int -> degree:int (0-based, 0..NUM_DEGREES-1)

@@ -292,6 +292,50 @@ push guard, schema field, fixed-point serialization, full-schema policy
 replay). **6/6 integration green** — the external-process gate now pushes the
 schema-2 observation through real ENet + JSON logs and still replays exactly.
 
+## Chord-relative bass — R/3/5/7/O (2026-08-17)
+
+Found by PLAYING (the whole point of Phase 2.5): the bass ring resolved its
+lanes against the fixed key root, so a stored motif sounded identical every bar
+while the chord strip moved underneath it. Fixed as a **semantic
+reinterpretation, not a bass-system refactor**: `JamBassLine` already stored
+semantics (step → lane), the wire format, op grammar, server validation range
+(0..4), ring UI, and bot op legality are all untouched. The 5 lanes now mean
+harmonic ROLES against the current bar's chord:
+
+    lane 0 → R → chord degree +0        lane 3 → 7 → +6 (DIATONIC seventh —
+    lane 1 → 3 → +2 diatonic steps                 derived from the key, no G7
+    lane 2 → 5 → +4                                 spelling needed)
+    lane 4 → O → chord root + 12 semitones (the one lane that isn't a third-stack)
+
+`Harmony.chord_tone_midi(root, chord_degree, tone)` is the single resolver used
+by the native scheduler, the legacy trigger path, AND feature extraction — the
+analysis layer can never disagree with the audio. Empty chord slots (-1)
+resolve against the tonic. Invariant pinned: `chord_tone_midi(c, 4) ==
+chord_tone_midi(c, 0) + 12` for every degree.
+
+**JamFeatures v2** (features_schema 2, observation_schema 3): the old
+key-relative pitch stats described a different musical world than the one being
+heard, so bass measurement split into two families answering different
+questions. SEMANTIC — what behavior was written: per-lane fractions
+(`bass_root/third/fifth/seventh/octave_fraction`), normalized
+`bass_lane_entropy`. SOUNDING — what it produces under this progression: the
+one-bar motif virtually rendered across all four chord slots
+(`sounding_pitch_mean/range`, `sounding_mean/max_interval`,
+`sounding_direction_change_rate`). The motivating case is pinned as a test:
+R-only pedal is semantically static (root_fraction 1, entropy 0) yet sounds
+C2-A2-F2-G2 under I|vi|IV|V. RuleBassPolicy untouched — its chord-tone scoring
+is now vacuous BY CONSTRUCTION (every lane is structurally harmonic), which is
+the desired staged action-space design: V2 lanes 2/4/6 reintroduce
+harmonic-context choice as color/tension.
+
+Validation: **215 unit tests green** (+31: the V|vi|IV|V five-lane sounding
+table, octave invariant across all 7 degrees, tonic fallback + diatonic
+seventh, hand-computed semantic fractions/entropy and 4-bar sounding stats
+including the 16-semitone max leap and 6/10 direction reversals, pedal-tone
+case, schema bumps, JSON round-trip). **6/6 integration green** — the bot
+plays the same legal ops under the new semantics and the external-process
+replay gate still reproduces logged frames exactly.
+
 ## How to rebuild the extension
 
 ```
