@@ -497,6 +497,48 @@ invariants energy≠tension and change≠repetition pinned as opposing orderings
 monotonic repetition, zero-pressure-when-unobserved, and byte-identical
 interpretation across the JSON boundary). **6/6 integration green.**
 
+## Phase 3B — interpretation-aware intent policy, shadow-only (2026-08-17)
+
+`scripts/ai/intent_policy.gd`: deterministic threshold rules over the 3A
+vector producing a small behavioral vocabulary — HOLD / RESPOND / SIMPLIFY /
+INTENSIFY / VARY / REVERT — keeping perception ("what is happening"),
+intention ("what should I do about it"), and realization ("what should that
+sound like") strictly separate. No RNG, no note knowledge; the drivers that
+fired are returned with the intent, so the reason IS the log.
+
+Priority order is part of the contract: REVERT (own change crowded the jam —
+`bass_notes_prev`'s first consumer; the actual previous pattern, not a
+mutation in the opposite direction) > HOLD-on-self > RESPOND > SIMPLIFY >
+INTENSIFY (hot jam, bass under-participating) > VARY > HOLD.
+
+**Shadow-only**: the frozen rule baseline still plays; both observers attach
+the intent the 3B policy WOULD have chosen to every frame, next to the
+baseline's ops and the human's actual ops. The comparison "did causal signals
+improve behavioral timing?" gets answered from session logs before any intent
+is realized (3C: intent-conditioned candidate generation).
+
+**Style hook architected, inert**: `decide(obs, interp, style_context)` with
+DEFAULT only — the 3A signals describe interaction, not genre; genre belongs
+to realization weights (3D/3E) and we refuse to invent them without corpus
+evidence. Unknown styles fall back to default behavior, the request is
+preserved in the output for the log.
+
+The flagship test is the 2.5 divergence converted into explicit behavior:
+stale+quiet → VARY, chords-changed-under-stale-bass → RESPOND (external
+outranks staleness), own-fresh-edit → HOLD. Plus crowding→SIMPLIFY before
+VARY, hot-jam-absent-bass→INTENSIFY (and its negation), REVERT requiring
+bass_notes_prev (falls to HOLD without it), calm default, determinism, style
+fallback.
+
+Corpus stage 1 started alongside (~/JamminCorpus, research-use): GMD
+(genre drums), POP909 + POP909-CL (pop keys/chords), FiloBass (jazz bass +
+chords, via Zenodo), MidiCaps captions (genre filtering over Lakh), Lakh
+lmd_full. Slakh2100 (~100GB, interaction) located but not auto-downloaded.
+Next data-side artifact: a midi → JamminCorpusExample converter into the ONE
+common representation (chord-relative bass, features, style tags).
+
+Validation: **307 unit tests green** (+11). **6/6 integration green.**
+
 ## How to rebuild the extension
 
 ```

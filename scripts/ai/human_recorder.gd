@@ -12,6 +12,7 @@ extends Node
 
 const BotObservation := preload("res://scripts/ai/bot_observation.gd")
 const Analysis := preload("res://scripts/core/jam_analysis.gd")
+const IntentPolicy := preload("res://scripts/ai/intent_policy.gd")
 const DecisionLog := preload("res://scripts/ai/decision_log.gd")
 const History := preload("res://scripts/core/jam_history.gd")
 
@@ -126,11 +127,13 @@ func _flush_window() -> void:
 		return
 	var t1 := Time.get_ticks_usec()
 	if decision_log != null:
+		var interp := Analysis.interpret(_win.obs)
 		decision_log.write(DecisionLog.build_frame(
 			_win.key, DecisionLog.SOURCE_HUMAN, POLICY_NAME, POLICY_VERSION,
 			0, _win.obs, _win.ops, _win.t0, t1, _win.last_margin, _win.obs.features,
 			{"window_focused": _win.focused, "input_events": _input_events,
-				"interpretation": Analysis.interpret(_win.obs)}))
+				"interpretation": interp,
+				"intent": IntentPolicy.decide(_win.obs, interp)}))
 	frames += 1
 	if _win.ops.is_empty():
 		holds += 1

@@ -21,6 +21,7 @@ const DecisionLog := preload("res://scripts/ai/decision_log.gd")
 const BotPeer := preload("res://scripts/ai/bot_peer.gd")
 const Features := preload("res://scripts/core/jam_features.gd")
 const Analysis := preload("res://scripts/core/jam_analysis.gd")
+const IntentPolicy := preload("res://scripts/ai/intent_policy.gd")
 const History := preload("res://scripts/core/jam_history.gd")
 const HumanRecorder := preload("res://scripts/ai/human_recorder.gd")
 const StepRing := preload("res://scripts/ui/step_ring.gd")
@@ -49,6 +50,7 @@ func _initialize() -> void:
 	_test_temporal_features()
 	_test_observation_contract()
 	_test_jam_analysis()
+	_test_intent_policy()
 	_test_pointer_picking()
 	_test_human_recorder()
 	_test_shadow_bot()
@@ -1050,6 +1052,65 @@ func _test_jam_analysis() -> void:
 	var wire: Dictionary = BotObservation.from_json(JSON.parse_string(JSON.stringify(obs)))
 	check(JSON.stringify(Analysis.interpret(obs)) == JSON.stringify(Analysis.interpret(wire)),
 		"interpretation is identical across the JSON boundary")
+
+
+func _test_intent_policy() -> void:
+	var base_obs := {"features": {"bass_density": 0.2}, "last_change_by": {"bass": "none"}}
+
+	# THE flagship triplet — the 2.5 divergence converted into explicit
+	# behavioral distinctions. Same repetition ballpark, three different intents.
+	# Case A: stale, nothing changed -> VARY.
+	var a := IntentPolicy.decide(base_obs, {"external_change_pressure": 0.05,
+		"repetition_pressure": 0.70, "self_change_pressure": 0.0})
+	check(a.intent == IntentPolicy.VARY and a.drivers.has("repetition_pressure"),
+		"stale + quiet -> VARY (staleness is the only reason)")
+	# Case B: chords changed underneath a stale bass -> RESPOND, not VARY.
+	var b := IntentPolicy.decide(base_obs, {"external_change_pressure": 0.78,
+		"repetition_pressure": 0.45, "self_change_pressure": 0.0})
+	check(b.intent == IntentPolicy.RESPOND and b.drivers.has("external_change_pressure"),
+		"external change outranks staleness -> RESPOND")
+	# Case C: the bassist just edited itself -> HOLD, not another mutation.
+	var c := IntentPolicy.decide(base_obs, {"external_change_pressure": 0.05,
+		"repetition_pressure": 0.40, "self_change_pressure": 0.85})
+	check(c.intent == IntentPolicy.HOLD and c.drivers.has("self_change_pressure"),
+		"own fresh edit -> HOLD, don't fidget")
+
+	# SIMPLIFY: crowding beats staleness once nothing external calls.
+	check(IntentPolicy.decide(base_obs, {"density_tension": 0.7,
+		"repetition_pressure": 0.7}).intent == IntentPolicy.SIMPLIFY,
+		"crowded jam -> SIMPLIFY before VARY")
+
+	# INTENSIFY: hot jam, bass under-participating.
+	check(IntentPolicy.decide({"features": {"bass_density": 0.05}, "last_change_by": {}},
+		{"energy": 0.8}).intent == IntentPolicy.INTENSIFY,
+		"hot jam + absent bass -> INTENSIFY")
+	check(IntentPolicy.decide({"features": {"bass_density": 0.4}, "last_change_by": {}},
+		{"energy": 0.8}).intent == IntentPolicy.HOLD,
+		"hot jam with bass already present is not a call to intensify")
+
+	# REVERT: bass_notes_prev's first consumer — my own change crowded the jam.
+	var revert_obs := {"features": {"bass_density": 0.4},
+		"last_change_by": {"bass": "self"}, "bass_notes_prev": {0: 0, 8: 0}}
+	var r := IntentPolicy.decide(revert_obs,
+		{"density_tension": 0.75, "self_change_pressure": 0.9})
+	check(r.intent == IntentPolicy.REVERT, "own change made it crowded -> REVERT, not HOLD")
+	check(IntentPolicy.decide({"features": {}, "last_change_by": {"bass": "self"},
+		"bass_notes_prev": null}, {"density_tension": 0.75, "self_change_pressure": 0.9}).intent
+		== IntentPolicy.HOLD, "no previous pattern -> REVERT unavailable, falls to HOLD")
+
+	# Calm default and determinism.
+	check(IntentPolicy.decide(base_obs, {}).intent == IntentPolicy.HOLD,
+		"nothing pressing -> HOLD")
+	check(JSON.stringify(IntentPolicy.decide(base_obs, {"repetition_pressure": 0.7}))
+		== JSON.stringify(IntentPolicy.decide(base_obs, {"repetition_pressure": 0.7})),
+		"intent decisions are deterministic")
+
+	# Style hook: architected, inert. Unknown styles behave as DEFAULT but the
+	# request is preserved for the log.
+	var styled := IntentPolicy.decide(base_obs, {"repetition_pressure": 0.7}, "jazz")
+	check(styled.intent == IntentPolicy.VARY and styled.style == "default"
+		and styled.style_requested == "jazz",
+		"unknown style falls back to default weights, request logged")
 
 
 func _test_pointer_picking() -> void:

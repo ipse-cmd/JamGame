@@ -16,6 +16,7 @@ extends Node
 
 const BotObservation := preload("res://scripts/ai/bot_observation.gd")
 const Analysis := preload("res://scripts/core/jam_analysis.gd")
+const IntentPolicy := preload("res://scripts/ai/intent_policy.gd")
 const RuleBassPolicy := preload("res://scripts/ai/rule_bass_policy.gd")
 const DecisionLog := preload("res://scripts/ai/decision_log.gd")
 const History := preload("res://scripts/core/jam_history.gd")
@@ -146,7 +147,10 @@ func on_loop(loop: int) -> void:
 			_pending_commit_key = key # shadow proposals never commit — nothing to resolve
 
 	if decision_log != null:
-		var extra := {"interpretation": Analysis.interpret(obs)}
+		var interp := Analysis.interpret(obs)
+		# 3B shadow: the intent the interpretation-aware policy WOULD choose,
+		# logged next to the frozen baseline's ops — never realized here.
+		var extra := {"interpretation": interp, "intent": IntentPolicy.decide(obs, interp)}
 		if shadow:
 			extra["shadow"] = true
 		decision_log.write(DecisionLog.build_frame(
