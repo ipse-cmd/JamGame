@@ -62,6 +62,9 @@ class JamAudioStream : public AudioStream {
 	std::atomic<int64_t> late_{0};
 	std::atomic<int64_t> dropped_{0};
 
+	// Room mixer: per-pool user gains on top of the rack's base mix (D10).
+	std::atomic<float> pool_gains_[NUM_VOICE_TYPES] = {{1.0f}, {1.0f}, {1.0f}, {1.0f}, {1.0f}, {1.0f}};
+
 protected:
 	static void _bind_methods();
 
@@ -69,6 +72,7 @@ public:
 	// ---- game-thread API ----
 	bool schedule_note(int64_t p_sample, int p_voice, int p_midi, float p_velocity,
 			float p_duration, int p_variant);
+	void set_pool_gain(int p_pool, float p_gain);
 	int64_t get_sample_cursor() const;
 	double get_mix_rate() const;
 	int64_t get_launched_count() const;

@@ -10,6 +10,7 @@ namespace godot {
 void JamAudioStream::_bind_methods() {
 	ClassDB::bind_method(D_METHOD("schedule_note", "sample", "voice", "midi", "velocity", "duration", "variant"),
 			&JamAudioStream::schedule_note, DEFVAL(0));
+	ClassDB::bind_method(D_METHOD("set_pool_gain", "pool", "gain"), &JamAudioStream::set_pool_gain);
 	ClassDB::bind_method(D_METHOD("get_sample_cursor"), &JamAudioStream::get_sample_cursor);
 	ClassDB::bind_method(D_METHOD("get_mix_rate"), &JamAudioStream::get_mix_rate);
 	ClassDB::bind_method(D_METHOD("get_launched_count"), &JamAudioStream::get_launched_count);
@@ -38,6 +39,14 @@ bool JamAudioStream::schedule_note(int64_t p_sample, int p_voice, int p_midi, fl
 	ev.variant = p_variant;
 	q_write_.store(w + 1, std::memory_order_release);
 	return true;
+}
+
+void JamAudioStream::set_pool_gain(int p_pool, float p_gain) {
+	if (p_pool < 0 || p_pool >= NUM_VOICE_TYPES) {
+		return;
+	}
+	const float g = (p_gain == p_gain) ? p_gain : 1.0f; // NaN guard
+	pool_gains_[p_pool].store(std::min(2.0f, std::max(0.0f, g)), std::memory_order_relaxed);
 }
 
 int64_t JamAudioStream::get_sample_cursor() const {
@@ -187,13 +196,17 @@ int32_t JamAudioStreamPlayback::_mix(AudioFrame *p_buffer, float p_rate_scale, i
 
 	// Per-sample render: fire due events at their exact offset, then sum the rack.
 	if (rack_ready_) {
+		float gains[JamAudioStream::NUM_VOICE_TYPES];
+		for (int g = 0; g < JamAudioStream::NUM_VOICE_TYPES; g++) {
+			gains[g] = s->pool_gains_[g].load(std::memory_order_relaxed);
+		}
 		int idx = 0;
 		for (int32_t i = 0; i < p_frames; i++) {
 			while (idx < n_pending && pending[idx].offset <= i) {
 				fire(pending[idx].ev);
 				idx++;
 			}
-			const float smp = rack_.Render();
+			const float smp = rack_.Render(gains);
 			p_buffer[i].left += smp;
 			p_buffer[i].right += smp;
 		}

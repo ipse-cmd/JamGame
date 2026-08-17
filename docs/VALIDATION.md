@@ -770,6 +770,42 @@ bass 4 / pluck 16, steal-oldest), same base mix gains
 - ios: entries added to the .gdextension;
   `scons platform=ios target=template_debug` on the Mac when packaging.
 
+## Groove lens + room mixer/drum-synth popout + chord performance (2026-08-17)
+
+Three systems in one arc, all through existing validated paths:
+
+**Groove lens (V)** — ported from the Unreal original (JamGrooveLibrary/
+Processor, values from our Ableton captures): 6 templates (Base straight /
+Shake / Shake-heavy / Push lay-back / Trip triplet-lurch / Clave 3-3-2) as
+per-step timing offsets (quarter-note beats, independent periods) + velocity
+multipliers, blended by TimingAmount 0.7 / VelocityAmount 0.2. Applied at
+RENDER time to drum scheduling — the lens never rewrites the pattern; the
+template index replicates as drum-role state, so every peer derives identical
+offsets. Trip's negative (rushed) offsets stay far inside the scheduler
+lookahead — the pinned max_negative_groove_offset constraint, now with a test.
+
+**Room mixer + drum-synth popout (M)** — the D10 mixer: 6 per-pool gains
+(0..2, unity notch) on top of the rack's base mix, applied ATOMICALLY on the
+audio thread (`set_pool_gain`). Server-owned drum-role state — the drummer
+adjusts, everyone hears the same mix ("turn up the kick" is now a slider).
+The popout panel is pure projection + dispatch: sliders emit validated `mix`
+ops, kit buttons per drum lane emit `kit` ops, the groove row cycles `groove`
+— nothing in the panel has its own authority.
+
+**Chord performance (W/S on chords focus)** — WHAT the chords play (slots)
+now separate from HOW (comp + voicing, commit-gated fields on the chord
+track — zero new net paths, they replicate/promote like any edit). 5 comp
+patterns (Pad / Pulse / Offbeat / Charleston / Arp), 3 voicings
+(Close / Open / Wide — same pattern, different spread: the smallest ladder),
+comping velocity band 0.7, and rolled chords (~8ms per voice low→high, from
+the measured budgets) — on the DaisySP plucks this finally sounds like an
+instrument, not a bar-top stab.
+
+Validation: **430 unit tests green** (+34: groove no-op/wrap/samples/velocity
+math + the negative-offset-vs-lookahead pin; mixer clamp + replication round
+trip; voicing spreads, comp legality, arp cycling, commit gating, performance
+in equals/replication). **6/6 integration green.**
+
 ## How to rebuild the extension
 
 ```

@@ -326,13 +326,14 @@ struct VoiceRack {
 		pluck.Init(sample_rate);
 	}
 
-	float Render() {
-		return 0.8f * kick.Render()
-			 + 0.5f * snare.Render()
-			 + 0.25f * hat.Render()
-			 + 0.45f * perc.Render()
-			 + 0.35f * bass.Render()
-			 + 0.25f * pluck.Render();
+	/** gains: 6 per-pool user gains (the room mixer) on top of the base mix. */
+	float Render(const float *gains) {
+		return gains[0] * 0.8f * kick.Render()
+			 + gains[1] * 0.5f * snare.Render()
+			 + gains[2] * 0.25f * hat.Render()
+			 + gains[3] * 0.45f * perc.Render()
+			 + gains[4] * 0.35f * bass.Render()
+			 + gains[5] * 0.25f * pluck.Render();
 	}
 };
 

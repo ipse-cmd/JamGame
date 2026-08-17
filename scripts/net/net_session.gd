@@ -157,7 +157,7 @@ func broadcast_track(track: int) -> void:
 
 # Drum-role state ops (kit/modifiers): applied immediately, replicated as room
 # state — NOT commit-gated pattern edits.
-const DRUM_STATE_OPS := ["fill", "drop", "intensify", "kit"]
+const DRUM_STATE_OPS := ["fill", "drop", "intensify", "kit", "mix", "groove"]
 
 
 func broadcast_drums() -> void:
@@ -191,6 +191,12 @@ func _validate_cmd(sender: int, track: int, op: String, args: Dictionary) -> boo
 			return _int_in(args, "voice", 0, 3) and args.size() == 1
 		[TRACK_DRUMS, "kit"]:
 			return _int_in(args, "lane", 0, 3) and args.size() == 1
+		[TRACK_DRUMS, "mix"]:
+			return _int_in(args, "pool", 0, 5) and args.has("gain") \
+				and (typeof(args.gain) == TYPE_FLOAT or typeof(args.gain) == TYPE_INT) \
+				and float(args.gain) >= 0.0 and float(args.gain) <= 2.0 and args.size() == 2
+		[TRACK_DRUMS, "groove"]:
+			return _int_in(args, "index", 0, 5) and args.size() == 1
 		[TRACK_DRUMS, "template"]:
 			return _int_in(args, "index", 0, 3) and args.size() == 1
 		[TRACK_DRUMS, "fill"], [TRACK_DRUMS, "drop"], [TRACK_DRUMS, "intensify"]:
@@ -201,6 +207,8 @@ func _validate_cmd(sender: int, track: int, op: String, args: Dictionary) -> boo
 			return _int_in(args, "bar", 0, 3) and args.has("delta") and (args.delta == 1 or args.delta == -1) and args.size() == 2
 		[TRACK_CHORDS, "set"]:
 			return _int_in(args, "bar", 0, 3) and _int_in(args, "degree", 0, 6) and args.size() == 2
+		[TRACK_CHORDS, "comp"]:
+			return _int_in(args, "comp", 0, 4) and _int_in(args, "voicing", 0, 2) and args.size() == 2
 		[TRACK_CHORDS, "clear_slot"]:
 			return _int_in(args, "bar", 0, 3) and args.size() == 1
 		[TRACK_DRUMS, "clear_all"], [TRACK_DRUMS, "cancel"], \

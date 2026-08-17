@@ -77,6 +77,15 @@ func apply_kit(kit: Array) -> void:
 		set_kit_variant(lane, int(kit[lane]))
 
 
+## Room mixer (D10): per-pool user gains 0..2 on top of the rack's base mix.
+## Native only — the legacy fallback keeps its fixed channel_db.
+func apply_mix(mix: Array) -> void:
+	if not native:
+		return
+	for pool in mini(mix.size(), 6):
+		stream.set_pool_gain(pool, float(mix[pool]))
+
+
 # ---------------------------------------------------------------- native scheduled API
 
 func sample_cursor() -> int:

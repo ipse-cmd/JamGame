@@ -16,17 +16,32 @@ const KIT_NAMES := [
 	["Tom", "Conga", "Low Tom"], # Perc
 ]
 
+const MIX_POOLS := ["Kick", "Snare", "Hat", "Perc", "Bass", "Notes"] # D10 canonical order
+
 var kit: Array = [0, 0, 0, 0] # variant index per lane
 var modifiers: Array = [] # {type: String, start_loop: int, duration: int, strength: float}
+# Room mixer (D10): per-pool user gain 0..2 on top of the rack's base mix.
+# Server-owned like kit — the drummer adjusts, everyone hears the same mix.
+var mix: Array = [1.0, 1.0, 1.0, 1.0, 1.0, 1.0]
+# Groove template index (JamGroove.TEMPLATES) — a render-time lens, room-wide.
+var groove := 0
 
 
 func to_dict() -> Dictionary:
-	return {"kit": kit.duplicate(), "modifiers": modifiers.duplicate(true)}
+	return {"kit": kit.duplicate(), "modifiers": modifiers.duplicate(true),
+		"mix": mix.duplicate(), "groove": groove}
 
 
 func from_dict(d: Dictionary) -> void:
 	kit = d.get("kit", [0, 0, 0, 0]).duplicate()
 	modifiers = d.get("modifiers", []).duplicate(true)
+	mix = d.get("mix", [1.0, 1.0, 1.0, 1.0, 1.0, 1.0]).duplicate()
+	groove = int(d.get("groove", 0))
+
+
+func set_mix(pool: int, gain: float) -> void:
+	if pool >= 0 and pool < mix.size():
+		mix[pool] = clampf(gain, 0.0, 2.0)
 
 
 func cycle_kit(lane: int) -> void:

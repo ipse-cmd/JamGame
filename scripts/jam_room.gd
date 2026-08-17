@@ -18,7 +18,10 @@ const TrackOps := preload("res://scripts/core/track_ops.gd")
 const DrumState := preload("res://scripts/core/drum_state.gd")
 const DrumRenderer := preload("res://scripts/core/drum_renderer.gd")
 const Templates := preload("res://scripts/core/drum_templates.gd")
+const Groove := preload("res://scripts/core/jam_groove.gd")
+const ChordComp := preload("res://scripts/core/chord_comp.gd")
 const StepRing := preload("res://scripts/ui/step_ring.gd")
+const MixerPanel := preload("res://scripts/ui/mixer_panel.gd")
 const ChordStrip := preload("res://scripts/ui/chord_strip.gd")
 const RadialBloom := preload("res://scripts/ui/radial_bloom.gd")
 const BotPeer := preload("res://scripts/ai/bot_peer.gd")
@@ -78,6 +81,8 @@ DRUM RING (focus: DRUMS)
   F/G/H   fill / drop / intensify
   K       kit sound (selected lane)
   T       starter templates
+  M       drum synth / room mixer popout
+  V       groove template (swing lens)
 
 BASS RING (focus: BASS)
   1-5     select scale degree
@@ -87,6 +92,7 @@ BASS RING (focus: BASS)
 CHORD STRIP (focus: CHORDS)
   Left/Right  select bar
   A / D   cycle chord
+  W / S   comp pattern / voicing
   Del     clear slot
 
 Edits show as ghosts and COMMIT at the
@@ -352,16 +358,29 @@ func _on_schedule_sixteenth(abs_step: int, at_sample: int) -> void:
 			base_hits.append(h)
 	var final_bar := bar == BARS_PER_LOOP - 1 # the phrase turnaround (phrase = one 4-bar loop)
 	var rendered := DrumRenderer.render_step(base_hits, sb, STEPS_PER_BAR, drum_state.modifiers, s_loop, final_bar)
+	# Groove lens (render-time, never rewrites the pattern): per-step timing
+	# offset + velocity shaping from the replicated template. Negative offsets
+	# stay inside the scheduler lookahead (see JamGroove header).
+	var g_off := Groove.offset_samples(drum_state.groove, sb, transport.bpm, audio.mix_rate)
 	for h in rendered:
-		audio.schedule_drum(at_sample, h.voice, h.velocity, h.accent)
+		audio.schedule_drum(at_sample + g_off,
+			h.voice, Groove.apply_velocity(h.velocity, drum_state.groove, sb), h.accent)
 	if bass.active.notes.has(sb):
 		audio.schedule_bass(at_sample,
 			Harmony.chord_tone_midi(BASS_ROOT_MIDI, chords.active.slots[bar], bass.active.notes[sb]),
 			0.8, _bass_gate_seconds(sb))
-	if sb == 0:
-		var deg: int = chords.active.slots[bar]
-		if deg >= 0:
-			audio.schedule_chord(at_sample, Harmony.triad_midi(CHORD_ROOT_MIDI, deg), 0.7)
+	var deg: int = chords.active.slots[bar]
+	if deg >= 0:
+		# Chord PERFORMANCE: the comp pattern decides which steps strike, the
+		# voicing spreads the triad, simultaneous voices roll ~8ms low→high.
+		var triad := Harmony.triad_midi(CHORD_ROOT_MIDI, deg)
+		var roll := int(ChordComp.ROLL_SECONDS * audio.mix_rate)
+		for ev in ChordComp.events_for_step(chords.active.comp, chords.active.voicing, sb, triad):
+			if ev.roll:
+				for i in ev.midis.size():
+					audio.schedule_chord(at_sample + i * roll, [ev.midis[i]], ev.vel)
+			else:
+				audio.schedule_chord(at_sample, ev.midis, ev.vel)
 
 
 ## Gate length for the bass note at step sb: hold until the next occupied step
@@ -436,6 +455,11 @@ func apply_edit(track: int, op: String, args: Dictionary) -> void:
 			"kit":
 				drum_state.cycle_kit(args.lane)
 				audio.set_kit_variant(args.lane, drum_state.kit[args.lane])
+			"mix":
+				drum_state.set_mix(args.pool, float(args.gain))
+				audio.apply_mix(drum_state.mix)
+			"groove":
+				drum_state.groove = clampi(args.index, 0, Groove.TEMPLATES.size() - 1)
 		return
 	TrackOps.apply(model_for(track), track, op, args, loop_index, _commit_delay())
 
@@ -451,10 +475,11 @@ func _commit_delay() -> int:
 	return 2 if step_in_loop >= STEPS_PER_LOOP - LOCK_HORIZON_STEPS else 1
 
 
-## Replicated drum-role state (kit + modifiers) arrived from the server.
+## Replicated drum-role state (kit + modifiers + mix + groove) arrived from the server.
 func apply_drum_state(state: Dictionary) -> void:
 	drum_state.from_dict(state)
 	audio.apply_kit(drum_state.kit)
+	audio.apply_mix(drum_state.mix)
 	_refresh_ui()
 
 
@@ -516,6 +541,21 @@ func _unhandled_key_input(event: InputEvent) -> void:
 		KEY_T: # drummer: cycle starter templates (pending, commits at boundary)
 			_template_cursor = (_template_cursor + 1) % Templates.count()
 			_dispatch(Focus.DRUMS, "template", {"index": _template_cursor})
+		KEY_M: # drum synth / room mixer popout
+			_toggle_mixer_panel()
+		KEY_V: # drummer: cycle groove template (render-time swing lens)
+			_dispatch(Focus.DRUMS, "groove",
+				{"index": (int(drum_state.groove) + 1) % Groove.TEMPLATES.size()})
+		KEY_W: # chords: cycle comp pattern (commit-gated, like any edit)
+			if focus == Focus.CHORDS:
+				var cur = chords.pending if chords.pending != null else chords.active
+				_dispatch(Focus.CHORDS, "comp",
+					{"comp": (int(cur.comp) + 1) % ChordComp.PATTERNS.size(), "voicing": int(cur.voicing)})
+		KEY_S: # chords: cycle voicing
+			if focus == Focus.CHORDS:
+				var cur2 = chords.pending if chords.pending != null else chords.active
+				_dispatch(Focus.CHORDS, "comp",
+					{"comp": int(cur2.comp), "voicing": (int(cur2.voicing) + 1) % ChordComp.VOICINGS.size()})
 		KEY_F2:
 			net.host()
 		KEY_F3:
@@ -590,6 +630,18 @@ func _cycle_chord(delta: int) -> void:
 # ---------------------------------------------------------------- pointer grammar
 
 var _bloom = null # the open JamRadialBloom, if any
+var _mixer_panel = null # the open JamMixerPanel, if any
+
+
+func _toggle_mixer_panel() -> void:
+	if _mixer_panel != null:
+		_mixer_panel.queue_free()
+		_mixer_panel = null
+		return
+	_mixer_panel = MixerPanel.new()
+	_mixer_panel.room = self
+	_mixer_panel.position = Vector2(170, 200)
+	add_child(_mixer_panel)
 
 
 func _open_bloom(gpos: Vector2, opts: Array, center_lbl: String, on_finish: Callable) -> void:
@@ -714,7 +766,10 @@ func _refresh_ui() -> void:
 	chord_strip.cursor_bar = chord_cursor
 	chord_strip.playhead_bar = bar_in_loop
 	chord_strip.focused = focus == Focus.CHORDS
-	chord_strip.status_text = _track_status(chords)
+	var chord_perf = chords.pending if chords.has_pending() else chords.active
+	chord_strip.status_text = "%s · %s (W/S)  ·  %s" % [
+		ChordComp.pattern_name(chord_perf.comp), ChordComp.voicing_name(chord_perf.voicing),
+		_track_status(chords)]
 	chord_strip.queue_redraw()
 
 	var pause_tag := "" if transport.playing else "  ·  PAUSED (Space)"

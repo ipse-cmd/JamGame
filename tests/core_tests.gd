@@ -11,6 +11,8 @@ const CommitModel := preload("res://scripts/core/commit_model.gd")
 const BassLine := preload("res://scripts/core/bass_line.gd")
 const ChordTrack := preload("res://scripts/core/chord_track.gd")
 const Harmony := preload("res://scripts/core/harmony.gd")
+const Groove := preload("res://scripts/core/jam_groove.gd")
+const ChordComp := preload("res://scripts/core/chord_comp.gd")
 const Renderer := preload("res://scripts/core/drum_renderer.gd")
 const Templates := preload("res://scripts/core/drum_templates.gd")
 const DrumState := preload("res://scripts/core/drum_state.gd")
@@ -44,6 +46,8 @@ func _initialize() -> void:
 	_test_drum_renderer()
 	_test_drum_templates()
 	_test_drum_state()
+	_test_groove_and_mixer()
+	_test_chord_comp()
 	_test_lock_horizon()
 	_test_bot_observation()
 	_test_rule_bass_policy()
@@ -1456,6 +1460,71 @@ func _test_pointer_picking() -> void:
 	TrackOps.apply(model, TrackOps.TRACK_CHORDS, "set", {"bar": 1, "degree": 5}, 0)
 	check(model.pending != null and model.pending.slots[1] == 5 and model.active.slots[1] == -1,
 		"set edits the pending buffer, active untouched until commit")
+
+
+func _test_groove_and_mixer() -> void:
+	# Base is a literal no-op — the straight reference.
+	check(Groove.offset_beats(0, 7) == 0.0 and is_equal_approx(Groove.apply_velocity(0.8, 0, 7), 0.8),
+		"Base groove is a no-op")
+	# Shake: offbeat 16ths delayed, on-beats straight; offsets wrap their period.
+	check(Groove.offset_beats(1, 0) == 0.0, "Shake leaves the beat straight")
+	check(is_equal_approx(Groove.offset_beats(1, 1), 0.0494 * 0.7), "Shake delays the offbeat (x amount)")
+	check(Groove.offset_beats(1, 17) == Groove.offset_beats(1, 1), "offsets cycle their period")
+	# Samples conversion at a known tempo.
+	var expected := int(round(0.0494 * 0.7 * (60.0 / 112.0) * 44100.0))
+	check(Groove.offset_samples(1, 1, 112.0, 44100.0) == expected, "offset converts to samples correctly")
+	# Velocity lens: lerp toward the per-step multiplier by VELOCITY_AMOUNT.
+	check(is_equal_approx(Groove.apply_velocity(1.0, 1, 1), lerpf(1.0, 0.148, 0.2)),
+		"velocity shaped toward the template multiplier")
+	# Trip's rushed offsets stay far inside the scheduler lookahead (pinned
+	# max_negative_groove_offset constraint) even at slow tempos.
+	var worst := absf(Groove.offset_beats(4, 1)) * (60.0 / 60.0)
+	check(worst < 0.25, "worst negative groove offset < lookahead at 60 BPM")
+
+	# Drum-state mixer/groove: replicate through the same dict as kit.
+	var s := DrumState.new()
+	s.set_mix(0, 1.8)
+	s.set_mix(5, 9.0) # clamped
+	s.groove = 3
+	var rt := DrumState.new()
+	rt.from_dict(JSON.parse_string(JSON.stringify(s.to_dict())))
+	check(is_equal_approx(rt.mix[0], 1.8) and is_equal_approx(rt.mix[5], 2.0) and rt.groove == 3,
+		"mix (clamped) and groove survive the replication round trip")
+
+
+func _test_chord_comp() -> void:
+	# Voicings: same pitch classes, different spread.
+	var triad := [60, 64, 67]
+	check(ChordComp.voice(triad, 0) == [60, 64, 67], "Close voicing is the triad as-is")
+	check(ChordComp.voice(triad, 1) == [60, 67, 76], "Open drops the middle voice up an octave")
+	check(ChordComp.voice(triad, 2) == [48, 64, 79], "Wide spreads root down, fifth up")
+
+	# Patterns: hits only on legal steps; Pad strikes bar-top only.
+	for p in ChordComp.PATTERNS:
+		for h in p.hits:
+			check(int(h.step) >= 0 and int(h.step) <= 15, "comp hit steps are legal")
+	check(ChordComp.events_for_step(0, 0, 0, triad).size() == 1
+		and ChordComp.events_for_step(0, 0, 8, triad).is_empty(),
+		"Pad strikes the bar top and nothing else")
+	var off := ChordComp.events_for_step(2, 0, 6, triad)
+	check(off.size() == 1 and off[0].roll and is_equal_approx(off[0].vel, 0.7 * 0.7),
+		"Offbeat comp strikes step 6 in the comping velocity band, rolled")
+	var arp := ChordComp.events_for_step(4, 0, 4, triad)
+	check(arp.size() == 1 and arp[0].midis == [67] and not arp[0].roll,
+		"Arp emits single cycling voiced notes, unrolled")
+
+	# Performance is commit-gated state on the chord track, like any edit.
+	var m := CommitModel.new(ChordTrack.new())
+	TrackOps.apply(m, TrackOps.TRACK_CHORDS, "comp", {"comp": 2, "voicing": 1}, 0)
+	check(m.pending.comp == 2 and m.pending.voicing == 1 and m.active.comp == 0,
+		"comp edits the pending buffer; active performs until the boundary")
+	var t := ChordTrack.new()
+	var u = t.clone()
+	u.set_performance(3, 2)
+	check(not t.equals(u), "performance changes are commit-relevant (equals sees them)")
+	var rt2 := ChordTrack.new()
+	rt2.from_dict(JSON.parse_string(JSON.stringify(u.to_dict())))
+	check(rt2.comp == 3 and rt2.voicing == 2, "performance survives replication")
 
 
 func _test_harmony() -> void:

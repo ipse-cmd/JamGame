@@ -6,6 +6,10 @@ extends RefCounted
 # time, mirroring Jammin's rhythm/pitch separation.
 
 var slots: Array = [-1, -1, -1, -1] # degree 0..6, or -1 for empty
+# PERFORMANCE fields (commit-gated like the slots): which comp pattern and
+# voicing render the chords (JamChordComp). WHAT to play vs HOW to play it.
+var comp := 0
+var voicing := 0
 
 
 # Untyped on purpose — class_name self-references need the editor's global class cache,
@@ -13,19 +17,28 @@ var slots: Array = [-1, -1, -1, -1] # degree 0..6, or -1 for empty
 func clone():
 	var c = get_script().new()
 	c.slots = slots.duplicate()
+	c.comp = comp
+	c.voicing = voicing
 	return c
 
 
 func equals(other) -> bool:
-	return slots == other.slots
+	return slots == other.slots and comp == other.comp and voicing == other.voicing
 
 
 func to_dict() -> Dictionary:
-	return {"slots": slots.duplicate()}
+	return {"slots": slots.duplicate(), "comp": comp, "voicing": voicing}
 
 
 func from_dict(d: Dictionary) -> void:
 	slots = d.get("slots", [-1, -1, -1, -1]).duplicate()
+	comp = int(d.get("comp", 0))
+	voicing = int(d.get("voicing", 0))
+
+
+func set_performance(p_comp: int, p_voicing: int) -> void:
+	comp = maxi(0, p_comp)
+	voicing = maxi(0, p_voicing)
 
 
 func cycle_slot(bar: int, delta: int) -> void:
