@@ -43,13 +43,18 @@ public:
 		drum_.Init(sr_);
 	}
 	void Trigger(float velocity, int32_t variant = 0) {
+		// Tone raised vs the Unreal presets: the 808 model's energy is nearly
+		// all sub-65Hz, which vanishes on desktop speakers under the saw bass
+		// (measured: kick RMS ~14dB below snare). Tone adds the beater click
+		// that lets the kick read at any playback level; character unchanged.
 		float life = 0.6f;
 		switch (wrap3(variant)) {
 			default:
-			case 0: drum_.SetFreq(50.0f); drum_.SetTone(0.6f);  drum_.SetDecay(0.4f);  life = 0.6f;  break; // deep
-			case 1: drum_.SetFreq(65.0f); drum_.SetTone(0.85f); drum_.SetDecay(0.2f);  life = 0.35f; break; // punch
-			case 2: drum_.SetFreq(42.0f); drum_.SetTone(0.45f); drum_.SetDecay(0.75f); life = 0.95f; break; // boom
+			case 0: drum_.SetFreq(52.0f); drum_.SetTone(0.85f); drum_.SetDecay(0.4f);  life = 0.6f;  break; // deep
+			case 1: drum_.SetFreq(65.0f); drum_.SetTone(0.95f); drum_.SetDecay(0.25f); life = 0.35f; break; // punch
+			case 2: drum_.SetFreq(42.0f); drum_.SetTone(0.7f);  drum_.SetDecay(0.75f); life = 0.95f; break; // boom
 		}
+		drum_.SetAttackFmAmount(0.8f);
 		drum_.SetAccent(clamp01(velocity));
 		drum_.Trig();
 		life_ = (int32_t)std::lround(life * sr_);
@@ -326,9 +331,11 @@ struct VoiceRack {
 		pluck.Init(sample_rate);
 	}
 
-	/** gains: 6 per-pool user gains (the room mixer) on top of the base mix. */
+	/** gains: 6 per-pool user gains (the room mixer) on top of the base mix.
+	 *  Kick base raised from Unreal's 0.8: the 808 sub needs headroom against
+	 *  the saw bass on small speakers. */
 	float Render(const float *gains) {
-		return gains[0] * 0.8f * kick.Render()
+		return gains[0] * 1.15f * kick.Render()
 			 + gains[1] * 0.5f * snare.Render()
 			 + gains[2] * 0.25f * hat.Render()
 			 + gains[3] * 0.45f * perc.Render()
