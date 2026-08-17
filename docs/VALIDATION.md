@@ -618,6 +618,39 @@ event).
 Validation: **350 unit tests green** (+2 regressions). **6/6 integration
 green.**
 
+## Corpus converter stage 1 — midi → JamminCorpusExample (2026-08-17)
+
+`tools/corpus/convert.py`: GMD (1,138 drum performances) and FiloBass (48
+jazz bass performances, via its pre-joined note_data.csv — every note already
+aligned to its chord) converted into ONE common representation
+(example_schema 1): 16-step bars, chord-relative bass tokens (game lanes
+R/3/5/7 + explicit out-of-vocab x2/x4/x6 color classes), and the game's own
+feature definitions (densities, offbeat mass with JamAnalysis's 0/.5/1
+weights, groove timing as %-of-a-16th deviations by down/e/and/a position —
+AGR-compatible). Output: JSONL + SUMMARY.txt in ModelData/JamminCorpusExamples.
+
+First empirical findings (style profiles are now measurements, not adjectives):
+
+- **73.9% of 53k real jazz bass notes fit the V1 lanes** (R .334, 3 .164,
+  5 .155, 7 .090); the remainder is almost exactly the planned V2 color set
+  (9ths .097, 11ths .091, 13ths .069) — the staged action-space design
+  confirmed by corpus. Walking bass is ON the beat (offbeat mass .077 vs
+  ~.45 for drums) and stepwise (mean interval 3.45 st).
+- **Jazz is the only style with a positive swung "and"** (+8.2% of a 16th;
+  blues shuffle +22.6 at n=4) — every groove style pushes it ahead (funk
+  -9.5, hiphop -7.1, dance -14.1). Jazz kick is feathered (density .125,
+  half of rock's). Punk inverts the velocity hierarchy (offbeat 90 vs
+  downbeat 60). Funk = high hat density + high offbeat mass + tight 16ths +
+  strong ghost-note velocity contrast.
+- Caveat pinned: deviations fold at ±50% of a 16th, so extreme swing can
+  alias into the neighboring step (blues/afrocuban small-n values are
+  indicative, not gospel). GMD fills are tagged (`kind`) and excluded from
+  beat profiles.
+
+These distributions are the seed data for 3D JamStyleProfile (drum + bass
+profiles per style) and the renderer groove lens (nominal AGR shapes + these
+measured variances).
+
 ## How to rebuild the extension
 
 ```
