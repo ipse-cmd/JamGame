@@ -171,6 +171,27 @@ Velocity, when it arrives, is mostly REALIZER-derived (role/style band +
 metric accent + phrase dynamics), not per-event wire vocabulary — events stay
 {step, degree(, accent)}.
 
+## Sound-quality pass (deferred, user-flagged 2026-08-17)
+
+The DaisySP rack is functional but not product-level sound yet. When this
+pass happens, the levers in rough value order:
+
+1. **Effects sends** — DaisySP's Effects modules are ALREADY VENDORED
+   (reverbsc, overdrive, chorus, etc.): a shared reverb/space send + gentle
+   bus saturation is most of the distance between "synth demo" and "record".
+2. **Voice design depth** — layered kick (sub + click as separate components),
+   snare with tuned body + noise blend, velocity→timbre mapping (not just
+   level), per-voice stereo placement/width.
+3. **Gain staging** — proper per-pool headroom + soft limiting on the master
+   (currently raw float sum; clipping is possible at full mixer gains).
+4. **Sample hybrid** — optional one-shot samples layered over synthesis for
+   drums (the corpus pipeline could even pick them per style).
+5. Master-bus polish: gentle high-shelf air, low-end management between kick
+   and bass (the Unreal build ducked bass to 0.5 for a reason).
+
+Not before the AI/style work needs it audible — but the vendored Effects
+modules make #1 nearly free whenever the moment comes.
+
 ## Reference-ingestion freeze
 
 Enough vocabulary exists (harmony banks, groove captures, corpora). No more
