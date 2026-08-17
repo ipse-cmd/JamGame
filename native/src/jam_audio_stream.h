@@ -43,9 +43,10 @@ class JamAudioStream : public AudioStream {
 	static constexpr uint32_t QUEUE_CAP = 2048; // power of two
 	static constexpr uint32_t DIAG_CAP = 8192; // power of two, holds (intended, actual) pairs
 	static constexpr int VOICE_KICK = 0, VOICE_SNARE = 1, VOICE_HAT = 2,
-			VOICE_PERC = 3, VOICE_BASS = 4, VOICE_PLUCK = 5, VOICE_POLY = 6;
-	static constexpr int NUM_VOICE_TYPES = 7;
-	static constexpr int NUM_MIX_POOLS = 6; // poly shares the Notes slot (5)
+			VOICE_PERC = 3, VOICE_BASS = 4, VOICE_PLUCK = 5, VOICE_POLY = 6,
+			VOICE_STRING = 7, VOICE_MALLET = 8;
+	static constexpr int NUM_VOICE_TYPES = 9;
+	static constexpr int NUM_MIX_POOLS = 6; // tonal note voices share the Notes slot (5)
 
 	// SPSC trigger queue: game thread writes, audio thread reads.
 	// Contract: sample stamps must be non-decreasing (the scheduler emits steps in order).

@@ -8,12 +8,13 @@ extends RefCounted
 # engine. This object never touches audio or the network itself.
 
 const NUM_LANES := 4
-const NUM_VARIANTS := 3
+# Per-lane kit variants (order matches the native voices' preset switches):
+# analog models first, then second synthesis engines, then parametric.
 const KIT_NAMES := [
-	["Deep", "Punch", "Boom"], # Kick
-	["Snap", "Tight", "Fat"], # Snare
-	["Closed", "Open", "Crisp"], # Hat
-	["Tom", "Conga", "Low Tom"], # Perc
+	["Deep", "Punch", "Boom", "Click", "Solid", "Zap"], # Kick
+	["Snap", "Tight", "Fat", "808", "Rim", "Trash"], # Snare
+	["Closed", "Open", "Crisp", "Shaker"], # Hat
+	["Tom", "Conga", "Low Tom", "Block", "Bell", "Laser"], # Perc
 ]
 
 const MIX_POOLS := ["Kick", "Snare", "Hat", "Perc", "Bass", "Notes"] # D10 canonical order
@@ -46,7 +47,7 @@ func set_mix(pool: int, gain: float) -> void:
 
 func cycle_kit(lane: int) -> void:
 	if lane >= 0 and lane < NUM_LANES:
-		kit[lane] = (int(kit[lane]) + 1) % NUM_VARIANTS
+		kit[lane] = (int(kit[lane]) + 1) % KIT_NAMES[lane].size()
 
 
 func kit_name(lane: int) -> String:

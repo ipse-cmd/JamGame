@@ -277,10 +277,11 @@ func _test_drum_state() -> void:
 	check(s2.modifiers[0].duration == 2, "fill on the final bar auto-stretches to the next turnaround")
 	s.prune(5)
 	check(s.modifiers.size() == 0, "prune removes expired windows (intensify ends at loop 5)")
-	s.cycle_kit(0)
-	s.cycle_kit(0)
-	s.cycle_kit(0)
-	check(s.kit[0] == 0, "kit cycling wraps after 3 variants")
+	for i in DrumState.KIT_NAMES[0].size():
+		s.cycle_kit(0)
+	check(s.kit[0] == 0, "kit cycling wraps at the lane's variant count")
+	check(DrumState.KIT_NAMES[0].size() == 6 and DrumState.KIT_NAMES[2].size() == 4,
+		"expanded kits: 6 kick variants, 4 hat variants")
 	s.cycle_kit(2)
 	var round_trip = DrumState.new()
 	round_trip.from_dict(s.to_dict())
@@ -1531,7 +1532,8 @@ func _test_chord_comp() -> void:
 	var pad := ChordComp.events_for_step(0, 0, 0, triad)
 	check(pad[0].dur_steps == 16, "Pad holds the whole bar")
 	check(ChordComp.events_for_step(4, 0, 4, triad)[0].dur_steps == 2, "Arp notes are short")
-	check(ChordComp.SYNTHS.size() == 3 and ChordComp.synth_name(1) == "Poly Pad",
+	check(ChordComp.SYNTHS.size() == 5 and ChordComp.synth_name(1) == "Poly Pad"
+		and ChordComp.synth_name(4) == "Mallet",
 		"synth engines named for the UI")
 
 

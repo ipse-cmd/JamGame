@@ -806,6 +806,39 @@ math + the negative-offset-vs-lookahead pin; mixer clamp + replication round
 trip; voicing spreads, comp legality, arp cycling, commit gating, performance
 in equals/replication). **6/6 integration green.**
 
+## Voice expansion — activate-what-we-own + Freeverb + WeirdDrums topology (2026-08-17)
+
+The portedplugins survey (GPL-3 collection, mostly ports of MIT code we
+already vendor) turned into an activation pass of our own tree plus two
+clean-room additions:
+
+- **Expanded drum kits** (per-lane variant counts, kit op unchanged): Kick 6
+  (analog Deep/Punch/Boom + SyntheticBassDrum Click/Solid + parametric Zap),
+  Snare 6 (synthetic Snap/Tight/Fat + AnalogSnareDrum 808/Rim + Trash),
+  Hat 4 (+ Shaker), Perc 6 (analog toms + MODAL Block/Bell — real struck
+  bodies at last — + Laser).
+- **WdLayer** — parametric drum topology clean-room after WeirdDrums by
+  Daniele Filaretti (MIT, JUCE plugin; topology reused, reimplemented over
+  DaisySP), itself channeling Sonic Charge Microtonic: sine osc with
+  exponential pitch envelope + filtered-noise layer + tanh drive. One
+  topology, any drum — powers Zap/Trash/Shaker/Laser and is the future
+  kit-designer voice (knobs in the M panel someday).
+- **Two new chord synths** (SYNTHS now 5, Q cycles): String (Mutable
+  StringVoice — extended Karplus with exciter/brightness) and Mallet
+  (ModalVoice — vibes/marimba territory).
+- **jam::Reverb** — Freeverb (public-domain Schroeder/Moorer topology,
+  classic tunings) implemented fresh: upstream DaisySP moved reverbsc to an
+  LGPL companion repo, which a statically-linked cross-platform GDExtension
+  is better off without. Per-pool sends (drums dry-ish, notes wet), stereo
+  wet return — the game's first stereo element.
+- **Master soft limit** (tanh) — raw float sums could clip at full mixer
+  gains; measured rack peak now 0.955 with kick + mallet + full sends.
+- LGPL compressor skipped deliberately (MIT limiter available if needed).
+
+Offline harness renders every new variant at healthy levels. Validation:
+**434 unit tests green**, **6/6 integration green** (timing gates unchanged
+on the stereo master path).
+
 ## How to rebuild the extension
 
 ```

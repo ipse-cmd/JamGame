@@ -209,7 +209,7 @@ func _validate_cmd(sender: int, track: int, op: String, args: Dictionary) -> boo
 			return _int_in(args, "bar", 0, 3) and _int_in(args, "degree", 0, 6) and args.size() == 2
 		[TRACK_CHORDS, "comp"]:
 			return _int_in(args, "comp", 0, 4) and _int_in(args, "voicing", 0, 2) \
-				and _int_in(args, "synth", 0, 2) and args.size() == 3
+				and _int_in(args, "synth", 0, 4) and args.size() == 3
 		[TRACK_CHORDS, "clear_slot"]:
 			return _int_in(args, "bar", 0, 3) and args.size() == 1
 		[TRACK_DRUMS, "clear_all"], [TRACK_DRUMS, "cancel"], \

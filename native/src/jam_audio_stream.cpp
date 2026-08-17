@@ -117,6 +117,8 @@ void JamAudioStreamPlayback::fire(const JamAudioStream::TriggerEvent &ev) {
 		case JamAudioStream::VOICE_BASS: rack_.bass.Allocate().NoteOn(ev.midi, ev.velocity, ev.duration); break;
 		case JamAudioStream::VOICE_PLUCK: rack_.pluck.Allocate().Pluck(ev.midi, ev.velocity, 0.5f); break;
 		case JamAudioStream::VOICE_POLY: rack_.poly.Allocate().NoteOn(ev.midi, ev.velocity, ev.duration, ev.variant); break;
+		case JamAudioStream::VOICE_STRING: rack_.string.Allocate().Pluck(ev.midi, ev.velocity); break;
+		case JamAudioStream::VOICE_MALLET: rack_.mallet.Allocate().Strike(ev.midi, ev.velocity); break;
 		default: break;
 	}
 }
@@ -207,9 +209,10 @@ int32_t JamAudioStreamPlayback::_mix(AudioFrame *p_buffer, float p_rate_scale, i
 				fire(pending[idx].ev);
 				idx++;
 			}
-			const float smp = rack_.Render(gains);
-			p_buffer[i].left += smp;
-			p_buffer[i].right += smp;
+			float l = 0.0f, r = 0.0f;
+			rack_.Render(gains, &l, &r);
+			p_buffer[i].left += l;
+			p_buffer[i].right += r;
 		}
 	}
 

@@ -34,7 +34,7 @@ const PATTERNS := [
 ]
 
 const VOICINGS := ["Close", "Open", "Wide"]
-const SYNTHS := ["Pluck", "Poly Pad", "Poly Keys"]
+const SYNTHS := ["Pluck", "Poly Pad", "Poly Keys", "String", "Mallet"]
 
 
 static func synth_name(s: int) -> String:
