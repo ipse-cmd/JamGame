@@ -43,9 +43,13 @@ var edits := 0
 var ops_sent := 0
 var authored := {} # "(epoch)/(role)/(target_loop)" -> true
 
+const TRACK_KEYS := ["drums", "bass", "chords"]
+
 var _last_seen_loop := -1
 var _last_version := -1
 var _windows_since_change := 0
+var _track_versions := {} # track -> last seen version_id (all tracks, for attribution)
+var _last_change_by := {"drums": "none", "bass": "none", "chords": "none"}
 var _pending_commit_key = null # DecisionKey of the last edit awaiting its version bump
 var _op_seq := 0 # client-assigned op sequence IDs (log-side only for now)
 var _history := History.new() # per-loop committed snapshots for temporal features
@@ -74,6 +78,17 @@ func on_loop(loop: int) -> void:
 		room.model_for(TRACK_BASS).version_id,
 		room.model_for(TRACK_CHORDS).version_id,
 	])
+
+	# Change attribution: only the participant knows which ops were its own. A
+	# bass bump is "self" iff we authored the edit awaiting resolution; every
+	# other track's bump (and every bump in shadow mode) is "other".
+	for t in 3:
+		var m = room.model_for(t)
+		if not _track_versions.has(t):
+			_track_versions[t] = m.version_id
+		elif m.version_id != _track_versions[t]:
+			_track_versions[t] = m.version_id
+			_last_change_by[TRACK_KEYS[t]] = "self" if t == role and _pending_commit_key != null else "other"
 
 	var net = room.net
 	if net != null and net.active and not net.can_edit(role) and not shadow:
@@ -104,7 +119,7 @@ func on_loop(loop: int) -> void:
 	# observation (features included) must not contain the bot's own edit.
 	var obs := BotObservation.build_bass(
 		room.model_for(TRACK_BASS), room.model_for(TRACK_DRUMS), room.model_for(TRACK_CHORDS),
-		target, _windows_since_change, _history)
+		target, _windows_since_change, _history, _last_change_by.duplicate())
 	var seed_value := DecisionLog.derive_seed(session_seed, epoch, role, target)
 
 	var t0 := Time.get_ticks_usec()

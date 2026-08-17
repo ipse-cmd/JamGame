@@ -33,6 +33,8 @@ var holds := 0
 var edit_frames := 0
 var ops_captured := 0
 
+const TRACK_KEYS := ["drums", "bass", "chords"]
+
 var _last_seen_loop := -1
 var _last_version := -1
 var _windows_since_change := 0
@@ -40,6 +42,9 @@ var _op_seq := 0
 var _input_events := 0
 var _history := History.new()
 var _win = null # open window: {key, obs, ops, t0, last_margin, focused}
+var _track_versions := {} # track -> last seen version_id (attribution)
+var _last_change_by := {"drums": "none", "bass": "none", "chords": "none"}
+var _authored_since := {0: false, 1: false, 2: false} # local ops since last bump, per track
 
 
 func _process(_delta: float) -> void:
@@ -65,6 +70,18 @@ func on_loop(loop: int) -> void:
 	])
 	_flush_window()
 
+	# Change attribution: a track's bump is "self" iff the local player
+	# dispatched ops into it since the previous bump (edit_dispatched fires
+	# only for locally ACCEPTED edits, so this is the player's own authorship).
+	for t in 3:
+		var m = room.model_for(t)
+		if not _track_versions.has(t):
+			_track_versions[t] = m.version_id
+		elif m.version_id != _track_versions[t]:
+			_track_versions[t] = m.version_id
+			_last_change_by[TRACK_KEYS[t]] = "self" if _authored_since.get(t, false) else "other"
+			_authored_since[t] = false
+
 	var model = room.model_for(role)
 	if model.version_id != _last_version:
 		_last_version = model.version_id
@@ -81,7 +98,7 @@ func on_loop(loop: int) -> void:
 		"key": DecisionLog.make_key(epoch, role, target, model.version_id),
 		"obs": BotObservation.build_bass(
 			room.model_for(TRACK_BASS), room.model_for(TRACK_DRUMS), room.model_for(TRACK_CHORDS),
-			target, _windows_since_change, _history),
+			target, _windows_since_change, _history, _last_change_by.duplicate()),
 		"ops": [],
 		"t0": Time.get_ticks_usec(),
 		"last_margin": -1.0,
@@ -94,6 +111,7 @@ func on_loop(loop: int) -> void:
 ## Fed by the room's edit_dispatched signal (or directly by tests): every op the
 ## local player successfully dispatched, in raw submission order.
 func _on_edit_dispatched(track: int, op: String, args: Dictionary) -> void:
+	_authored_since[track] = true # attribution: this player touched the track
 	if _win == null or track != role:
 		return
 	_op_seq += 1

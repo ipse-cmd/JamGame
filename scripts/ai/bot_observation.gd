@@ -23,7 +23,12 @@ extends RefCounted
 
 # v3: bass lanes reinterpreted as chord-relative roles (R/3/5/7/O);
 # features moved to FEATURES_SCHEMA 2 (semantic + sounding bass families).
-const OBSERVATION_SCHEMA := 3
+# v4: Phase 2.5 gaps found by PLAYING — last_change_by (per-track change
+# attribution: the human edited mid-phrase where the policy's breathe-hold
+# assumed "someone changed my line"; self vs other is local knowledge every
+# participant has) and bass_notes_prev (the previous committed pattern, for
+# revert/continuation reasoning).
+const OBSERVATION_SCHEMA := 4
 
 const Features := preload("res://scripts/core/jam_features.gd")
 
@@ -41,8 +46,10 @@ const VOICE_PERC := 3
 ## windows_since_change: decision windows since the bass line last actually
 ## changed (committed version bump). history (JamHistory or null) contributes
 ## the temporal section; without it, temporal is {} — absent, not fabricated.
+## last_change_by: per-track attribution ("self"/"other"/"none") maintained by
+## the OBSERVER (bot/recorder) — only the participant knows which ops were its own.
 static func build_bass(bass_model, drums_model, chords_model, target_loop: int,
-		windows_since_change: int, history = null) -> Dictionary:
+		windows_since_change: int, history = null, last_change_by = null) -> Dictionary:
 	var bass_line = state_at(bass_model, target_loop)
 	var drum_pattern = state_at(drums_model, target_loop)
 	var chord_track = state_at(chords_model, target_loop)
@@ -57,6 +64,14 @@ static func build_bass(bass_model, drums_model, chords_model, target_loop: int,
 		"chords": chord_track.to_dict(),
 	}
 
+	# The bass line as it was before its last observed change, or null when
+	# unobserved (no history, no change yet, or evicted from the ring).
+	var bass_notes_prev = null
+	if history != null:
+		var pre: Dictionary = history.state_before_change(TRACK_BASS)
+		if pre.has("bass"):
+			bass_notes_prev = pre.bass.get("notes", {}).duplicate()
+
 	return {
 		"observation_schema": OBSERVATION_SCHEMA,
 		"role": TRACK_BASS,
@@ -70,6 +85,9 @@ static func build_bass(bass_model, drums_model, chords_model, target_loop: int,
 		"hat_steps": voice_steps[VOICE_HAT],
 		"drum_density": float(drum_pattern.hits.size()) / float(drum_pattern.num_steps * 4),
 		"windows_since_change": windows_since_change,
+		"last_change_by": last_change_by if last_change_by != null \
+			else {"drums": "none", "bass": "none", "chords": "none"},
+		"bass_notes_prev": bass_notes_prev,
 		"features": Features.extract(state),
 		"temporal": history.temporal() if history != null else {},
 	}
@@ -94,6 +112,11 @@ static func from_json(d: Dictionary) -> Dictionary:
 	for k in d.get("bass_notes", {}):
 		notes[int(str(k))] = int(d.bass_notes[k])
 	obs.bass_notes = notes
+	if d.get("bass_notes_prev") is Dictionary:
+		var prev_notes := {}
+		for k in d.bass_notes_prev:
+			prev_notes[int(str(k))] = int(d.bass_notes_prev[k])
+		obs.bass_notes_prev = prev_notes
 	for list_key in ["kick_steps", "snare_steps", "hat_steps"]:
 		var ints: Array = []
 		for v in d.get(list_key, []):

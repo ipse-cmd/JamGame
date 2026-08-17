@@ -598,6 +598,23 @@ func _test_bot_peer() -> void:
 	check(zero_op_frames == run_bot.holds, "every HOLD is a recorded zero-op frame")
 	check(commits >= 1, "committed edits produce commit resolution events")
 	check(analyzed == frames, "every frame carries JamFeatures measurements")
+
+	# Attribution (schema 4): the bot's own committed edit is "self"; an
+	# externally bumped drum version is "other".
+	var events2 := DecisionLog.read_events(log.path)
+	var saw_commit := false
+	var self_after_commit := false
+	for e in events2:
+		if e.type == "commit":
+			saw_commit = true
+		elif e.type == "decision" and saw_commit:
+			self_after_commit = e.observation.last_change_by.bass == "self"
+			break
+	check(self_after_commit, "bot's own committed edit attributes as self")
+	run_bot.decision_log = null # log already closed
+	run_room.drums.version_id += 1 # someone else's edit arrives
+	run_bot.on_loop(9)
+	check(run_bot._last_change_by.drums == "other", "foreign version bump attributes as other")
 	DirAccess.remove_absolute(log.path)
 	bot.free()
 	run_bot.free()
@@ -648,6 +665,10 @@ func _test_human_recorder() -> void:
 		"deliberate hold is a zero-op frame")
 	check(int(f1.decision_key.state_version) > int(f0.decision_key.state_version),
 		"post-commit window observes the bumped version")
+	check(f1.observation.last_change_by.bass == "self",
+		"the player's own committed edit attributes as self")
+	check(f1.observation.last_change_by.drums == "none",
+		"authored-but-uncommitted foreign track stays none")
 	DirAccess.remove_absolute(log.path)
 
 	# Not this player's seat -> nothing recorded.
@@ -827,6 +848,11 @@ func _test_temporal_features() -> void:
 	h.push(4, changed, [0, 1, 0])
 	check(h.entries.size() == n, "re-pushing the same loop is ignored")
 
+	# Previous committed pattern: the state just before the last observed change.
+	check(h.state_before_change(1).bass == state.bass,
+		"state_before_change returns the pre-change bass state")
+	check(h.state_before_change(0) == {}, "no observed drum change -> no previous state")
+
 
 func _test_observation_contract() -> void:
 	var models := _mk_models()
@@ -838,12 +864,41 @@ func _test_observation_contract() -> void:
 			"chords": models.chords.active.to_dict(),
 		}, [0, 0, 0])
 	var obs := BotObservation.build_bass(models.bass, models.drums, models.chords, 3, 1, h)
-	check(obs.observation_schema == 3, "observation carries its schema version")
+	check(obs.observation_schema == 4, "observation carries its schema version")
 	check(obs.features.has("kick_bass_alignment"), "observation carries snapshot features")
 	check(obs.temporal.has("loops_since_bass_change") and obs.temporal.has("bass_event_jaccard_prev_1"),
 		"observation carries temporal context")
 	check(BotObservation.build_bass(models.bass, models.drums, models.chords, 3, 1).temporal == {},
 		"no history -> temporal absent, not fabricated")
+
+	# v4 fields: attribution defaults to "none" when the observer supplies none;
+	# no observed change -> no previous pattern (absent, not fabricated).
+	check(obs.last_change_by == {"drums": "none", "bass": "none", "chords": "none"},
+		"attribution defaults to none, not fabricated")
+	check(obs.bass_notes_prev == null, "still history -> no previous committed pattern")
+	check(BotObservation.build_bass(models.bass, models.drums, models.chords, 3, 1,
+		null, {"drums": "other", "bass": "self", "chords": "none"}).last_change_by.bass == "self",
+		"observer-supplied attribution flows through")
+
+	# A bass change enters history -> the observation exposes the PRE-change line.
+	var old_notes: Dictionary = models.bass.active.notes.duplicate()
+	var h2 := History.new()
+	for loop in 3:
+		h2.push(loop, {
+			"drums": models.drums.active.to_dict(),
+			"bass": models.bass.active.to_dict(),
+			"chords": models.chords.active.to_dict(),
+		}, [0, 0, 0])
+	h2.push(3, {
+		"drums": models.drums.active.to_dict(),
+		"bass": {"num_steps": 16, "notes": {2: 1}},
+		"chords": models.chords.active.to_dict(),
+	}, [0, 1, 0])
+	var obs2 := BotObservation.build_bass(models.bass, models.drums, models.chords, 4, 0, h2)
+	check(obs2.bass_notes_prev == old_notes, "previous committed bass line surfaces after a change")
+	var round_tripped := BotObservation.from_json(JSON.parse_string(JSON.stringify(obs2)))
+	check(round_tripped.bass_notes_prev == old_notes,
+		"bass_notes_prev rehydrates to int keys through JSON")
 
 	# The serialization contract: encode -> decode -> encode is a byte-identical
 	# fixed point (sidesteps float-precision comparison entirely).

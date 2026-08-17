@@ -406,6 +406,49 @@ recorders; shadow never dispatches, all 8 windows logged with proposals,
 stale pressure forces proposals, zero commit events). **6/6 integration
 green.**
 
+## Observation schema 4 — the gaps the 2.5 experiment actually found (2026-08-17)
+
+The first live human-vs-shadow session (27 human windows, 28 shadow proposals
+over identical observations) produced two concrete divergences, and both were
+observation gaps predicted by the design docs:
+
+1. The human edited EXACTLY where the policy is forbidden to: immediately
+   after changing the chords, continuing to sculpt bass across the
+   breathe-hold windows. The policy cannot distinguish "someone changed my
+   line" (rest) from "I am mid-phrase" (continue) — it lacked **change
+   attribution**.
+2. The human's only edit trigger was harmony; the shadow's only trigger was
+   its staleness clock. (Policy-side consumption is 3A's job — the rule bot
+   stays baseline — but the observation must carry the inputs.)
+
+Schema 4 adds, built by the observers because only a participant knows which
+ops were its own (op attribution is not on the wire — the server replicates
+state, not ops):
+
+- **`last_change_by`**: per-track `"self" | "other" | "none"`. BotPeer: a bass
+  bump is self iff its own edit was awaiting resolution (shadow mode: always
+  other). HumanRecorder: a bump is self iff the local player dispatched ops
+  into that track since the previous bump (`edit_dispatched` fires only for
+  locally accepted edits).
+- **`bass_notes_prev`**: the previous committed bass line (from
+  `JamHistory.state_before_change`, a storage read), null when unobserved or
+  evicted — for revert/continuation reasoning. Rehydrated to int keys by
+  `from_json`; the fixed-point and policy-replay contract tests still pin the
+  round trip.
+
+Also recorded from the session: attention proxies cleanly separated 4
+deliberate listening holds (focused, input rising) from a 14-window AFK tail
+(unfocused, zero input) — without which "hold forever" would read as musical
+taste. Known shadow artifact confirmed: proposals never resolve, so the
+shadow's staleness clock never resets and it proposes every window once
+stale; preference-pair extraction must weight for this.
+
+Validation: **272 unit tests green** (+11: state_before_change storage read,
+attribution defaults absent-not-fabricated, observer-supplied attribution
+flow-through, pre-change line surfacing + int-key rehydration, bot
+self-after-commit and foreign-bump-is-other, human self-attribution with
+authored-but-uncommitted tracks staying none). **6/6 integration green.**
+
 ## How to rebuild the extension
 
 ```

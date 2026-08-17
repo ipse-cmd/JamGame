@@ -80,6 +80,15 @@ func temporal() -> Dictionary:
 	return out
 
 
+## The stored state just BEFORE track t's last observed change (the "previous
+## committed pattern"), or {} when no change was observed or the pre-change
+## entry has been evicted — absent, not fabricated. Storage read only.
+func state_before_change(t: int) -> Dictionary:
+	if _last_change_loop[t] < 0:
+		return {}
+	return _at_loop(_last_change_loop[t] - 1).get("state", {})
+
+
 func _at_loop(loop: int) -> Dictionary:
 	for e in entries:
 		if e.loop == loop:
