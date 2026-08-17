@@ -670,6 +670,40 @@ rock 24% (the generic style — scatters everywhere); pop↔soul overlap; jazz
 styles have identity — it is not washing performances into generic
 accompaniment. Profiles are cleared to become 3E scoring priors.
 
+## Phase 3E — the jazz style prior enters the evaluator (2026-08-17)
+
+`scripts/ai/style_prior.gd` + `data/style_profiles/jazz.json` (the corpus
+profile, committed and versioned with the game — replay provenance) +
+intent_bass_policy v2. A deliberately SMALL evaluator change:
+
+    final = interaction + W_STYLE(0.35) * confidence_factor * style_fit
+
+Style biases among reasonable responses; it never generates notes, never
+alters the candidate set, never outranks interaction. Four dimensions stay
+separate in every log (degree / beat-position / interval / transition fit)
+and collapse only at the end — a weird choice is inspectable, and the
+dimensions tell us which corpus features matter perceptually.
+
+Scoring rules, each a pinned invariant:
+- per-EVENT normalization (sparse vs dense candidates compare fairly);
+- Laplace smoothing (zero-count in 53k events = "rare", never -inf);
+- SOFT MANIFOLD: fits are nats-above-chance capped at 0.6 — "reasonably
+  jazz-like" earns full credit, "extremely corpus-common" earns no extra
+  (common != good: R R R R must not win on typicality), atypical floors at -2;
+- missing profile data contributes EXACTLY zero (no substitute masquerading);
+- w_style = 0 or absent profile -> byte-identical pre-3E decisions;
+- exact provenance logged per decision (style_id, source, n_events, w_style);
+- BOTH rankings (interaction-only vs styled) computed from the same candidate
+  set and logged every frame — the ablation is built into the corpus, and
+  disagreement frames are flagged for blind-listening export.
+
+Direction sanity pinned from measurements, not opinion: the prior prefers
+on-beat placement and stepwise motion because FiloBass does. V2 lanes stay
+deliberately parked so the next duet tests style-aware SELECTION with the
+vocabulary fixed — one architectural change at a time.
+
+Validation: **371 unit tests green** (+21). **6/6 integration green.**
+
 ## How to rebuild the extension
 
 ```

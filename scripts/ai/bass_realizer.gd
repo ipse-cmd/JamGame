@@ -15,6 +15,7 @@ extends RefCounted
 # validation (bass place, step 0..15, degree 0..4).
 
 const Features := preload("res://scripts/core/jam_features.gd")
+const StylePrior := preload("res://scripts/ai/style_prior.gd")
 
 const REALIZER_NAME := "bass_realizer"
 const REALIZER_VERSION := 1
@@ -32,20 +33,46 @@ const DENSITY_MAX := 6
 const MAX_REVERT_OPS := 8
 
 
-## Produce the chosen edit for an intent. Returns
-## {intent, candidate, ops, scores: [{name, score}]} — ops empty = HOLD.
-static func realize(obs: Dictionary, intent: String, seed_value: int) -> Dictionary:
+## Produce the chosen edit for an intent, optionally biased by a style prior
+## (3E). style_bass = a profile's bass section or null; w_style scales its
+## capped, per-event-normalized fit. Invariants (pinned): null profile or
+## w_style == 0 -> byte-identical to the interaction-only decision; the style
+## scorer never creates ops and never alters the candidate set; BOTH rankings
+## are computed from the SAME candidates and returned (the ablation is in
+## every log line).
+static func realize(obs: Dictionary, intent: String, seed_value: int,
+		style_bass = null, w_style := 0.0) -> Dictionary:
 	var cands := candidates(obs, intent, seed_value)
 	var scores: Array = []
-	var best = null
+	var best = null # styled winner (== interaction winner when style is inert)
+	var best_plain = null
 	for c in cands:
-		var s := evaluate(obs, intent, c)
-		scores.append({"name": c.name, "score": s})
-		if best == null or s > best.score:
-			best = {"name": c.name, "ops": c.ops, "score": s}
+		var interaction := evaluate(obs, intent, c)
+		var final := interaction
+		var entry := {"name": c.name, "score": interaction}
+		if style_bass != null and w_style > 0.0 and not c.ops.is_empty():
+			var style = StylePrior.score_bass(style_bass, _simulate(_notes(obs), c.ops),
+				obs.get("chord_slots", []))
+			if style != null:
+				entry["style"] = style
+				final = interaction + w_style * style.combined
+		entry["final"] = final
+		scores.append(entry)
+		if best == null or final > best.score:
+			best = {"name": c.name, "ops": c.ops, "score": final}
+		if best_plain == null or interaction > best_plain.score:
+			best_plain = {"name": c.name, "score": interaction}
 	if best == null:
 		best = {"name": "hold", "ops": [], "score": 0.0}
-	return {"intent": intent, "candidate": best.name, "ops": best.ops, "scores": scores}
+		best_plain = {"name": "hold", "score": 0.0}
+	return {
+		"intent": intent,
+		"candidate": best.name,
+		"ops": best.ops,
+		"scores": scores,
+		"interaction_choice": best_plain.name,
+		"style_disagreement": best.name != best_plain.name,
+	}
 
 
 ## Candidate sets per intent. Every set includes "hold" — a bandmate may

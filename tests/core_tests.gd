@@ -23,6 +23,7 @@ const Features := preload("res://scripts/core/jam_features.gd")
 const Analysis := preload("res://scripts/core/jam_analysis.gd")
 const IntentPolicy := preload("res://scripts/ai/intent_policy.gd")
 const Realizer := preload("res://scripts/ai/bass_realizer.gd")
+const StylePrior := preload("res://scripts/ai/style_prior.gd")
 const IntentBassPolicy := preload("res://scripts/ai/intent_bass_policy.gd")
 const History := preload("res://scripts/core/jam_history.gd")
 const HumanRecorder := preload("res://scripts/ai/human_recorder.gd")
@@ -54,6 +55,7 @@ func _initialize() -> void:
 	_test_jam_analysis()
 	_test_intent_policy()
 	_test_bass_realizer()
+	_test_style_prior()
 	_test_intent_bass_policy()
 	_test_pointer_picking()
 	_test_human_recorder()
@@ -1199,6 +1201,77 @@ func _test_bass_realizer() -> void:
 	check(Realizer.realize(dense, "HOLD", 7).ops.is_empty(), "HOLD realizes to nothing")
 	check(not Realizer.realize(dense, "VARY", 7).scores.is_empty(),
 		"realization reports candidate scores (the 3E swap point)")
+
+
+func _test_style_prior() -> void:
+	var profile = StylePrior.load_profile("res://data/style_profiles/jazz.json")
+	check(profile != null and profile.style_id == "jazz"
+		and profile.roles.bass.confidence == "HIGH",
+		"committed jazz profile loads with provenance")
+	var bass: Dictionary = profile.roles.bass.profile
+
+	var models := _mk_models()
+	var mid_line := BassLine.new()
+	mid_line.notes = {0: 0, 4: 2, 6: 3, 8: 0, 12: 4}
+	var obs := BotObservation.build_bass(CommitModel.new(mid_line), models.drums, models.chords, 1, 1)
+
+	# INVARIANT: w_style = 0 and missing profile are byte-identical to the
+	# interaction-only decision; style never alters the candidate set.
+	var plain := JSON.stringify(Realizer.realize(obs, "VARY", 7))
+	check(JSON.stringify(Realizer.realize(obs, "VARY", 7, null, 0.35)) == plain,
+		"missing profile -> style contributes exactly zero")
+	check(JSON.stringify(Realizer.realize(obs, "VARY", 7, bass, 0.0)) == plain,
+		"w_style = 0 -> byte-identical to pre-3E decisions")
+	var names_plain: Array = []
+	for c in Realizer.candidates(obs, "VARY", 7):
+		names_plain.append(c.name)
+	var styled := Realizer.realize(obs, "VARY", 7, bass, 0.35)
+	var names_styled: Array = []
+	for s in styled.scores:
+		names_styled.append(s.name)
+	check(names_styled == names_plain, "style scorer cannot alter candidate generation")
+	check(JSON.stringify(Realizer.realize(obs, "VARY", 7, bass, 0.35)) == JSON.stringify(styled),
+		"styled decisions are deterministic")
+	for op in styled.ops:
+		check(_valid_bass_op(op), "styled decisions emit only legal ops")
+	check(styled.has("interaction_choice") and styled.has("style_disagreement"),
+		"both rankings ride in every realization (the ablation is in the log)")
+
+	# Smoothing + soft manifold: rare vocab stays finite; every dimension is
+	# capped above (extreme typicality earns no extra) and floored below.
+	var weird := {1: 3, 3: 3, 5: 3, 7: 3} # consecutive 7ths on offbeat 16ths
+	var wfit = StylePrior.score_bass(bass, weird, [0, 5, 3, 4])
+	check(wfit != null, "corpus-rare vocabulary scores finite, never -inf")
+	var typical := {0: 0, 4: 0, 8: 0, 12: 0} # maximal corpus typicality: all roots on beats
+	var tfit = StylePrior.score_bass(bass, typical, [0, 5, 3, 4])
+	for f in [wfit, tfit]:
+		for k in f:
+			check(f[k] <= StylePrior.CAP_TYPICAL + 0.0001 and f[k] >= StylePrior.FLOOR - 0.0001,
+				"style fit '%s' respects the soft-manifold cap and floor" % k)
+
+	# Direction sanity from the corpus: jazz walking is on the beat and
+	# stepwise — the prior must actually encode that.
+	var onbeat = StylePrior.score_bass(bass, {0: 0, 4: 2, 8: 0, 12: 2}, [0, 5, 3, 4])
+	var offbeat = StylePrior.score_bass(bass, {1: 0, 5: 2, 9: 0, 13: 2}, [0, 5, 3, 4])
+	check(onbeat.beat_position_fit > offbeat.beat_position_fit,
+		"corpus prior prefers on-beat placement (measured jazz, not opinion)")
+	var stepwise = StylePrior.score_bass(bass, {0: 0, 4: 1, 8: 2, 12: 1}, [0, 0, 0, 0])
+	var leapy = StylePrior.score_bass(bass, {0: 0, 4: 4, 8: 0, 12: 4}, [0, 0, 0, 0])
+	check(stepwise.interval_fit > leapy.interval_fit,
+		"corpus prior prefers stepwise motion over octave leaps")
+
+	# Missing data contributes zero, not a substitute.
+	check(StylePrior.score_bass({}, {0: 0}, [0, 5, 3, 4]) == null,
+		"empty profile section -> null, no generic substitute")
+
+	# The full policy carries provenance and stays JSON-replayable with style on.
+	var real := IntentBassPolicy.realization(obs, 7)
+	check(real.style != null and real.style.style_id == "jazz"
+		and real.style.bass_source.begins_with("FiloBass") and real.style.w_style > 0.0,
+		"decisions log exact style provenance")
+	var wire := BotObservation.from_json(JSON.parse_string(JSON.stringify(obs)))
+	check(JSON.stringify(IntentBassPolicy.decide(wire, 7)) == JSON.stringify(IntentBassPolicy.decide(obs, 7)),
+		"styled pipeline replays identically through the JSON boundary")
 
 
 func _test_intent_bass_policy() -> void:
