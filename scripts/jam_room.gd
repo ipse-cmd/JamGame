@@ -366,14 +366,19 @@ func _on_schedule_sixteenth(abs_step: int, at_sample: int) -> void:
 	for h in rendered:
 		audio.schedule_drum(at_sample + g_off,
 			h.voice, Groove.apply_velocity(h.velocity, drum_state.groove, sb), h.accent)
+	# Swing is a property of the SHARED grid: the groove's timing offset moves
+	# every instrument's step together (an offbeat bass note swings WITH the
+	# hats, or they flam). Velocity shaping stays drum-only — accent contours
+	# are drum-pattern vocabulary, not something to smear across roles.
 	if bass.active.notes.has(sb):
-		audio.schedule_bass(at_sample,
+		audio.schedule_bass(at_sample + g_off,
 			Harmony.chord_tone_midi(BASS_ROOT_MIDI, chords.active.slots[bar], bass.active.notes[sb]),
 			0.8, _bass_gate_seconds(sb))
 	var deg: int = chords.active.slots[bar]
 	if deg >= 0:
 		# Chord PERFORMANCE: the comp pattern decides which steps strike, the
-		# voicing spreads the triad, simultaneous voices roll ~8ms low→high.
+		# voicing spreads the triad, simultaneous voices roll ~8ms low→high
+		# (the roll stacks on top of the groove offset — intra-hit spread).
 		var triad := Harmony.triad_midi(CHORD_ROOT_MIDI, deg)
 		var roll := int(ChordComp.ROLL_SECONDS * audio.mix_rate)
 		var sec_per_step := (60.0 / transport.bpm) / 4.0
@@ -381,9 +386,9 @@ func _on_schedule_sixteenth(abs_step: int, at_sample: int) -> void:
 			var dur: float = float(ev.dur_steps) * sec_per_step * 0.95
 			if ev.roll:
 				for i in ev.midis.size():
-					audio.schedule_chord(at_sample + i * roll, [ev.midis[i]], ev.vel, dur, chords.active.synth)
+					audio.schedule_chord(at_sample + g_off + i * roll, [ev.midis[i]], ev.vel, dur, chords.active.synth)
 			else:
-				audio.schedule_chord(at_sample, ev.midis, ev.vel, dur, chords.active.synth)
+				audio.schedule_chord(at_sample + g_off, ev.midis, ev.vel, dur, chords.active.synth)
 
 
 ## Gate length for the bass note at step sb: hold until the next occupied step
