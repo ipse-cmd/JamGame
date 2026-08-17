@@ -10,6 +10,7 @@ var slots: Array = [-1, -1, -1, -1] # degree 0..6, or -1 for empty
 # voicing render the chords (JamChordComp). WHAT to play vs HOW to play it.
 var comp := 0
 var voicing := 0
+var synth := 0 # 0 Pluck, 1 Poly Pad, 2 Poly Keys (JamChordComp.SYNTHS)
 
 
 # Untyped on purpose — class_name self-references need the editor's global class cache,
@@ -19,26 +20,30 @@ func clone():
 	c.slots = slots.duplicate()
 	c.comp = comp
 	c.voicing = voicing
+	c.synth = synth
 	return c
 
 
 func equals(other) -> bool:
-	return slots == other.slots and comp == other.comp and voicing == other.voicing
+	return slots == other.slots and comp == other.comp \
+		and voicing == other.voicing and synth == other.synth
 
 
 func to_dict() -> Dictionary:
-	return {"slots": slots.duplicate(), "comp": comp, "voicing": voicing}
+	return {"slots": slots.duplicate(), "comp": comp, "voicing": voicing, "synth": synth}
 
 
 func from_dict(d: Dictionary) -> void:
 	slots = d.get("slots", [-1, -1, -1, -1]).duplicate()
 	comp = int(d.get("comp", 0))
 	voicing = int(d.get("voicing", 0))
+	synth = int(d.get("synth", 0))
 
 
-func set_performance(p_comp: int, p_voicing: int) -> void:
+func set_performance(p_comp: int, p_voicing: int, p_synth := 0) -> void:
 	comp = maxi(0, p_comp)
 	voicing = maxi(0, p_voicing)
+	synth = maxi(0, p_synth)
 
 
 func cycle_slot(bar: int, delta: int) -> void:

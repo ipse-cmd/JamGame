@@ -263,6 +263,112 @@ private:
 };
 
 /**
+ * Poly virtual-analog voice — clean-room implementation over DaisySP,
+ * architecture after PolyAnalog by Alexis ZBIK (github.com/alexiszbik/polyanalog,
+ * upstream is unlicensed so NO code is copied): 2 VCOs (supersaw/saw/square+PW),
+ * osc mix, octave/fifth tuning + fine detune on VCO B, noise mix, ADSR, and a
+ * resonant low-pass swept by the envelope. The hardware original was 4-voice
+ * (Daisy Seed); the desktop pool runs 10. Presets: 0 Pad (supersaw, slow
+ * attack, long release), 1 Keys (saw+square, fast, brighter).
+ */
+class PolyVoice {
+public:
+	static constexpr int kSupersaw = 3;
+
+	void Init(float sample_rate) {
+		sr_ = std::max(1.0f, sample_rate);
+		for (int i = 0; i < kSupersaw; ++i) {
+			osc_a_[i].Init(sr_);
+			osc_a_[i].SetWaveform(daisysp::Oscillator::WAVE_POLYBLEP_SAW);
+			osc_a_[i].SetAmp(1.0f);
+		}
+		osc_b_.Init(sr_);
+		osc_b_.SetAmp(1.0f);
+		env_.Init(sr_);
+		filter_.Init(sr_);
+		noise_state_ = 0x2468ace1u;
+	}
+
+	void NoteOn(int32_t midi, float velocity, float duration_seconds, int32_t preset) {
+		const float f = midi_to_hz(midi);
+		if (((preset % 2) + 2) % 2 == 0) { // Pad: supersaw A + detuned saw B an octave down
+			n_saw_ = kSupersaw;
+			for (int i = 0; i < n_saw_; ++i) {
+				const float det = 1.0f + 0.007f * (float(i) - 1.0f); // -0.7%, 0, +0.7%
+				osc_a_[i].SetFreq(f * det);
+			}
+			osc_b_.SetWaveform(daisysp::Oscillator::WAVE_POLYBLEP_SAW);
+			osc_b_.SetFreq(f * 0.5f * 1.003f);
+			mix_ = 0.5f;
+			noise_mix_ = 0.02f;
+			env_.SetAttackTime(0.08f);
+			env_.SetDecayTime(0.05f);
+			env_.SetSustainLevel(1.0f);
+			env_.SetReleaseTime(release_ = 0.35f);
+			lp_base_ = 1200.0f;
+			lp_env_ = 900.0f;
+			filter_.SetRes(0.15f);
+		} else { // Keys: single saw + square, snappier and brighter
+			n_saw_ = 1;
+			osc_a_[0].SetFreq(f);
+			osc_b_.SetWaveform(daisysp::Oscillator::WAVE_POLYBLEP_SQUARE);
+			osc_b_.SetPw(0.4f);
+			osc_b_.SetFreq(f * 1.004f);
+			mix_ = 0.45f;
+			noise_mix_ = 0.0f;
+			env_.SetAttackTime(0.004f);
+			env_.SetDecayTime(0.12f);
+			env_.SetSustainLevel(0.6f);
+			env_.SetReleaseTime(release_ = 0.15f);
+			lp_base_ = 2400.0f;
+			lp_env_ = 1400.0f;
+			filter_.SetRes(0.2f);
+		}
+		amp_ = clamp01(velocity) / float(n_saw_ + 1);
+		const float dur = std::min(16.0f, std::max(0.02f, duration_seconds));
+		gate_ = std::max(1, (int32_t)std::lround(dur * sr_));
+		life_ = gate_ + (int32_t)std::lround((release_ + 0.05f) * sr_);
+	}
+
+	float Process() {
+		const bool gate = gate_ > 0;
+		if (gate) { --gate_; }
+		if (life_ > 0) { --life_; }
+		const float e = env_.Process(gate);
+		float a = 0.0f;
+		for (int i = 0; i < n_saw_; ++i) {
+			a += osc_a_[i].Process();
+		}
+		a /= float(n_saw_);
+		const float b = osc_b_.Process();
+		float s = a * (1.0f - mix_) + b * mix_;
+		if (noise_mix_ > 0.0f) {
+			noise_state_ ^= noise_state_ << 13;
+			noise_state_ ^= noise_state_ >> 17;
+			noise_state_ ^= noise_state_ << 5;
+			s += ((float(noise_state_) / 2147483648.0f) - 1.0f) * noise_mix_;
+		}
+		filter_.SetFreq(lp_base_ + lp_env_ * e);
+		filter_.Process(s);
+		return filter_.Low() * e * amp_ * 2.0f;
+	}
+
+	bool IsFinished() const { return life_ <= 0; }
+
+private:
+	float sr_ = 48000.0f;
+	int n_saw_ = 1;
+	float mix_ = 0.5f, noise_mix_ = 0.0f, amp_ = 0.0f;
+	float lp_base_ = 1200.0f, lp_env_ = 900.0f, release_ = 0.2f;
+	int32_t gate_ = 0, life_ = 0;
+	uint32_t noise_state_ = 0x2468ace1u;
+	daisysp::Oscillator osc_a_[kSupersaw];
+	daisysp::Oscillator osc_b_;
+	daisysp::Adsr env_;
+	daisysp::Svf filter_;
+};
+
+/**
  * Fixed-size polyphonic pool. TVoice must provide Init(sr), Process(), IsFinished().
  * Allocation prefers a free voice, else steals the oldest. Fixed arrays — no heap at runtime.
  */
@@ -321,6 +427,7 @@ struct VoiceRack {
 	VoicePool<PercVoice, 4> perc;
 	VoicePool<BassVoice, 4> bass;
 	VoicePool<PluckVoice, 16> pluck;
+	VoicePool<PolyVoice, 10> poly; // shares the Notes mixer slot with pluck
 
 	void Init(float sample_rate) {
 		kick.Init(sample_rate);
@@ -329,6 +436,7 @@ struct VoiceRack {
 		perc.Init(sample_rate);
 		bass.Init(sample_rate);
 		pluck.Init(sample_rate);
+		poly.Init(sample_rate);
 	}
 
 	/** gains: 6 per-pool user gains (the room mixer) on top of the base mix.
@@ -340,7 +448,7 @@ struct VoiceRack {
 			 + gains[2] * 0.25f * hat.Render()
 			 + gains[3] * 0.45f * perc.Render()
 			 + gains[4] * 0.35f * bass.Render()
-			 + gains[5] * 0.25f * pluck.Render();
+			 + gains[5] * 0.25f * (pluck.Render() + poly.Render());
 	}
 };
 

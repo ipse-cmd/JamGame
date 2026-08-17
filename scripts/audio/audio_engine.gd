@@ -14,7 +14,7 @@ extends Node
 #  procedural PCM tables, triggered immediately — frame-quantized timing, kept
 #  only so the project still runs without a compiled extension.
 
-enum Voice { KICK, SNARE, HAT, PERC, BASS, PLUCK }
+enum Voice { KICK, SNARE, HAT, PERC, BASS, PLUCK, POLY }
 
 const BASS_BASE_MIDI := 36 # bass table rendered at C2
 const PLUCK_BASE_MIDI := 60 # pluck table rendered at C4
@@ -108,9 +108,14 @@ func schedule_bass(at_sample: int, midi: int, velocity: float, duration := 0.25)
 	stream.schedule_note(at_sample, Voice.BASS, midi, clampf(velocity, 0.05, 1.0), duration, 0)
 
 
-func schedule_chord(at_sample: int, midis: Array, velocity: float) -> void:
+## synth: 0 = Karplus pluck (self-timing), 1/2 = poly virtual-analog presets
+## (Pad/Keys) with real gated durations.
+func schedule_chord(at_sample: int, midis: Array, velocity: float, duration := 1.0, synth := 0) -> void:
 	for midi in midis:
-		stream.schedule_note(at_sample, Voice.PLUCK, midi, clampf(velocity, 0.05, 1.0), 1.0, 0)
+		if synth == 0:
+			stream.schedule_note(at_sample, Voice.PLUCK, midi, clampf(velocity, 0.05, 1.0), 1.0, 0)
+		else:
+			stream.schedule_note(at_sample, Voice.POLY, midi, clampf(velocity, 0.05, 1.0), duration, synth - 1)
 
 
 func diagnostics() -> Dictionary:

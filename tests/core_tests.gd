@@ -1515,16 +1515,24 @@ func _test_chord_comp() -> void:
 
 	# Performance is commit-gated state on the chord track, like any edit.
 	var m := CommitModel.new(ChordTrack.new())
-	TrackOps.apply(m, TrackOps.TRACK_CHORDS, "comp", {"comp": 2, "voicing": 1}, 0)
-	check(m.pending.comp == 2 and m.pending.voicing == 1 and m.active.comp == 0,
+	TrackOps.apply(m, TrackOps.TRACK_CHORDS, "comp", {"comp": 2, "voicing": 1, "synth": 2}, 0)
+	check(m.pending.comp == 2 and m.pending.voicing == 1 and m.pending.synth == 2
+		and m.active.comp == 0,
 		"comp edits the pending buffer; active performs until the boundary")
 	var t := ChordTrack.new()
 	var u = t.clone()
-	u.set_performance(3, 2)
+	u.set_performance(3, 2, 1)
 	check(not t.equals(u), "performance changes are commit-relevant (equals sees them)")
 	var rt2 := ChordTrack.new()
 	rt2.from_dict(JSON.parse_string(JSON.stringify(u.to_dict())))
-	check(rt2.comp == 3 and rt2.voicing == 2, "performance survives replication")
+	check(rt2.comp == 3 and rt2.voicing == 2 and rt2.synth == 1, "performance survives replication")
+
+	# Durations ride each comp hit (gated synths hold; pluck self-times).
+	var pad := ChordComp.events_for_step(0, 0, 0, triad)
+	check(pad[0].dur_steps == 16, "Pad holds the whole bar")
+	check(ChordComp.events_for_step(4, 0, 4, triad)[0].dur_steps == 2, "Arp notes are short")
+	check(ChordComp.SYNTHS.size() == 3 and ChordComp.synth_name(1) == "Poly Pad",
+		"synth engines named for the UI")
 
 
 func _test_harmony() -> void:

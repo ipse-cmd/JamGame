@@ -16,22 +16,29 @@ const COMP_SCHEMA := 1
 const ROLL_SECONDS := 0.008
 const BASE_VELOCITY := 0.7 # comping sits quiet/wide (measured velocity bands)
 
-# hits: step (0..15 within the bar), vel (relative). "arp": hits cycle single
+# hits: step (0..15 within the bar), vel (relative), dur (sixteenths — gated
+# synths hold this long; the pluck self-times). "arp": hits cycle single
 # voiced notes (hit order = arp order) instead of striking the full voicing.
 const PATTERNS := [
-	{"name": "Pad", "hits": [{"step": 0, "vel": 1.0}]},
-	{"name": "Pulse", "hits": [{"step": 0, "vel": 1.0}, {"step": 8, "vel": 0.8}]},
+	{"name": "Pad", "hits": [{"step": 0, "vel": 1.0, "dur": 16}]},
+	{"name": "Pulse", "hits": [{"step": 0, "vel": 1.0, "dur": 8}, {"step": 8, "vel": 0.8, "dur": 8}]},
 	{"name": "Offbeat", "hits": [
-		{"step": 2, "vel": 0.7}, {"step": 6, "vel": 0.7},
-		{"step": 10, "vel": 0.7}, {"step": 14, "vel": 0.75}]},
-	{"name": "Charleston", "hits": [{"step": 0, "vel": 1.0}, {"step": 6, "vel": 0.7}]},
+		{"step": 2, "vel": 0.7, "dur": 2}, {"step": 6, "vel": 0.7, "dur": 2},
+		{"step": 10, "vel": 0.7, "dur": 2}, {"step": 14, "vel": 0.75, "dur": 2}]},
+	{"name": "Charleston", "hits": [{"step": 0, "vel": 1.0, "dur": 4}, {"step": 6, "vel": 0.7, "dur": 2}]},
 	{"name": "Arp", "arp": true, "hits": [
-		{"step": 0, "vel": 0.9}, {"step": 2, "vel": 0.6}, {"step": 4, "vel": 0.75},
-		{"step": 6, "vel": 0.6}, {"step": 8, "vel": 0.85}, {"step": 10, "vel": 0.6},
-		{"step": 12, "vel": 0.75}, {"step": 14, "vel": 0.6}]},
+		{"step": 0, "vel": 0.9, "dur": 2}, {"step": 2, "vel": 0.6, "dur": 2},
+		{"step": 4, "vel": 0.75, "dur": 2}, {"step": 6, "vel": 0.6, "dur": 2},
+		{"step": 8, "vel": 0.85, "dur": 2}, {"step": 10, "vel": 0.6, "dur": 2},
+		{"step": 12, "vel": 0.75, "dur": 2}, {"step": 14, "vel": 0.6, "dur": 2}]},
 ]
 
 const VOICINGS := ["Close", "Open", "Wide"]
+const SYNTHS := ["Pluck", "Poly Pad", "Poly Keys"]
+
+
+static func synth_name(s: int) -> String:
+	return SYNTHS[clampi(s, 0, SYNTHS.size() - 1)]
 
 
 static func pattern_name(comp: int) -> String:
@@ -67,7 +74,9 @@ static func events_for_step(comp: int, voicing: int, step: int, triad: Array) ->
 		if int(h.step) != step:
 			continue
 		if p.get("arp", false):
-			out.append({"midis": [voiced[i % voiced.size()]], "vel": BASE_VELOCITY * float(h.vel), "roll": false})
+			out.append({"midis": [voiced[i % voiced.size()]], "vel": BASE_VELOCITY * float(h.vel),
+				"roll": false, "dur_steps": int(h.get("dur", 2))})
 		else:
-			out.append({"midis": voiced, "vel": BASE_VELOCITY * float(h.vel), "roll": true})
+			out.append({"midis": voiced, "vel": BASE_VELOCITY * float(h.vel),
+				"roll": true, "dur_steps": int(h.get("dur", 4))})
 	return out

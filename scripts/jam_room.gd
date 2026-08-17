@@ -93,6 +93,7 @@ CHORD STRIP (focus: CHORDS)
   Left/Right  select bar
   A / D   cycle chord
   W / S   comp pattern / voicing
+  Q       synth (Pluck/Poly Pad/Poly Keys)
   Del     clear slot
 
 Edits show as ghosts and COMMIT at the
@@ -375,12 +376,14 @@ func _on_schedule_sixteenth(abs_step: int, at_sample: int) -> void:
 		# voicing spreads the triad, simultaneous voices roll ~8ms low→high.
 		var triad := Harmony.triad_midi(CHORD_ROOT_MIDI, deg)
 		var roll := int(ChordComp.ROLL_SECONDS * audio.mix_rate)
+		var sec_per_step := (60.0 / transport.bpm) / 4.0
 		for ev in ChordComp.events_for_step(chords.active.comp, chords.active.voicing, sb, triad):
+			var dur: float = float(ev.dur_steps) * sec_per_step * 0.95
 			if ev.roll:
 				for i in ev.midis.size():
-					audio.schedule_chord(at_sample + i * roll, [ev.midis[i]], ev.vel)
+					audio.schedule_chord(at_sample + i * roll, [ev.midis[i]], ev.vel, dur, chords.active.synth)
 			else:
-				audio.schedule_chord(at_sample, ev.midis, ev.vel)
+				audio.schedule_chord(at_sample, ev.midis, ev.vel, dur, chords.active.synth)
 
 
 ## Gate length for the bass note at step sb: hold until the next occupied step
@@ -550,12 +553,20 @@ func _unhandled_key_input(event: InputEvent) -> void:
 			if focus == Focus.CHORDS:
 				var cur = chords.pending if chords.pending != null else chords.active
 				_dispatch(Focus.CHORDS, "comp",
-					{"comp": (int(cur.comp) + 1) % ChordComp.PATTERNS.size(), "voicing": int(cur.voicing)})
+					{"comp": (int(cur.comp) + 1) % ChordComp.PATTERNS.size(),
+						"voicing": int(cur.voicing), "synth": int(cur.synth)})
 		KEY_S: # chords: cycle voicing
 			if focus == Focus.CHORDS:
 				var cur2 = chords.pending if chords.pending != null else chords.active
 				_dispatch(Focus.CHORDS, "comp",
-					{"comp": int(cur2.comp), "voicing": (int(cur2.voicing) + 1) % ChordComp.VOICINGS.size()})
+					{"comp": int(cur2.comp), "synth": int(cur2.synth),
+						"voicing": (int(cur2.voicing) + 1) % ChordComp.VOICINGS.size()})
+		KEY_Q: # chords: cycle synth engine (Pluck / Poly Pad / Poly Keys)
+			if focus == Focus.CHORDS:
+				var cur3 = chords.pending if chords.pending != null else chords.active
+				_dispatch(Focus.CHORDS, "comp",
+					{"comp": int(cur3.comp), "voicing": int(cur3.voicing),
+						"synth": (int(cur3.synth) + 1) % ChordComp.SYNTHS.size()})
 		KEY_F2:
 			net.host()
 		KEY_F3:
@@ -767,9 +778,9 @@ func _refresh_ui() -> void:
 	chord_strip.playhead_bar = bar_in_loop
 	chord_strip.focused = focus == Focus.CHORDS
 	var chord_perf = chords.pending if chords.has_pending() else chords.active
-	chord_strip.status_text = "%s · %s (W/S)  ·  %s" % [
+	chord_strip.status_text = "%s · %s · %s (W/S/Q)  ·  %s" % [
 		ChordComp.pattern_name(chord_perf.comp), ChordComp.voicing_name(chord_perf.voicing),
-		_track_status(chords)]
+		ChordComp.synth_name(chord_perf.synth), _track_status(chords)]
 	chord_strip.queue_redraw()
 
 	var pause_tag := "" if transport.playing else "  ·  PAUSED (Space)"

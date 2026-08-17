@@ -42,7 +42,7 @@ bool JamAudioStream::schedule_note(int64_t p_sample, int p_voice, int p_midi, fl
 }
 
 void JamAudioStream::set_pool_gain(int p_pool, float p_gain) {
-	if (p_pool < 0 || p_pool >= NUM_VOICE_TYPES) {
+	if (p_pool < 0 || p_pool >= NUM_MIX_POOLS) {
 		return;
 	}
 	const float g = (p_gain == p_gain) ? p_gain : 1.0f; // NaN guard
@@ -116,6 +116,7 @@ void JamAudioStreamPlayback::fire(const JamAudioStream::TriggerEvent &ev) {
 		case JamAudioStream::VOICE_PERC: rack_.perc.Allocate().Trigger(ev.velocity, ev.variant); break;
 		case JamAudioStream::VOICE_BASS: rack_.bass.Allocate().NoteOn(ev.midi, ev.velocity, ev.duration); break;
 		case JamAudioStream::VOICE_PLUCK: rack_.pluck.Allocate().Pluck(ev.midi, ev.velocity, 0.5f); break;
+		case JamAudioStream::VOICE_POLY: rack_.poly.Allocate().NoteOn(ev.midi, ev.velocity, ev.duration, ev.variant); break;
 		default: break;
 	}
 }
@@ -196,8 +197,8 @@ int32_t JamAudioStreamPlayback::_mix(AudioFrame *p_buffer, float p_rate_scale, i
 
 	// Per-sample render: fire due events at their exact offset, then sum the rack.
 	if (rack_ready_) {
-		float gains[JamAudioStream::NUM_VOICE_TYPES];
-		for (int g = 0; g < JamAudioStream::NUM_VOICE_TYPES; g++) {
+		float gains[JamAudioStream::NUM_MIX_POOLS];
+		for (int g = 0; g < JamAudioStream::NUM_MIX_POOLS; g++) {
 			gains[g] = s->pool_gains_[g].load(std::memory_order_relaxed);
 		}
 		int idx = 0;

@@ -39,6 +39,6 @@ static func apply(model, track: int, op: String, args: Dictionary, at_loop: int,
 			match op:
 				"cycle": p.cycle_slot(args.bar, args.delta)
 				"set": p.set_slot(args.bar, args.degree)
-				"comp": p.set_performance(args.comp, args.voicing)
+				"comp": p.set_performance(args.comp, args.voicing, args.get("synth", 0))
 				"clear_slot": p.clear_slot(args.bar)
 				"clear": p.clear()
