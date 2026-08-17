@@ -25,6 +25,9 @@ Reference material extracted from **Scaler 3** to help plan and build your own
 | `voicing_templates.json` | interval-offset voicing templates | How to spread chord notes across octaves |
 | `notes.json` | 12 pitch classes + enharmonic names | Note naming / display |
 | `library_tags.json` | 1887 library entries — **tags only, no chord content** | Reference for taxonomy only ⚠️ |
+| `expressions.json` | 1274 performance patterns, 37,790 events — rhythm/velocity/micro-timing | Study the model; **don't ship** ⚠️ |
+| `expressions.csv` | one row per pattern — bars, density, velocity, off-grid % | Browsing / filtering the above |
+| `transforms.json` | runtime transform vocabulary (arp, humanize, voicing, keys lock) | Feature list for your playback engine |
 
 ### Data conventions
 - `semitones`: offsets from the root (0). Chords absolute, e.g. `maj = [0,4,7]`,
@@ -32,10 +35,18 @@ Reference material extracted from **Scaler 3** to help plan and build your own
 - `scales` semitones are mod-12, e.g. `Major = [0,2,4,5,7,9,11]`.
 - To voice a chord on root R: `pitch = R + offset` (then `% 12` for pitch class, or keep absolute for MIDI).
 
+Performance patterns are **chord-relative**: an event stores a `noteIndex` into the chord's
+note ladder, never a pitch. Same pattern, any chord, no edits. See `PERFORMANCE.md` §1.
+
 ## Docs
 - **`DESIGN.md`** — how a progression-builder works: diatonic chords, functional
   harmony, the suggestion algorithm, voice-leading, and puzzle-game design ideas.
+- **`PERFORMANCE.md`** — how a progression gets *played*: the chord-relative pattern
+  model, measured humanization (micro-timing budget, rolled chords, velocity bands,
+  authored swing), and the runtime transform stack.
 
 ## Reproduce
 `tools/extract.py` carves the JSON blobs out of the app binary; `tools/normalize.py`
-converts interval strings (`"b3"`) to semitone offsets. Both are macOS-friendly Python 3.
+converts interval strings (`"b3"`) to semitone offsets. `tools/extract_expressions.py`
+carves the embedded ZIP (offset `35,543,888`) holding the performance library and
+rebuilds `expressions.*`. All macOS-friendly Python 3, run from the `scalerDiscovery` folder.

@@ -1,0 +1,93 @@
+{
+  "_note": "Runtime transform vocabulary recovered from Scaler 3's binary string tables (parameter ids + enum labels). These are the knobs applied ON TOP of a baked expression pattern at playback time. Values are the option labels as they appear in the UI; numeric ranges are not recoverable from strings alone.",
+
+  "transformStack": [
+    "Articulations",
+    "Motions",
+    "Expressions",
+    "Arpeggio",
+    "Passages",
+    "Strumming",
+    "Bass Follow",
+    "Divisi"
+  ],
+
+  "arpeggio": {
+    "params": ["Pattern", "Note Length", "Octave Range"],
+    "patterns": [
+      "Up", "Down", "Up/Down", "Up/Down Repeat", "Down/Up", "Down/Up Repeat",
+      "Doubled Up", "Doubled Down", "Converge", "Diverge", "Converge/Diverge",
+      "Thumb Up", "Thumb Up/Down", "Pinky Up", "Pinky Up/down", "Spanish Tremolo"
+    ],
+    "_patternsNote": "'Up' is inferred as the default first entry; the string table starts at 'Down'. Thumb/Pinky variants pin the lowest/highest voice as a pedal while the rest of the chord cycles.",
+    "rates": [
+      "1/1", "1/1d", "1/1t", "1/2d", "1/2t", "1/4", "1/4d", "1/4t",
+      "1/8", "1/8d", "1/8t", "1/16", "1/16d", "1/16t", "1/32", "1/32d", "1/32t"
+    ],
+    "_ratesNote": "d = dotted (x1.5), t = triplet (x2/3). '1/2' and '1/4' plain entries exist in the UI; the table stores the modified forms adjacently.",
+    "noteLength": ["Quarter", "Half", "Full"]
+  },
+
+  "humanize": {
+    "params": {
+      "humanize_power": "Humanize Power (on/off)",
+      "humanize_type": "Humanize Type",
+      "humanize_timing": "Humanize Timing",
+      "humanize_amount": "Humanize Amount"
+    },
+    "typeOptions": ["Swing", "Quantize", "Both"],
+    "timingOptions": ["x0.5", "x0.75", "x1.5"],
+    "_note": "Runtime humanize is a swing/quantize pass with a depth (amount) and a rate multiplier (timing). It is NOT the source of the micro-timing already baked into the shipped patterns - the library patterns ship with position_offset/duration_offset all zero and their feel encoded directly in 'position'."
+  },
+
+  "motion": {
+    "motion_power": "Motion Power (on/off)",
+    "motion_arp_timing": "Arp timing",
+    "motion_expression_timing": "Expression timing",
+    "speeds": ["Slower", "Slow", "Medium", "Fast", "Faster", "Random"]
+  },
+
+  "voicingProfile": {
+    "_note": "How a pattern's abstract noteIndex ladder is realised as concrete pitches on the target chord. This is the missing link between an index-based pattern and actual MIDI notes.",
+    "params": ["Direction", "Profile", "Density", "Transpose", "Range", "Octave"],
+    "profiles": [
+      "Alternative", "Alternate", "Avoid Lows", "Avoid Highs", "Random Speed",
+      "Dynamic", "Dynamic +1 Oct", "Dynamic +2 Oct",
+      "Grouping C1-B2", "Grouping C2-B3", "Grouping C3-B4",
+      "Open Voicing", "Open Voicing +1 Oct", "Guitar Voicing",
+      "Drop 2 Voicing", "Drop 3 Voicing", "Drop 4 Voicing", "Drop 2 & 3 Voicing",
+      "Extracted"
+    ]
+  },
+
+  "voiceGrouping": {
+    "voice_grouping_power": "on/off",
+    "voice_grouping_type": "see voicingProfile.profiles"
+  },
+
+  "keysLock": {
+    "_note": "Maps incoming played keys onto legal notes - the mechanic that makes 'you cannot play a wrong note' work.",
+    "params": ["keys_lock_power", "keys_lock_type", "keys_lock_chord_mute"],
+    "types": [
+      "Scale Notes Mapped",
+      "Scale Notes Only",
+      "Scale White Keys",
+      "Chord Notes",
+      "Chord Extensions",
+      "Chord Scales"
+    ]
+  },
+
+  "playback": {
+    "playMode": ["Chord", "Melody", "Chord + Melody", "Sequences", "Performances", "Phrases", "Rhythms", "StrummedSequences"],
+    "playStyle": ["Play Style", "Density", "Transpose", "Range", "Chord Follow"],
+    "rotate": {
+      "rotate_resolution": ["1 bar", "1/2 bars", "1/4 bars", "1/8 bars", "1/16 bars"],
+      "rotate_increment": "steps to rotate the pattern by each cycle"
+    },
+    "playQuantize": ["play_quantize", "play_quantize_to"],
+    "quantizeTargets": ["NextBeat", "ChordDuration"],
+    "retrigger": ["retrigger", "latch"],
+    "defaultVelocity": "defaultVelocity"
+  }
+}

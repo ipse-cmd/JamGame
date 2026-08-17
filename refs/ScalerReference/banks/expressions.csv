@@ -1,0 +1,1275 @@
+id,name,folder,subfolder,type,timeSignature,bars,lengthBeats,noteCount,poolSize,maxNoteIndex,octaveDiff,velocityMean,velocitySd,nudgedFraction,nudgeMeanBeats,uuid
+Basic-1,Basic 1,Bass,Common Bass,bass,4/4,4.0,16.0,24,2,1,0,110.5,6.4,0.0,0,1c66211c-eb7d-4745-b270-272f3a9d50fe
+Basic-10,Basic 10,Bass,Common Bass,bass,4/4,2.0,8.0,12,4,3,0,106,0.0,0.0,0,61d4eedb-5139-42a4-8b76-79104badd5bb
+Basic-11,Basic 11,Bass,Common Bass,bass,4/4,2.0,8.0,13,4,3,0,108.2,4.1,0.0,0,7c31ec55-fa4a-461b-afa1-4b72d4b9d7ed
+Basic-12,Basic 12,Bass,Common Bass,bass,4/4,2.0,8.0,12,5,4,0,106,0.0,0.0,0,4aafc3fd-a95a-4f53-924e-7db9abcb31c8
+Basic-13,Basic 13,Bass,Common Bass,bass,4/4,2.0,8.0,12,4,3,0,106.8,0.4,0.0,0,3db08cae-d375-4864-b013-e4cad69ead99
+Basic-14,Basic 14,Bass,Common Bass,bass,4/4,2.0,8.0,13,4,3,0,110,5.6,0.0,0,46b72b07-3661-4ea0-a378-1b88db00dd53
+Basic-15,Basic 15,Bass,Common Bass,bass,4/4,2.0,8.0,13,3,2,0,107,0.0,0.0,0,183cd28c-d8eb-4252-bd5e-2109c54f9948
+Basic-16,Basic 16,Bass,Common Bass,bass,4/4,2.0,8.0,16,4,3,0,107,0.0,0.0,0,82db5b2b-fb66-46fa-b50c-2963ca97fdc7
+Basic-17,Basic 17,Bass,Common Bass,bass,4/4,2.0,8.0,20,4,3,0,107,0.0,0.0,0,5c2b78b3-51b5-4fef-8418-fd403f77546b
+Basic-18,Basic 18,Bass,Common Bass,bass,4/4,2.0,8.0,17,3,2,0,109.4,4.4,0.0,0,e647dcb6-08f2-450f-9260-a3639ee16daf
+Basic-19,Basic 19,Bass,Common Bass,bass,4/4,1.0,4.0,7,3,2,0,89,0.0,0.0,0,c85b4666-3f75-4c11-a4e1-b717408dcfbf
+Basic-2,Basic 2,Bass,Common Bass,bass,4/4,4.0,16.0,8,2,1,0,96.4,9.3,0.0,0,9996a261-c0bf-4a41-ac1e-21bf09ddf6a5
+Basic-20,Basic 20,Bass,Common Bass,bass,4/4,1.0,4.0,6,2,1,0,89,0.0,0.0,0,bd1b2e6e-ee91-484c-97be-7de4a8f1a004
+Basic-3,Basic 3,Bass,Common Bass,bass,4/4,4.0,16.0,24,2,1,0,89,0.0,0.0,0,3103220b-55c9-41d7-a171-b3a90b18db27
+Basic-4,Basic 4,Bass,Common Bass,bass,4/4,4.0,16.0,28,2,1,0,89,0.0,0.75,0.00833,120b1e21-43c6-474a-b62e-b6ec3b9d2058
+Basic-5,Basic 5,Bass,Common Bass,bass,4/4,4.0,16.0,28,2,1,0,89,0.0,0.0,0,bfb96bf0-ddb2-4cdb-88a6-dd86319abf03
+Basic-6,Basic 6,Bass,Common Bass,bass,4/4,4.0,16.0,20,2,1,0,89,0.0,0.5,0.00833,134b45fd-4bb0-4f75-a374-dbc6b193e0a5
+Basic-7,Basic 7,Bass,Common Bass,bass,4/4,2.0,8.0,22,5,4,0,106,0.0,0.0,0,c2d4046b-f686-44aa-9c7c-9b0eb1463285
+Basic-8,Basic 8,Bass,Common Bass,bass,4/4,2.0,8.0,19,3,2,0,106,0.0,0.0,0,06d2416a-5c7f-425b-8838-abd1601400ce
+Basic-9,Basic 9,Bass,Common Bass,bass,4/4,2.0,8.0,28,3,2,0,109.1,5.8,0.0,0,96042ef3-e33e-4b5d-8d2e-db2b70ae6d8f
+Straight-1,Straight 1,Bass,Common Bass,bass,4/4,4.0,16.0,8,1,0,0,125.4,3.9,0.0,0,91868d1e-df11-47ce-bc1d-e16f6e8bdee0
+Straight-10,Straight 10,Bass,Common Bass,bass,4/4,4.0,16.0,24,1,0,0,89,0.0,0.0,0,2dfbb6a8-7b26-4be1-80ed-45af148a4cc0
+Straight-11,Straight 11,Bass,Common Bass,bass,4/4,4.0,16.0,42,1,0,0,89,0.0,0.0,0,eabfb930-e2c3-4c33-9107-7c98fa62a579
+Straight-12,Straight 12,Bass,Common Bass,bass,4/4,4.0,16.0,28,1,0,0,89,0.0,0.0,0,a3589c35-d455-4847-b8f3-84e10811c54b
+Straight-13,Straight 13,Bass,Common Bass,bass,4/4,4.0,16.0,40,1,0,0,89,0.0,0.0,0,df3cd4a7-a8e6-448c-b864-84da6ebe60fd
+Straight-14,Straight 14,Bass,Common Bass,bass,4/4,4.0,16.0,32,1,0,0,89,0.0,0.0,0,14ee706e-0d8a-4209-8242-f07f6e3c536b
+Straight-15,Straight 15,Bass,Common Bass,bass,4/4,4.0,16.0,24,1,0,0,89,0.0,0.0,0,c53f7f48-e283-405b-ad4c-f6be5df5f617
+Straight-16,Straight 16,Bass,Common Bass,bass,4/4,4.0,16.0,24,1,0,0,89,0.0,0.0,0,8edc5c48-329c-4025-94ee-f90d58cd4e46
+Straight-17,Straight 17,Bass,Common Bass,bass,4/4,1.0,4.0,5,1,0,0,89,0.0,0.0,0,6e09ea3b-2416-49ae-8c01-294df09974fb
+Straight-18,Straight 18,Bass,Common Bass,bass,4/4,2.0,8.0,13,1,0,0,98.5,10.1,0.0,0,569e3204-4bd6-423d-bbad-d82a913631ed
+Straight-19,Straight 19,Bass,Common Bass,bass,4/4,1.0,4.0,7,1,0,0,83.7,12.9,0.0,0,51c90085-8cbb-4da5-b6ab-13de3b66493a
+Straight-2,Straight 2,Bass,Common Bass,bass,4/4,4.0,16.0,12,1,0,0,89,0.0,0.0,0,9c8f253b-3aba-4701-ac15-4660ada6efba
+Straight-20,Straight 20,Bass,Common Bass,bass,4/4,1.0,4.0,9,2,1,0,89,0.0,0.0,0,c972b820-a1d2-444c-8142-477b338ab612
+Straight-21,Straight 21,Bass,Common Bass,bass,4/4,1.0,4.0,10,2,1,0,89,0.0,0.0,0,8f6625b5-a45c-46aa-b992-81a5ad6876f3
+Straight-22,Straight 22,Bass,Common Bass,bass,4/4,1.0,4.0,7,1,0,0,83.7,12.9,0.0,0,22903df6-480c-42b6-a6f3-1c6bc268abd4
+Straight-23,Straight 23,Bass,Common Bass,bass,4/4,2.0,8.0,18,2,1,0,89,0.0,0.0,0,b3188f75-df0a-446f-9b0d-5c7b9d603f0d
+Straight-3,Straight 3,Bass,Common Bass,bass,4/4,4.0,16.0,24,1,0,0,89,0.0,0.0,0,e7920bf6-17a2-465d-9c5c-31e0a36a58cb
+Straight-4,Straight 4,Bass,Common Bass,bass,4/4,4.0,16.0,28,1,0,0,89,0.0,0.0,0,ad1e505f-5951-42da-82cc-ef95af9f758a
+Straight-5,Straight 5,Bass,Common Bass,bass,4/4,4.0,16.0,32,1,0,0,89,0.0,0.0,0,ab28ed0c-f0ef-4adc-b02f-3b920a31c393
+Straight-6,Straight 6,Bass,Common Bass,bass,4/4,4.0,16.0,32,1,0,0,89,0.0,0.0,0,cc056fac-9063-4259-a95b-8967787f8c5d
+Straight-7,Straight 7,Bass,Common Bass,bass,4/4,4.0,16.0,20,1,0,0,89,0.0,0.0,0,ac74305c-1400-46d1-99bf-1cfb615754d6
+Straight-8,Straight 8,Bass,Common Bass,bass,4/4,4.0,16.0,32,1,0,0,89,0.0,0.0,0,c7b58ac0-8d1f-4c13-a137-d5f8c68aedfc
+Straight-9,Straight 9,Bass,Common Bass,bass,4/4,4.0,16.0,32,1,0,0,89,0.0,0.0,0,10a51bc5-d6af-4e75-a57b-7e3215cbb445
+EDM-Bass-1,EDM Bass 1,Bass,EDM Bass,bass,4/4,4.0,16.0,34,2,1,0,99.1,4.1,0.765,0.00521,7703c86f-546f-4e4d-b1fe-8f32a1a3a9ab
+EDM-Bass-10,EDM Bass 10,Bass,EDM Bass,bass,4/4,4.0,16.0,24,2,1,0,100.8,4.2,0.833,0.00521,254adccf-e800-494a-a68d-f8fd6ca8c025
+EDM-Bass-2,EDM Bass 2,Bass,EDM Bass,bass,4/4,4.0,16.0,32,2,1,0,100.9,4.9,0.781,0.00592,a73b2369-1e24-412b-b4c0-9587e2b43d66
+EDM-Bass-3,EDM Bass 3,Bass,EDM Bass,bass,4/4,4.0,16.0,40,2,1,0,100.8,9.0,0.9,0.00694,f7b20d47-7dc8-4de1-a479-7dd00197f39a
+EDM-Bass-4,EDM Bass 4,Bass,EDM Bass,bass,4/4,4.0,16.0,32,1,0,0,97.6,14.5,0.781,0.00758,48612441-3429-4aae-9b42-583658fcdc5d
+EDM-Bass-5,EDM Bass 5,Bass,EDM Bass,bass,4/4,4.0,16.0,27,2,1,0,99.3,6.1,0.778,0.00526,9cfd88a6-f67f-474a-a5d0-7fe8e17d4919
+EDM-Bass-6,EDM Bass 6,Bass,EDM Bass,bass,4/4,4.0,16.0,32,1,0,0,100.5,5.4,0.844,0.00563,15bdd7e6-e2c4-41fc-8c64-a5e02094d08f
+EDM-Bass-7,EDM Bass 7,Bass,EDM Bass,bass,4/4,4.0,16.0,34,2,1,0,100.4,5.6,0.647,0.00407,92fe96be-0a43-4285-b719-ca0e44d997ec
+EDM-Bass-8,EDM Bass 8,Bass,EDM Bass,bass,4/4,4.0,16.0,28,1,0,0,99.6,5.2,0.786,0.00521,c3c77671-f825-4828-aa62-288d4d2844d4
+EDM-Bass-9,EDM Bass 9,Bass,EDM Bass,bass,4/4,4.0,16.0,24,1,0,0,99.3,5.6,0.75,0.00463,7496dd8d-3495-45b9-ab6b-212500f8a1fd
+Funk-1,Funk 1,Bass,Funk Bass,bass,4/4,4.0,16.0,20,7,6,0,101.8,17.5,0.85,0.01532,302e02ab-7aa6-46de-807e-e730a185dd00
+Funk-10,Funk 10,Bass,Funk Bass,bass,4/4,4.0,16.0,26,7,6,0,103.7,22.6,1.0,0.0234,98dc41e0-d718-4efa-b928-5d02c1acc345
+Funk-11,Funk 11,Bass,Funk Bass,bass,4/4,4.0,16.0,32,6,5,0,113.7,12.9,0.0,0,64ca9e8f-9342-43d3-9509-79851cee9433
+Funk-12,Funk 12,Bass,Funk Bass,bass,4/4,4.0,16.0,28,6,5,0,125.4,3.9,0.0,0,6d419ad6-6a46-44f3-8feb-7c5eed1ac549
+Funk-13,Funk 13,Bass,Funk Bass,bass,4/4,8.0,32.0,39,9,8,0,123.3,6.9,0.0,0,c40abb02-7c8a-4e0f-a98e-8aa842b3bb81
+Funk-14,Funk 14,Bass,Funk Bass,bass,4/4,4.0,16.0,10,3,2,0,86,4.5,0.9,0.01991,7abcc38d-f0e1-4f45-8bb0-36861f31d74d
+Funk-15,Funk 15,Bass,Funk Bass,bass,4/4,4.0,16.0,9,4,3,0,81.7,3.2,0.778,0.02976,6cee41b3-a379-4468-b4c7-20528c1ba873
+Funk-2,Funk 2,Bass,Funk Bass,bass,4/4,4.0,16.0,37,6,5,0,89.5,19.6,0.946,0.01982,c848e76f-4a48-46e4-aefb-53d58a22ad02
+Funk-3,Funk 3,Bass,Funk Bass,bass,4/4,4.0,16.0,32,5,4,0,103,0.0,0.0,0,8ba8cf2c-8d0a-4cd3-ace1-3f920ed38a14
+Funk-4,Funk 4,Bass,Funk Bass,bass,4/4,4.0,16.0,12,6,5,0,103.8,14.6,0.833,0.02604,d49b1d11-9f7c-4ab9-9e12-f838c2e0a49b
+Funk-5,Funk 5,Bass,Funk Bass,bass,4/4,8.0,32.0,46,10,9,0,114.0,11.6,0.978,0.0188,ca7f914c-3143-4290-a3ff-d3ac1c79268f
+Funk-6,Funk 6,Bass,Funk Bass,bass,4/4,4.0,16.0,30,6,5,0,95.3,15.6,0.867,0.01186,1ceede6f-3168-44d3-9fa1-059bf5cae117
+Funk-7,Funk 7,Bass,Funk Bass,bass,4/4,4.0,16.0,23,9,8,0,110.9,19.7,0.957,0.02557,c0fc85b8-1413-4d65-bb6a-b895b61e9659
+Funk-8,Funk 8,Bass,Funk Bass,bass,4/4,4.0,16.0,16,6,5,0,72.5,0.7,0.938,0.01514,ee9a324c-8b7d-40ad-979b-5cd89bee9a2a
+Funk-9,Funk 9,Bass,Funk Bass,bass,4/4,4.0,16.0,21,4,3,0,82.3,16.7,0.286,0.02292,3e356aa4-0f32-4077-8e0e-29d639677490
+House-1,House 1,Bass,House Bass,bass,4/4,2.0,8.0,24,3,2,0,90.7,15.1,0.542,0.01042,94d22de2-8e37-43e7-b15e-2f3e60c78755
+House-10,House 10,Bass,House Bass,bass,4/4,2.0,8.0,14,3,2,0,127,0.0,0.357,0.00625,a797f104-4578-436f-a5a1-7cef45d6ca85
+House-11,House 11,Bass,House Bass,bass,4/4,4.0,16.0,22,11,10,0,125.5,7.1,0.0,0,b1c7e046-a481-4077-b525-cd8c57c8d408
+House-12,House 12,Bass,House Bass,bass,4/4,4.0,16.0,24,2,1,0,126.8,0.8,0.0,0,6bcdd74f-0725-4aca-a89a-b7b02f377deb
+House-13,House 13,Bass,House Bass,bass,4/4,4.0,16.0,24,4,3,0,127,0.0,0.0,0,e1025c74-2483-4ac2-aceb-b0aae66d671e
+House-14,House 14,Bass,House Bass,bass,4/4,4.0,16.0,22,6,5,0,127,0.0,0.0,0,d26d6b2f-fd63-40f9-bfd0-35f1ea7490ec
+House-2,House 2,Bass,House Bass,bass,4/4,4.0,16.0,14,6,5,0,78,0.0,0.286,0.03333,6f16eb13-38f4-4d42-95a9-3442537ff037
+House-3,House 3,Bass,House Bass,bass,4/4,4.0,16.0,20,3,2,0,109,0.0,0.6,0.01875,21db1164-6473-4baf-9738-a952931f4777
+House-4,House 4,Bass,House Bass,bass,4/4,2.0,8.0,14,5,4,0,127,0.0,0.429,0.00625,bc0b978c-b640-4327-b29f-97e48eeec763
+House-5,House 5,Bass,House Bass,bass,4/4,4.0,16.0,20,5,4,0,119,0.0,0.2,0.03646,c90e5902-2cd7-41d0-b285-4eea41067584
+House-6,House 6,Bass,House Bass,bass,4/4,2.0,8.0,14,6,5,0,80,0.0,0.357,0.0375,8fd6da3b-a767-4e3d-813e-1c3274149833
+House-7,House 7,Bass,House Bass,bass,4/4,4.0,16.0,17,6,5,0,105.2,2.1,0.706,0.02344,5ef3f420-6ae2-4048-992c-608bd933c105
+House-8,House 8,Bass,House Bass,bass,4/4,4.0,16.0,29,8,7,0,79.2,1.9,0.069,0.04167,ab8a4c2a-14d7-48fc-9403-2094e30a962b
+House-9,House 9,Bass,House Bass,bass,4/4,4.0,16.0,22,5,4,0,104.6,2.5,0.818,0.00602,fbf9e5ea-3d40-40bd-8fdf-957918bf974d
+Jazz-1,Jazz 1,Bass,Jazz Bass,bass,4/4,4.0,16.0,16,5,4,0,65.9,10.0,0.938,0.01722,f7ade64a-140e-4ef2-9d92-783476fa6f00
+Jazz-10,Jazz 10,Bass,Jazz Bass,bass,4/4,4.0,16.0,6,4,3,0,58,13.0,0.0,0,70f0dc0e-7a7b-44d3-802c-638993eee84b
+Jazz-2,Jazz 2,Bass,Jazz Bass,bass,4/4,4.0,16.0,24,4,3,0,89,13.4,0.75,0.00938,c55e5711-9344-4e5b-b805-1033aeccf043
+Jazz-3,Jazz 3,Bass,Jazz Bass,bass,4/4,4.0,16.0,22,6,5,0,66.3,10.3,0.909,0.0124,d8884137-e974-437b-9b1f-665f60f890c7
+Jazz-4,Jazz 4,Bass,Jazz Bass,bass,4/4,4.0,16.0,34,8,7,0,86.7,16.6,0.971,0.01951,3251f751-a809-4666-b65b-08fef52543bb
+Jazz-5,Jazz 5,Bass,Jazz Bass,bass,4/4,4.0,16.0,18,4,3,0,122.2,6.1,0.889,0.01367,1df15937-cd84-45b0-be39-18ef36c51dff
+Jazz-6,Jazz 6,Bass,Jazz Bass,bass,4/4,4.0,16.0,28,5,4,0,81.8,13.4,0.929,0.00721,1653f062-2604-48e0-92da-878e5ed24838
+Jazz-7,Jazz 7,Bass,Jazz Bass,bass,4/4,4.0,16.0,28,10,9,0,123.4,3.9,0.893,0.00892,dc78a0b1-3974-4518-ac2c-33cc4318aac7
+Jazz-8,Jazz 8,Bass,Jazz Bass,bass,4/4,4.0,16.0,21,3,2,0,75.9,9.9,0.857,0.00926,d131bd2b-6d6c-4287-8f3f-fb10392560e0
+Jazz-9,Jazz 9,Bass,Jazz Bass,bass,4/4,4.0,16.0,8,6,5,0,54.1,5.6,0.0,0,bcacb7f7-3326-4e8e-95cb-1b7e37a013dc
+Melodic-Bass-1,Melodic Bass 1,Bass,Melodic Bass,bass,4/4,2.0,8.0,13,4,3,0,116,0.0,0.231,0.02083,254ae147-88b2-460d-b089-43aec3bb2ab0
+Melodic-Bass-10,Melodic Bass 10,Bass,Melodic Bass,bass,4/4,2.0,8.0,10,2,1,0,44.2,2.4,0.7,0.00208,72b79ed9-5e82-4e51-8f21-6f4e7930bf24
+Melodic-Bass-1_minor,Melodic Bass 1_minor,Bass,Melodic Bass,bass,4/4,2.0,8.0,13,4,3,0,116,0.0,0.231,0.02083,e199877d-4e69-4326-9644-299e2a594dd0
+Melodic-Bass-2,Melodic Bass 2,Bass,Melodic Bass,bass,4/4,2.0,8.0,15,5,4,0,103.6,9.2,0.0,0,b3117607-d404-4936-9d62-530d8577a4ec
+Melodic-Bass-2_minor,Melodic Bass 2_minor,Bass,Melodic Bass,bass,4/4,2.0,8.0,15,5,4,0,103.6,9.2,0.0,0,a657660c-150b-496d-89a1-4494d9d67db1
+Melodic-Bass-3,Melodic Bass 3,Bass,Melodic Bass,bass,4/4,4.0,16.0,22,4,3,0,127,0.0,0.0,0,773924c9-8aa4-4337-ac28-14f00c096d0c
+Melodic-Bass-3_minor,Melodic Bass 3_minor,Bass,Melodic Bass,bass,4/4,4.0,16.0,22,4,3,0,127,0.0,0.0,0,6eb7bc60-24f1-4538-a145-91a9fa278a3a
+Melodic-Bass-4,Melodic Bass 4,Bass,Melodic Bass,bass,4/4,2.0,8.0,32,5,4,0,96,0.0,0.0,0,96d4a280-8d1f-439a-bbdc-87b1108b29b4
+Melodic-Bass-4_minor,Melodic Bass 4_minor,Bass,Melodic Bass,bass,4/4,2.0,8.0,32,5,4,0,96,0.0,0.0,0,fd3ed8a8-e7bf-4fe9-b509-901935b540ee
+Melodic-Bass-5,Melodic Bass 5,Bass,Melodic Bass,bass,4/4,4.0,16.0,21,4,3,0,87.3,20.3,0.048,0.01042,8c356746-13a4-4200-9945-4cac533dd89a
+Melodic-Bass-5_minor,Melodic Bass 5_minor,Bass,Melodic Bass,bass,4/4,4.0,16.0,21,4,3,0,87.3,20.3,0.048,0.01042,9ed9a78c-d32e-4bbd-b76a-9569d7d63f7e
+Melodic-Bass-6,Melodic Bass 6,Bass,Melodic Bass,bass,4/4,2.0,8.0,9,4,3,0,101,0.0,0.444,0.02083,92c89698-146e-48dc-ac8f-c207af7c8623
+Melodic-Bass-6_minor,Melodic Bass 6_minor,Bass,Melodic Bass,bass,4/4,2.0,8.0,9,4,3,0,101,0.0,0.444,0.02083,4487baba-32de-45bd-930f-fa101d1db540
+Melodic-Bass-7,Melodic Bass 7,Bass,Melodic Bass,bass,4/4,4.0,16.0,28,8,7,0,101,0.0,0.0,0,77b879b5-87f7-4ab8-8989-e54ad2b4248d
+Melodic-Bass-7_minor,Melodic Bass 7_minor,Bass,Melodic Bass,bass,4/4,4.0,16.0,28,8,7,0,101,0.0,0.0,0,21fd726d-cb1c-457f-ae4d-c08e6ada0b59
+Melodic-Bass-8,Melodic Bass 8,Bass,Melodic Bass,bass,4/4,2.0,8.0,12,3,2,0,94.8,13.0,0.0,0,1f9ee0a8-a38e-4963-ba7f-d2970a25cb30
+Melodic-Bass-8_minor,Melodic Bass 8_minor,Bass,Melodic Bass,bass,4/4,2.0,8.0,12,3,2,0,94.8,13.0,0.0,0,bddde75c-4f1e-47b8-adfc-ca5171a21782
+Melodic-Bass-9,Melodic Bass 9,Bass,Melodic Bass,bass,4/4,2.0,8.0,22,4,3,0,93.4,0.9,0.0,0,12180eee-2a33-4fce-90cf-e1b1e289274d
+Melodic-Bass-9_minor,Melodic Bass 9_minor,Bass,Melodic Bass,bass,4/4,2.0,8.0,22,4,3,0,93.4,0.9,0.0,0,7b6695ee-3cb0-449c-8c8c-cd371297a137
+Pop-1,Pop 1,Bass,Pop Bass,bass,4/4,4.0,16.0,50,3,2,0,125.1,5.1,0.0,0,23626c7c-f9fa-4415-b1ad-d355b4267eaa
+Pop-10,Pop 10,Bass,Pop Bass,bass,4/4,4.0,16.0,41,10,9,0,126.0,3.3,0.0,0,9a5cac93-8acc-4395-ac69-4cd5b48a6a87
+Pop-11,Pop 11,Bass,Pop Bass,bass,4/4,4.0,16.0,32,7,6,0,123,7.4,0.0,0,f6d9888f-d2e2-4409-95db-a66fae7af92d
+Pop-2,Pop 2,Bass,Pop Bass,bass,4/4,4.0,16.0,26,5,4,0,119.5,8.1,0.0,0,41c7170f-6a01-4d53-89f2-06f3bbfdb28b
+Pop-3,Pop 3,Bass,Pop Bass,bass,4/4,8.0,32.0,40,8,7,0,126.2,2.6,0.0,0,e3924e01-4d6e-4fba-a021-52551256efa2
+Pop-4,Pop 4,Bass,Pop Bass,bass,4/4,4.0,16.0,16,4,3,0,126,2.3,0.0,0,4f474178-87fd-4649-9a56-15582bace031
+Pop-5,Pop 5,Bass,Pop Bass,bass,4/4,8.0,32.0,31,4,3,0,126.4,2.8,0.0,0,688e0027-6f0a-4678-9835-e6970397645a
+Pop-6,Pop 6,Bass,Pop Bass,bass,4/4,4.0,16.0,32,10,9,0,125.8,3.7,0.0,0,1cab425a-2c5a-44bc-a4a5-37ecd37c642f
+Pop-7,Pop 7,Bass,Pop Bass,bass,4/4,4.0,16.0,28,7,6,0,114.5,14.0,0.0,0,ef1a97db-d8fc-4de2-8506-a3e4efd48885
+Pop-8,Pop 8,Bass,Pop Bass,bass,4/4,4.0,16.0,23,6,5,0,116.3,21.2,0.0,0,59d593a6-51ff-425e-96cf-ba68808f5340
+Pop-9,Pop 9,Bass,Pop Bass,bass,4/4,4.0,16.0,32,6,5,0,123.5,7.6,0.0,0,c51abdd0-0793-404e-9f7b-f8f4c4815c93
+Punk-1,Punk 1,Bass,Punk Bass,bass,4/4,1.0,4.0,8,3,2,0,86,11.9,0.0,0,25725d36-e44f-413b-9f3f-9c9f0266c99c
+Punk-10,Punk 10,Bass,Punk Bass,bass,4/4,1.0,4.0,8,3,2,0,72.1,16.9,0.0,0,5b0b6b36-920a-4994-a092-183a8edd975e
+Punk-2,Punk 2,Bass,Punk Bass,bass,4/4,1.0,4.0,6,1,0,0,64.7,28.8,0.0,0,8de436f6-58b5-4ff1-9b9f-e8f301a97cb0
+Punk-3,Punk 3,Bass,Punk Bass,bass,4/4,1.0,4.0,8,3,2,0,69.4,16.2,0.0,0,65debe12-df3f-4a5b-be56-de4ec0583a97
+Punk-4,Punk 4,Bass,Punk Bass,bass,4/4,1.0,4.0,8,3,2,0,84.5,10.0,0.0,0,5e77fd7f-50f2-45fe-a484-ce2f3b412a8b
+Punk-5,Punk 5,Bass,Punk Bass,bass,4/4,1.0,4.0,6,1,0,0,73.2,14.7,0.0,0,b62b34d8-cc2b-4da5-be28-48e15ef107cf
+Punk-6,Punk 6,Bass,Punk Bass,bass,4/4,1.0,4.0,8,2,1,0,66.8,16.1,0.125,0.03542,c5d3ee44-6631-4f19-ad8f-350069b07400
+Punk-7,Punk 7,Bass,Punk Bass,bass,4/4,1.0,4.0,8,2,1,0,93,9.2,0.0,0,002eaa31-6aef-4207-878e-97fc30bdf8db
+Punk-8,Punk 8,Bass,Punk Bass,bass,4/4,1.0,4.0,8,2,1,0,82,14.9,0.0,0,816d109a-a2a8-48cb-a703-a6db003185b4
+Punk-9,Punk 9,Bass,Punk Bass,bass,4/4,1.0,4.0,8,2,1,0,74.1,8.2,0.0,0,311193d5-5c65-4f09-9ed6-13825851f31f
+Rock-1,Rock 1,Bass,Rock Bass,bass,4/4,4.0,16.0,26,6,5,0,108.2,8.8,0.923,0.01936,e46816c5-72a9-478e-b518-0ac252445fe6
+Rock-10,Rock 10,Bass,Rock Bass,bass,4/4,4.0,16.0,16,6,5,0,72.5,0.7,0.938,0.025,0a1a5208-a234-4b2e-8700-519edeb27b08
+Rock-2,Rock 2,Bass,Rock Bass,bass,4/4,4.0,16.0,11,3,2,0,100,0.0,0.0,0,4e456f11-bd3b-4d1e-9d2b-4e9135839009
+Rock-3,Rock 3,Bass,Rock Bass,bass,4/4,4.0,16.0,28,6,5,0,93.7,22.9,0.893,0.02042,d752f4ed-e55c-4986-bb09-a179f93183ad
+Rock-4,Rock 4,Bass,Rock Bass,bass,4/4,4.0,16.0,12,5,4,0,80,19.3,1.0,0.04167,c4d30ae4-ab00-4e74-bba5-52688243706c
+Rock-5,Rock 5,Bass,Rock Bass,bass,4/4,5.0,20.0,24,8,7,0,105.3,7.7,0.917,0.01004,98f43d17-e9ed-46ae-915e-9360faa6cfbb
+Rock-6,Rock 6,Bass,Rock Bass,bass,4/4,4.0,16.0,26,5,4,0,85.0,5.1,0.962,0.018,02dd90ab-b0cb-4e99-ace4-8ff712603ddd
+Rock-7,Rock 7,Bass,Rock Bass,bass,4/4,4.0,16.0,28,4,3,0,105,13.5,0.929,0.0153,dc44d5c3-7098-437c-889c-81156e6e7a1c
+Rock-8,Rock 8,Bass,Rock Bass,bass,4/4,4.0,16.0,25,4,3,0,82.1,7.0,0.96,0.02665,85abaa9e-1d34-41f5-8269-7f4beae298d9
+Rock-9,Rock 9,Bass,Rock Bass,bass,4/4,4.0,16.0,16,4,3,0,85.4,0.7,0.812,0.01827,8df00c49-5520-4734-8737-8579a73cc725
+Sidechain-Bass-1,Sidechain Bass 1,Bass,Sidechain Bass,bass,4/4,1.0,4.0,4,1,0,0,100,0.0,0.0,0,8439e52b-aeff-4d11-9f93-ab1076efb340
+Sidechain-Bass-2,Sidechain Bass 2,Bass,Sidechain Bass,bass,4/4,1.0,4.0,7,1,0,0,85,23.8,0.0,0,68701939-fb61-4642-a29d-034076b2939e
+Sidechain-Bass-3,Sidechain Bass 3,Bass,Sidechain Bass,bass,4/4,1.0,4.0,12,1,0,0,100,0.0,0.0,0,0e11d659-fb51-4087-ad29-16d670dd9090
+Sidechain-Bass-4,Sidechain Bass 4,Bass,Sidechain Bass,bass,4/4,1.0,4.0,11,2,1,0,100,0.0,0.0,0,d1d23ec2-397a-41d0-94de-89be516ac4f1
+Sidechain-Bass-5,Sidechain Bass 5,Bass,Sidechain Bass,bass,4/4,1.0,4.0,11,2,1,0,100,0.0,0.0,0,441737a2-7d7a-4fb8-b70a-0c45494449bc
+Sidechain-Bass-6,Sidechain Bass 6,Bass,Sidechain Bass,bass,4/4,1.0,4.0,9,2,1,0,100,0.0,0.0,0,8b470a04-3d9d-484b-bd4e-e8626d1bf313
+Sidechain-Bass-7,Sidechain Bass 7,Bass,Sidechain Bass,bass,4/4,1.0,4.0,12,3,2,0,100,0.0,0.0,0,744d9f21-f421-44ae-b9a6-d3465b725151
+Sidechain-Bass-7_minor,Sidechain Bass 7_minor,Bass,Sidechain Bass,bass,4/4,1.0,4.0,12,3,2,0,100,0.0,0.0,0,1deebf9d-dd86-4ebc-b247-4a06e17582a3
+Sidechain-Bass-8,Sidechain Bass 8,Bass,Sidechain Bass,bass,4/4,1.0,4.0,12,4,3,0,100,0.0,0.0,0,cae27adc-89a2-4dcb-8ea3-62d71df9f1e5
+Sidechain-Bass-8_minor,Sidechain Bass 8_minor,Bass,Sidechain Bass,bass,4/4,1.0,4.0,12,4,3,0,100,0.0,0.083,0.03125,6649f416-5ce3-4290-8250-8358e691c4b3
+Sidechain-Bass-9,Sidechain Bass 9,Bass,Sidechain Bass,bass,4/4,1.0,4.0,12,4,3,0,100,0.0,0.0,0,1aa37bba-d455-4f33-b49a-dff32e27ac3b
+Sidechain-Bass-9_minor,Sidechain Bass 9_minor,Bass,Sidechain Bass,bass,4/4,1.0,4.0,12,4,3,0,100,0.0,0.0,0,b5a9909a-c285-47de-95c1-b872b68d85b6
+Synthwave-1,Synthwave 1,Bass,Synthwave Bass,bass,4/4,8.0,32.0,128,4,3,0,106,0.0,0.0,0,dd39ec76-2b9e-4592-be10-688b981dc762
+Synthwave-10,Synthwave 10,Bass,Synthwave Bass,bass,4/4,8.0,32.0,88,2,1,0,106,0.0,0.0,0,744acbb5-6c1b-4346-8f5f-89ac2d481947
+Synthwave-11,Synthwave 11,Bass,Synthwave Bass,bass,4/4,8.0,32.0,128,10,9,0,106,0.0,0.0,0,b08b0010-13b0-4e61-89e9-c452e752eb3c
+Synthwave-12,Synthwave 12,Bass,Synthwave Bass,bass,4/4,8.0,32.0,68,4,3,0,106,0.0,0.0,0,adf3abf4-faa9-4000-8595-3cd616659346
+Synthwave-13,Synthwave 13,Bass,Synthwave Bass,bass,4/4,4.0,16.0,20,5,4,0,106,0.0,0.25,0.01042,761039ef-464f-4690-b4d6-576ab751074a
+Synthwave-14,Synthwave 14,Bass,Synthwave Bass,bass,4/4,4.0,16.0,32,10,9,0,106,0.0,0.0,0,fd913541-ef9a-4457-ae42-834ee43ec1bc
+Synthwave-15,Synthwave 15,Bass,Synthwave Bass,bass,4/4,4.0,16.0,64,3,2,0,78.1,19.0,0.0,0,3a441a3f-1f9f-4ebd-b383-06e9a6134363
+Synthwave-16,Synthwave 16,Bass,Synthwave Bass,bass,4/4,4.0,16.0,36,3,2,0,111,11.2,0.0,0,0c6725e3-3ba8-4296-a4e2-9be8673ca515
+Synthwave-2,Synthwave 2,Bass,Synthwave Bass,bass,4/4,8.0,32.0,128,3,2,0,106,0.0,0.0,0,bd63ae65-f417-4a69-9f7e-79732a2ed617
+Synthwave-3,Synthwave 3,Bass,Synthwave Bass,bass,4/4,4.0,16.0,64,4,3,0,106,0.0,0.0,0,38f2f657-35a2-4755-bebe-a8d8c4aac30a
+Synthwave-4,Synthwave 4,Bass,Synthwave Bass,bass,4/4,4.0,16.0,64,4,3,0,106,0.0,0.0,0,b11b7a10-0989-4a4c-9b3e-4f82c7c5794b
+Synthwave-5,Synthwave 5,Bass,Synthwave Bass,bass,4/4,4.0,16.0,41,5,4,0,106,0.0,0.0,0,d9d26d23-633c-4056-8d54-43c515b46dd1
+Synthwave-6,Synthwave 6,Bass,Synthwave Bass,bass,4/4,8.0,32.0,52,4,3,0,106,0.0,0.0,0,1f4ebc57-0189-4412-a19c-56cf6ae99007
+Synthwave-7,Synthwave 7,Bass,Synthwave Bass,bass,4/4,8.0,32.0,64,4,3,0,106,0.0,0.0,0,bcb94d55-3992-4772-a279-736f20917538
+Synthwave-8,Synthwave 8,Bass,Synthwave Bass,bass,4/4,4.0,16.0,64,3,2,0,106,0.0,0.0,0,52321754-3c70-4ee2-b1d8-41342044581f
+Synthwave-9,Synthwave 9,Bass,Synthwave Bass,bass,4/4,8.0,32.0,64,4,3,0,106,0.0,0.0,0,d5a3becf-7c2d-4336-be8b-0985e96c9aeb
+Trance-1,Trance 1,Bass,Trance Bass,bass,4/4,1.0,4.0,12,2,1,0,80,0.0,0.0,0,163e9237-ef6b-4ade-81b4-6503ff0fe7ed
+Trance-10,Trance 10,Bass,Trance Bass,bass,4/4,2.0,8.0,32,6,5,0,80,0.0,0.0,0,a76d2245-5fdb-4d9d-bc9c-ab2da88902a7
+Trance-11,Trance 11,Bass,Trance Bass,bass,4/4,4.0,16.0,64,8,7,0,80,0.0,0.0,0,4946675e-8881-4019-9ff8-0769033ed59c
+Trance-12,Trance 12,Bass,Trance Bass,bass,4/4,4.0,16.0,48,4,3,0,81,19.0,0.0,0,d384c89f-7742-4b46-a880-5ab19e32d324
+Trance-13,Trance 13,Bass,Trance Bass,bass,4/4,4.0,16.0,54,6,5,0,89.9,8.1,0.889,0.02734,270cd505-635f-4972-8746-66b5664b4819
+Trance-14,Trance 14,Bass,Trance Bass,bass,4/4,4.0,16.0,32,4,3,0,100,0.0,0.0,0,755d2420-4ab2-4f56-b2ad-37932b9b0372
+Trance-15,Trance 15,Bass,Trance Bass,bass,4/4,2.0,8.0,8,1,0,0,80,0.0,0.0,0,35913f05-959c-42ce-b9c3-4400ce0c53ee
+Trance-16,Trance 16,Bass,Trance Bass,bass,4/4,4.0,16.0,28,4,3,0,127,0.0,0.0,0,952661e9-3286-4b6b-b810-0a844ad2048a
+Trance-2,Trance 2,Bass,Trance Bass,bass,4/4,1.0,4.0,16,2,1,0,80,0.0,0.0,0,bb1accc9-7eb4-4104-ac42-172039fd56c4
+Trance-3,Trance 3,Bass,Trance Bass,bass,4/4,4.0,16.0,48,4,3,0,80,0.0,0.0,0,fcc692e2-c7e6-4b14-944c-c8247ed11060
+Trance-4,Trance 4,Bass,Trance Bass,bass,4/4,4.0,16.0,32,5,4,0,80,0.0,0.0,0,22c88f30-94dd-4e7d-ae90-e3a4b1c48f21
+Trance-5,Trance 5,Bass,Trance Bass,bass,4/4,4.0,16.0,24,5,4,0,80,0.0,0.0,0,c6f306a4-f939-4470-a23c-f6a502e14c8e
+Trance-6,Trance 6,Bass,Trance Bass,bass,4/4,4.0,16.0,34,3,2,0,80,0.0,0.0,0,d7af3151-ca50-4e77-8f9d-d1d34fd07e6e
+Trance-7,Trance 7,Bass,Trance Bass,bass,4/4,4.0,16.0,64,6,5,0,80,0.0,0.0,0,54ac4ed8-3cbc-4302-83e4-464cc94b75bf
+Trance-8,Trance 8,Bass,Trance Bass,bass,4/4,4.0,16.0,64,10,9,0,80,0.0,0.0,0,0d575e94-a76a-4eed-a099-83c6ebb9545c
+Trance-9,Trance 9,Bass,Trance Bass,bass,4/4,4.0,16.0,48,8,7,0,80,0.0,0.0,0,5f4d734e-6997-4fab-a774-ad87b711d14d
+Trap-1,Trap 1,Bass,Trap Bass,bass,4/4,8.0,32.0,12,3,2,0,111.3,8.0,0.0,0,368fc459-9d64-4456-903e-9bb28dc313d3
+Trap-10,Trap 10,Bass,Trap Bass,bass,4/4,8.0,32.0,18,3,2,0,116,0.0,0.0,0,23fc15dc-e505-4418-aae3-22fc9a35368f
+Trap-2,Trap 2,Bass,Trap Bass,bass,4/4,8.0,32.0,19,2,1,0,117,0.0,0.0,0,52f965ff-b9d6-4611-a7b7-f8523d6fb9f6
+Trap-3,Trap 3,Bass,Trap Bass,bass,4/4,8.0,32.0,16,3,2,0,117,0.0,0.0,0,cb10ccc6-b300-4a2b-8e8d-8a2da6f8f339
+Trap-4,Trap 4,Bass,Trap Bass,bass,4/4,8.0,32.0,14,2,1,0,117,0.0,0.0,0,de11c859-c5b4-467b-854b-6e3308984ed5
+Trap-5,Trap 5,Bass,Trap Bass,bass,4/4,8.0,32.0,20,3,2,0,117,0.0,0.0,0,8daa6c25-26a2-4058-9211-649cff4cf5c4
+Trap-6,Trap 6,Bass,Trap Bass,bass,4/4,8.0,32.0,17,2,1,0,117,0.0,0.0,0,3cc5c54b-70f9-4db2-9330-ea6378589244
+Trap-7,Trap 7,Bass,Trap Bass,bass,4/4,8.0,32.0,18,3,2,0,117,0.0,0.0,0,86561470-c78d-4eb2-967f-470cd0cc07f2
+Trap-8,Trap 8,Bass,Trap Bass,bass,4/4,8.0,32.0,16,2,1,0,116.8,0.4,0.0,0,633cc724-cbf3-4281-9ee7-d0fa8c706a03
+Trap-9,Trap 9,Bass,Trap Bass,bass,4/4,8.0,32.0,15,3,2,0,116,0.0,0.0,0,8e689e33-dc8d-44c8-b616-d24c0a30023a
+6-8-1,6/8 1,Bass,Triplet Bass,bass,6/8,4.0,12.0,7,3,2,0,98.3,4.2,0.0,0,03ca6a20-2e4f-4974-92b1-f93d342f0fac
+6-8-1_minor,6/8 1_minor,Bass,Triplet Bass,bass,6/8,4.0,12.0,7,3,2,0,98.3,4.2,0.0,0,3eded47d-45e2-4219-92c7-3f45ba00af1a
+6-8-2,6/8 2,Bass,Triplet Bass,bass,6/8,2.6667,8.0,8,3,2,0,100,0.0,0.0,0,89561890-c293-481e-8049-3ba6128b55a0
+6-8-2_minor,6/8 2_minor,Bass,Triplet Bass,bass,6/8,2.6667,8.0,8,3,2,0,100,0.0,0.0,0,874423f6-c35c-4fa8-92d7-7f472c9594a0
+6-8-3,6/8 3,Bass,Triplet Bass,bass,6/8,2.6667,8.0,11,1,0,0,90.9,12.1,0.0,0,7e357ffc-fae9-4d37-9c5a-999594499d6b
+6-8-3_minor,6/8 3_minor,Bass,Triplet Bass,bass,4/4,2.0,8.0,11,1,0,0,92.7,11.9,0.0,0,f894573e-b2dc-4b83-bbbd-fbd93cddd22e
+Half-Shuffle-,Half Shuffle ,Bass,Triplet Bass,bass,4/4,2.0,8.0,9,3,2,0,100,0.0,0.0,0,52b2e869-e15e-4183-82f7-67d069fc7a77
+Half-Shuffle-2,Half Shuffle 2,Bass,Triplet Bass,bass,4/4,1.0,4.0,6,1,0,0,89,11.6,0.0,0,caec624d-ad5b-45c0-86c1-49fcc28f9743
+Half-Shuffle-2_minor,Half Shuffle 2_minor,Bass,Triplet Bass,bass,4/4,1.0,4.0,6,1,0,0,87.5,12.9,0.0,0,0e32d9c2-0f3d-48c1-940d-e00c92ebe8c4
+Half-Shuffle-_minor,Half Shuffle _minor,Bass,Triplet Bass,bass,4/4,2.0,8.0,9,3,2,0,100,0.0,0.0,0,58bb4963-04a9-440c-b62e-d97dd75dae5b
+Offbeat-Shuffle,Offbeat Shuffle,Bass,Triplet Bass,bass,4/4,2.0,8.0,16,3,2,0,93.9,6.4,0.0,0,40d90856-f649-45d0-a9a9-761109f565fc
+Offbeat-Shuffle_minor,Offbeat Shuffle_minor,Bass,Triplet Bass,bass,4/4,2.0,8.0,16,3,2,0,93.8,6.5,0.0,0,274d4a08-3782-47da-bdf5-fd6d4cb4ca70
+Shuffle-1,Shuffle 1,Bass,Triplet Bass,bass,4/4,2.0,8.0,6,3,2,0,100,0.0,0.0,0,e749bb90-8ef7-4bd4-9716-45357cf6a132
+Shuffle-1_minor,Shuffle 1_minor,Bass,Triplet Bass,bass,4/4,2.0,8.0,6,3,2,0,100,0.0,0.0,0,504f4c2b-8f42-4e02-8c8a-049555a8a907
+Shuffle-2,Shuffle 2,Bass,Triplet Bass,bass,4/4,2.0,8.0,9,3,2,0,95.4,8.6,0.0,0,83eae5cc-e63a-4fbd-862c-554f031c26c2
+Shuffle-2_minor,Shuffle 2_minor,Bass,Triplet Bass,bass,4/4,2.0,8.0,9,3,2,0,93.4,12.3,0.0,0,fc3bffeb-0b8e-4e56-8bb8-0dadf87f7450
+Shuffle-3,Shuffle 3,Bass,Triplet Bass,bass,4/4,2.0,8.0,17,3,2,0,92.2,9.6,0.0,0,a6576b41-c10d-4cc3-89b3-99845a08b65c
+Shuffle-3_minor,Shuffle 3_minor,Bass,Triplet Bass,bass,4/4,2.0,8.0,17,3,2,0,92.6,9.0,0.0,0,ccc0172d-f707-4bd9-b048-4fa2f426316a
+Slow-Waltz,Slow Waltz,Bass,Triplet Bass,bass,4/4,3.0,12.0,8,3,2,0,100,0.0,0.0,0,afe59896-21df-4752-8173-ce14227afcb2
+Slow-Waltz-2,Slow Waltz 2,Bass,Triplet Bass,bass,4/4,3.0,12.0,8,3,2,0,100,0.0,0.0,0,508ee3e9-1eff-48f8-8c6d-0d4a0c98a15d
+Slow-Waltz-2_minor,Slow Waltz 2_minor,Bass,Triplet Bass,bass,4/4,3.0,12.0,8,3,2,0,100,0.0,0.0,0,8a5adce3-fdb5-4919-88c7-797e90cf5b9b
+Slow-Waltz_minor,Slow Waltz_minor,Bass,Triplet Bass,bass,4/4,3.0,12.0,8,3,2,0,100,0.0,0.0,0,062069d9-47ec-43c4-b912-0834307a4ac0
+Upbeat-Shuffle,Upbeat Shuffle,Bass,Triplet Bass,bass,4/4,2.0,8.0,7,1,0,0,100,0.0,0.0,0,0bbbc207-addd-4ed6-9066-ec1567741c7c
+Upbeat-Shuffle-2,Upbeat Shuffle 2,Bass,Triplet Bass,bass,4/4,2.0,8.0,13,3,2,0,92.4,11.5,0.0,0,2f8a664e-fea2-4c70-936e-e70e03fc206a
+Upbeat-Shuffle-2_minor,Upbeat Shuffle 2_minor,Bass,Triplet Bass,bass,4/4,2.0,8.0,13,3,2,0,93.2,10.5,0.0,0,05a34d89-d3aa-4612-b2ba-a460107b2eff
+Upbeat-Shuffle_minor,Upbeat Shuffle_minor,Bass,Triplet Bass,bass,4/4,2.0,8.0,7,1,0,0,100,0.0,0.0,0,5ad30a88-c40f-445e-9f76-a5ac013d897d
+Urban-1,Urban 1,Bass,Urban Bass,bass,4/4,4.0,16.0,21,7,6,0,127,0.0,0.0,0,7176b8fe-ac6d-41e0-a102-88f5c3303c15
+Urban-10,Urban 10,Bass,Urban Bass,bass,4/4,4.0,16.0,31,7,6,0,82,0.0,0.129,0.04167,6a6a5a30-8448-4038-8b8b-2d1d4cafed1a
+Urban-11,Urban 11,Bass,Urban Bass,bass,4/4,4.0,16.0,28,5,4,0,126.4,2.5,0.0,0,0669fa3e-6934-4c47-aa86-f0bb7e7044ff
+Urban-12,Urban 12,Bass,Urban Bass,bass,4/4,4.0,16.0,29,12,11,-1,102.5,21.7,0.0,0,ffd07fb6-4ca1-4712-8d1e-6fd21a94feb0
+Urban-2,Urban 2,Bass,Urban Bass,bass,4/4,4.0,16.0,24,4,3,0,127,0.0,0.417,0.00292,c7c38d9a-bc97-448e-b664-f195c95ac84f
+Urban-3,Urban 3,Bass,Urban Bass,bass,4/4,4.0,16.0,17,6,5,0,88.8,14.4,0.941,0.02708,41bddffc-902c-4e5b-853e-6dd9c6c0f6de
+Urban-4,Urban 4,Bass,Urban Bass,bass,4/4,4.0,16.0,4,4,3,0,97,0.0,0.0,0,63cf5be6-bbd0-42ce-bf6d-2fbb738c5284
+Urban-5,Urban 5,Bass,Urban Bass,bass,4/4,4.0,16.0,12,6,5,0,100,0.0,0.583,0.00357,2a918ecd-2ad6-4bb8-9b56-743c1efb14d1
+Urban-6,Urban 6,Bass,Urban Bass,bass,4/4,4.0,16.0,21,5,4,0,78,16.4,0.81,0.02328,8a8dff0d-12fd-4a9d-986f-3b263462b281
+Urban-7,Urban 7,Bass,Urban Bass,bass,4/4,4.0,16.0,24,4,3,0,98.1,14.1,0.625,0.02292,26cfd06c-d38c-4756-99ca-a012f56e258d
+Urban-8,Urban 8,Bass,Urban Bass,bass,4/4,4.0,16.0,13,4,3,0,127,0.0,0.0,0,f670e7a3-9007-4ccc-8a28-332cb41e20e6
+Urban-9,Urban 9,Bass,Urban Bass,bass,4/4,4.0,16.0,5,5,4,0,127,0.0,0.0,0,da3da35a-1a52-4e21-babf-81cb5223ef46
+Color-A,Color A,Melody,Color A,melody,4/4,16.0,64.0,125,12,11,0,69.6,19.0,0.0,0,36009616-7cd2-4dd7-932c-e9d9a41b68bd
+Color-A-1,Color A 1,Melody,Color A,melody,4/4,4.0,16.0,32,8,7,1,64.2,17.8,0.0,0,0f97ae6c-daef-4085-a020-8a0da1174286
+Color-A-2,Color A 2,Melody,Color A,melody,4/4,4.0,16.0,32,8,7,1,61.9,18.4,0.0,0,34800f85-96ee-4e75-aca2-fad7b0947ec3
+Color-A-3,Color A 3,Melody,Color A,melody,4/4,4.0,16.0,32,6,5,1,81.8,17.8,0.0,0,3bc50ba4-9845-414c-884d-648d83979ec7
+Color-A-4,Color A 4,Melody,Color A,melody,4/4,4.0,16.0,29,8,7,0,70.6,14.8,0.0,0,f804750c-6902-4f29-855f-b831f5a5279f
+Color-B,Color B,Melody,Color B,melody,4/4,16.0,64.0,38,8,7,0,100.9,13.3,0.0,0,d5426891-691d-451e-a419-8b51220e5ca6
+Color-B-1,Color B 1,Melody,Color B,melody,4/4,4.0,16.0,11,6,5,0,103.5,14.4,0.0,0,4f03b9a0-afc5-437d-b5a8-45ac71391207
+Color-B-2,Color B 2,Melody,Color B,melody,4/4,4.0,16.0,10,5,4,0,100.1,9.9,0.0,0,be33097a-a2f2-469f-96b1-fed22895e14d
+Color-B-3,Color B 3,Melody,Color B,melody,4/4,4.0,16.0,10,5,4,1,96.8,12.8,0.0,0,11e566ba-ece1-4456-9994-ea8057dab38b
+Color-B-4,Color B 4,Melody,Color B,melody,4/4,4.0,16.0,7,5,4,0,103.9,14.8,0.0,0,58521490-28d1-4351-a86f-4b0bfc98fc58
+Color-C,Color C,Melody,Color C,melody,4/4,16.0,64.0,41,8,7,1,113.0,18.5,0.0,0,d2aace0a-24c1-4451-80bb-9ef06ec6d30f
+Color-C-1,Color C 1,Melody,Color C,melody,4/4,4.0,16.0,10,6,5,1,111.8,17.9,0.0,0,68701cca-0159-4914-b701-1f339ee1fdff
+Color-C-2,Color C 2,Melody,Color C,melody,4/4,4.0,16.0,10,4,3,1,114.6,19.0,0.0,0,2b33d23a-3487-4278-ba94-a322b3cd406e
+Color-C-3,Color C 3,Melody,Color C,melody,4/4,4.0,16.0,11,7,6,1,112.9,17.4,0.0,0,a206bb73-fc24-4e7d-8f74-dcd8e3d07bde
+Color-C-4,Color C 4,Melody,Color C,melody,4/4,4.0,16.0,10,4,3,1,112.5,19.5,0.0,0,68595f05-af29-4124-92e4-7e4f1904f828
+Color-D,Color D,Melody,Color D,melody,4/4,16.0,64.0,31,7,6,0,61.1,7.1,0.0,0,1a4a6b20-f2e6-4fb5-b63b-642514e9590e
+Color-D-1,Color D 1,Melody,Color D,melody,4/4,2.0,8.0,7,4,3,0,56,5.9,0.0,0,7611293d-03d0-4e94-a8d3-a9c2b1536d2e
+Color-D-2,Color D 2,Melody,Color D,melody,4/4,2.0,8.0,9,4,3,0,66,5.4,0.0,0,6deaea03-abea-44d9-8ad1-694447416585
+Color-D-3,Color D 3,Melody,Color D,melody,4/4,2.0,8.0,7,4,3,1,56,5.9,0.0,0,97e67513-9564-4b13-9b5f-e8d4d15508ff
+Color-D-4,Color D 4,Melody,Color D,melody,4/4,2.0,8.0,8,5,4,1,64.6,4.0,0.0,0,bc08e9ee-e760-47b7-968b-6ff1859b5408
+Color-E,Color E,Melody,Color E,melody,4/4,16.0,64.0,50,9,8,0,99.4,14.3,0.0,0,bc5fcf87-8c44-408a-82fe-b464f63d981e
+Color-E-1,Color E 1,Melody,Color E,melody,4/4,4.0,16.0,12,5,4,0,91.8,15.5,0.0,0,da6bba6f-a0dd-4e93-b04d-45ae6d0f949b
+Color-E-2,Color E 2,Melody,Color E,melody,4/4,4.0,16.0,13,6,5,1,104.6,9.7,0.0,0,bf01ba72-cb9b-4130-820a-982e7145ef25
+Color-E-3,Color E 3,Melody,Color E,melody,4/4,4.0,16.0,13,5,4,0,97.5,15.8,0.0,0,f0375d32-467d-4dad-9f89-4baa8ec7c63f
+Color-E-4,Color E 4,Melody,Color E,melody,4/4,4.0,16.0,12,6,5,1,103.6,11.5,0.0,0,a712fd93-efcf-4aab-a442-7271fa5cb329
+Color-F,Color F,Melody,Color F,melody,4/4,16.0,64.0,68,12,11,1,119.9,4.3,0.0,0,7372966d-b5c6-4672-ba00-0f3bc28fe1db
+Color-F-1,Color F 1,Melody,Color F,melody,4/4,4.0,16.0,18,12,11,1,120.3,4.8,0.0,0,ac37c025-eb92-4b92-b4a3-62937037a3e4
+Color-F-2,Color F 2,Melody,Color F,melody,4/4,4.0,16.0,16,6,5,1,118.6,4.7,0.0,0,c97aae05-dd11-4c04-99bb-41a1d7166e7f
+Color-F-3,Color F 3,Melody,Color F,melody,4/4,4.0,16.0,18,12,11,1,120.6,4.1,0.0,0,0f31dca0-9005-4bdb-b93f-fa4f8f0da71c
+Color-F-4,Color F 4,Melody,Color F,melody,4/4,4.0,16.0,16,8,7,1,119.9,2.8,0.0,0,847e0852-e5ec-4c6a-a0a8-a9d4041cef10
+Color-G,Color G,Melody,Color G,melody,4/4,16.0,64.0,61,12,11,0,98,9.7,0.0,0,e037d5f2-4404-4380-baee-faea52e7c430
+Color-G-1,Color G 1,Melody,Color G,melody,4/4,2.0,8.0,15,8,7,1,94.1,8.5,0.0,0,24e09c7e-0ece-434f-8a0b-8124b1440603
+Color-G-2,Color G 2,Melody,Color G,melody,4/4,2.0,8.0,16,7,6,0,99.7,10.5,0.0,0,f89443ce-72ec-40f5-9537-056749e4d418
+Color-G-3,Color G 3,Melody,Color G,melody,4/4,2.0,8.0,16,9,8,1,96.8,9.7,0.0,0,527bd9f3-eed8-4d69-a58c-b1d3d090807e
+Color-G-4,Color G 4,Melody,Color G,melody,4/4,2.0,8.0,14,8,7,0,101.6,8.0,0.0,0,846fd2ca-644b-41ab-9dfc-0941b70d1dd9
+Color-H,Color H,Melody,Color H,melody,4/4,16.0,64.0,72,12,11,0,125.6,4.3,0.0,0,5ebb9c32-3cc9-45eb-8b10-b0f2e22ca27b
+Color-H-1,Color H 1,Melody,Color H,melody,4/4,2.0,8.0,18,5,4,1,124,4.9,0.0,0,4f3192a0-2750-4f27-862f-0f4d452a98a1
+Color-H-2,Color H 2,Melody,Color H,melody,4/4,2.0,8.0,18,5,4,1,124.5,6.6,0.0,0,51aef558-46cc-4d92-9a92-408bc9d2824a
+Color-H-3,Color H 3,Melody,Color H,melody,4/4,2.0,8.0,18,4,3,1,127,0.0,0.0,0,d302cda9-a32f-41d8-b208-4b4f9e77bb19
+Color-H-4,Color H 4,Melody,Color H,melody,4/4,2.0,8.0,18,7,6,0,127,0.0,0.0,0,3bd063f3-106b-40f9-9420-22b2662bbe11
+Color-I,Color I,Melody,Color I,melody,4/4,16.0,64.0,64,7,6,0,127,0.0,0.0,0,23ef07de-c46d-4efd-9fa2-7c9973aa8df7
+Color-I-1,Color I 1,Melody,Color I,melody,4/4,2.0,8.0,16,4,3,0,127,0.0,0.0,0,e52c0e93-5c9b-4613-9acd-1587747ad3c0
+Color-I-2,Color I 2,Melody,Color I,melody,4/4,2.0,8.0,16,5,4,0,127,0.0,0.0,0,4f59b806-af71-4381-8664-5eb1172b2b2e
+Color-I-3,Color I 3,Melody,Color I,melody,4/4,2.0,8.0,16,4,3,1,127,0.0,0.0,0,48a7b7d5-3afb-4b6f-ab93-19f1f183be8a
+Color-I-4,Color I 4,Melody,Color I,melody,4/4,2.0,8.0,16,7,6,0,127,0.0,0.0,0,d6f937c7-ebbb-497b-a068-4227ea15da6e
+Color-J,Color J,Melody,Color J,melody,4/4,16.0,64.0,78,15,14,0,121.7,9.0,0.0,0,c47d8efc-99c7-4cfb-a096-d0557f4facdf
+Color-J-1,Color J 1,Melody,Color J,melody,4/4,2.0,8.0,18,6,5,0,120.6,8.6,0.0,0,fa7c1ddd-1a96-4daf-91d2-3509b05a5620
+Color-J-2,Color J 2,Melody,Color J,melody,4/4,2.0,8.0,18,6,5,1,116.6,10.9,0.0,0,e6ebbeb7-e553-4137-ab50-030a4f60bb4c
+Color-J-3,Color J 3,Melody,Color J,melody,4/4,2.0,8.0,18,7,6,0,122.5,9.0,0.0,0,4f2008bc-a908-4c80-b32d-de5e5401f281
+Color-J-4,Color J 4,Melody,Color J,melody,4/4,2.0,8.0,24,6,5,0,125.7,4.2,0.0,0,7b23d476-8c44-467a-9d89-dfa7ac88f0b5
+Common-A,Common A,Melody,Common A,melody,4/4,16.0,64.0,56,6,5,1,60.1,7.8,0.0,0,1ccf50da-2282-4baf-9a62-d0d5903f69f4
+Common-A-1,Common A 1,Melody,Common A,melody,4/4,2.0,8.0,15,5,4,1,58.9,7.9,0.0,0,ddd512a4-bb67-45c3-b146-2f0029665b11
+Common-A-2,Common A 2,Melody,Common A,melody,4/4,2.0,8.0,13,6,5,1,60.7,6.7,0.0,0,7aa4ed53-780a-4a0f-a78f-6c07f26d52a9
+Common-A-3,Common A 3,Melody,Common A,melody,4/4,2.0,8.0,15,5,4,1,59.1,7.8,0.0,0,c57d9dc9-efff-4acb-ac63-bd022e1da97b
+Common-A-4,Common A 4,Melody,Common A,melody,4/4,2.0,8.0,13,5,4,1,62.2,8.2,0.0,0,4515c018-ba86-487d-ab30-08e8c1ec66ee
+Common-B,Common B,Melody,Common B,melody,4/4,16.0,64.0,14,3,2,0,80,0.0,0.0,0,78716210-8210-48a6-8d43-5f806ea4e411
+Common-B-1,Common B 1,Melody,Common B,melody,4/4,1.0,4.0,4,3,2,0,80,0.0,0.0,0,80b410da-9cc5-4352-b7ba-d12e40d0a12b
+Common-B-2,Common B 2,Melody,Common B,melody,4/4,1.0,4.0,3,2,1,0,80,0.0,0.0,0,bda5e0c0-6402-4479-b886-55a97c3a207a
+Common-B-3,Common B 3,Melody,Common B,melody,4/4,1.0,4.0,4,3,2,0,80,0.0,0.0,0,32a7b228-d05e-405c-ae43-b1a2f5dd9b98
+Common-B-4,Common B 4,Melody,Common B,melody,4/4,1.0,4.0,3,3,2,0,80,0.0,0.0,0,7a145f63-39e1-4bac-9505-148df9213636
+Common-C,Common C,Melody,Common C,melody,4/4,16.0,64.0,62,5,4,0,69.0,12.1,0.855,0.00668,42ab390c-6755-4ad3-8e5e-2d0d9e8b91cb
+Common-C-1,Common C 1,Melody,Common C,melody,4/4,2.0,8.0,16,5,4,0,64.9,11.7,0.812,0.00625,ae5409b7-2d26-4677-adc9-51dcd5cdaeab
+Common-C-2,Common C 2,Melody,Common C,melody,4/4,2.0,8.0,15,5,4,0,67.1,13.3,0.867,0.00785,4bd6b1f1-25f7-42ec-8ab7-3e2f8600f546
+Common-C-3,Common C 3,Melody,Common C,melody,4/4,2.0,8.0,16,4,3,0,73.9,9.7,0.75,0.0059,f50dd3e2-8e31-459b-b70f-94052d396984
+Common-C-4,Common C 4,Melody,Common C,melody,4/4,2.0,8.0,15,5,4,0,70.3,11.8,1.0,0.00667,68844f95-272c-4b57-9790-61697e6596f0
+Common-D,Common D,Melody,Common D,melody,4/4,16.0,64.0,19,6,5,0,77.7,10.8,0.105,0.04167,adb7f23a-5447-4f5d-87c9-74932c5a757f
+Common-D-1,Common D 1,Melody,Common D,melody,4/4,2.0,8.0,5,4,3,0,68.4,10.5,0.0,0,5c275fa7-8418-4459-bef2-f13c9918309c
+Common-D-2,Common D 2,Melody,Common D,melody,4/4,2.0,8.0,5,4,3,0,81.2,5.8,0.4,0.04167,9251b8a5-6f1d-46b6-9cfe-6893706eee6f
+Common-D-3,Common D 3,Melody,Common D,melody,4/4,2.0,8.0,4,4,3,0,85,11.8,0.0,0,6b4e6664-562a-45d5-8338-3e8bbc64da6e
+Common-D-4,Common D 4,Melody,Common D,melody,4/4,2.0,8.0,5,5,4,0,77.8,7.0,0.0,0,32753d76-14f1-4937-894c-635b383b3e13
+Common-E,Common E,Melody,Common E,melody,4/4,16.0,64.0,19,6,5,0,60.3,15.2,0.0,0,5a63a524-2de4-4124-9246-633b39315017
+Common-E-1,Common E 1,Melody,Common E,melody,4/4,1.0,4.0,7,5,4,0,59.9,16.8,0.0,0,9b761c8f-22e3-4d52-8f8a-af6aaee22b6d
+Common-E-2,Common E 2,Melody,Common E,melody,4/4,1.0,4.0,3,2,1,0,58.3,11.1,0.0,0,46596358-601e-4b2a-b054-12a5916391d8
+Common-E-3,Common E 3,Melody,Common E,melody,4/4,1.0,4.0,7,5,4,0,59.9,16.8,0.0,0,ed8aa086-c889-4148-a6e6-b66787a90450
+Common-E-4,Common E 4,Melody,Common E,melody,4/4,1.0,4.0,2,2,1,0,66,3.0,0.0,0,7210c0e8-6d8c-4e8e-ba94-22e739fdc5b2
+Common-F,Common F,Melody,Common F,melody,4/4,4.0,16.0,26,10,9,1,65.1,14.2,0.0,0,96f447b0-5e58-40c0-a351-de0bab2230e9
+Common-F-1,Common F 1,Melody,Common F,melody,4/4,1.0,4.0,7,4,3,1,62.4,13.2,0.0,0,0ab9a5ae-b7e6-4a37-bc56-3222d3accc91
+Common-F-2,Common F 2,Melody,Common F,melody,4/4,1.0,4.0,5,3,2,1,68.6,10.4,0.0,0,d213d465-c0df-4621-bf47-5fc9395a3fa6
+Common-F-3,Common F 3,Melody,Common F,melody,4/4,1.0,4.0,7,4,3,1,65.6,17.1,0.0,0,71f17904-8752-4542-959c-21a214603e4d
+Common-F-4,Common F 4,Melody,Common F,melody,4/4,1.0,4.0,7,4,3,1,64.9,13.8,0.0,0,818a0d46-5403-4c2c-96cb-4fb0cbf2cd9f
+Common-G,Common G,Melody,Common G,melody,4/4,16.0,64.0,25,10,9,0,67.6,16.0,0.0,0,f2f02a03-acc6-4830-831b-43a77409eaea
+Common-G-1,Common G 1,Melody,Common G,melody,4/4,2.0,8.0,7,5,4,0,66.3,15.6,0.0,0,dc81e5cd-0b63-45e6-b284-d88e98a76faa
+Common-G-2,Common G 2,Melody,Common G,melody,4/4,2.0,8.0,7,5,4,0,66.3,15.6,0.0,0,e8a72adc-c384-4021-be05-0ac26047a107
+Common-G-3,Common G 3,Melody,Common G,melody,4/4,2.0,8.0,7,5,4,0,66.3,15.6,0.0,0,a56e9ab6-814b-42d4-a5d4-54ba63dfcb2c
+Common-G-4,Common G 4,Melody,Common G,melody,4/4,2.0,8.0,4,3,2,0,74.2,16.1,0.0,0,18ee984e-c862-4216-8c3e-1235b90a305c
+Common-H,Common H,Melody,Common H,melody,4/4,16.0,64.0,54,6,5,1,67.6,10.7,0.833,0.00546,2ff70fd7-3233-43be-8d30-ef07015784c5
+Common-H-1,Common H 1,Melody,Common H,melody,4/4,2.0,8.0,16,4,3,1,63.1,8.2,0.812,0.00449,4b8b594a-45de-42ba-a55a-748a11377e30
+Common-H-2,Common H 2,Melody,Common H,melody,4/4,2.0,8.0,16,4,3,1,64.3,9.7,0.938,0.00514,21efdc97-8675-426d-b354-51cafde42b65
+Common-H-3,Common H 3,Melody,Common H,melody,4/4,2.0,8.0,16,4,3,1,69.8,9.0,0.812,0.00673,f706397d-2d08-4cdf-851f-e1acadaa21d5
+Common-H-4,Common H 4,Melody,Common H,melody,4/4,2.0,8.0,6,4,3,1,82.8,7.3,0.667,0.00573,000e2f18-d27d-422b-8258-17a5bee590fa
+Common-I,Common I,Melody,Common I,melody,4/4,16.0,64.0,38,8,7,0,80,0.0,0.0,0,78b96a87-c397-4ddb-8637-2da8585cf975
+Common-I-1,Common I 1,Melody,Common I,melody,4/4,2.0,8.0,10,3,2,0,80,0.0,0.0,0,6b12b55f-9c0c-4260-8c9c-c6ac4755a4a4
+Common-I-2,Common I 2,Melody,Common I,melody,4/4,2.0,8.0,9,5,4,0,80,0.0,0.0,0,a939dc5e-dc85-4793-ae10-3b060bab909b
+Common-I-3,Common I 3,Melody,Common I,melody,4/4,2.0,8.0,10,5,4,0,80,0.0,0.0,0,9b3b1c02-ec63-4e05-bb4d-fd934788e399
+Common-I-4,Common I 4,Melody,Common I,melody,4/4,2.0,8.0,9,5,4,0,80,0.0,0.0,0,3198785c-38de-4e79-a14c-07b09499c9bc
+Common-J,Common J,Melody,Common J,melody,4/4,16.0,64.0,96,7,6,0,84,14.6,0.021,0.00521,08302cf3-f670-474e-8927-c8f94c7b6ec7
+Common-J-1,Common J 1,Melody,Common J,melody,4/4,2.0,8.0,24,6,5,0,84,14.6,0.0,0,4602a130-c76d-498a-9948-bb5b10993896
+Common-J-2,Common J 2,Melody,Common J,melody,4/4,2.0,8.0,24,6,5,0,84,14.6,0.0,0,113bbc57-4d79-45b1-93aa-6b056ff1b20a
+Common-J-3,Common J 3,Melody,Common J,melody,4/4,2.0,8.0,24,6,5,0,84,14.6,0.042,0.00417,78f8f391-19b1-45c4-a764-fc7df5d23139
+Common-J-4,Common J 4,Melody,Common J,melody,4/4,2.0,8.0,24,6,5,0,84,14.6,0.042,0.00625,8d2b0d4d-d554-4f16-b3e0-9ee4d9424fb5
+Jazz-Melody-1---C-Major,Jazz Melody 1 - C Major,Melody,Jazz Melody,melody,4/4,4.0,16.0,24,7,6,0,83.6,18.3,0.917,0.0232,d8999bc1-e00f-4842-9e60-2a4707a56e35
+Jazz-Melody-1---C-Minor,Jazz Melody 1 - C Minor,Melody,Jazz Melody,melody,4/4,4.0,16.0,24,7,6,0,83.6,18.3,0.917,0.0232,ffd02532-a32f-478d-8372-28f20c633886
+Jazz-Melody-2---C-Major,Jazz Melody 2 - C Major,Melody,Jazz Melody,melody,4/4,4.0,16.0,19,8,7,0,93.4,14.3,0.947,0.02199,191e9e4d-503c-4195-8c36-3d4cdb67567a
+Jazz-Melody-2---C-Minor,Jazz Melody 2 - C Minor,Melody,Jazz Melody,melody,4/4,4.0,16.0,19,8,7,0,93.4,14.3,0.947,0.02199,7793f994-3eb6-4625-a596-154f9c99f994
+Motif-A,Motif A,Melody,Motif A,melody,4/4,16.0,64.0,61,8,7,0,82.2,13.7,0.0,0,1d7e0bf8-7f16-4f0c-93d8-dda8a48e376b
+Motif-A-1,Motif A 1,Melody,Motif A,melody,4/4,4.0,16.0,16,4,3,1,79.2,13.8,0.0,0,4e689aa0-488b-411b-b58f-75528126308d
+Motif-A-2,Motif A 2,Melody,Motif A,melody,4/4,4.0,16.0,15,7,6,0,81.7,13.1,0.0,0,85c3acc8-8deb-4fe6-9f73-8147ecf82322
+Motif-A-3,Motif A 3,Melody,Motif A,melody,4/4,4.0,16.0,16,4,3,1,77.8,13.8,0.0,0,a178812e-eb02-475e-be7e-6fddb1022aea
+Motif-A-4,Motif A 4,Melody,Motif A,melody,4/4,4.0,16.0,14,7,6,0,91.4,8.7,0.0,0,a9344714-09a2-4653-8263-3b1d6f062189
+Motif-B,Motif B,Melody,Motif B,melody,4/4,16.0,64.0,42,10,9,1,84.9,22.3,0.0,0,b3d93f10-95d6-48f5-bd9d-dbd2430a9550
+Motif-B-1,Motif B 1,Melody,Motif B,melody,4/4,4.0,16.0,10,6,5,1,82.5,23.1,0.0,0,f50fcf75-7e88-4eb1-b91f-c04320e0ee6e
+Motif-B-2,Motif B 2,Melody,Motif B,melody,4/4,4.0,16.0,10,6,5,1,76.8,17.9,0.0,0,fa170cbd-f479-4aa9-9d70-2ddaaada15b8
+Motif-B-3,Motif B 3,Melody,Motif B,melody,4/4,4.0,16.0,11,8,7,1,99.3,20.9,0.0,0,99be816a-0329-4f2c-8bb4-a5c692298920
+Motif-B-4,Motif B 4,Melody,Motif B,melody,4/4,4.0,16.0,11,7,6,1,80.1,19.9,0.0,0,eeddef0c-dcb8-4cc5-a017-dbc664587c24
+Motif-C,Motif C,Melody,Motif C,melody,4/4,16.0,64.0,41,9,8,1,81.1,12.1,0.0,0,35d3190b-001f-4c88-84b5-c56eebc06b33
+Motif-C-1,Motif C 1,Melody,Motif C,melody,4/4,4.0,16.0,11,5,4,1,78.6,12.1,0.0,0,527df85b-cc53-4002-aac1-718382499b73
+Motif-C-2,Motif C 2,Melody,Motif C,melody,4/4,4.0,16.0,11,5,4,1,86.4,11.3,0.0,0,a4e8614e-a424-42c0-b8d7-341d2d78f1e5
+Motif-C-3,Motif C 3,Melody,Motif C,melody,4/4,4.0,16.0,8,5,4,2,83.6,12.1,0.0,0,f00913ba-48d0-4c5b-b1f5-6258294bb7fd
+Motif-C-4,Motif C 4,Melody,Motif C,melody,4/4,4.0,16.0,11,5,4,1,76.5,10.4,0.0,0,bee8089a-c072-400e-a709-1e1e72989769
+Motif-D,Motif D,Melody,Motif D,melody,4/4,16.0,64.0,45,12,11,0,84.8,20.0,0.0,0,028af51d-d789-4642-907d-2ae7baa73fb3
+Motif-D-1,Motif D 1,Melody,Motif D,melody,4/4,4.0,16.0,12,8,7,1,78.2,21.9,0.0,0,eb4d0bff-aab8-4464-b8ef-f819287ca071
+Motif-D-2,Motif D 2,Melody,Motif D,melody,4/4,4.0,16.0,10,6,5,0,85.2,18.7,0.0,0,a6e352b9-edd8-4c4e-ab3f-1794bc355014
+Motif-D-3,Motif D 3,Melody,Motif D,melody,4/4,4.0,16.0,14,8,7,1,88.9,19.5,0.0,0,72f4aa95-f40d-43ee-b5fb-862df5072cd1
+Motif-D-4,Motif D 4,Melody,Motif D,melody,4/4,4.0,16.0,9,5,4,1,86.6,17.3,0.0,0,b29cdc52-b202-46fb-ab6c-50ff2194581b
+Motif-E,Motif E,Melody,Motif E,melody,4/4,16.0,64.0,38,13,12,0,84.2,9.6,0.0,0,8141ea44-7ec0-4f0e-9752-3a9ae97a5916
+Motif-E-1,Motif E 1,Melody,Motif E,melody,4/4,4.0,16.0,11,7,6,0,77.4,9.1,0.0,0,7c7521ff-1e47-4926-8d13-dca21fbb82bd
+Motif-E-2,Motif E 2,Melody,Motif E,melody,4/4,4.0,16.0,9,7,6,1,86.4,8.3,0.0,0,c429d01e-2f78-4170-b514-133959e5eb45
+Motif-E-3,Motif E 3,Melody,Motif E,melody,4/4,4.0,16.0,9,7,6,1,91,0.0,0.0,0,d1af4020-6af2-4c70-8c96-cb2f654abd06
+Motif-E-4,Motif E 4,Melody,Motif E,melody,4/4,4.0,16.0,9,7,6,0,83.7,10.5,0.0,0,29b099d6-408f-45b6-8cf1-d8826b837a12
+Motif-F,Motif F,Melody,Motif F,melody,4/4,16.0,64.0,40,7,6,1,102.9,18.9,0.0,0,7e7445e4-60b8-4028-b3c5-eaea94bb5cf1
+Motif-F-1,Motif F 1,Melody,Motif F,melody,4/4,2.0,8.0,10,4,3,1,98.6,23.0,0.0,0,73239ef8-21a8-4e06-8c05-44bc0d172404
+Motif-F-2,Motif F 2,Melody,Motif F,melody,4/4,2.0,8.0,9,4,3,1,108.4,11.4,0.0,0,0641bea1-bdc5-4c63-929b-449e410f6316
+Motif-F-3,Motif F 3,Melody,Motif F,melody,4/4,2.0,8.0,10,6,5,1,98.4,17.8,0.0,0,6f9268e5-0597-4259-a32d-15d555e7b079
+Motif-F-4,Motif F 4,Melody,Motif F,melody,4/4,2.0,8.0,11,4,3,1,106.5,18.8,0.0,0,6b554dce-8204-4c77-87ab-b57a04eac498
+Motif-G,Motif G,Melody,Motif G,melody,4/4,16.0,64.0,36,8,7,1,95.7,12.0,0.0,0,e3184724-347f-470c-8f59-c554abe5a0db
+Motif-G-1,Motif G 1,Melody,Motif G,melody,4/4,4.0,16.0,8,5,4,1,98.6,12.4,0.0,0,c1cc007a-b5a3-498c-8769-e2894e4a3cc8
+Motif-G-2,Motif G 2,Melody,Motif G,melody,4/4,4.0,16.0,10,5,4,1,93.7,9.6,0.0,0,861bab9a-8bd7-481b-ae2f-4a10ea87d8b4
+Motif-G-3,Motif G 3,Melody,Motif G,melody,4/4,4.0,16.0,8,5,4,1,94.2,15.7,0.0,0,2fd1c063-b123-4e95-959f-439220227bc9
+Motif-G-4,Motif G 4,Melody,Motif G,melody,4/4,4.0,16.0,10,5,4,1,96.4,9.7,0.0,0,9919e184-4a1c-46fd-af9e-dbd7aaa2d8cd
+Motif-H,Motif H,Melody,Motif H,melody,4/4,16.0,64.0,36,10,9,1,122.5,7.9,0.0,0,34508a12-9104-49fe-8343-4baefed89f67
+Motif-H-1,Motif H 1,Melody,Motif H,melody,4/4,2.0,8.0,9,5,4,1,125.8,1.8,0.0,0,d87038d4-2467-4fb8-a5fa-9ecb28b27d32
+Motif-H-2,Motif H 2,Melody,Motif H,melody,4/4,2.0,8.0,9,5,4,1,122.3,6.5,0.0,0,10664dc2-f5e0-41f5-95b0-4f31f68dfb07
+Motif-H-3,Motif H 3,Melody,Motif H,melody,4/4,2.0,8.0,9,5,4,1,121.3,6.0,0.0,0,53249888-5ee5-4b76-b19d-b2bcd3a01dba
+Motif-H-4,Motif H 4,Melody,Motif H,melody,4/4,2.0,8.0,9,4,3,1,120.6,12.2,0.0,0,2728426f-cc1c-44f9-b76f-181ffc9c4c71
+Motif-I,Motif I,Melody,Motif I,melody,4/4,16.0,64.0,33,8,7,0,96.7,13.5,0.0,0,2fda1f6a-329c-4494-9a15-44dbfd642564
+Motif-I-1,Motif I 1,Melody,Motif I,melody,4/4,2.0,8.0,9,5,4,0,102.3,10.1,0.0,0,54248af4-2b7a-408e-834e-32e2c8c487b8
+Motif-I-2,Motif I 2,Melody,Motif I,melody,4/4,2.0,8.0,7,5,4,0,104.4,7.5,0.0,0,8346fd1e-ded5-41bc-80ad-45cf0bd18b1b
+Motif-I-3,Motif I 3,Melody,Motif I,melody,4/4,2.0,8.0,10,5,4,1,92.7,16.2,0.0,0,ee95258e-fef6-46aa-88dd-e3f91f827814
+Motif-I-4,Motif I 4,Melody,Motif I,melody,4/4,2.0,8.0,7,6,5,0,87.6,10.0,0.0,0,40892abe-146d-4fec-80c4-1e2d8bfd61b2
+Motif-J,Motif J,Melody,Motif J,melody,4/4,16.0,64.0,52,14,13,0,76.8,10.4,0.0,0,67fdf1b6-973f-49b7-8098-a84a92942860
+Motif-J-1,Motif J 1,Melody,Motif J,melody,4/4,4.0,16.0,16,8,7,0,75.1,9.1,0.0,0,ed33fff1-9ab9-4ba5-b04d-f4c063f7500e
+Motif-J-2,Motif J 2,Melody,Motif J,melody,4/4,4.0,16.0,14,9,8,1,79.5,10.7,0.0,0,c1bce688-287a-40c5-afe5-286b77ec29c4
+Motif-J-3,Motif J 3,Melody,Motif J,melody,4/4,4.0,16.0,12,8,7,0,75.5,10.2,0.0,0,aacda852-1214-492f-bf6c-cc7ad325373d
+Motif-J-4,Motif J 4,Melody,Motif J,melody,4/4,4.0,16.0,10,7,6,2,77.4,11.5,0.0,0,288ae8e6-1f86-4247-98dc-d564740ed4fd
+Riff-A,Riff A,Melody,Riff A,melody,4/4,8.0,32.0,128,14,13,0,110,0.0,0.0,0,4e2d4bfc-6fa8-435f-86e8-41c49994b830
+Riff-A-1,Riff A 1,Melody,Riff A,melody,4/4,2.0,8.0,32,7,6,0,110,0.0,0.0,0,303c30d4-45f9-4f33-a0b1-b7707a4f380c
+Riff-A-2,Riff A 2,Melody,Riff A,melody,4/4,2.0,8.0,32,9,8,0,110,0.0,0.0,0,59a1c134-5690-4f58-8b92-9a9da166a596
+Riff-A-3,Riff A 3,Melody,Riff A,melody,4/4,2.0,8.0,32,7,6,0,110,0.0,0.0,0,c248ed3e-69c8-4457-b37d-69ff15e4f161
+Riff-A-4,Riff A 4,Melody,Riff A,melody,4/4,2.0,8.0,32,8,7,0,110,0.0,0.0,0,c80af2cc-c17b-4b34-8203-b2b0a8a1d3d8
+Riff-B,Riff B,Melody,Riff B,melody,4/4,8.0,32.0,128,16,15,-1,80,0.0,0.0,0,7bf1d895-dcd6-4d4c-aa57-3e51527228c3
+Riff-B-1,Riff B 1,Melody,Riff B,melody,4/4,2.0,8.0,32,7,6,-1,80,0.0,0.0,0,048c4973-0b2b-4a6e-99bc-482b58d6ee3e
+Riff-B-2,Riff B 2,Melody,Riff B,melody,4/4,2.0,8.0,32,8,7,-1,80,0.0,0.0,0,35910e95-989b-4f24-9381-2b594401c686
+Riff-B-3,Riff B 3,Melody,Riff B,melody,4/4,2.0,8.0,32,8,7,-1,80,0.0,0.0,0,d4eec388-5c96-452d-b09c-e48f760a5eb4
+Riff-B-4,Riff B 4,Melody,Riff B,melody,4/4,2.0,8.0,32,8,7,-1,80,0.0,0.0,0,17e9c14c-a7fe-4dff-a645-b2e0c73105c4
+Riff-C,Riff C,Melody,Riff C,melody,4/4,8.0,32.0,88,12,11,-1,80,0.0,0.0,0,20d3c8d3-6fd0-462f-944c-3fe2d4297c3c
+Riff-C-1,Riff C 1,Melody,Riff C,melody,4/4,2.0,8.0,22,5,4,-1,80,0.0,0.0,0,2c347bbc-4dba-4aee-935f-a4c45c2e0804
+Riff-C-2,Riff C 2,Melody,Riff C,melody,4/4,2.0,8.0,22,6,5,-1,80,0.0,0.0,0,2f3958b3-4533-40f7-8acb-7101e7670247
+Riff-C-3,Riff C 3,Melody,Riff C,melody,4/4,2.0,8.0,22,8,7,-1,80,0.0,0.0,0,cf0d0a58-dce1-4e5f-a336-d7ebe9919958
+Riff-C-4,Riff C 4,Melody,Riff C,melody,4/4,2.0,8.0,22,7,6,-1,80,0.0,0.0,0,321d7e7b-c839-465e-b9b6-642ce61ddb99
+Riff-D,Riff D,Melody,Riff D,melody,4/4,8.0,32.0,128,9,8,-1,80,0.0,0.0,0,86103395-c846-4a8e-a65e-357e891c63f9
+Riff-D-1,Riff D 1,Melody,Riff D,melody,4/4,2.0,8.0,32,6,5,-1,80,0.0,0.0,0,36c2dfef-aac4-4ad8-932c-f2b689551300
+Riff-D-2,Riff D 2,Melody,Riff D,melody,4/4,2.0,8.0,32,6,5,-1,80,0.0,0.0,0,55cff878-8d99-413c-b6ad-1733adf42170
+Riff-D-3,Riff D 3,Melody,Riff D,melody,4/4,2.0,8.0,32,8,7,-1,80,0.0,0.0,0,1692e550-46dc-4462-a624-0cdb60fd052c
+Riff-D-4,Riff D 4,Melody,Riff D,melody,4/4,2.0,8.0,32,9,8,-1,80,0.0,0.0,0,76d4ffef-cc87-49bd-b2ab-87af0be2befe
+Riff-E,Riff E,Melody,Riff E,melody,4/4,4.0,16.0,64,7,6,0,80,0.0,0.0,0,f59ec7a6-fb17-4425-b392-a7ab5b9b7ce2
+Riff-E-1,Riff E 1,Melody,Riff E,melody,4/4,1.0,4.0,16,6,5,0,80,0.0,0.0,0,5c272202-2bc1-45eb-9bb5-4f26d2920eec
+Riff-E-2,Riff E 2,Melody,Riff E,melody,4/4,1.0,4.0,16,5,4,0,80,0.0,0.0,0,895ce8d1-7b91-4514-8f21-52329f6cba09
+Riff-E-3,Riff E 3,Melody,Riff E,melody,4/4,1.0,4.0,16,6,5,0,80,0.0,0.0,0,f187d8be-4b33-451c-b2c7-0ec15d306125
+Riff-E-4,Riff E 4,Melody,Riff E,melody,4/4,1.0,4.0,16,5,4,0,80,0.0,0.0,0,144cabf2-b5b1-4b90-bc6b-ad157f383ef3
+Riff-F,Riff F,Melody,Riff F,melody,4/4,4.0,16.0,64,8,7,0,127,0.0,0.5,0.0125,c6ffc524-2cee-4450-bf02-addc113550a3
+Riff-F-1,Riff F 1,Melody,Riff F,melody,4/4,1.0,4.0,16,6,5,0,127,0.0,0.5,0.0125,50fdcbe4-e9bd-47fa-a72d-d759fd276bcd
+Riff-F-2,Riff F 2,Melody,Riff F,melody,4/4,1.0,4.0,16,6,5,0,127,0.0,0.5,0.0125,bcbd781c-c748-4d97-b4ba-aa67c8d4de5e
+Riff-F-3,Riff F 3,Melody,Riff F,melody,4/4,1.0,4.0,16,6,5,0,127,0.0,0.5,0.0125,46e3d20f-6bce-43f6-8200-6abec3fdd95c
+Riff-F-4,Riff F 4,Melody,Riff F,melody,4/4,1.0,4.0,16,5,4,0,127,0.0,0.5,0.0125,8225f38a-69d8-48ae-87cc-5be8a1a6e6ad
+Riff-G,Riff G,Melody,Riff G,melody,4/4,4.0,16.0,42,9,8,-1,81.3,10.0,0.833,0.00524,128a2aee-338b-4577-92a8-cefba92c0341
+Riff-G-1,Riff G 1,Melody,Riff G,melody,4/4,1.0,4.0,11,5,4,-1,81.7,9.7,0.727,0.00599,b5469007-c3e8-4a24-a83c-7b2df3f5e9fe
+Riff-G-2,Riff G 2,Melody,Riff G,melody,4/4,1.0,4.0,10,4,3,-1,82.6,10.4,0.9,0.00532,7ed462b1-327b-4f3d-b0b1-846e1a497e7b
+Riff-G-3,Riff G 3,Melody,Riff G,melody,4/4,1.0,4.0,11,7,6,-1,79.8,9.2,0.909,0.00458,1c863b4d-423f-41d8-9d6a-c5031d3de088
+Riff-G-4,Riff G 4,Melody,Riff G,melody,4/4,1.0,4.0,10,5,4,-1,81.1,10.3,0.8,0.00521,df5eb4f8-64e7-4285-b213-42ff4488ba11
+Riff-H,Riff H,Melody,Riff H,melody,4/4,4.0,16.0,64,12,11,-1,81.4,40.2,0.766,0.00969,5b666654-d03e-41ec-a085-5b4fe306d739
+Riff-H-1,Riff H 1,Melody,Riff H,melody,4/4,1.0,4.0,16,9,8,-1,81.4,40.2,0.75,0.00972,6d36a574-cbdf-4965-b57f-8221b3c7ea87
+Riff-H-2,Riff H 2,Melody,Riff H,melody,4/4,1.0,4.0,16,9,8,-1,81.4,40.2,0.812,0.00962,63c5ebc8-fabe-4971-82cf-8fb11db2bf98
+Riff-H-3,Riff H 3,Melody,Riff H,melody,4/4,1.0,4.0,16,8,7,-1,81.4,40.2,0.688,0.01023,a08f6f30-aa4a-4bbd-bcce-40624777502d
+Riff-H-4,Riff H 4,Melody,Riff H,melody,4/4,1.0,4.0,16,9,8,-1,81.4,40.2,0.812,0.00929,005355ee-7956-47a2-8b28-1be03200d3d5
+Riff-I,Riff I,Melody,Riff I,melody,4/4,4.0,16.0,58,10,9,0,104.0,9.3,0.862,0.00583,6ce96cab-c5aa-4373-9692-798028be3f72
+Riff-I-1,Riff I 1,Melody,Riff I,melody,4/4,1.0,4.0,15,5,4,0,105.7,9.3,0.933,0.00536,5fa627c6-9853-45e5-ae61-9b71e451dd88
+Riff-I-2,Riff I 2,Melody,Riff I,melody,4/4,1.0,4.0,14,6,5,0,101.7,8.4,0.786,0.00587,90f88309-0532-47f5-bc31-8b98f22b9b43
+Riff-I-3,Riff I 3,Melody,Riff I,melody,4/4,1.0,4.0,15,5,4,0,103.5,8.9,0.867,0.00545,3db0c4e0-a51c-4714-9e3a-919bb5f86c31
+Riff-I-4,Riff I 4,Melody,Riff I,melody,4/4,1.0,4.0,14,7,6,0,105.1,9.9,0.857,0.00677,9483e1ae-7257-455e-b931-c9afaeb9477b
+Riff-J,Riff J,Melody,Riff J,melody,4/4,8.0,32.0,64,7,6,0,118,0.0,1.0,0.00833,6ee11cca-1f85-4a50-b992-322f3248d01d
+Riff-J-1,Riff J 1,Melody,Riff J,melody,4/4,2.0,8.0,16,5,4,0,118,0.0,1.0,0.00833,d38b5fdb-fb5a-48c3-9786-35a8d9f0f91a
+Riff-J-2,Riff J 2,Melody,Riff J,melody,4/4,2.0,8.0,16,4,3,0,118,0.0,1.0,0.00833,ca2ba7b9-a073-4008-8642-e29d75465828
+Riff-J-3,Riff J 3,Melody,Riff J,melody,4/4,2.0,8.0,16,5,4,0,118,0.0,1.0,0.00833,4be68f15-a264-4776-89a0-424c0b2a97c6
+Riff-J-4,Riff J 4,Melody,Riff J,melody,4/4,2.0,8.0,16,4,3,0,118,0.0,1.0,0.00833,af35b377-cb5c-4dd1-9021-7583287efeed
+Riff-K,Riff K,Melody,Riff K,melody,4/4,8.0,32.0,98,10,9,0,123.5,5.2,0.0,0,236a2594-d247-4b49-adb8-fb82dd222e24
+Riff-K-1,Riff K 1,Melody,Riff K,melody,4/4,2.0,8.0,23,3,2,0,123.3,5.3,0.0,0,74da67bc-d07e-4cf4-90e3-0425c24c7673
+Riff-K-2,Riff K 2,Melody,Riff K,melody,4/4,2.0,8.0,25,5,4,0,123.6,5.1,0.0,0,f90b80ae-fc82-4334-9298-fa653183f3f0
+Riff-K-3,Riff K 3,Melody,Riff K,melody,4/4,2.0,8.0,23,7,6,0,123.3,5.3,0.0,0,a4f59bab-3fad-4976-aea8-547fa91afe99
+Riff-K-4,Riff K 4,Melody,Riff K,melody,4/4,2.0,8.0,27,9,8,0,123.7,5.0,0.0,0,32862d8d-dd0a-4570-9bd5-b3d98fe8c29e
+Riff-L,Riff L,Melody,Riff L,melody,4/4,8.0,32.0,62,7,6,0,125.1,4.3,0.0,0,82ce61bc-b5a4-448e-a4ca-03703013af9b
+Riff-L-1,Riff L 1,Melody,Riff L,melody,4/4,2.0,8.0,14,3,2,0,124.1,5.4,0.0,0,daa774e2-25cb-4cbb-ba55-fc63d01d542c
+Riff-L-2,Riff L 2,Melody,Riff L,melody,4/4,2.0,8.0,15,3,2,0,123.9,5.3,0.0,0,1b5e2a0b-f6aa-4fcd-9fa1-21e7c02b6ed2
+Riff-L-3,Riff L 3,Melody,Riff L,melody,4/4,2.0,8.0,15,5,4,0,125.9,3.3,0.0,0,98c6ef5e-3b4a-4648-9718-564d2a091133
+Riff-L-4,Riff L 4,Melody,Riff L,melody,4/4,2.0,8.0,18,4,3,0,126.3,2.1,0.0,0,f1f24e67-61e2-4432-a133-ca93fa28717f
+Riff-M,Riff M,Melody,Riff M,melody,4/4,8.0,32.0,73,5,4,0,125.2,4.6,0.0,0,fc6d7e29-0229-428f-9356-772c1d5bb00e
+Riff-M-1,Riff M 1,Melody,Riff M,melody,4/4,2.0,8.0,17,4,3,1,124.4,5.2,0.0,0,0aa3d65d-7829-40dd-99fe-9d5040b4563e
+Riff-M-2,Riff M 2,Melody,Riff M,melody,4/4,2.0,8.0,18,4,3,1,125.5,4.0,0.0,0,a7a13771-0b04-4641-be24-9ac0b4fb1a79
+Riff-M-3,Riff M 3,Melody,Riff M,melody,4/4,2.0,8.0,18,5,4,0,124.8,5.4,0.0,0,81dc7702-0f40-47a0-a8de-7fa5d73c9c64
+Riff-M-4,Riff M 4,Melody,Riff M,melody,4/4,2.0,8.0,20,5,4,0,125.8,3.4,0.0,0,2851dca4-b031-4f69-9474-79664b829c5c
+Riff-N,Riff N,Melody,Riff N,melody,4/4,8.0,32.0,46,8,7,0,118.3,9.9,0.0,0,1530b488-0d6e-4669-86b6-e4a3a0eb2623
+Riff-N-1,Riff N 1,Melody,Riff N,melody,4/4,2.0,8.0,11,6,5,0,116.5,10.0,0.0,0,db8608b4-1911-4c53-aa1a-59ff49d60f14
+Riff-N-2,Riff N 2,Melody,Riff N,melody,4/4,2.0,8.0,13,6,5,0,118.5,11.3,0.0,0,57af3fd8-3f56-4870-97a0-df3c7c5cbb92
+Riff-N-3,Riff N 3,Melody,Riff N,melody,4/4,2.0,8.0,11,6,5,0,118.1,8.7,0.0,0,3cd03e68-4e81-4400-ad3e-547e24d8b4bf
+Riff-N-4,Riff N 4,Melody,Riff N,melody,4/4,2.0,8.0,11,7,6,0,120,9.0,0.0,0,76be389c-1ca3-4f48-8cdb-770e45867c54
+Riff-O,Riff O,Melody,Riff O,melody,4/4,8.0,32.0,49,9,8,0,116.2,11.8,0.0,0,a3550abc-ffed-477f-b20b-1a6564634056
+Riff-O-1,Riff O 1,Melody,Riff O,melody,4/4,2.0,8.0,12,5,4,0,112.6,12.9,0.0,0,19e39c74-bb75-496c-b1b7-5090dcdcc731
+Riff-O-2,Riff O 2,Melody,Riff O,melody,4/4,2.0,8.0,12,8,7,0,113.3,11.9,0.0,0,b491f64c-15d0-4d33-b6cc-1b963cb4633e
+Riff-O-3,Riff O 3,Melody,Riff O,melody,4/4,2.0,8.0,12,6,5,0,115.5,11.7,0.0,0,fb7cd9e9-66b1-4caf-9bf7-634fc3cd4731
+Riff-O-4,Riff O 4,Melody,Riff O,melody,4/4,2.0,8.0,13,8,7,0,122.7,7.4,0.0,0,f7aa18d7-6092-47a0-a4c9-1e02d972be47
+Riff-P,Riff P,Melody,Riff P,melody,4/4,8.0,32.0,64,7,6,0,116.2,9.6,0.0,0,52bdfb26-da62-472b-860a-6582b7c9856e
+Riff-P-1,Riff P 1,Melody,Riff P,melody,4/4,2.0,8.0,16,4,3,0,114.2,9.3,0.0,0,39aad100-afe1-420a-a4dd-ba262772a405
+Riff-P-2,Riff P 2,Melody,Riff P,melody,4/4,2.0,8.0,16,4,3,0,114.9,10.0,0.0,0,d1a52665-452f-454f-af28-06e17c1d1311
+Riff-P-3,Riff P 3,Melody,Riff P,melody,4/4,2.0,8.0,16,4,3,1,117,9.3,0.0,0,5f21d014-c9ee-4fd7-b3d6-8a0e189f00c6
+Riff-P-4,Riff P 4,Melody,Riff P,melody,4/4,2.0,8.0,16,5,4,1,118.8,9.2,0.0,0,ae2c7e8f-77ad-4ca7-875f-ec4f2a399871
+Riff-Q,Riff Q,Melody,Riff Q,melody,4/4,8.0,32.0,81,8,7,0,122.8,8.3,0.0,0,392691ab-9bf0-4147-8258-9c2cbbdf144b
+Riff-Q-1,Riff Q 1,Melody,Riff Q,melody,4/4,2.0,8.0,20,4,3,0,122.5,7.2,0.0,0,754a1f42-8b40-43cd-b149-ad4f0ca52cab
+Riff-Q-2,Riff Q 2,Melody,Riff Q,melody,4/4,2.0,8.0,20,6,5,0,122.0,7.7,0.0,0,98831b09-7fe0-4432-898c-37e801f9222f
+Riff-Q-3,Riff Q 3,Melody,Riff Q,melody,4/4,2.0,8.0,20,4,3,0,119.7,11.9,0.0,0,657a60e1-553e-493c-88ea-4ae226b0dca0
+Riff-Q-4,Riff Q 4,Melody,Riff Q,melody,4/4,2.0,8.0,21,5,4,0,126.6,1.2,0.0,0,8be06cd7-361d-4dbc-87fb-4530b59a8340
+Riff-R,Riff R,Melody,Riff R,melody,4/4,8.0,32.0,53,7,6,0,122.4,7.5,0.0,0,960a7f64-4289-4b67-8620-68051241d461
+Riff-R-1,Riff R 1,Melody,Riff R,melody,4/4,2.0,8.0,11,5,4,0,122.5,5.5,0.0,0,312cc805-af7a-480a-a204-7a5a53d53c58
+Riff-R-2,Riff R 2,Melody,Riff R,melody,4/4,2.0,8.0,16,6,5,0,121.9,8.3,0.0,0,af86f25c-fa21-4486-9e06-b4ed933872e1
+Riff-R-3,Riff R 3,Melody,Riff R,melody,4/4,2.0,8.0,12,5,4,0,121.4,9.3,0.0,0,7c400c3d-eaa2-4218-a1af-37d984618e92
+Riff-R-4,Riff R 4,Melody,Riff R,melody,4/4,2.0,8.0,14,6,5,0,123.9,5.5,0.0,0,13e62ee4-9311-4763-81e1-856d5c714bed
+Riff-S,Riff S,Melody,Riff S,melody,4/4,8.0,32.0,62,14,13,-1,126.0,3.1,0.0,0,53a6b20a-8718-4f5c-a735-78a460106d10
+Riff-S-1,Riff S 1,Melody,Riff S,melody,4/4,2.0,8.0,14,5,4,-1,127,0.0,0.0,0,6aa92239-7820-4413-b1f2-c386028cbf3d
+Riff-S-2,Riff S 2,Melody,Riff S,melody,4/4,2.0,8.0,14,6,5,-1,125.8,4.4,0.0,0,d62121b1-7348-44f9-ad7e-ca7b83cbc21b
+Riff-S-3,Riff S 3,Melody,Riff S,melody,4/4,2.0,8.0,16,7,6,-1,126.7,1.2,0.0,0,1780a633-c358-4088-8727-e67655a5311c
+Riff-S-4,Riff S 4,Melody,Riff S,melody,4/4,2.0,8.0,18,10,9,-1,124.8,3.9,0.0,0,1c0d8bd4-f063-4935-9cd1-329aba0bcc16
+Theme-A,Theme A,Melody,Theme A,melody,4/4,16.0,64.0,52,9,8,0,87.9,7.4,0.0,0,f8375709-7370-48ba-9885-b9dfecf25577
+Theme-A-1,Theme A 1,Melody,Theme A,melody,4/4,4.0,16.0,15,6,5,1,87.9,8.0,0.0,0,12005887-0c1c-4f7b-9c62-ac24349ca5a0
+Theme-A-2,Theme A 2,Melody,Theme A,melody,4/4,4.0,16.0,10,5,4,1,87.2,10.8,0.0,0,cff1910a-d8d9-44e7-8781-94824da7d978
+Theme-A-3,Theme A 3,Melody,Theme A,melody,4/4,4.0,16.0,15,6,5,1,87.9,4.3,0.0,0,668fba76-457b-491d-b293-1d77e3d858de
+Theme-A-4,Theme A 4,Melody,Theme A,melody,4/4,3.0,12.0,12,6,5,0,88.3,5.9,0.0,0,6155ce19-3a60-4fd8-a2f9-bd8446d65227
+Theme-B,Theme B,Melody,Theme B,melody,4/4,16.0,64.0,51,9,8,1,98.3,10.8,0.0,0,bcb6e68a-ea46-42e5-8e46-2c5219710711
+Theme-B-1,Theme B 1,Melody,Theme B,melody,4/4,4.0,16.0,12,7,6,1,99.2,10.2,0.0,0,0ae680f6-5e83-4867-a9c2-720b19f22046
+Theme-B-2,Theme B 2,Melody,Theme B,melody,4/4,4.0,16.0,13,7,6,2,99.5,6.1,0.0,0,f063b82a-7d3c-4896-a417-276eb0aebc80
+Theme-B-3,Theme B 3,Melody,Theme B,melody,4/4,4.0,16.0,15,6,5,2,101.9,6.4,0.0,0,7ee27115-e3bb-4f10-8e6d-e4f496d16478
+Theme-B-4,Theme B 4,Melody,Theme B,melody,4/4,4.0,16.0,11,6,5,1,90.8,15.8,0.0,0,9841b66f-7136-44c7-a202-a89270a79874
+Theme-C,Theme C,Melody,Theme C,melody,4/4,16.0,64.0,33,9,8,0,119.4,6.8,0.0,0,8e859149-94e6-4227-8f7e-235c9c75bfb7
+Theme-C-1,Theme C 1,Melody,Theme C,melody,4/4,2.0,8.0,10,4,3,1,119.5,5.4,0.0,0,f7912f21-3119-47ff-a19e-6fb8d990c0b6
+Theme-C-2,Theme C 2,Melody,Theme C,melody,4/4,2.0,8.0,8,5,4,0,119.5,6.0,0.0,0,2acbb0ea-c2db-4fea-9b7b-b03e623e4aa4
+Theme-C-3,Theme C 3,Melody,Theme C,melody,4/4,2.0,8.0,10,4,3,1,116.2,8.1,0.0,0,03ab868e-3cf1-4225-93ce-959455b985bc
+Theme-C-4,Theme C 4,Melody,Theme C,melody,4/4,2.0,8.0,5,5,4,0,125.6,2.0,0.0,0,46b9caac-1a2e-416d-a1e8-168a510c8627
+Theme-D,Theme D,Melody,Theme D,melody,4/4,16.0,64.0,32,8,7,0,118.9,11.8,0.0,0,92f8693a-c705-4f16-aa31-0436fde631e8
+Theme-D-1,Theme D 1,Melody,Theme D,melody,4/4,2.0,8.0,8,4,3,0,116.8,10.6,0.0,0,ffe5024d-f7fe-4167-a933-87a1d7312ad9
+Theme-D-2,Theme D 2,Melody,Theme D,melody,4/4,2.0,8.0,8,5,4,0,119.9,15.2,0.0,0,1566b1bc-a0b9-476b-849c-1eacf19007db
+Theme-D-3,Theme D 3,Melody,Theme D,melody,4/4,2.0,8.0,8,3,2,1,114.1,11.1,0.0,0,fe14eb26-9e38-47e7-b02e-10713057c2d3
+Theme-D-4,Theme D 4,Melody,Theme D,melody,4/4,2.0,8.0,8,6,5,0,124.9,5.6,0.0,0,75b4000d-9fc5-401a-ad43-c34d269784ce
+Theme-E,Theme E,Melody,Theme E,melody,4/4,16.0,64.0,16,9,8,0,72.6,5.5,0.0,0,42043d85-41a4-44fe-81e6-46171629be73
+Theme-E-1,Theme E 1,Melody,Theme E,melody,4/4,2.0,8.0,4,3,2,1,76.2,3.9,0.0,0,9dd3bee6-35cb-4449-bcef-92ba357e0db8
+Theme-E-2,Theme E 2,Melody,Theme E,melody,4/4,2.0,8.0,4,4,3,0,74,7.4,0.0,0,5deb20f9-76b9-41ad-96e0-809bddcb18e4
+Theme-E-3,Theme E 3,Melody,Theme E,melody,4/4,2.0,8.0,4,2,1,1,71.2,1.8,0.0,0,f732896b-b159-45ac-b68d-a96aed5612f7
+Theme-E-4,Theme E 4,Melody,Theme E,melody,4/4,2.0,8.0,4,4,3,1,69,3.9,0.0,0,2dff6fe7-c754-46cc-bded-43d3977dd547
+Theme-F,Theme F,Melody,Theme F,melody,4/4,16.0,64.0,51,11,10,0,124.3,6.2,0.0,0,570a58b0-fd5b-447e-9eff-4062d956fd19
+Theme-F-1,Theme F 1,Melody,Theme F,melody,4/4,2.0,8.0,12,5,4,1,124.7,5.2,0.0,0,a073e183-9122-4bb7-9347-8efb0c3aeff8
+Theme-F-2,Theme F 2,Melody,Theme F,melody,4/4,2.0,8.0,13,5,4,0,127,0.0,0.0,0,0ae32185-8157-49b4-bb1c-c129a937290b
+Theme-F-3,Theme F 3,Melody,Theme F,melody,4/4,2.0,8.0,13,5,4,1,123,5.9,0.0,0,85a7ad3d-9881-4634-87fa-4b4962648dfe
+Theme-F-4,Theme F 4,Melody,Theme F,melody,4/4,2.0,8.0,13,7,6,0,122.5,8.7,0.0,0,b2521bde-8273-4b24-beb3-1affc064c051
+Theme-G,Theme G,Melody,Theme G,melody,4/4,16.0,64.0,55,10,9,1,107.3,15.2,0.0,0,4eafb00f-2020-461f-a711-84d55d490e91
+Theme-G-1,Theme G 1,Melody,Theme G,melody,4/4,2.0,8.0,14,5,4,1,109,13.4,0.0,0,6fa362de-2389-4256-ae65-e87f36679cbb
+Theme-G-2,Theme G 2,Melody,Theme G,melody,4/4,2.0,8.0,14,6,5,1,113.5,12.4,0.0,0,460cb28e-a36d-4c39-9380-2e0a117f03d4
+Theme-G-3,Theme G 3,Melody,Theme G,melody,4/4,2.0,8.0,15,8,7,1,100.9,18.3,0.0,0,0c0562ac-70d1-40ab-8c8f-b5df6873a803
+Theme-G-4,Theme G 4,Melody,Theme G,melody,4/4,2.0,8.0,12,7,6,1,106.1,12.1,0.0,0,c65fbaa8-2d48-49b3-9bf0-62e96ea4fec1
+Theme-H,Theme H,Melody,Theme H,melody,4/4,16.0,64.0,49,11,10,0,104.4,18.1,0.0,0,be9785d9-5386-4770-bbbf-f117dfaf4356
+Theme-H-1,Theme H 1,Melody,Theme H,melody,4/4,2.0,8.0,14,4,3,1,97.8,20.9,0.0,0,789a312a-548a-4e32-885a-2b0b4c93554f
+Theme-H-2,Theme H 2,Melody,Theme H,melody,4/4,2.0,8.0,14,4,3,1,104.4,16.2,0.0,0,922323c9-7b8b-47b6-beed-21fa16d193f7
+Theme-H-3,Theme H 3,Melody,Theme H,melody,4/4,2.0,8.0,12,6,5,1,111.6,13.4,0.0,0,f80c76e6-7de9-4a7b-b6cb-06fc43405cad
+Theme-H-4,Theme H 4,Melody,Theme H,melody,4/4,2.0,8.0,9,6,5,0,105.2,17.6,0.0,0,54072f2a-51b7-4ff4-a1ce-edf88eb0b240
+Theme-I,Theme I,Melody,Theme I,melody,4/4,16.0,64.0,24,12,11,0,71.1,6.5,0.0,0,9e2c975c-cfe0-4dfd-9c83-c4777decac77
+Theme-I-1,Theme I 1,Melody,Theme I,melody,4/4,2.0,8.0,6,4,3,1,72.8,6.0,0.0,0,4009d7d0-ee58-4fde-aad8-202a3d854c09
+Theme-I-2,Theme I 2,Melody,Theme I,melody,4/4,2.0,8.0,6,4,3,0,76,6.2,0.0,0,063eaae9-bdc0-41b6-9dac-ff7a2d6aa548
+Theme-I-3,Theme I 3,Melody,Theme I,melody,4/4,2.0,8.0,6,4,3,1,68,5.2,0.0,0,e5b25b91-bb22-44ec-b700-3e7f6245cf1a
+Theme-I-4,Theme I 4,Melody,Theme I,melody,4/4,2.0,8.0,6,5,4,1,67.7,4.1,0.0,0,5750f559-83f7-4724-94e0-cf3003bd6352
+Theme-J,Theme J,Melody,Theme J,melody,4/4,16.0,64.0,36,6,5,1,102.2,14.4,0.0,0,58bdb95a-83fc-48fc-8caa-6b8aefc64ff9
+Theme-J-1,Theme J 1,Melody,Theme J,melody,4/4,4.0,16.0,10,5,4,1,100.1,10.5,0.0,0,77e83da5-833b-4e15-89da-4c362d6bfb04
+Theme-J-2,Theme J 2,Melody,Theme J,melody,4/4,4.0,16.0,6,4,3,1,101,18.8,0.0,0,f5eb0eb2-4127-4d5e-9330-4dbc69806521
+Theme-J-3,Theme J 3,Melody,Theme J,melody,4/4,4.0,16.0,14,6,5,1,104.7,11.8,0.0,0,01d5315f-d2af-4546-b855-e0eb1caefbc9
+Theme-J-4,Theme J 4,Melody,Theme J,melody,4/4,4.0,16.0,6,4,3,1,101,18.8,0.0,0,ed0f5e28-fa1d-45ce-a7b3-ffc73fcaf792
+Passage-1,Passage 1,Passages,,passages,4/4,2.0,8.0,7,7,6,0,92.1,7.6,0.0,0,04e9cd12-c715-4f36-9b71-4a7ed5aaa242
+Passage-10,Passage 10,Passages,,passages,4/4,2.0,8.0,9,4,3,0,85.3,12.4,0.0,0,7703a27a-eb31-4f79-85d2-7ec5be09cb6d
+Passage-11,Passage 11,Passages,,passages,4/4,2.0,8.0,7,5,4,0,81.1,11.1,0.0,0,0fcae30b-028e-414e-a9e5-206a020464e0
+Passage-12,Passage 12,Passages,,passages,4/4,2.0,8.0,8,5,4,0,73.1,9.0,0.0,0,79d028af-a950-4a44-b4b2-401f756edaf7
+Passage-13,Passage 13,Passages,,passages,4/4,2.0,8.0,6,6,5,0,68.7,6.0,0.0,0,10a6758b-ebc2-4c29-8a7a-9f83857a4ca5
+Passage-14,Passage 14,Passages,,passages,4/4,1.0,4.0,8,8,7,0,72.9,10.3,0.5,0.01562,28738219-9593-44cd-a2e1-d4e4497e5efe
+Passage-15,Passage 15,Passages,,passages,4/4,1.0,4.0,7,4,3,0,74.9,14.5,0.143,0.01042,a1de23f2-b1a3-472a-831b-40c2350f3045
+Passage-16,Passage 16,Passages,,passages,4/4,1.0,4.0,7,5,4,0,81.9,13.7,0.429,0.04167,86b7a07b-9754-4f69-b074-e514e2d78465
+Passage-17,Passage 17,Passages,,passages,4/4,1.0,4.0,7,7,6,0,58.3,13.7,0.429,0.02778,0b154fb7-6805-4cae-901f-a52be2f11798
+Passage-18,Passage 18,Passages,,passages,4/4,2.0,8.0,8,5,4,0,71.4,16.6,0.0,0,234a633f-dffe-4143-b53d-e2a25840e6a9
+Passage-19,Passage 19,Passages,,passages,4/4,2.0,8.0,10,4,3,0,61.5,1.5,0.0,0,d9de4a02-298f-49be-9bee-4af686eefa72
+Passage-2,Passage 2,Passages,,passages,4/4,2.0,8.0,9,7,6,0,95.1,6.6,0.0,0,0b59ccd9-563e-4124-9d59-fd1358bfb6df
+Passage-20,Passage 20,Passages,,passages,4/4,2.0,8.0,12,4,3,0,61.8,1.9,0.0,0,0b6797a0-7b1c-4e82-bfc4-e8265b1d4e1b
+Passage-21,Passage 21,Passages,,passages,4/4,2.0,8.0,7,4,3,0,62.4,2.3,0.0,0,6bab8a88-de71-4737-91c0-e6b0122f1719
+Passage-22,Passage 22,Passages,,passages,4/4,2.0,8.0,12,4,3,0,61,0.0,0.0,0,e22f7863-7982-4291-9c76-c756d45566c1
+Passage-23,Passage 23,Passages,,passages,4/4,2.0,8.0,7,3,2,0,61,0.0,0.0,0,46c4da8f-d231-412b-ac49-6532af309fa4
+Passage-24,Passage 24,Passages,,passages,4/4,2.0,8.0,8,3,2,0,61,0.0,0.0,0,f0ef7a49-0ef7-44a2-9e5e-8f580bca7bad
+Passage-3,Passage 3,Passages,,passages,4/4,2.0,8.0,9,7,6,0,95.1,6.6,0.0,0,b317f427-0a75-456f-95e4-71b0862fb36c
+Passage-4,Passage 4,Passages,,passages,4/4,2.0,8.0,13,7,6,0,90,6.8,0.0,0,add8db0b-a193-4438-ae38-5d15f86e936c
+Passage-5,Passage 5,Passages,,passages,4/4,2.0,8.0,10,7,6,0,86.9,9.2,0.1,0.04167,6869efd0-c58b-43f7-a0ef-415672c3df4a
+Passage-6,Passage 6,Passages,,passages,4/4,2.0,8.0,8,6,5,0,88,11.4,0.0,0,52156178-9a7a-4fb9-9ea6-028fd98a8ec7
+Passage-7,Passage 7,Passages,,passages,4/4,2.0,8.0,6,6,5,0,93.5,7.4,0.0,0,8863450f-e1d3-4d16-9fd0-f934edf836ae
+Passage-8,Passage 8,Passages,,passages,4/4,2.0,8.0,16,4,3,0,78.5,14.1,0.0,0,6420e403-396e-4267-8409-f8ad855431e6
+Passage-9,Passage 9,Passages,,passages,4/4,2.0,8.0,7,7,6,0,84.1,18.0,0.143,0.02083,d72f04b4-7722-4c3c-9daa-3c173bcc5046
+Accento,Accento,Performances,Adagio,performances,4/4,1.0,4.0,12,5,4,-1,69.4,12.2,0.0,0,69a50343-283f-4a0a-8ee8-5c78739d9f40
+Adagietto,Adagietto,Performances,Adagio,performances,4/4,1.0,4.0,7,4,3,-2,43.4,3.5,0.0,0,6cdaaeaa-81d8-4ba6-8907-efd8ebfe4846
+Alt,Alt,Performances,Adagio,performances,4/4,1.0,4.0,17,5,4,-2,46.4,9.2,0.176,0.01042,74d4d328-4b87-4de7-bbe5-081bca1a0587
+Andantino,Andantino,Performances,Adagio,performances,4/4,1.0,4.0,22,8,7,-2,53.7,10.6,0.364,0.01198,b5de79d7-718e-4a89-97bd-a79436fccdfe
+Arco,Arco,Performances,Adagio,performances,4/4,2.0,8.0,40,8,7,-2,77.2,31.9,0.2,0.00417,5b1d6021-cd1d-4a1c-981d-7bce56b2768b
+Attacca,Attacca,Performances,Adagio,performances,4/4,1.0,4.0,30,10,9,-2,93.0,6.3,0.0,0,45b27ead-6109-4a65-bb13-6832e76fb6f0
+Breve,Breve,Performances,Adagio,performances,4/4,2.0,8.0,32,7,6,-1,66,6.9,0.0,0,b319c83e-8139-4e2a-a634-0e144f20d7c3
+Calando,Calando,Performances,Adagio,performances,4/4,2.0,8.0,22,5,4,-1,64.3,10.9,0.045,0.02083,a15c4878-aeca-45a9-a2a0-54ca3a81c7ec
+Estinto,Estinto,Performances,Adagio,performances,4/4,2.0,8.0,24,6,5,-2,64.5,8.7,0.0,0,866bee32-8262-4719-988c-dd20d9736e96
+Fermata,Fermata,Performances,Adagio,performances,4/4,8.0,32.0,84,7,6,-1,69.3,24.4,0.286,0.00417,caf6ae49-7a6d-416c-b1d9-63125852b5a5
+Fine,Fine,Performances,Adagio,performances,4/4,2.0,8.0,27,7,6,-1,69.5,13.1,0.0,0,44593048-a675-44d3-a0d6-fd06cf648758
+Larghetto,Larghetto,Performances,Adagio,performances,4/4,2.0,8.0,24,6,5,-2,67.5,8.5,0.0,0,0577e61c-2b30-4163-8ba6-f55412d652af
+Largo,Largo,Performances,Adagio,performances,4/4,2.0,8.0,40,5,4,-1,88.2,17.3,0.6,0.03056,4df3dd76-f6c4-4648-ad68-ae17527a87a9
+Lento,Lento,Performances,Adagio,performances,4/4,2.0,8.0,12,7,6,-1,79.3,24.5,0.833,0.01042,b23094cf-28dd-4731-898f-b58894d58ea0
+Misterioso,Misterioso,Performances,Adagio,performances,4/4,4.0,16.0,40,9,8,-2,66.3,8.7,0.2,0.04167,77909a8e-2b63-4b89-84db-0f79220b6b87
+Ossia,Ossia,Performances,Adagio,performances,4/4,4.0,16.0,58,8,7,-1,86.1,14.9,0.0,0,85f51718-eb1f-46ec-ad80-c655434356a3
+Pausa,Pausa,Performances,Adagio,performances,4/4,2.0,8.0,19,6,5,-1,78.5,12.5,0.0,0,b0b0a434-8418-4a48-8375-ee24ecc99d4b
+Possible,Possible,Performances,Adagio,performances,4/4,0.5,2.0,10,8,7,-2,47.9,12.1,0.0,0,07d7302e-e67c-4b51-89ab-877a57281355
+Semplice,Semplice,Performances,Adagio,performances,4/4,2.0,8.0,26,6,5,-2,41.2,31.3,1.0,0.02115,75c217a1-bec1-473d-9d6e-d76c9788c5eb
+Senza,Senza,Performances,Adagio,performances,4/4,1.0,4.0,40,7,6,-1,61.6,21.0,0.0,0,f334ade8-593e-46de-a035-82929ef44ad4
+Spirito,Spirito,Performances,Adagio,performances,4/4,2.0,8.0,24,9,8,-2,68.2,9.0,0.0,0,512a053f-5de3-42f5-b61a-9dca8ea99e26
+Avant-Garde-1,Avant Garde 1,Performances,Avant Garde,performances,4/4,4.0,16.0,35,11,10,-1,80.1,11.7,0.0,0,03f9a541-d310-4563-a364-614dbf478441
+Avant-Garde-10,Avant Garde 10,Performances,Avant Garde,performances,4/4,2.0,8.0,41,6,5,-1,88.1,10.4,0.0,0,5cd441fa-dffa-46fb-9044-eac983a999d5
+Avant-Garde-2,Avant Garde 2,Performances,Avant Garde,performances,4/4,4.0,16.0,46,8,7,-1,67.8,16.6,0.022,0.02083,3c7c3077-7121-456c-8d09-3cc16b1fe29f
+Avant-Garde-3,Avant Garde 3,Performances,Avant Garde,performances,4/4,4.0,16.0,29,8,7,-1,78.1,8.5,0.0,0,51ccd259-594d-4865-9d91-65a1a8aa143b
+Avant-Garde-4,Avant Garde 4,Performances,Avant Garde,performances,4/4,2.0,8.0,28,12,11,-2,94.0,7.6,0.143,0.01823,d77b2ebd-6c52-4054-9b5f-7afd8524733d
+Avant-Garde-5,Avant Garde 5,Performances,Avant Garde,performances,4/4,4.0,16.0,43,9,8,-1,106.2,11.7,0.14,0.02257,b8470b51-206b-430c-8cf2-51cfc88197a0
+Avant-Garde-6,Avant Garde 6,Performances,Avant Garde,performances,4/4,4.0,16.0,74,13,12,-2,82.5,13.7,0.0,0,e8111cb6-7686-4109-b206-5c9b9dc1a57e
+Avant-Garde-7,Avant Garde 7,Performances,Avant Garde,performances,4/4,2.0,8.0,36,7,6,-1,92.3,7.0,0.028,0.02083,4917b0e3-ec01-43ac-abea-2097d904837c
+Avant-Garde-8,Avant Garde 8,Performances,Avant Garde,performances,4/4,2.0,8.0,49,10,9,-1,87.8,14.4,0.0,0,77ac72e7-61c1-41ef-9bad-dc811e2c028f
+Avant-Garde-9,Avant Garde 9,Performances,Avant Garde,performances,4/4,2.0,8.0,50,6,5,-1,89.6,7.3,0.0,0,ead25337-1749-493c-92fd-5f11cfcbbf81
+Basic-Perf-1,Basic Perf 1,Performances,Common Performances,performances,4/4,2.0,8.0,18,5,4,-1,89.8,7.1,0.0,0,ac3b36e6-1788-4f14-b623-8f50be88ad09
+Basic-Perf-10,Basic Perf 10,Performances,Common Performances,performances,4/4,1.0,4.0,17,10,9,-1,95.2,6.0,0.824,0.0058,14625e50-b442-46c0-a55e-b7002952f691
+Basic-Perf-2,Basic Perf 2,Performances,Common Performances,performances,4/4,2.0,8.0,18,5,4,-1,66.8,11.1,0.0,0,16f48c46-1723-438f-8f9a-bfd553c1f78e
+Basic-Perf-3,Basic Perf 3,Performances,Common Performances,performances,4/4,2.0,8.0,27,6,5,-1,81.3,18.8,0.0,0,68da5073-d15c-4a87-bd21-263dee607bed
+Basic-Perf-4,Basic Perf 4,Performances,Common Performances,performances,4/4,2.0,8.0,19,6,5,-1,65.3,9.5,0.0,0,8203fef1-3321-4001-a854-467df588dc56
+Basic-Perf-5,Basic Perf 5,Performances,Common Performances,performances,4/4,2.0,8.0,26,5,4,-2,101.0,17.5,0.0,0,f86698ea-c352-450e-863c-d175de0aa2f7
+Basic-Perf-6,Basic Perf 6,Performances,Common Performances,performances,4/4,2.0,8.0,18,5,4,-1,113.8,13.6,0.778,0.00655,bdad4dec-c997-4685-b1cf-33bbeac4a378
+Basic-Perf-7,Basic Perf 7,Performances,Common Performances,performances,4/4,1.0,4.0,9,8,7,-1,102.7,9.2,0.667,0.00486,d8c523b5-f4ca-4a81-bcf5-c9bfc56c16fa
+Basic-Perf-8,Basic Perf 8,Performances,Common Performances,performances,4/4,1.0,4.0,15,4,3,-1,109.2,10.2,0.733,0.00587,cc6500e6-a668-4dce-80a3-bed1039ee8d8
+Basic-Perf-9,Basic Perf 9,Performances,Common Performances,performances,4/4,1.0,4.0,16,7,6,-1,109.9,12.4,0.562,0.00347,2397ab0d-67b2-4d8d-bfe9-63cab72e8ca0
+Common-Perf-1,Common Perf 1,Performances,Common Performances,performances,4/4,2.0,8.0,15,6,5,-1,66.3,4.9,0.0,0,f8cf9cae-2811-4256-82c3-713b3c33391e
+Common-Perf-10,Common Perf 10,Performances,Common Performances,performances,4/4,2.0,8.0,21,8,7,-1,102.2,24.5,0.0,0,44f4cc85-6959-4ec9-a249-a45e057d8406
+Common-Perf-11,Common Perf 11,Performances,Common Performances,performances,4/4,4.0,16.0,13,5,4,-1,127,0.0,0.154,0.01042,5dae0115-a042-44a7-9172-32a9440927d0
+Common-Perf-12,Common Perf 12,Performances,Common Performances,performances,4/4,2.0,8.0,20,5,4,-1,127,0.0,0.0,0,b79fee36-7966-4ff3-96ff-a698fb7b0650
+Common-Perf-13,Common Perf 13,Performances,Common Performances,performances,4/4,2.0,8.0,32,5,4,-1,89,0.0,0.0,0,5a50d69e-198b-47df-b46e-48f9a85cba63
+Common-Perf-14,Common Perf 14,Performances,Common Performances,performances,4/4,4.0,16.0,36,6,5,-1,96.3,6.2,0.0,0,cca9fb89-77fd-4957-829d-08ced0672012
+Common-Perf-15,Common Perf 15,Performances,Common Performances,performances,4/4,2.0,8.0,10,4,3,-1,80.7,14.0,0.0,0,8031a077-6cfa-4393-8e7f-b1e78838dc1f
+Common-Perf-2,Common Perf 2,Performances,Common Performances,performances,4/4,2.0,8.0,16,6,5,-1,69.5,5.3,0.0,0,1066226b-ed75-478f-a2e3-3ea05c991817
+Common-Perf-3,Common Perf 3,Performances,Common Performances,performances,4/4,2.0,8.0,32,6,5,-1,89,0.0,0.0,0,e2ebed60-b887-4742-a913-5abe14d32e94
+Common-Perf-4,Common Perf 4,Performances,Common Performances,performances,4/4,2.0,8.0,12,6,5,-1,65.7,6.3,0.0,0,77106b7e-881d-4aa2-9af6-9111df5abff1
+Common-Perf-5,Common Perf 5,Performances,Common Performances,performances,4/4,2.0,8.0,13,6,5,-1,90.3,16.9,0.0,0,e8942bd2-aedf-4ffa-ae5f-a2da62bb364a
+Common-Perf-6,Common Perf 6,Performances,Common Performances,performances,4/4,2.0,8.0,16,5,4,-1,68.6,3.6,0.0,0,638af656-800d-4e12-8879-0e16910a0371
+Common-Perf-7,Common Perf 7,Performances,Common Performances,performances,4/4,1.0,4.0,16,5,4,-1,89,0.0,0.0,0,ece8931b-96e9-4bc5-b839-ef675a3e4714
+Common-Perf-8,Common Perf 8,Performances,Common Performances,performances,4/4,2.0,8.0,16,8,7,-1,85.2,19.1,0.0,0,0f885414-2366-40ce-9095-19e2a28c90e9
+Common-Perf-9,Common Perf 9,Performances,Common Performances,performances,4/4,2.0,8.0,12,6,5,-1,113.3,8.9,0.0,0,8ce31947-5c74-47e9-83bb-28ed0b5c83ac
+Dynamic-Performance-1,Dynamic Performance 1,Performances,Dynamic,,4/4,1.0,4.0,9,8,7,-2,60.9,11.0,0.889,0.02083,effe5045-7e11-4a45-9d41-cbb93b1b6ed5
+Dynamic-Performance-10,Dynamic Performance 10,Performances,Dynamic,,4/4,2.0,8.0,26,10,9,-2,54.7,17.3,0.885,0.02219,64cdfed4-df51-4d81-9eb5-8af97850f1f4
+Dynamic-Performance-11,Dynamic Performance 11,Performances,Dynamic,,4/4,2.0,8.0,25,11,10,-2,51.2,22.3,0.64,0.01823,950caeb1-4051-48a7-854f-35ccc3693f04
+Dynamic-Performance-12,Dynamic Performance 12,Performances,Dynamic,,4/4,2.0,8.0,26,12,11,-2,57.4,16.2,0.846,0.02462,b4971fdd-12e3-43d7-9a41-82f0585db143
+Dynamic-Performance-13,Dynamic Performance 13,Performances,Dynamic,,4/4,2.0,8.0,19,11,10,-2,50.2,19.8,0.895,0.02083,e559c778-d1b1-4e2b-8d9d-030727ee6a60
+Dynamic-Performance-2,Dynamic Performance 2,Performances,Dynamic,,4/4,1.0,4.0,10,7,6,-2,53.5,17.6,0.6,0.0191,2f1b20f1-01ba-4b73-95b5-8dec35ee10e9
+Dynamic-Performance-3,Dynamic Performance 3,Performances,Dynamic,,4/4,2.0,8.0,16,9,8,-2,54,13.9,0.812,0.02324,1c923b91-fef7-4063-b8cf-4064cd919610
+Dynamic-Performance-4,Dynamic Performance 4,Performances,Dynamic,,4/4,1.0,4.0,9,8,7,-2,64.4,7.8,0.889,0.01693,52f309d6-fa64-4437-9687-d5920ea44a82
+Dynamic-Performance-5,Dynamic Performance 5,Performances,Dynamic,,4/4,2.0,8.0,14,8,7,-2,54.1,11.1,0.857,0.02865,b5db5daa-c93e-43f4-8c45-a4a442ab9cc1
+Dynamic-Performance-6,Dynamic Performance 6,Performances,Dynamic,,4/4,4.0,16.0,36,7,6,-2,52,16.5,0.722,0.02003,be061d3f-1371-47da-a41d-0d786a6ce1af
+Dynamic-Performance-7,Dynamic Performance 7,Performances,Dynamic,,4/4,4.0,16.0,34,5,4,-2,57.8,15.5,0.676,0.01812,b4ab7f2d-6b13-4b30-b34a-eb553d34f892
+Dynamic-Performance-8,Dynamic Performance 8,Performances,Dynamic,,4/4,2.0,8.0,31,9,8,-2,61.2,14.9,0.839,0.02364,33194e36-2686-4883-be50-5b97aaec666c
+Dynamic-Performance-9,Dynamic Performance 9,Performances,Dynamic,,4/4,2.0,8.0,23,10,9,-2,68.3,11.4,0.87,0.02396,4b054921-ccb8-4a77-956d-473b569c0186
+Affrettando,Affrettando,Performances,Espressivo,performances,4/4,1.0,4.0,24,6,5,-2,70.1,11.1,0.0,0,b49fc4bf-e46a-4432-8560-8c767077e04c
+Alla,Alla,Performances,Espressivo,performances,4/4,4.0,16.0,80,9,8,-2,63.7,31.9,0.438,0.00821,cfeb6d7b-edd6-4916-9978-5ed2b7b0baca
+Allargando,Allargando,Performances,Espressivo,performances,4/4,1.0,4.0,14,6,5,-2,63.4,8.2,0.571,0.01042,aae0c545-a69b-44d0-bb96-4e28ff6d020e
+Animando,Animando,Performances,Espressivo,performances,4/4,2.0,8.0,58,8,7,-2,86.1,14.9,0.0,0,fc800925-7436-43cc-9cd1-fda168e2b2c3
+Cantando,Cantando,Performances,Espressivo,performances,4/4,1.0,4.0,22,8,7,-1,63.9,6.3,0.0,0,d68da574-15c6-4c39-8a45-6068f40fa7ca
+Colla,Colla,Performances,Espressivo,performances,4/4,2.0,8.0,40,8,7,-2,77.2,31.9,0.2,0.00417,af39def2-1d85-4b1f-a9ff-e6a30cdb8cfd
+Come,Come,Performances,Espressivo,performances,4/4,0.5,2.0,11,6,5,-2,53.5,11.8,0.0,0,69ea5456-19b5-4001-a5c3-947cd2e9d02f
+Crescendo,Crescendo,Performances,Espressivo,performances,4/4,1.0,4.0,23,11,10,-2,79.3,9.3,0.609,0.02158,b482a1d1-0597-43a7-bd12-eb6506f5bd4c
+Decrescendo,Decrescendo,Performances,Espressivo,performances,4/4,2.0,8.0,31,12,11,-2,92.6,18.1,0.0,0,73682187-31ca-4322-999e-d7165b1c6504
+Feroce,Feroce,Performances,Espressivo,performances,4/4,0.5,2.0,17,9,8,-2,64.8,6.7,0.0,0,024e98a9-7701-48e0-9177-4591e1cd12d2
+Forte,Forte,Performances,Espressivo,performances,4/4,1.0,4.0,23,9,8,-2,69.1,7.2,0.0,0,108c7736-3e64-4472-9c67-7a41fd8030a4
+Inquieto,Inquieto,Performances,Espressivo,performances,4/4,1.0,4.0,24,8,7,-1,64.6,7.3,0.0,0,cab10a40-45ec-4730-93b1-3d2e4ff0b0b6
+Loco,Loco,Performances,Espressivo,performances,4/4,2.0,8.0,32,11,10,-2,72.8,13.0,0.5,0.01875,0f889342-b985-484f-99ea-91d5a8818462
+Lusigando,Lusigando,Performances,Espressivo,performances,4/4,1.0,4.0,16,7,6,-2,62,6.8,0.0,0,e2291ad9-4398-4f2b-9f2e-c327a46edb07
+Mesto,Mesto,Performances,Espressivo,performances,4/4,2.0,8.0,20,7,6,-2,67.5,7.8,0.0,0,e845790c-37f3-41ab-84d8-4a0decd813b2
+Nobilmente,Nobilmente,Performances,Espressivo,performances,4/4,2.0,8.0,80,9,8,-2,63.7,31.8,0.425,0.0375,29b3c8b0-6f71-4550-a4e2-169ae025984f
+Precipitando,Precipitando,Performances,Espressivo,performances,4/4,1.0,4.0,17,13,12,-3,79.5,12.6,0.0,0,2585fb25-f366-43eb-8bc5-6ffce002d676
+Seconda,Seconda,Performances,Espressivo,performances,4/4,4.0,16.0,142,9,8,-2,55.6,22.0,0.338,0.00226,5fce85de-e207-41e5-b16a-e693216af0ee
+Slargando,Slargando,Performances,Espressivo,performances,4/4,1.0,4.0,11,11,10,-3,65.5,13.6,0.545,0.01076,22788440-0f02-4078-8780-211316a84bdb
+Strepitoso,Strepitoso,Performances,Espressivo,performances,4/4,2.0,8.0,24,4,3,-1,82.9,35.8,0.0,0,a1512b1f-7fe3-4f91-9c49-750e83dc7423
+Stringendo,Stringendo,Performances,Espressivo,performances,4/4,0.5,2.0,11,7,6,-2,45.9,8.7,0.0,0,2ef35ac5-ec5c-443d-8436-81f2f9cf37f5
+Jazz-Movements-1,Jazz Movements 1,Performances,Jazz Movements,,4/4,4.0,16.0,52,6,5,-1,83.2,18.4,0.885,0.01907,88240103-39a1-4c32-a9a4-2c1e64051dad
+Jazz-Movements-10,Jazz Movements 10,Performances,Jazz Movements,,4/4,2.0,8.0,20,7,6,-1,76.5,18.1,0.95,0.02039,ce7dda7a-b4ee-45e9-8f05-4cdb8002db64
+Jazz-Movements-2,Jazz Movements 2,Performances,Jazz Movements,,4/4,2.0,8.0,25,6,5,-1,77.4,22.4,0.92,0.01404,5d82b967-9a69-4bf2-9d6d-16dfd8d194d5
+Jazz-Movements-3,Jazz Movements 3,Performances,Jazz Movements,,4/4,2.0,8.0,18,5,4,-1,83.2,15.2,0.944,0.01458,213fd851-d3b9-406e-88f9-c756fe59a2a2
+Jazz-Movements-4,Jazz Movements 4,Performances,Jazz Movements,,4/4,4.0,16.0,37,8,7,-1,81.9,28.3,0.892,0.01856,537c7a27-14c8-4acd-9fc9-70fd39c5db42
+Jazz-Movements-5,Jazz Movements 5,Performances,Jazz Movements,,4/4,4.0,16.0,38,8,7,-1,88.7,17.7,0.868,0.01124,1502835a-072f-4a2d-b89d-a17399143a96
+Jazz-Movements-6,Jazz Movements 6,Performances,Jazz Movements,,4/4,4.0,16.0,30,11,10,-1,75.4,15.3,0.933,0.02641,d6c0fef9-3778-44e7-a08e-91c6a28b9ccf
+Jazz-Movements-7,Jazz Movements 7,Performances,Jazz Movements,,4/4,8.0,32.0,75,12,11,-1,74.8,21.1,0.88,0.02402,9dc4ab19-5fe0-47cf-a3dd-8bae17c84a0c
+Jazz-Movements-8,Jazz Movements 8,Performances,Jazz Movements,,4/4,4.0,16.0,38,11,10,-1,72.7,20.2,0.737,0.00766,c126f250-3b64-4208-b2e4-eae2b57b54a0
+Jazz-Movements-9,Jazz Movements 9,Performances,Jazz Movements,,4/4,2.0,8.0,19,7,6,-1,73.7,18.6,0.842,0.01719,80660a63-ecd8-4a13-9747-cc6879202bab
+Jazz-Soft-1,Jazz Soft 1,Performances,Jazz Soft,,4/4,4.0,16.0,23,8,7,-1,69.2,8.8,0.826,0.01732,1e75462b-694b-4669-94c6-d271289451db
+Jazz-Soft-10,Jazz Soft 10,Performances,Jazz Soft,,4/4,4.0,16.0,16,8,7,-1,66.9,21.9,0.875,0.01935,6f7d3481-f5b0-4ae0-bb65-4efea3d98797
+Jazz-Soft-11,Jazz Soft 11,Performances,Jazz Soft,,4/4,4.0,16.0,22,6,5,-1,49.6,15.6,0.955,0.01627,59fcb63e-145c-403d-8f0e-930760dec250
+Jazz-Soft-12,Jazz Soft 12,Performances,Jazz Soft,,4/4,4.0,16.0,21,7,6,-1,75.2,16.0,0.952,0.02333,22c8fbcc-8920-48f1-a4ca-ef06ad8ff388
+Jazz-Soft-13,Jazz Soft 13,Performances,Jazz Soft,,4/4,4.0,16.0,17,7,6,-1,71.4,20.5,0.941,0.02109,e00e0420-cfdb-4889-80c5-ca47f5134ded
+Jazz-Soft-14,Jazz Soft 14,Performances,Jazz Soft,,4/4,2.0,8.0,11,8,7,-1,76,13.6,0.909,0.01812,af78d234-0943-43b2-bb19-aa6fd08e00ce
+Jazz-Soft-15,Jazz Soft 15,Performances,Jazz Soft,,4/4,4.0,16.0,24,8,7,-1,61.1,10.5,0.708,0.02353,b0f205f0-ecb9-433d-94f8-16990feace28
+Jazz-Soft-16,Jazz Soft 16,Performances,Jazz Soft,,4/4,2.0,8.0,7,5,4,-1,69.6,9.1,0.857,0.02812,830e1fb3-d376-4f32-b946-b1dcba8a459a
+Jazz-Soft-17,Jazz Soft 17,Performances,Jazz Soft,,4/4,2.0,8.0,9,6,5,-1,75,14.0,0.889,0.02995,0ede4e43-56f0-48e0-82f3-584e1e40b51a
+Jazz-Soft-18,Jazz Soft 18,Performances,Jazz Soft,,4/4,4.0,16.0,31,6,5,-1,70.5,12.0,0.871,0.01759,8b3cf5ca-2f84-49ef-9f4a-fb8895548cd3
+Jazz-Soft-19,Jazz Soft 19,Performances,Jazz Soft,,4/4,4.0,16.0,21,5,4,-1,74.9,10.5,0.571,0.00799,2850c0f8-b972-4b78-9e26-8299af0d3deb
+Jazz-Soft-2,Jazz Soft 2,Performances,Jazz Soft,,4/4,4.0,16.0,29,5,4,-1,69,17.8,0.862,0.02533,ff8ac4c7-5cde-4965-a175-7bf0d3ad53d7
+Jazz-Soft-20,Jazz Soft 20,Performances,Jazz Soft,,4/4,2.0,8.0,11,7,6,-1,76.5,16.1,0.727,0.02656,5c4d5bef-5fcf-41e0-91cc-f86c522ae8c9
+Jazz-Soft-21,Jazz Soft 21,Performances,Jazz Soft,,4/4,4.0,16.0,36,6,5,-1,70.8,10.0,0.944,0.01893,d8e84d41-7b0d-434c-8241-8207f96bdebf
+Jazz-Soft-22,Jazz Soft 22,Performances,Jazz Soft,,4/4,4.0,16.0,36,8,7,-1,68.9,14.4,0.889,0.01908,e3b98f78-3ee1-465c-929a-a11ca18ac4ef
+Jazz-Soft-23,Jazz Soft 23,Performances,Jazz Soft,,4/4,2.0,8.0,15,10,9,-1,65.8,15.8,0.8,0.0191,80773ae1-be1c-4493-a92a-00d16f0ed98e
+Jazz-Soft-24,Jazz Soft 24,Performances,Jazz Soft,,4/4,2.0,8.0,20,11,10,-1,72.3,8.2,0.7,0.01518,43880668-5d8a-4312-9700-3800d3da8378
+Jazz-Soft-25,Jazz Soft 25,Performances,Jazz Soft,,4/4,2.0,8.0,22,10,9,-1,72.5,10.6,0.727,0.01914,4247a7b2-8112-4faf-8872-ce1a3c524ab5
+Jazz-Soft-26,Jazz Soft 26,Performances,Jazz Soft,,4/4,2.0,8.0,17,5,4,-1,78,13.7,0.824,0.01042,b5722c15-8ae3-47e0-b157-8c21cde4ddca
+Jazz-Soft-3,Jazz Soft 3,Performances,Jazz Soft,,4/4,2.0,8.0,9,6,5,-1,74.6,8.7,0.778,0.02679,38f3c1dc-0568-44bb-af2a-890a66dcc7f2
+Jazz-Soft-4,Jazz Soft 4,Performances,Jazz Soft,,4/4,4.0,16.0,16,3,2,-1,67.4,23.5,0.875,0.01682,3448c93a-90d8-4abf-af8e-095b895c1707
+Jazz-Soft-5,Jazz Soft 5,Performances,Jazz Soft,,4/4,2.0,8.0,6,6,5,-1,83.2,16.6,0.833,0.02792,500b5764-5393-4e91-b050-de122d2ecb34
+Jazz-Soft-6,Jazz Soft 6,Performances,Jazz Soft,,4/4,2.0,8.0,11,7,6,-1,78.2,11.4,0.636,0.02113,be983177-0025-4ff4-b682-e2cf7fe5b154
+Jazz-Soft-7,Jazz Soft 7,Performances,Jazz Soft,,4/4,2.0,8.0,16,4,3,-1,78,10.8,0.875,0.02054,8af7b5da-c9e2-4e6d-af2b-332a7811781a
+Jazz-Soft-8,Jazz Soft 8,Performances,Jazz Soft,,4/4,4.0,16.0,22,4,3,-1,65,15.7,0.864,0.01316,7425a8d4-d740-4749-81ca-4d1c9d3a06d0
+Jazz-Soft-9,Jazz Soft 9,Performances,Jazz Soft,,4/4,2.0,8.0,17,7,6,-1,68.3,18.2,0.824,0.02842,39c601b5-a41e-4143-93f9-c3aec3b3f31d
+Jazz-Swing-Feel-1,Jazz Swing Feel 1,Performances,Jazz Swing Feel,,4/4,4.0,16.0,47,8,7,-1,73.3,23.8,0.787,0.02292,144c2cfa-e168-4343-ba03-a3a0a02bc9c2
+Jazz-Swing-Feel-10,Jazz Swing Feel 10,Performances,Jazz Swing Feel,,4/4,2.0,8.0,26,9,8,-1,80.6,24.8,0.769,0.01958,1d4eeb66-04de-4978-87e8-a2fcc8ebe716
+Jazz-Swing-Feel-11,Jazz Swing Feel 11,Performances,Jazz Swing Feel,,4/4,4.0,16.0,80,11,10,-1,74.8,22.1,0.988,0.02141,0eea2d6e-5c6d-4906-bfde-bb32486ca96f
+Jazz-Swing-Feel-12,Jazz Swing Feel 12,Performances,Jazz Swing Feel,,4/4,2.0,8.0,26,8,7,-1,73.5,18.1,0.923,0.01554,b79a3a79-42cc-442b-b2e2-f51affbf033f
+Jazz-Swing-Feel-13,Jazz Swing Feel 13,Performances,Jazz Swing Feel,,4/4,2.0,8.0,28,4,3,-1,82.7,10.6,0.964,0.01944,8064a1d1-1521-4331-b50e-799a244cc027
+Jazz-Swing-Feel-14,Jazz Swing Feel 14,Performances,Jazz Swing Feel,,4/4,2.0,8.0,30,9,8,-1,76.2,12.7,0.933,0.01964,41602cd7-d39a-4732-8223-0d70bffad697
+Jazz-Swing-Feel-2,Jazz Swing Feel 2,Performances,Jazz Swing Feel,,4/4,4.0,16.0,45,8,7,-1,77.9,19.6,0.911,0.02297,aa663c77-c3a1-4eb3-b6ef-62f452d43f8c
+Jazz-Swing-Feel-3,Jazz Swing Feel 3,Performances,Jazz Swing Feel,,4/4,2.0,8.0,24,8,7,-1,84.5,18.5,0.833,0.0199,e99ed2d6-1259-4a6c-88b2-1ac7605aec58
+Jazz-Swing-Feel-4,Jazz Swing Feel 4,Performances,Jazz Swing Feel,,4/4,2.0,8.0,28,4,3,-1,79.1,21.9,0.964,0.0125,42f6720e-0cb2-448b-ba62-bb09c6137842
+Jazz-Swing-Feel-5,Jazz Swing Feel 5,Performances,Jazz Swing Feel,,4/4,2.0,8.0,22,11,10,-1,93.1,21.4,0.909,0.02323,7da69e58-4db3-4c9d-9bca-79889bbafa69
+Jazz-Swing-Feel-6,Jazz Swing Feel 6,Performances,Jazz Swing Feel,,4/4,2.0,8.0,31,11,10,-1,80.2,16.7,0.871,0.01821,039c7bb8-0247-48a1-9ed2-244a1684dd0e
+Jazz-Swing-Feel-7,Jazz Swing Feel 7,Performances,Jazz Swing Feel,,4/4,2.0,8.0,15,8,7,-1,71,12.8,0.867,0.01522,a2f9a483-f888-418c-bd47-58531b1ca129
+Jazz-Swing-Feel-8,Jazz Swing Feel 8,Performances,Jazz Swing Feel,,4/4,2.0,8.0,28,7,6,-1,84.0,13.3,0.929,0.0153,b9f000df-d72a-4190-abe9-b9a69e71d980
+Jazz-Swing-Feel-9,Jazz Swing Feel 9,Performances,Jazz Swing Feel,,4/4,2.0,8.0,24,4,3,-1,78.7,17.3,1.0,0.01719,c9659ac8-8271-4d8e-831e-d4e6f6d930ea
+Allegrato,Allegrato,Performances,Moderato,performances,4/4,1.0,4.0,24,4,3,-1,66.2,8.4,0.0,0,4d0031ff-90f5-4e4c-884b-5dc8626d4718
+Animato,Animato,Performances,Moderato,performances,4/4,1.0,4.0,23,6,5,-1,68.1,10.3,0.0,0,d72f4f63-3c92-45d0-9d32-934179a60a0c
+Arioso,Arioso,Performances,Moderato,performances,4/4,1.0,4.0,16,6,5,-1,64.9,7.8,0.5,0.01042,93fc74f2-7b3a-4cbc-8689-fe9958053ed5
+Bis,Bis,Performances,Moderato,performances,4/4,1.0,4.0,16,5,4,-1,74.2,9.1,0.0,0,f133828e-75ae-4195-8e79-a38f299cdcb6
+Cantabile,Cantabile,Performances,Moderato,performances,4/4,2.0,8.0,30,6,5,-1,44.2,9.3,0.533,0.02083,91a69861-14c0-47e5-98f2-3b3930eb02f0
+Doloroso,Doloroso,Performances,Moderato,performances,4/4,1.0,4.0,17,8,7,-1,63.5,8.0,0.0,0,81612540-82de-4cb8-bc21-8dacef39d872
+Facile,Facile,Performances,Moderato,performances,4/4,0.5,2.0,12,7,6,-2,48.9,10.7,0.5,0.00868,2523cf83-efa1-4e95-8ae0-628ff169bad8
+Flessibile,Flessibile,Performances,Moderato,performances,4/4,2.0,8.0,20,8,7,-2,71.1,13.8,0.0,0,195df72a-248c-4547-bd2e-72612eb31fc7
+Largamante,Largamante,Performances,Moderato,performances,4/4,2.0,8.0,28,4,3,-1,63.1,29.4,1.0,0.00208,828d9c81-65af-43d9-9b57-c072a5420537
+Legato,Legato,Performances,Moderato,performances,4/4,2.0,8.0,24,8,7,-2,67.9,8.7,0.0,0,39f63083-dc76-4abe-9415-42de97af797f
+Liberamente,Liberamente,Performances,Moderato,performances,4/4,1.0,4.0,22,7,6,-1,62.7,6.7,0.0,0,baa456ff-4ed0-46ba-bcd2-5e2ce23cbb7d
+Maestoso,Maestoso,Performances,Moderato,performances,4/4,0.5,2.0,9,6,5,-2,64.1,17.2,0.444,0.0026,23752d41-f91e-44c1-b59f-4edb11b93705
+Meno,Meno,Performances,Moderato,performances,4/4,1.0,4.0,18,7,6,-1,62.4,5.2,0.0,0,5801ae74-6471-4fc9-b7c4-83c5aa31a030
+Obbligato,Obbligato,Performances,Moderato,performances,4/4,0.5,2.0,10,7,6,-2,57.3,1.6,0.0,0,73e5f38c-f60a-4058-bc6a-12d2c08eff57
+Pianissimo,Pianissimo,Performances,Moderato,performances,4/4,0.5,2.0,12,4,3,-1,50.5,10.9,0.5,0.00521,1f33b318-06b2-49a2-8e73-e7af1ff16d82
+Rallentando,Rallentando,Performances,Moderato,performances,4/4,1.0,4.0,13,8,7,-2,67.7,6.8,0.0,0,f209bd91-417d-4619-ab87-042c7fc828a2
+Rigoroso,Rigoroso,Performances,Moderato,performances,4/4,2.0,8.0,32,7,6,-2,57.5,32.1,0.969,0.01599,a20e07f0-52c2-4d02-8ee2-cc043afff975
+Ritenuto,Ritenuto,Performances,Moderato,performances,4/4,2.0,8.0,28,4,3,-1,53.9,22.6,1.0,0.00208,5f84c170-f9a6-45ed-a0d6-7fd270ffdf6e
+Segue,Segue,Performances,Moderato,performances,4/4,1.0,4.0,16,8,7,-2,64.8,8.6,0.5,0.01042,09a674ae-dd18-46cb-a841-e022514e5b8c
+Subito,Subito,Performances,Moderato,performances,4/4,1.0,4.0,19,7,6,-2,68.2,12.7,0.0,0,74a37222-d696-45a5-b175-0098c9e58f36
+Tanto,Tanto,Performances,Moderato,performances,4/4,2.0,8.0,40,7,6,-2,61.6,21.0,0.0,0,f241e58d-87a3-4773-811b-03ddf9daac94
+Tranquillo,Tranquillo,Performances,Moderato,performances,4/4,1.0,4.0,16,6,5,-1,64.6,6.4,0.5,0.01042,1e375281-f1fb-4fea-b42a-0fbf546790f5
+12-8-Performance-1,12/8 Performance 1,Performances,Other Time Signature,performances,12/8,2.0,12.0,70,5,4,-1,80,13.9,0.0,0,15b9f2b9-2ecc-4725-bd1f-42a28a78fbd4
+12-8-Performance-10,12/8 Performance 10,Performances,Other Time Signature,performances,12/8,2.0,12.0,50,6,5,-1,76.2,1.4,0.0,0,0b201c68-b94e-45bd-b689-a98bad96a450
+12-8-Performance-2,12/8 Performance 2,Performances,Other Time Signature,performances,12/8,2.0,12.0,57,6,5,-1,69.8,16.2,0.0,0,99dc67d5-cfd2-48db-883e-28c8aec3b41c
+12-8-Performance-3,12/8 Performance 3,Performances,Other Time Signature,performances,12/8,2.0,12.0,26,4,3,-1,45.5,12.8,0.0,0,882a8e08-2cef-4aed-8470-f7168ead8d69
+12-8-Performance-4,12/8 Performance 4,Performances,Other Time Signature,performances,12/8,2.0,12.0,48,7,6,-1,74.8,18.6,0.0,0,e1032a38-e418-4fbb-a47c-84f24aa604c8
+12-8-Performance-5,12/8 Performance 5,Performances,Other Time Signature,performances,12/8,2.0,12.0,25,6,5,-1,64,0.0,0.0,0,735a7eab-2c11-4ddc-8307-ad60542f1b4b
+12-8-Performance-6,12/8 Performance 6,Performances,Other Time Signature,performances,12/8,2.0,12.0,30,5,4,-1,90.1,6.4,0.833,0.0045,67bb1918-9cc3-4a02-9395-feba353aaccb
+12-8-Performance-7,12/8 Performance 7,Performances,Other Time Signature,performances,12/8,2.0,12.0,80,8,7,-1,118.0,14.0,0.0,0,aad43c61-0f6e-4053-aba0-185e7cdfc9d2
+12-8-Performance-8,12/8 Performance 8,Performances,Other Time Signature,performances,12/8,2.0,12.0,62,6,5,-1,106.0,13.7,0.129,0.00208,ab932340-4b4b-4912-80b6-e88551fa3e04
+12-8-Performance-9,12/8 Performance 9,Performances,Other Time Signature,performances,12/8,2.0,12.0,48,6,5,-1,100.1,7.8,0.0,0,0bb9302f-2fa8-4bf0-8f79-bf730bf02710
+5-4-Performance-1,5/4 Performance 1,Performances,Other Time Signature,performances,5/4,4.0,20.0,48,8,7,-1,79.9,4.9,0.688,0.00574,3dbba7db-ff28-43ea-9129-66688d28b1da
+5-4-Performance-10,5/4 Performance 10,Performances,Other Time Signature,performances,5/4,4.0,20.0,46,7,6,-1,28.3,5.0,0.826,0.00548,e3c7693c-e140-42e4-b3f9-a212cfa2771f
+5-4-Performance-2,5/4 Performance 2,Performances,Other Time Signature,performances,5/4,4.8,24.0,44,8,7,-1,79.6,5.6,0.773,0.0038,8f6627fe-262a-4e07-9014-ad269804c9a6
+5-4-Performance-3,5/4 Performance 3,Performances,Other Time Signature,performances,5/4,4.8,24.0,46,9,8,-1,80.8,5.5,0.652,0.00583,e811b01d-e8c5-4ffa-bfcf-f8a1cd71a5da
+5-4-Performance-4,5/4 Performance 4,Performances,Other Time Signature,performances,5/4,4.0,20.0,51,10,9,-2,79.5,5.0,0.765,0.0055,f5d05ddd-51c7-49fc-b9d1-8a3f98827ec7
+5-4-Performance-5,5/4 Performance 5,Performances,Other Time Signature,performances,5/4,4.0,20.0,36,7,6,-1,78.6,4.9,0.722,0.00545,22b61aee-7ccf-43c2-a3a1-3ee76ad87c62
+5-4-Performance-6,5/4 Performance 6,Performances,Other Time Signature,performances,5/4,4.0,20.0,48,8,7,-1,81,4.0,0.667,0.00495,186ecd4c-57d9-4f22-b217-123d4f51a366
+5-4-Performance-7,5/4 Performance 7,Performances,Other Time Signature,performances,5/4,4.0,20.0,80,14,13,1,79.8,5.8,0.75,0.00521,a1384322-12cc-4bf8-a1e4-2b3ca67f04f6
+5-4-Performance-8,5/4 Performance 8,Performances,Other Time Signature,performances,5/4,4.0,20.0,44,8,7,-1,80.6,5.7,0.773,0.00564,3e9cc86b-fbc1-43a0-b4b4-917fa5398833
+5-4-Performance-9,5/4 Performance 9,Performances,Other Time Signature,performances,5/4,4.0,20.0,40,7,6,-1,40.5,9.6,0.55,0.00549,ba6670c6-1c57-4ed7-86b4-685a139d3da7
+Triplet-Performance-1,Triplet Performance 1,Performances,Triplet Feel,performances,4/4,4.0,16.0,61,10,9,-2,79.2,15.7,0.0,0,1d99d495-e356-4380-861f-69c23ad2e6cb
+Triplet-Performance-10,Triplet Performance 10,Performances,Triplet Feel,performances,4/4,4.0,16.0,44,10,9,-1,91.5,18.4,0.182,0.00417,4d3d78b5-411b-4c44-b207-7bd1bf2e64e6
+Triplet-Performance-2,Triplet Performance 2,Performances,Triplet Feel,performances,4/4,4.0,16.0,52,8,7,-1,81.9,12.6,0.904,0.00634,f10d856c-57b7-451e-a8d6-49b3a3069716
+Triplet-Performance-3,Triplet Performance 3,Performances,Triplet Feel,performances,4/4,2.0,8.0,37,6,5,-1,86.8,16.4,0.838,0.00591,b82515ff-5919-44e6-93c1-4a0896068547
+Triplet-Performance-4,Triplet Performance 4,Performances,Triplet Feel,performances,4/4,4.0,16.0,32,8,7,-1,101.5,22.7,0.25,0.00417,0c543c56-7a6a-49fc-a9db-ef697bb2251b
+Triplet-Performance-5,Triplet Performance 5,Performances,Triplet Feel,performances,4/4,2.0,8.0,33,7,6,-1,71.5,14.7,0.758,0.00567,24ac961d-5d2f-46c7-a1af-e5c28551434b
+Triplet-Performance-6,Triplet Performance 6,Performances,Triplet Feel,performances,4/4,4.0,16.0,48,6,5,-1,98.3,21.9,0.375,0.00417,bb888514-f74d-4e2e-87fa-0ffafd0aaebc
+Triplet-Performance-7,Triplet Performance 7,Performances,Triplet Feel,performances,4/4,4.0,16.0,40,8,7,-1,97.6,13.4,0.3,0.00417,b4384b09-345b-4a22-9636-cb06b023700b
+Triplet-Performance-8,Triplet Performance 8,Performances,Triplet Feel,performances,4/4,4.0,16.0,35,7,6,-1,67.2,11.7,0.086,0.00417,2bcf5f2c-30d2-43bb-aafc-852a2a29112e
+Triplet-Performance-9,Triplet Performance 9,Performances,Triplet Feel,performances,4/4,4.0,16.0,60,9,8,-1,90.9,17.3,0.0,0,b6372014-db33-4092-8cca-888bcfa59c0f
+Uptempo-Swing-1,Uptempo Swing 1,Performances,Uptempo Swing,,4/4,4.0,16.0,29,8,7,-1,87.8,13.9,0.655,0.02149,96413da3-5128-4efc-a28a-73759a9e296b
+Uptempo-Swing-10,Uptempo Swing 10,Performances,Uptempo Swing,,4/4,2.0,8.0,16,8,7,-1,76.8,14.6,0.812,0.01939,76677931-7f98-4d69-af1a-3106e24dd246
+Uptempo-Swing-11,Uptempo Swing 11,Performances,Uptempo Swing,,4/4,4.0,16.0,39,11,10,-1,82.5,14.6,0.949,0.02866,75d70927-b684-4a22-ae5c-9e2e19c56cdd
+Uptempo-Swing-12,Uptempo Swing 12,Performances,Uptempo Swing,,4/4,4.0,16.0,42,7,6,-1,80.4,9.0,0.857,0.00966,b5b819a8-cc15-4a72-8f55-1a2285e0fc34
+Uptempo-Swing-13,Uptempo Swing 13,Performances,Uptempo Swing,,4/4,2.0,8.0,15,8,7,-1,78.1,6.1,0.933,0.03155,258d7217-63a7-4490-a8b2-5c4e3364e218
+Uptempo-Swing-14,Uptempo Swing 14,Performances,Uptempo Swing,,4/4,4.0,16.0,43,9,8,-1,81.0,11.8,0.953,0.02434,ddf854a2-9221-4122-800a-84bb37374053
+Uptempo-Swing-15,Uptempo Swing 15,Performances,Uptempo Swing,,4/4,4.0,16.0,49,13,12,-1,82.1,10.8,0.918,0.02116,92759425-4307-42ce-b612-52d36dae2091
+Uptempo-Swing-16,Uptempo Swing 16,Performances,Uptempo Swing,,4/4,4.0,16.0,28,6,5,-1,76.7,10.8,0.964,0.02461,0d0eb963-6ae2-44a2-b72b-57dfac5e7b52
+Uptempo-Swing-17,Uptempo Swing 17,Performances,Uptempo Swing,,4/4,4.0,16.0,40,10,9,-1,74.6,4.0,0.825,0.01496,be8c06ea-c50e-4671-aa92-637311438fae
+Uptempo-Swing-18,Uptempo Swing 18,Performances,Uptempo Swing,,4/4,8.0,32.0,55,10,9,-1,79.8,27.6,0.945,0.02364,aa6dba3c-4e9b-4f48-9a25-04bca5c0e9a5
+Uptempo-Swing-19,Uptempo Swing 19,Performances,Uptempo Swing,,4/4,4.0,16.0,35,9,8,-1,81.1,26.3,0.971,0.01587,ebb407e1-b5f3-43f1-81df-fb90ce3b961f
+Uptempo-Swing-2,Uptempo Swing 2,Performances,Uptempo Swing,,4/4,4.0,16.0,39,8,7,-1,82.6,9.8,0.59,0.024,2dd90888-2ec1-4264-b309-f89bfa088bba
+Uptempo-Swing-3,Uptempo Swing 3,Performances,Uptempo Swing,,4/4,2.0,8.0,19,8,7,-1,87.9,10.6,0.947,0.02326,cb72a864-4fed-4709-9144-7536f5d87fc9
+Uptempo-Swing-4,Uptempo Swing 4,Performances,Uptempo Swing,,4/4,2.0,8.0,12,5,4,-1,82.8,10.4,0.75,0.01481,c2e79224-d55b-4df0-9eea-6f4b1c36dab0
+Uptempo-Swing-5,Uptempo Swing 5,Performances,Uptempo Swing,,4/4,2.0,8.0,13,7,6,-1,80.7,12.9,0.923,0.02205,268dcd17-5b26-44da-bce5-6eadad3c8fa6
+Uptempo-Swing-6,Uptempo Swing 6,Performances,Uptempo Swing,,4/4,4.0,16.0,40,9,8,-1,74.2,6.5,0.825,0.01951,b4481ac8-58e3-43f3-8d37-b9110de6c068
+Uptempo-Swing-7,Uptempo Swing 7,Performances,Uptempo Swing,,4/4,8.0,32.0,113,9,8,-1,60.9,17.3,0.912,0.01794,f7e102bc-5731-4da1-9983-9cae16163b12
+Uptempo-Swing-8,Uptempo Swing 8,Performances,Uptempo Swing,,4/4,2.0,8.0,14,8,7,-1,96.1,15.5,0.643,0.00949,1197774c-cf49-417d-a3d1-0b7bee512743
+Uptempo-Swing-9,Uptempo Swing 9,Performances,Uptempo Swing,,4/4,4.0,16.0,40,11,10,-1,77.9,11.2,0.925,0.01745,86db9743-d82d-4fd4-a246-5908d4df2db4
+Da-Capo,Da Capo,Performances,Vivace,performances,4/4,1.0,4.0,12,7,6,-2,79.3,24.5,0.5,0.00833,32820e1e-6508-4fcc-9e0d-691b65164b20
+Deciso,Deciso,Performances,Vivace,performances,4/4,0.5,2.0,20,8,7,-2,63.5,5.5,0.0,0,f50ec0e5-dfe8-4471-a9d8-bf7d65c67664
+Doppio,Doppio,Performances,Vivace,performances,4/4,4.0,16.0,64,10,9,-2,80.6,2.6,0.0,0,359d573c-5881-4ad5-8823-b6129e0c1e64
+Energico,Energico,Performances,Vivace,performances,4/4,1.0,4.0,18,6,5,-2,69.9,7.8,0.0,0,9ea5ed10-5bb2-449b-938d-d5b2b9646fbe
+Fortepiano,Fortepiano,Performances,Vivace,performances,4/4,1.0,4.0,20,11,10,-2,55.2,8.9,0.0,0,05afae39-d125-4686-8ff5-0c561137ea9d
+Lunga,Lunga,Performances,Vivace,performances,4/4,2.0,8.0,44,5,4,-2,70.5,3.7,0.341,0.00903,72925800-1216-49a0-a00a-d31b41ab29bd
+Mezzoforte,Mezzoforte,Performances,Vivace,performances,4/4,0.5,2.0,21,7,6,-2,67.5,8.5,0.0,0,803afb24-1a4b-43a4-8349-198a601867b3
+Misura,Misura,Performances,Vivace,performances,4/4,0.5,2.0,14,5,4,-1,53.1,11.5,0.429,0.00521,e2859b15-117f-40f9-bb29-66751713f538
+Molto,Molto,Performances,Vivace,performances,4/4,0.5,2.0,22,8,7,-2,53.7,10.6,0.364,0.00625,b7097df9-c006-4941-8a59-35ade8444ce1
+Niente,Niente,Performances,Vivace,performances,4/4,2.0,8.0,20,9,8,-2,47.4,26.6,0.0,0,97af23a8-faa4-47ae-a107-fc634ff3e223
+Ostinato,Ostinato,Performances,Vivace,performances,4/4,0.5,2.0,14,12,11,-2,66.4,8.9,0.0,0,5988447c-abbb-47b7-af6f-3d9a1e309ada
+Pesante,Pesante,Performances,Vivace,performances,4/4,2.0,8.0,24,4,3,-2,73.8,21.7,1.0,0.00208,efe60762-fcad-4a14-ab4d-f5046ea11463
+Piu,Piu,Performances,Vivace,performances,4/4,0.5,2.0,13,5,4,-2,58.9,5.1,0.462,0.00868,91d37613-93ec-44d2-9f67-ce117e960fe4
+Rinforzando,Rinforzando,Performances,Vivace,performances,4/4,4.0,16.0,64,6,5,-2,79.8,3.0,0.0,0,9f9f2a50-aa21-41cc-9a7c-3ad143b09a14
+Simile,Simile,Performances,Vivace,performances,4/4,1.0,4.0,24,6,5,-1,67.3,8.3,0.0,0,19997902-2ab8-4fb0-a8d4-09b83e55ff00
+Slancio,Slancio,Performances,Vivace,performances,4/4,1.0,4.0,18,4,3,-1,74.3,24.8,0.667,0.00208,37b7c288-7803-42ed-8120-32e8f2aab268
+Sopra,Sopra,Performances,Vivace,performances,4/4,1.0,4.0,16,5,4,-1,74.2,9.1,0.0,0,0176ccfa-8cc9-4d88-a464-0f214d3d70ee
+Sotto,Sotto,Performances,Vivace,performances,4/4,1.0,4.0,26,6,5,-2,59.4,5.5,0.538,0.00923,11ed558c-277b-4dd8-b152-d7f92be90d3b
+Stretto,Stretto,Performances,Vivace,performances,4/4,0.5,2.0,15,7,6,-2,53.6,15.3,0.267,0.00417,2f00606d-b1df-4fb0-a432-c79e113404cf
+Tosto,Tosto,Performances,Vivace,performances,4/4,1.0,4.0,16,4,3,-1,61.7,5.4,0.0,0,1ca35195-64de-4224-906e-a2a5b5f1864b
+Troppo,Troppo,Performances,Vivace,performances,4/4,4.0,16.0,136,8,7,-1,58.3,22.3,0.0,0,5988dad6-dd6e-45a3-a2b9-a5e7aaac3e45
+Veloce,Veloce,Performances,Vivace,performances,4/4,1.0,4.0,24,7,6,-1,75.5,9.2,0.0,0,8c0c21a4-f546-4755-82aa-6262611651e9
+Avant-Garde-1,Avant Garde 1,Phrases,Avant Garde,phrases,4/4,8.0,32.0,92,22,21,0,72.8,25.5,0.022,0.02083,acf344b6-15b3-45f0-b7a9-3774ba5cd0de
+Avant-Garde-10,Avant Garde 10,Phrases,Avant Garde,phrases,4/4,4.0,16.0,103,21,20,0,93.3,10.5,0.117,0.0191,094bc662-cc31-4042-979c-3390255119b9
+Avant-Garde-10_minor,Avant Garde 10_minor,Phrases,Avant Garde,phrases,4/4,4.0,16.0,104,20,19,0,93.9,8.0,0.01,0.01042,b8a93e1f-e64a-4925-aa4c-3817a41fc5b7
+Avant-Garde-1_minor,Avant Garde 1_minor,Phrases,Avant Garde,phrases,4/4,8.0,32.0,92,22,21,0,74.8,20.4,0.0,0,7058ed02-f51e-4d58-82cc-620579f852e7
+Avant-Garde-2,Avant Garde 2,Phrases,Avant Garde,phrases,4/4,4.0,16.0,60,13,12,0,87.0,10.7,0.217,0.01763,8d0631e7-8523-4eec-99d6-06dd57c61b29
+Avant-Garde-2_minor,Avant Garde 2_minor,Phrases,Avant Garde,phrases,4/4,4.0,16.0,57,12,11,0,89.3,10.2,0.053,0.02431,74dde59d-730a-4d1f-af85-3e23d222f5ff
+Avant-Garde-3,Avant Garde 3,Phrases,Avant Garde,phrases,4/4,1.0,4.0,19,17,16,0,90.3,5.2,0.0,0,16bd9eaf-d029-4420-80be-13977b09b567
+Avant-Garde-3_minor,Avant Garde 3_minor,Phrases,Avant Garde,phrases,4/4,1.0,4.0,19,17,16,0,90.3,5.2,0.105,0.01042,13a71c24-1115-4c16-9a24-b2d86ee0d312
+Avant-Garde-4,Avant Garde 4,Phrases,Avant Garde,phrases,4/4,4.0,16.0,125,28,27,0,87.3,14.9,0.368,0.02197,624122d3-f7cb-4443-b1eb-9b740d15a17f
+Avant-Garde-4_minor,Avant Garde 4_minor,Phrases,Avant Garde,phrases,4/4,4.0,16.0,125,30,29,0,87.3,14.9,0.36,0.02222,d129579d-f204-44b5-84b6-ebfb3cf7085b
+Avant-Garde-5,Avant Garde 5,Phrases,Avant Garde,phrases,4/4,4.0,16.0,39,13,12,0,79.7,19.0,0.128,0.02083,281e28b3-b32f-4310-a39d-8f1fa51d1bd7
+Avant-Garde-5_minor,Avant Garde 5_minor,Phrases,Avant Garde,phrases,4/4,4.0,16.0,39,13,12,0,79.7,19.0,0.128,0.02083,ce10ceb7-4159-47ef-9738-659f4e5c84f7
+Avant-Garde-6,Avant Garde 6,Phrases,Avant Garde,phrases,4/4,4.0,16.0,68,16,15,0,80.6,13.1,0.471,0.02181,3c67ea55-925b-462c-9fba-5dcb08158525
+Avant-Garde-6_minor,Avant Garde 6_minor,Phrases,Avant Garde,phrases,4/4,4.0,16.0,70,16,15,0,82.5,11.5,0.0,0,710eb0fd-57b8-4db6-9e4a-3c5829663181
+Avant-Garde-7,Avant Garde 7,Phrases,Avant Garde,phrases,4/4,2.0,8.0,22,13,12,0,87.8,9.2,0.0,0,8a2f4c73-827d-459b-899a-1fd741bcd22d
+Avant-Garde-7_minor,Avant Garde 7_minor,Phrases,Avant Garde,phrases,4/4,2.0,8.0,22,12,11,0,87.8,9.2,0.0,0,66fd0a18-c890-4632-bc89-5326214c6144
+Avant-Garde-8,Avant Garde 8,Phrases,Avant Garde,phrases,4/4,2.0,8.0,27,8,7,0,81.6,12.4,0.0,0,94d5bfc1-d1bd-4d04-b565-585470ca8b82
+Avant-Garde-8_minor,Avant Garde 8_minor,Phrases,Avant Garde,phrases,4/4,4.0,16.0,54,10,9,0,81.6,12.4,0.0,0,2201e9f0-516d-4d46-8844-2e9153e7b983
+Avant-Garde-9,Avant Garde 9,Phrases,Avant Garde,phrases,4/4,4.0,16.0,60,15,14,0,90.8,9.7,0.133,0.02604,5ec98c82-fe3c-40c0-a3d0-974d02803e45
+Avant-Garde-9_minor,Avant Garde 9_minor,Phrases,Avant Garde,phrases,4/4,4.0,16.0,60,14,13,0,90.8,9.7,0.15,0.02778,1ff537c4-faf7-4bd9-bc27-f0632738dcda
+Basic-1,Basic 1,Phrases,Common Phrases,phrases,4/4,2.0,8.0,27,7,6,0,88.9,21.5,0.0,0,bf3f79db-b0d4-44b3-8abd-e9c7b538051c
+Basic-10,Basic 10,Phrases,Common Phrases,phrases,4/4,2.0,8.0,16,4,3,0,72.4,7.3,0.0,0,3155c538-bb16-4a64-9986-5b8608b26098
+Basic-2,Basic 2,Phrases,Common Phrases,phrases,4/4,2.0,8.0,32,5,4,1,98.6,13.2,0.0,0,82742feb-653c-43b3-a7ff-efeca67deaf1
+Basic-3,Basic 3,Phrases,Common Phrases,phrases,4/4,1.0,4.0,11,7,6,-1,104.3,7.1,0.818,0.00625,e020acf2-d8bd-43ff-9898-096444befba6
+Basic-4,Basic 4,Phrases,Common Phrases,phrases,4/4,2.0,8.0,16,4,3,0,93.4,12.9,0.625,0.00375,ba5cb37b-5f36-425e-bff8-abbd86432cf3
+Basic-5,Basic 5,Phrases,Common Phrases,phrases,4/4,2.0,8.0,16,5,4,0,91.4,8.4,1.0,0.00547,818d2bd0-861e-4b5b-9910-264600cb2c7c
+Basic-6,Basic 6,Phrases,Common Phrases,phrases,4/4,2.0,8.0,19,5,4,0,101.5,7.8,0.684,0.00625,562bbd2c-33d9-454c-a94c-15fbcca494de
+Basic-7,Basic 7,Phrases,Common Phrases,phrases,4/4,2.0,8.0,16,5,4,0,101.6,7.3,0.812,0.00625,c64fd3d2-740b-44f8-9de2-b5965f6453de
+Basic-8,Basic 8,Phrases,Common Phrases,phrases,4/4,2.0,8.0,24,4,3,0,65.2,13.0,0.0,0,e778b845-7fb2-49e0-ac21-e4c35ae56f32
+Basic-9,Basic 9,Phrases,Common Phrases,phrases,4/4,2.0,8.0,16,8,7,0,61.5,12.8,0.0,0,c59108c1-2eb5-4388-9338-11364fa385b6
+Chordal-1,Chordal 1,Phrases,Common Phrases,phrases,4/4,4.0,16.0,33,11,10,0,85.2,11.9,0.0,0,572f5c4f-5cbf-48cb-94dd-fb1f75727c55
+Chordal-10,Chordal 10,Phrases,Common Phrases,phrases,4/4,4.0,16.0,32,11,10,0,53.1,10.8,0.938,0.01292,93340116-c0d4-4ab3-aa5e-6b4ed56994bd
+Chordal-2,Chordal 2,Phrases,Common Phrases,phrases,4/4,2.0,8.0,23,10,9,0,86.3,22.2,0.0,0,1b83c619-12f7-44b8-a50c-d0e4b9a7a824
+Chordal-3,Chordal 3,Phrases,Common Phrases,phrases,4/4,2.0,8.0,33,8,7,0,87.3,9.7,0.848,0.0183,c8769fd4-7696-41a5-86c5-10a4e584423c
+Chordal-4,Chordal 4,Phrases,Common Phrases,phrases,4/4,4.0,16.0,16,12,11,0,70.5,9.2,0.0,0,5811ae93-8fa8-4203-92bb-729719644b20
+Chordal-5,Chordal 5,Phrases,Common Phrases,phrases,4/4,2.0,8.0,24,13,12,0,82,15.4,0.0,0,36f67e73-7eb9-4a29-b917-3965390c9471
+Chordal-6,Chordal 6,Phrases,Common Phrases,phrases,4/4,2.0,8.0,12,8,7,0,58.8,6.7,1.0,0.01615,5d67bd53-f7f4-487f-953b-22fa2cf3f8f1
+Chordal-7,Chordal 7,Phrases,Common Phrases,phrases,4/4,2.0,8.0,13,7,6,0,68.1,8.8,0.846,0.00966,72e2410e-9055-479e-8965-687465fe4227
+Chordal-8,Chordal 8,Phrases,Common Phrases,phrases,4/4,2.0,8.0,15,8,7,0,58.3,7.8,0.667,0.01438,a65273df-df8d-402c-85ed-ae6561580e40
+Chordal-9,Chordal 9,Phrases,Common Phrases,phrases,4/4,2.0,8.0,8,5,4,0,44.9,8.8,1.0,0.01276,add41887-3e0d-4bea-9bc7-4c7a75c74013
+Progression-1--I-V-vi-IV-,Progression 1 (I-V-vi-IV),Phrases,Common Phrases,phrases,4/4,4.0,16.0,74,14,13,0,83.7,10.3,0.811,0.00934,aa202301-67c7-4031-ad85-b54f0bb8ecc0
+Progression-10--vi-IV-I-V-,Progression 10 (vi-IV-I-V),Phrases,Common Phrases,phrases,4/4,4.0,16.0,64,19,18,0,60.5,7.1,0.656,0.00898,089802d7-b08f-49a2-b316-ac71591c3c95
+Progression-11--I-vi-IV-V-,Progression 11 (I-vi-IV-V),Phrases,Common Phrases,phrases,4/4,8.0,32.0,25,15,14,0,48.6,9.7,0.68,0.02022,9f95cfd9-539c-4696-9b58-f5bd1992a61f
+Progression-12--I-V-vi-IV-,Progression 12 (I-V-vi-IV),Phrases,Common Phrases,phrases,4/4,8.0,32.0,44,16,15,0,50.6,13.1,0.955,0.02044,3d9662de-40a5-4999-8d6e-0a30315135b3
+Progression-13--vi-IV-I-V-,Progression 13 (vi-IV-I-V),Phrases,Common Phrases,phrases,4/4,8.0,32.0,77,20,19,0,43.8,9.3,0.688,0.00649,a3dce749-de42-4000-9df2-3013cd3b5c91
+Progression-14--vi-IV-I-V-,Progression 14 (vi-IV-I-V),Phrases,Common Phrases,phrases,4/4,8.0,32.0,27,19,18,0,39.4,7.9,0.926,0.0195,370b56f4-91cf-4910-a6f8-92c181b3905b
+Progression-15--I-V-vi-IV-,Progression 15 (I-V-vi-IV),Phrases,Common Phrases,phrases,4/4,16.0,64.0,51,18,17,0,49.9,12.7,0.549,0.02039,627e1d78-c5ff-48f1-ac9d-0816a05c2cee
+Progression-16--i-V-i-iv-,Progression 16 (i-V-i-iv),Phrases,Common Phrases,phrases,4/4,16.0,64.0,90,21,20,0,34.3,10.3,0.711,0.01523,207b8b30-b50d-4df9-8495-6af2dddad0fd
+Progression-17--I-vi-ii-V-,Progression 17 (I-vi-ii-V),Phrases,Common Phrases,phrases,4/4,16.0,64.0,72,11,10,0,34.7,14.6,0.778,0.02277,5a92b1a3-7fb7-4662-9515-13bcc9ee7677
+Progression-18--I-IV-ii-V-,Progression 18 (I-IV-ii-V),Phrases,Common Phrases,phrases,4/4,16.0,64.0,138,18,17,0,61.0,2.7,0.732,0.01489,d0a68028-ffa6-4ed4-97ca-01ebf12775eb
+Progression-19--vi-V-IV-V-,Progression 19 (vi-V-IV-V),Phrases,Common Phrases,phrases,4/4,16.0,64.0,104,14,13,0,29.9,7.5,0.846,0.01293,e3d61ead-6901-4f7e-86f3-1cee73ed2893
+Progression-2--vi-IV-I-V-,Progression 2 (vi-IV-I-V),Phrases,Common Phrases,phrases,4/4,4.0,16.0,45,14,13,0,77.3,7.7,0.0,0,b735a448-d36b-46d4-ae0c-673893f72767
+Progression-20--vi-IV-I-V-,Progression 20 (vi-IV-I-V),Phrases,Common Phrases,phrases,4/4,8.0,32.0,76,15,14,0,52,0.0,0.0,0,3e0deccf-a2dc-40c7-ab5f-cfc95e74292b
+Progression-3--I-V-vi-IV-,Progression 3 (I-V-vi-IV),Phrases,Common Phrases,phrases,4/4,4.0,16.0,47,18,17,0,69.4,16.3,0.66,0.01485,ac8fa9ff-9b44-46da-8aa2-0c2735b757da
+Progression-4--i-V-i-iv-,Progression 4 (i-V-i-iv),Phrases,Common Phrases,phrases,4/4,4.0,16.0,34,17,16,0,55.1,15.9,0.706,0.00712,3ca8e116-e795-4ba7-bcaf-fe850f7a51f7
+Progression-5--I-IV-ii-V-,Progression 5 (I-IV-ii-V),Phrases,Common Phrases,phrases,4/4,4.0,16.0,46,22,21,0,87.6,12.7,0.87,0.00922,631ab4e9-8ccf-4d04-ac97-31986872cb3d
+Progression-6--I-IV-ii-V-,Progression 6 (I-IV-ii-V),Phrases,Common Phrases,phrases,4/4,8.0,32.0,80,20,19,0,64.3,17.5,0.662,0.01635,6489d767-e2f3-4987-8a09-2178e9566cc6
+Progression-7--I-IV-ii-V-,Progression 7 (I-IV-ii-V),Phrases,Common Phrases,phrases,4/4,4.0,16.0,114,20,19,0,116.2,13.0,0.807,0.00507,21affaa7-0442-4bf2-b027-b59063fe3297
+Progression-8--I-V-vi-IV-,Progression 8 (I-V-vi-IV),Phrases,Common Phrases,phrases,4/4,4.0,16.0,56,19,18,0,55.4,6.0,0.625,0.01696,8ed3282f-4bf5-4f6a-bb6c-5aad3116741a
+Progression-9--I-vi-IV-V-,Progression 9 (I-vi-IV-V),Phrases,Common Phrases,phrases,4/4,8.0,32.0,40,18,17,0,53.4,7.8,0.475,0.017,3c2aa8ab-1905-4a4e-87f4-a25545dfb2d1
+Affabile,Affabile,Phrases,Con Amore,phrases,4/4,2.0,8.0,18,12,11,0,50.9,11.4,0.889,0.00951,c3e02f9a-1205-46a4-aca9-d01c1cc57a56
+Assai,Assai,Phrases,Con Amore,phrases,4/4,2.0,8.0,33,10,9,0,60.2,3.6,0.424,0.01696,d66e780c-afb1-4e2f-8e06-9eb27a5f7178
+Battaglia,Battaglia,Phrases,Con Amore,phrases,4/4,2.0,8.0,14,10,9,0,56.1,4.9,0.643,0.01157,05fc430e-80dc-425a-af18-1a9d7f1e3fc0
+Bene,Bene,Phrases,Con Amore,phrases,4/4,2.0,8.0,14,10,9,0,58.4,6.7,0.929,0.02196,f2a1ffbf-384e-4911-affb-a9f531b15b9d
+Bravura,Bravura,Phrases,Con Amore,phrases,4/4,3.0,12.0,16,10,9,0,60.2,4.1,0.938,0.02083,73f5b6b1-c9e2-4bb6-9900-3fb0378e124b
+Cantata,Cantata,Phrases,Con Amore,phrases,4/4,2.0,8.0,15,9,8,0,61.1,1.9,0.733,0.01818,7e115fd7-303e-4977-b8a2-9af98afe3781
+Cavato,Cavato,Phrases,Con Amore,phrases,4/4,4.0,16.0,23,13,12,0,58.0,3.2,0.913,0.02748,68788e36-92d2-4dfe-a9eb-b0c1e5505595
+Comodo,Comodo,Phrases,Con Amore,phrases,4/4,2.0,8.0,14,10,9,1,56.1,4.9,0.643,0.01157,b5da23e6-26fb-404a-93e9-7b9f24426c07
+Delicato,Delicato,Phrases,Con Amore,phrases,4/4,2.0,8.0,35,5,4,0,47.9,27.4,0.0,0,6873fca0-55e8-470a-8f96-e66d55ceace5
+Diminuendo,Diminuendo,Phrases,Con Amore,phrases,4/4,2.0,8.0,13,5,4,0,73.7,11.0,0.0,0,9b82b06e-e37f-4d73-9873-f1ac860cbf48
+Dolce,Dolce,Phrases,Con Amore,phrases,4/4,2.0,8.0,16,12,11,0,59.7,4.0,0.875,0.01905,56433cc2-5009-4ea3-ac77-3b0083c4c281
+Grave,Grave,Phrases,Con Amore,phrases,4/4,4.0,16.0,23,13,12,0,58.0,3.2,0.913,0.02748,cb11ac53-badd-4e5a-bce8-d7d3181eeec3
+Lacrimoso,Lacrimoso,Phrases,Con Amore,phrases,4/4,2.0,8.0,19,7,6,0,63.4,21.1,0.0,0,36f8fcc5-f446-4d8b-9f92-5510d5536ccb
+Libero,Libero,Phrases,Con Amore,phrases,4/4,2.0,8.0,24,12,11,0,46.0,10.9,0.833,0.02177,8aadddf4-cddb-42af-afb2-30dcd3083e2e
+Patetico,Patetico,Phrases,Con Amore,phrases,4/4,3.0,12.0,64,4,3,0,42.8,18.0,0.0,0,0c672f85-8c0f-49ee-873c-fabf3f34ace3
+Perdendosi,Perdendosi,Phrases,Con Amore,phrases,4/4,2.0,8.0,15,6,5,0,73.2,19.3,0.0,0,7fafc42a-0338-49c8-968e-0c5c273764fd
+Piacere,Piacere,Phrases,Con Amore,phrases,4/4,2.0,8.0,13,9,8,0,56.2,6.4,0.923,0.02587,316f6edf-aee4-4f89-bbb6-c7568cf114d1
+Quasi,Quasi,Phrases,Con Amore,phrases,4/4,2.0,8.0,25,6,5,0,59.1,27.5,0.0,0,f2e62693-2f81-4125-b86f-55993a753203
+Felice,Felice,Phrases,Con Fuoco,phrases,4/4,4.0,16.0,25,6,5,0,59.1,27.5,0.0,0,2cf8f0bf-b341-4320-97dd-4dcce493bc45
+Fioritura,Fioritura,Phrases,Con Fuoco,phrases,4/4,1.0,4.0,11,9,8,0,60.1,3.3,0.909,0.02354,3ea63a52-d3d6-419c-8dde-e822e9c499ff
+Leggiero,Leggiero,Phrases,Con Fuoco,phrases,4/4,2.0,8.0,28,5,4,0,73.2,23.0,0.0,0,a3539e0d-dd7e-461c-ae93-32f5997679bb
+Lentando,Lentando,Phrases,Con Fuoco,phrases,4/4,1.0,4.0,14,10,9,0,58.4,6.7,0.929,0.025,8994a16e-0da9-45f9-b17f-6b167f09d39d
+Lugubre,Lugubre,Phrases,Con Fuoco,phrases,4/4,2.0,8.0,67,5,4,0,75.0,15.0,0.0,0,ff07dfd5-c0c0-4b8a-a9d9-83314b226872
+Mancando,Mancando,Phrases,Con Fuoco,phrases,4/4,4.0,16.0,44,5,4,0,86.1,31.5,0.0,0,731d9bbe-9acd-43d6-b59f-cd14de2545f9
+Passionato,Passionato,Phrases,Con Fuoco,phrases,4/4,4.0,16.0,79,7,6,0,107.1,12.8,0.0,0,bc56c32d-b916-4a6a-9487-423f8c78e951
+Piangevole,Piangevole,Phrases,Con Fuoco,phrases,4/4,1.0,4.0,11,6,5,0,101.5,23.4,0.0,0,d612d2c1-c6a9-4ea9-a5c8-37ef47f350ec
+Ritornello,Ritornello,Phrases,Con Fuoco,phrases,4/4,3.0,12.0,22,5,4,0,76.0,23.6,0.0,0,5a00bac7-e89a-4dd0-add5-d06e1d0c381f
+Scherzando,Scherzando,Phrases,Con Fuoco,phrases,4/4,2.0,8.0,23,6,5,0,78.1,34.1,0.0,0,7e31830a-1d98-4212-83b6-e64647ed5f5a
+Scherzo,Scherzo,Phrases,Con Fuoco,phrases,4/4,1.0,4.0,19,6,5,0,45.7,9.2,0.0,0,a1b58bf2-7df9-4f42-9661-938506d124c3
+Sempre,Sempre,Phrases,Con Fuoco,phrases,4/4,2.0,8.0,39,3,2,0,91.2,25.8,0.0,0,1a265ef3-2c46-4f94-b4c0-b5c493121606
+Seplicamente,Seplicamente,Phrases,Con Fuoco,phrases,4/4,2.0,8.0,28,6,5,0,88.3,16.3,0.0,0,87ab4d10-8795-416f-8d3d-ff3bf3c9bed2
+Soave,Soave,Phrases,Con Fuoco,phrases,4/4,1.0,4.0,7,6,5,0,88.4,31.6,0.0,0,4e5ae15f-dcbb-46a1-b343-95274344d9d1
+Trionfale,Trionfale,Phrases,Con Fuoco,phrases,4/4,2.0,8.0,36,5,4,0,75.2,13.4,0.0,0,cabfc28d-d242-4a83-adac-ea08915dae4e
+Triste,Triste,Phrases,Con Fuoco,phrases,4/4,2.0,8.0,11,9,8,0,60.1,3.3,0.909,0.02458,cb436ca8-fecb-4893-951d-72760b41ec9d
+Ballabile,Ballabile,Phrases,Con Moto,phrases,4/4,3.0,12.0,24,10,9,0,59.1,3.8,0.958,0.01476,d6a1dd39-63b8-49cd-90dd-ca31a0c6e8a1
+Bruscamente,Bruscamente,Phrases,Con Moto,phrases,4/4,2.0,8.0,20,6,5,0,57.5,8.6,0.0,0,f2003605-91ee-4204-a01c-d05e4ef892aa
+Colossale,Colossale,Phrases,Con Moto,phrases,4/4,2.0,8.0,19,3,2,0,82.8,16.5,0.0,0,92efb84f-46d1-495a-bdf0-e600c1224c2f
+Forza,Forza,Phrases,Con Moto,phrases,4/4,2.0,8.0,72,5,4,0,105.4,18.4,0.0,0,5fc9036d-0e7f-4ae8-a5d2-bf9f1674829f
+Fuoco,Fuoco,Phrases,Con Moto,phrases,4/4,4.0,16.0,57,6,5,0,96.5,25.7,0.0,0,e3f59d73-10b9-41c0-b7f8-b861d5fbce56
+Giocoso,Giocoso,Phrases,Con Moto,phrases,4/4,1.0,4.0,26,8,7,0,79.4,21.8,0.0,0,d03e4b32-57e8-405c-b04d-a3c8e7bbf64e
+Giojoso,Giojoso,Phrases,Con Moto,phrases,4/4,2.0,8.0,57,6,5,0,96.5,25.7,0.0,0,400a6637-944c-4fc5-b418-8fd0f166e63a
+Giusto,Giusto,Phrases,Con Moto,phrases,4/4,4.0,16.0,36,3,2,0,80.4,15.5,0.0,0,9b9d0dc4-ecfa-4cf5-8c9a-61096dc32e7c
+Grandioso,Grandioso,Phrases,Con Moto,phrases,4/4,2.0,8.0,42,9,8,0,73.8,19.4,0.0,0,fa460764-7685-4904-9660-a8d3cacab271
+Melodrama,Melodrama,Phrases,Con Moto,phrases,4/4,2.0,8.0,13,9,8,0,56.2,6.4,0.923,0.02587,e4cc426e-60ec-479c-bbc0-c34724542f56
+Piacevole,Piacevole,Phrases,Con Moto,phrases,4/4,2.0,8.0,27,8,7,0,82.4,15.2,0.0,0,51b19ec8-97c8-49ab-9e70-de556f78a3e8
+Piccolo,Piccolo,Phrases,Con Moto,phrases,4/4,4.0,16.0,21,11,10,0,52.7,6.7,0.0,0,1daee439-9508-49d9-a332-68f0dbf60431
+Placido,Placido,Phrases,Con Moto,phrases,4/4,1.0,4.0,12,6,5,0,64,0.0,0.0,0,ee9fa7e7-97a6-445f-a448-432c0e160c16
+Prima,Prima,Phrases,Con Moto,phrases,4/4,4.0,16.0,70,6,5,0,58.1,24.6,0.0,0,76b908ea-80b9-4632-99ad-99d737e714d9
+Relievo,Relievo,Phrases,Con Moto,phrases,4/4,2.0,8.0,38,7,6,0,80.4,29.7,0.0,0,276295d6-2b3c-4b9a-add7-00e484fecc23
+Risoluto,Risoluto,Phrases,Con Moto,phrases,4/4,2.0,8.0,18,6,5,0,93.3,20.7,0.0,0,8a4c65a4-3a2b-4846-96e4-e123add2254e
+Solenne,Solenne,Phrases,Con Moto,phrases,4/4,4.0,16.0,50,4,3,0,96.3,17.3,0.0,0,6698fa7f-3821-4a9c-a1c3-83de4fe83d49
+Sonoro,Sonoro,Phrases,Con Moto,phrases,4/4,2.0,8.0,7,3,2,0,96.9,7.5,0.0,0,55833486-21e2-4499-adf8-e47f47804843
+Tutti,Tutti,Phrases,Con Moto,phrases,4/4,1.0,4.0,29,5,4,0,94.9,14.8,0.0,0,415db493-db19-405f-94ec-cd6a1e020fcd
+Vivo,Vivo,Phrases,Con Moto,phrases,4/4,2.0,8.0,68,9,8,0,59.1,12.1,0.0,0,f6152863-4f34-4432-96ae-6fb59b522f03
+Affettoso,Affettoso,Phrases,Con Spirito,phrases,4/4,2.0,8.0,13,7,6,0,47.7,8.5,0.846,0.00436,48af3f52-23cc-44df-bc32-1296d654d3c1
+Amabile,Amabile,Phrases,Con Spirito,phrases,4/4,3.0,12.0,24,10,9,1,59.1,3.8,0.958,0.01476,a2b172a3-062f-4ee1-a194-6fcebe59f6a6
+Amore,Amore,Phrases,Con Spirito,phrases,4/4,2.0,8.0,11,7,6,0,52.9,6.1,0.818,0.01019,23b1e29f-1c3b-436f-84e6-871ca8bed909
+Anima,Anima,Phrases,Con Spirito,phrases,4/4,2.0,8.0,15,9,8,0,61.1,1.9,0.733,0.01818,62c941fe-f8f1-4d24-8005-8b812a10c4bb
+Brio,Brio,Phrases,Con Spirito,phrases,4/4,2.0,8.0,48,5,4,0,87.6,22.9,0.0,0,08f018f8-9e99-44f4-b0a4-a37538d3b1c4
+Cabaletta,Cabaletta,Phrases,Con Spirito,phrases,4/4,3.0,12.0,16,10,9,0,60.2,4.1,0.938,0.02083,022354c1-537a-40d6-b541-19f2fc09ea51
+Capriccioso,Capriccioso,Phrases,Con Spirito,phrases,4/4,2.0,8.0,56,5,4,0,80.2,14.8,0.0,0,9a95d7a0-370e-4856-8ce1-ad81910ddccf
+Dolente,Dolente,Phrases,Con Spirito,phrases,4/4,1.0,4.0,23,5,4,0,84.7,27.4,0.0,0,6cd34aa4-bb18-4ced-97a0-9b60e8f10140
+Dolore,Dolore,Phrases,Con Spirito,phrases,4/4,4.0,16.0,51,8,7,1,67.5,9.5,0.275,0.02128,16587d1f-c56d-4e12-970b-0eea18a7c7f5
+Festoso,Festoso,Phrases,Con Spirito,phrases,4/4,2.0,8.0,21,6,5,0,77.3,23.7,0.0,0,31c193aa-21e3-4dcf-a2b9-98c384b8d51e
+Grazioso,Grazioso,Phrases,Con Spirito,phrases,4/4,2.0,8.0,28,9,8,0,66.5,25.4,0.0,0,ade8105e-2a3b-44f1-a1fc-200c9c1fda20
+Parlando,Parlando,Phrases,Con Spirito,phrases,4/4,2.0,8.0,23,7,6,0,107.9,9.1,0.0,0,36022f72-399b-4feb-ba07-857090f4e962
+Pochettino,Pochettino,Phrases,Con Spirito,phrases,4/4,4.0,16.0,21,11,10,1,52.7,6.7,0.0,0,8d23d9dc-cd77-454c-bb0f-62551d6809a7
+Rubato,Rubato,Phrases,Con Spirito,phrases,4/4,2.0,8.0,31,5,4,0,71.1,19.5,0.0,0,43cdf349-b3e1-4988-b48d-d2364097d88f
+Spiritoso,Spiritoso,Phrases,Con Spirito,phrases,4/4,1.0,4.0,12,6,5,0,82.7,26.1,0.0,0,edf15efa-5e67-440e-a893-1fa3b64b2ae5
+Teneramente,Teneramente,Phrases,Con Spirito,phrases,4/4,1.0,4.0,11,6,5,0,44.5,9.1,0.182,0.01563,d44e424d-d358-4a59-a52c-b5e975217036
+Emotive-Phrase-1---Major,Emotive Phrase 1 - Major,Phrases,Emotive,phrases,4/4,8.0,32.0,20,12,11,0,61.5,13.6,0.7,0.01786,72a3249b-c841-4f5e-bb61-64cd0ff6cfaa
+Emotive-Phrase-1---Minor,Emotive Phrase 1 - Minor,Phrases,Emotive,phrases,4/4,8.0,32.0,20,12,11,0,61.5,13.6,0.7,0.01786,d87698ad-1831-46fe-a424-afec38369cb5
+Emotive-Phrase-10---Major,Emotive Phrase 10 - Major,Phrases,Emotive,phrases,4/4,2.0,8.0,21,11,10,0,57,10.0,0.667,0.0253,a00f5ceb-69c2-4a45-a63b-71fe72595fe2
+Emotive-Phrase-10---Minor,Emotive Phrase 10 - Minor,Phrases,Emotive,phrases,4/4,2.0,8.0,21,11,10,0,57,10.0,0.667,0.0253,f1ea5111-0d40-47d3-a96c-a379dfdc6f5d
+Emotive-Phrase-11---Major,Emotive Phrase 11 - Major,Phrases,Emotive,phrases,4/4,5.0,20.0,22,8,7,0,68.7,6.9,0.545,0.03038,d4a70331-1ad5-4f9d-b1bb-0bb3594876b9
+Emotive-Phrase-11---Minor,Emotive Phrase 11 - Minor,Phrases,Emotive,phrases,4/4,5.0,20.0,21,8,7,0,69.0,7.0,0.571,0.03038,c85d86d4-8d08-4890-946c-528945c484ac
+Emotive-Phrase-12---Major,Emotive Phrase 12 - Major,Phrases,Emotive,phrases,4/4,2.0,8.0,19,13,12,0,44.2,19.8,0.684,0.02244,86e837c8-288f-4f7e-aa16-21189064114a
+Emotive-Phrase-12---Minor,Emotive Phrase 12 - Minor,Phrases,Emotive,phrases,4/4,2.0,8.0,19,13,12,0,44.2,19.8,0.684,0.02244,d2bdd9ac-8249-41e1-9a1b-02eaeb30082c
+Emotive-Phrase-13---Major,Emotive Phrase 13 - Major,Phrases,Emotive,phrases,4/4,8.0,32.0,55,14,13,0,75.9,8.7,0.818,0.02153,b192e2f5-9be5-469e-8596-bc05bea1f16d
+Emotive-Phrase-13---Minor,Emotive Phrase 13 - Minor,Phrases,Emotive,phrases,4/4,8.0,32.0,55,13,12,0,75.9,8.7,0.818,0.02153,30e31577-46e6-40be-bf0d-0083731459ca
+Emotive-Phrase-14---Major,Emotive Phrase 14 - Major,Phrases,Emotive,phrases,4/4,2.0,8.0,20,13,12,0,72.0,8.1,0.7,0.01935,a9c68ca2-ac0a-4efa-a033-1e06a4642035
+Emotive-Phrase-14---Minor,Emotive Phrase 14 - Minor,Phrases,Emotive,phrases,4/4,2.0,8.0,20,12,11,0,72.0,8.1,0.7,0.01935,7b3cf6a3-9836-478d-8f96-872f7eacf9bd
+Emotive-Phrase-15---Major,Emotive Phrase 15 - Major,Phrases,Emotive,phrases,4/4,6.0,24.0,29,14,13,0,58.6,17.5,0.897,0.02404,1269531e-6676-40ae-8c5f-cff0479aac94
+Emotive-Phrase-15---Minor,Emotive Phrase 15 - Minor,Phrases,Emotive,phrases,4/4,6.0,24.0,29,15,14,0,58.6,17.5,0.897,0.02404,6ca98429-a8da-44b9-8fd8-dc878e3a6870
+Emotive-Phrase-16---Major,Emotive Phrase 16 - Major,Phrases,Emotive,phrases,4/4,6.0,24.0,52,17,16,0,63.8,11.4,0.827,0.02374,8d9314af-3816-4c39-920a-05abece3256c
+Emotive-Phrase-16---Minor,Emotive Phrase 16 - Minor,Phrases,Emotive,phrases,4/4,6.0,24.0,52,17,16,0,63.8,11.4,0.827,0.02374,eec9acd0-0231-424d-92e1-778a336e1c76
+Emotive-Phrase-17---Major,Emotive Phrase 17 - Major,Phrases,Emotive,phrases,4/4,8.0,32.0,62,18,17,0,68.1,11.4,0.839,0.01883,cc6ce7b9-399e-4dd4-8b2e-c97c6067ba26
+Emotive-Phrase-17---Minor,Emotive Phrase 17 - Minor,Phrases,Emotive,phrases,4/4,8.0,32.0,62,18,17,0,68.1,11.4,0.839,0.01883,bd7cfbc2-b5ee-4b49-bd84-1ce2d52cc5b3
+Emotive-Phrase-18---Major,Emotive Phrase 18 - Major,Phrases,Emotive,phrases,4/4,4.0,16.0,41,14,13,0,58.8,12.7,0.732,0.01771,60523f6e-63d7-4398-820f-f57702a6faa9
+Emotive-Phrase-18---Minor,Emotive Phrase 18 - Minor,Phrases,Emotive,phrases,4/4,4.0,16.0,39,14,13,0,58.6,13.0,0.718,0.01711,96f80f41-0c67-4e47-914c-b7adb7c826ed
+Emotive-Phrase-19---Major,Emotive Phrase 19 - Major,Phrases,Emotive,phrases,4/4,4.0,16.0,26,13,12,0,52.5,11.0,0.615,0.02344,0556715e-df5b-4f3c-a737-afeafa6f183f
+Emotive-Phrase-19---Minor,Emotive Phrase 19 - Minor,Phrases,Emotive,phrases,4/4,4.0,16.0,26,14,13,0,52.5,11.0,0.615,0.02344,004ce0bf-a7c6-49fa-b284-47ca86e2a22f
+Emotive-Phrase-2---Major,Emotive Phrase 2 - Major,Phrases,Emotive,phrases,3/4,8.0,24.0,38,12,11,0,69.4,9.0,0.842,0.02897,8af13171-68c7-4788-8ecf-8b3817266f00
+Emotive-Phrase-2---Minor,Emotive Phrase 2 - Minor,Phrases,Emotive,phrases,3/4,8.0,24.0,38,12,11,0,69.4,9.0,0.842,0.02897,b961474d-da9f-401c-94b0-e08a85917e39
+Emotive-Phrase-20---Major,Emotive Phrase 20 - Major,Phrases,Emotive,phrases,4/4,4.0,16.0,45,11,10,0,64.6,12.2,0.844,0.0222,f2c12403-0c86-43df-920c-43cccff20438
+Emotive-Phrase-20---Minor,Emotive Phrase 20 - Minor,Phrases,Emotive,phrases,4/4,4.0,16.0,45,12,11,0,64.6,12.2,0.844,0.0222,5553d5d0-2786-400c-ad2a-c8a268761984
+Emotive-Phrase-21---Major,Emotive Phrase 21 - Major,Phrases,Emotive,phrases,4/4,5.0,20.0,37,11,10,0,57.8,13.2,0.73,0.02353,689a86ef-6067-4cdb-b7d3-c0d6f0a63e29
+Emotive-Phrase-21---Minor,Emotive Phrase 21 - Minor,Phrases,Emotive,phrases,4/4,5.0,20.0,48,12,11,0,60.4,9.6,0.771,0.02393,073ed2b0-1220-4f99-ad9f-4bb6aa35152a
+Emotive-Phrase-22---Major,Emotive Phrase 22 - Major,Phrases,Emotive,phrases,4/4,6.0,24.0,41,15,14,0,62.9,16.2,0.902,0.02421,62a9b11e-03d7-4ef9-99fe-6f082a437934
+Emotive-Phrase-22---Minor,Emotive Phrase 22 - Minor,Phrases,Emotive,phrases,4/4,6.0,24.0,41,15,14,0,62.9,16.2,0.902,0.02421,d8c9e452-da58-4dc8-a9fa-6ab4208d083a
+Emotive-Phrase-23---Major,Emotive Phrase 23 - Major,Phrases,Emotive,phrases,4/4,2.0,8.0,20,9,8,0,60.2,9.8,0.8,0.02669,b1796206-b70f-49de-b5ce-7a441d95636b
+Emotive-Phrase-23---Minor,Emotive Phrase 23 - Minor,Phrases,Emotive,phrases,4/4,2.0,8.0,20,9,8,0,60.2,9.8,0.8,0.02669,f8e341f2-9c02-4975-bb4e-c5dff6bfa6b8
+Emotive-Phrase-24---Major,Emotive Phrase 24 - Major,Phrases,Emotive,phrases,4/4,4.0,16.0,39,10,9,0,59.5,11.4,0.795,0.02386,50100390-4d25-4176-8a8b-1df50218e52e
+Emotive-Phrase-24---Minor,Emotive Phrase 24 - Minor,Phrases,Emotive,phrases,4/4,4.0,16.0,37,11,10,0,60.5,10.4,0.838,0.02386,0748f78c-eb00-4b73-9ba5-77d4a0645b98
+Emotive-Phrase-25---Major,Emotive Phrase 25 - Major,Phrases,Emotive,phrases,4/4,4.0,16.0,37,16,15,0,59.0,11.4,0.919,0.02604,c8ee06ae-6651-470d-9fb7-deab2327a1df
+Emotive-Phrase-25---Minor,Emotive Phrase 25 - Minor,Phrases,Emotive,phrases,4/4,4.0,16.0,38,15,14,0,58.2,12.3,0.895,0.02604,a3679538-fa88-45ae-bce8-faa673cae370
+Emotive-Phrase-26---Major,Emotive Phrase 26 - Major,Phrases,Emotive,phrases,4/4,4.0,16.0,28,10,9,0,60.1,9.5,0.75,0.01935,eea9bbea-25e7-4d2d-afe6-567c9527a9a1
+Emotive-Phrase-26---Minor,Emotive Phrase 26 - Minor,Phrases,Emotive,phrases,4/4,4.0,16.0,28,10,9,0,60.1,9.5,0.75,0.01935,6f8cf606-b05b-48d1-81c4-4486ea4d2e76
+Emotive-Phrase-27---Major,Emotive Phrase 27 - Major,Phrases,Emotive,phrases,4/4,4.0,16.0,33,12,11,0,54.5,13.4,0.848,0.02455,cdaec12e-e80a-4155-a1a2-67e61a5cf147
+Emotive-Phrase-27---Minor,Emotive Phrase 27 - Minor,Phrases,Emotive,phrases,4/4,4.0,16.0,33,12,11,0,54.5,13.4,0.848,0.02455,56a7c00d-2ed2-4df0-83a1-689e79646cc8
+Emotive-Phrase-28---Major,Emotive Phrase 28 - Major,Phrases,Emotive,phrases,4/4,4.0,16.0,32,13,12,0,53.3,12.4,0.75,0.02127,6c92a69b-a4d1-4104-bf5d-30b16c56fe60
+Emotive-Phrase-28---Minor,Emotive Phrase 28 - Minor,Phrases,Emotive,phrases,4/4,4.0,16.0,32,13,12,0,53.3,12.4,0.75,0.02127,753657a2-8723-4c71-8ad5-4e7b0c5b4252
+Emotive-Phrase-3---Major,Emotive Phrase 3 - Major,Phrases,Emotive,phrases,3/4,2.6667,8.0,16,8,7,0,80.4,9.0,0.75,0.02778,01755ce7-7744-4435-bce5-9f687afa4306
+Emotive-Phrase-3---Minor,Emotive Phrase 3 - Minor,Phrases,Emotive,phrases,3/4,2.6667,8.0,16,8,7,0,80.4,9.0,0.75,0.02778,20794a90-c665-4b40-8cca-7b19f7d97eb4
+Emotive-Phrase-4---Major,Emotive Phrase 4 - Major,Phrases,Emotive,phrases,4/4,6.0,24.0,29,15,14,0,66.0,6.8,0.793,0.02536,c127d410-41dc-4e02-b0f5-58f93c39dc79
+Emotive-Phrase-4---Minor,Emotive Phrase 4 - Minor,Phrases,Emotive,phrases,4/4,6.0,24.0,29,16,15,0,66.0,6.8,0.793,0.02536,9ea469af-5d88-4853-8c06-08a52e6aeb45
+Emotive-Phrase-5---Major,Emotive Phrase 5 - Major,Phrases,Emotive,phrases,4/4,4.0,16.0,37,15,14,0,59.6,13.8,0.757,0.02493,0ca96f3b-ac8f-4e87-8682-85feb81ffb52
+Emotive-Phrase-5---Minor,Emotive Phrase 5 - Minor,Phrases,Emotive,phrases,4/4,4.0,16.0,37,15,14,0,59.6,13.8,0.757,0.02493,7ec0c4e1-1d33-43d4-b4b9-7151ae8f9a9f
+Emotive-Phrase-6---Major,Emotive Phrase 6 - Major,Phrases,Emotive,phrases,4/4,1.0,4.0,14,9,8,0,67.9,12.6,0.714,0.03021,f128985f-270b-4d78-9635-bc87420dea46
+Emotive-Phrase-6---Minor,Emotive Phrase 6 - Minor,Phrases,Emotive,phrases,4/4,1.0,4.0,14,9,8,0,67.9,12.6,0.714,0.03021,749d8de7-e446-400e-a6c9-701ebb1a5123
+Emotive-Phrase-7---Major,Emotive Phrase 7 - Major,Phrases,Emotive,phrases,4/4,2.0,8.0,18,9,8,0,60.3,12.8,0.833,0.02153,ec2d2f92-73ba-4d2c-894a-93e0ff70a03b
+Emotive-Phrase-7---Minor,Emotive Phrase 7 - Minor,Phrases,Emotive,phrases,4/4,2.0,8.0,18,9,8,0,60.3,12.8,0.833,0.02153,d9c5aab6-a6dc-474d-bffa-633a7a835e13
+Emotive-Phrase-8---Major,Emotive Phrase 8 - Major,Phrases,Emotive,phrases,4/4,2.0,8.0,24,14,13,0,60.5,17.4,0.958,0.0231,468dc674-2677-46d0-9c89-7e08128fe57a
+Emotive-Phrase-8---Minor,Emotive Phrase 8 - Minor,Phrases,Emotive,phrases,4/4,2.0,8.0,24,14,13,0,60.5,17.4,1.0,0.023,f8c82fa3-8056-4e82-a94e-e98db432c9ca
+Emotive-Phrase-9---Major,Emotive Phrase 9 - Major,Phrases,Emotive,phrases,4/4,4.0,16.0,32,14,13,0,43.5,14.0,0.594,0.02083,3b207997-e962-4545-9d43-5bbea148bf55
+Emotive-Phrase-9---Minor,Emotive Phrase 9 - Minor,Phrases,Emotive,phrases,4/4,4.0,16.0,32,14,13,0,43.5,14.0,0.594,0.02083,b45e6420-fd2a-4455-9439-407c9c369ee3
+Jazz-Lick-1---C-Major,Jazz Lick 1 - C Major,Phrases,Jazz Colors,phrases,4/4,2.0,8.0,9,5,4,0,69.2,9.3,0.889,0.02474,d780d639-d60c-458a-8e84-3ae9b4de27a1
+Jazz-Lick-1---C-Minor,Jazz Lick 1 - C Minor,Phrases,Jazz Colors,phrases,4/4,2.0,8.0,9,5,4,0,69.2,9.3,0.889,0.02083,bbb4fafc-bc4a-4a91-8487-2e70bed5ac7e
+Jazz-Lick-2---C-Major,Jazz Lick 2 - C Major,Phrases,Jazz Colors,phrases,4/4,2.0,8.0,14,7,6,0,71.9,9.4,0.857,0.02431,7ccf7b97-04a6-4fbc-a78e-ba07866ab1e8
+Jazz-Lick-2--C-Minor,Jazz Lick 2- C Minor,Phrases,Jazz Colors,phrases,4/4,2.0,8.0,14,7,6,0,71.9,9.4,0.857,0.02431,15383813-61c3-4f68-889c-f07d608eaaf9
+Jazz-Lick-3---C-Major,Jazz Lick 3 - C Major,Phrases,Jazz Colors,phrases,4/4,4.0,16.0,23,6,5,0,77.0,8.9,0.783,0.01678,54e846c5-3285-4d6d-b679-e838cd3586d7
+Jazz-Lick-3---C-Minor,Jazz Lick 3 - C Minor,Phrases,Jazz Colors,phrases,4/4,4.0,16.0,23,6,5,0,77.0,8.9,0.783,0.01678,f31f8385-7bea-4aba-9019-16e1384c1c13
+Jazz-Prog-Phrase-1---C-Major,Jazz Prog Phrase 1 - C Major,Phrases,Jazz Colors,phrases,4/4,4.0,16.0,24,17,16,0,62.6,10.3,0.792,0.02686,4b61945f-75b1-46ad-91e8-47b7648f93a4
+Jazz-Prog-Phrase-1---C-Minor,Jazz Prog Phrase 1 - C Minor,Phrases,Jazz Colors,phrases,4/4,4.0,16.0,24,17,16,0,62.6,10.3,0.833,0.02708,67b23874-8690-47a2-9bba-f39d6bc13b2a
+Jazz-Prog-Phrase-2---C-Major,Jazz Prog Phrase 2 - C Major,Phrases,Jazz Colors,phrases,4/4,2.0,8.0,12,12,11,0,64.4,11.7,0.5,0.01563,fafc02cd-ec96-4e7a-b395-c0cd835460e3
+Jazz-Prog-Phrase-2---C-Minor,Jazz Prog Phrase 2 - C Minor,Phrases,Jazz Colors,phrases,4/4,2.0,8.0,12,12,11,0,64.4,11.7,0.5,0.01563,6b971c4d-d5da-4cee-ab66-0a809d60efa2
+Jazz-Short-Phrase-1---C-Major,Jazz Short Phrase 1 - C Major,Phrases,Jazz Colors,phrases,4/4,2.0,8.0,15,9,8,0,89.2,24.3,0.6,0.02199,ab9db738-68e7-49ea-a2ae-26a2683c9d02
+Jazz-Short-Phrase-1---C-Minor,Jazz Short Phrase 1 - C Minor,Phrases,Jazz Colors,phrases,4/4,2.0,8.0,15,10,9,0,89.2,24.3,0.6,0.01968,040d0209-1465-4b6f-b56c-fee394ff7765
+Jazz-Short-Phrase-2---C-Major,Jazz Short Phrase 2 - C Major,Phrases,Jazz Colors,phrases,4/4,2.0,8.0,10,6,5,0,72.7,17.7,0.8,0.02214,08d8bdea-0dbf-4504-bc8f-78090275a0bc
+Jazz-Short-Phrase-2---C-Minor,Jazz Short Phrase 2 - C Minor,Phrases,Jazz Colors,phrases,4/4,2.0,8.0,10,9,8,0,80.7,9.6,0.8,0.02214,07586267-dc2e-48dd-976d-fa75326b70cc
+Jazz-Ost-Phrase-1---C-Major,Jazz Ost Phrase 1 - C Major,Phrases,Jazz Ostinato Phrases,phrases,4/4,4.0,16.0,38,6,5,0,70.1,3.5,0.553,0.01488,0cffdba4-a355-4b26-b6cf-5f901fb4f2bc
+Jazz-Ost-Phrase-1---C-Minor,Jazz Ost Phrase 1 - C Minor,Phrases,Jazz Ostinato Phrases,phrases,4/4,4.0,16.0,41,6,5,0,70.2,3.6,0.854,0.01964,7c9a53b4-47b5-4486-932d-fe370c847ff9
+Jazz-Ost-Phrase-2---C-Major,Jazz Ost Phrase 2 - C Major,Phrases,Jazz Ostinato Phrases,phrases,4/4,4.0,16.0,38,6,5,0,68.2,5.6,0.684,0.01723,7a753ec9-c4ce-4346-94cb-075c404fc2e0
+Jazz-Ost-Phrase-2---C-Minor,Jazz Ost Phrase 2 - C Minor,Phrases,Jazz Ostinato Phrases,phrases,4/4,4.0,16.0,38,6,5,0,68.2,5.6,0.763,0.0158,33eda286-8601-4aaa-8444-81427f350e9d
+Jazz-Ost-Phrase-3---C-Major,Jazz Ost Phrase 3 - C Major,Phrases,Jazz Ostinato Phrases,phrases,4/4,4.0,16.0,39,6,5,0,71.8,8.8,0.744,0.02155,fac561dc-7838-4da2-aacb-55050d491da0
+Jazz-Ost-Phrase-3---C-Minor,Jazz Ost Phrase 3 - C Minor,Phrases,Jazz Ostinato Phrases,phrases,4/4,4.0,16.0,39,6,5,0,71.8,8.8,0.744,0.02155,70b3a802-b12b-4701-b95b-fccc973e4f2e
+Jazz-Ost-Phrase-4---C-Major,Jazz Ost Phrase 4 - C Major,Phrases,Jazz Ostinato Phrases,phrases,4/4,4.0,16.0,34,5,4,0,77.8,10.5,0.824,0.02083,9f26c474-63cb-4118-9c39-e5590e37337a
+Jazz-Ost-Phrase-4---C-Minor,Jazz Ost Phrase 4 - C Minor,Phrases,Jazz Ostinato Phrases,phrases,4/4,4.0,16.0,34,6,5,0,77.8,10.5,0.824,0.02083,75ab6fa1-2c4d-4d83-9147-e15497a9e8b8
+Jazz-Ost-Phrase-5---C-Major,Jazz Ost Phrase 5 - C Major,Phrases,Jazz Ostinato Phrases,phrases,4/4,8.0,32.0,64,8,7,0,78.2,13.0,0.625,0.01849,e8abd182-da2b-45a7-b2b9-5aa5214b136b
+Jazz-Ost-Phrase-5---C-Minor,Jazz Ost Phrase 5 - C Minor,Phrases,Jazz Ostinato Phrases,phrases,4/4,8.0,32.0,64,8,7,0,78.2,13.0,0.625,0.01849,313d7f72-6d9b-46f1-a107-4e0548734321
+Jazz-Ost-Phrase-6---C-Major,Jazz Ost Phrase 6 - C Major,Phrases,Jazz Ostinato Phrases,phrases,4/4,4.0,16.0,39,6,5,0,71.8,8.8,0.744,0.02155,2d379a7c-03e8-4c38-94a4-4de6beb9adfb
+Jazz-Ost-Phrase-6---C-Minor,Jazz Ost Phrase 6 - C Minor,Phrases,Jazz Ostinato Phrases,phrases,4/4,4.0,16.0,39,6,5,0,71.8,8.8,0.744,0.02155,462f0630-e542-4dc2-a63d-3ba1819fd081
+Jazz-Ost-Phrase-7---C-Major,Jazz Ost Phrase 7 - C Major,Phrases,Jazz Ostinato Phrases,phrases,4/4,8.0,32.0,64,8,7,0,78.2,13.0,0.625,0.01849,5522564b-92d1-4d22-97b0-748a60d99808
+Jazz-Ost-Phrase-7---C-Minor,Jazz Ost Phrase 7 - C Minor,Phrases,Jazz Ostinato Phrases,phrases,4/4,8.0,32.0,64,8,7,0,78.2,13.0,0.625,0.01849,cfafea9c-2bf3-4ca9-be8f-e255c2325197
+Jazz-Phrase-1---C-Major,Jazz Phrase 1 - C Major,Phrases,Jazz Phrases,phrases,4/4,4.0,16.0,31,10,9,0,91.0,13.8,0.968,0.02743,88198b26-53b6-424a-973c-f4d400fd6b57
+Jazz-Phrase-1---C-Minor,Jazz Phrase 1 - C Minor,Phrases,Jazz Phrases,phrases,4/4,4.0,16.0,32,10,9,0,91.1,13.6,0.969,0.02755,7bac36cd-b388-468b-a210-398e0f4179a5
+Jazz-Phrase-2---C-Major,Jazz Phrase 2 - C Major,Phrases,Jazz Phrases,phrases,4/4,4.0,16.0,26,11,10,0,63.8,19.5,0.692,0.02951,6bd59a8f-ad47-4e5a-abe7-207a533591ab
+Jazz-Phrase-2---C-Minor,Jazz Phrase 2 - C Minor,Phrases,Jazz Phrases,phrases,4/4,4.0,16.0,27,11,10,0,64.0,19.1,0.704,0.02851,20f4273e-94ac-413b-bfcb-1dc107d238e6
+Jazz-Phrase-3---C-Major,Jazz Phrase 3 - C Major,Phrases,Jazz Phrases,phrases,4/4,8.0,32.0,64,9,8,0,74.2,13.8,0.891,0.02321,17948f45-8614-4e11-9fbb-0fa275c89e9c
+Jazz-Phrase-3---C-Minor,Jazz Phrase 3 - C Minor,Phrases,Jazz Phrases,phrases,4/4,8.0,32.0,64,9,8,0,74.2,13.8,0.859,0.02254,9bc1e967-ac78-4f18-bfca-427a5c7ee080
+Jazz-Phrase-4---C-Major,Jazz Phrase 4 - C Major,Phrases,Jazz Phrases,phrases,4/4,4.0,16.0,30,9,8,0,75.3,10.5,0.933,0.0253,ebaff9e0-4ca7-4b99-87ed-4bb5791248d6
+Jazz-Phrase-4---C-Minor,Jazz Phrase 4 - C Minor,Phrases,Jazz Phrases,phrases,4/4,4.0,16.0,30,9,8,0,74.6,11.0,0.9,0.02585,ea31a5ee-943e-476e-b6f3-7e3434566f61
+Jazz-Phrase-5---C-Major,Jazz Phrase 5 - C Major,Phrases,Jazz Phrases,phrases,4/4,8.0,32.0,43,11,10,0,71.4,23.0,0.721,0.02218,1bf77074-a515-4e8d-a289-fd1158d1262f
+Jazz-Phrase-5---C-Minor,Jazz Phrase 5 - C Minor,Phrases,Jazz Phrases,phrases,4/4,8.0,32.0,47,14,13,0,71.9,22.1,0.745,0.02232,2a81816e-af7c-43f3-a501-39e47e421efe
+Jazz-Phrase-6---C-Major,Jazz Phrase 6 - C Major,Phrases,Jazz Phrases,phrases,4/4,4.0,16.0,24,16,15,0,62.6,10.3,0.75,0.02662,a54b0f92-3f58-4966-bc44-5579197a3c85
+Jazz-Phrase-6---C-Minor,Jazz Phrase 6 - C Minor,Phrases,Jazz Phrases,phrases,4/4,4.0,16.0,24,17,16,0,62.6,10.3,0.792,0.02796,c8d49e8f-f6e8-4813-a619-57960889a4f4
+Jazz-Phrase-7---C-Major,Jazz Phrase 7 - C Major,Phrases,Jazz Phrases,phrases,4/4,4.0,16.0,24,11,10,0,75.3,16.0,0.833,0.02083,376b2317-65c5-42f4-be3a-f9f36e363c0b
+Jazz-Phrase-7---C-Minor,Jazz Phrase 7 - C Minor,Phrases,Jazz Phrases,phrases,4/4,4.0,16.0,24,11,10,0,75.3,16.0,0.833,0.02083,004671ea-69d7-45e3-aaa1-268f4bd640a3
+Jazz-Phrase-8---C-Major,Jazz Phrase 8 - C Major,Phrases,Jazz Phrases,phrases,4/4,2.0,8.0,23,9,8,0,83.7,8.2,0.783,0.01794,e6c7401e-a969-4aa2-aead-c423f4272221
+Jazz-Phrase-8---C-Minor,Jazz Phrase 8 - C Minor,Phrases,Jazz Phrases,phrases,4/4,2.0,8.0,23,9,8,0,83.7,8.2,0.783,0.01794,fd4ef886-5a49-4146-b449-ccdd1534b447
+12-8-Phrase-1,12/8 Phrase 1,Phrases,Other Time Signature,phrases,12/8,2.0,12.0,208,11,10,0,71.2,29.9,0.0,0,7e9242b1-8f06-4a18-af49-f679d6f67383
+12-8-Phrase-10,12/8 Phrase 10,Phrases,Other Time Signature,phrases,12/8,2.0,12.0,208,11,10,0,71.2,29.9,0.0,0,3607b171-54b6-4947-bb0e-edf1b081a81f
+12-8-Phrase-2,12/8 Phrase 2,Phrases,Other Time Signature,phrases,12/8,2.0,12.0,39,13,12,0,50.8,19.8,0.0,0,617004c9-ad00-4079-b890-e5adc33da4a5
+12-8-Phrase-3,12/8 Phrase 3,Phrases,Other Time Signature,phrases,12/8,2.0,12.0,28,12,11,0,74.1,1.9,0.0,0,16d401a7-848f-4a3b-90eb-a5518141212e
+12-8-Phrase-4,12/8 Phrase 4,Phrases,Other Time Signature,phrases,12/8,2.6667,16.0,34,10,9,0,65.5,7.6,0.706,0.00521,0239d93c-32ec-4b66-9ec9-7fb98a154602
+12-8-Phrase-5,12/8 Phrase 5,Phrases,Other Time Signature,phrases,12/8,2.0,12.0,38,12,11,0,68,11.7,0.421,0.00937,87c2d767-8fc0-490c-9c0c-93db08a198d5
+12-8-Phrase-6,12/8 Phrase 6,Phrases,Other Time Signature,phrases,12/8,2.0,12.0,63,9,8,0,95.8,11.7,0.0,0,4ff187bd-22e8-421e-81f7-5c2f1963df87
+12-8-Phrase-7,12/8 Phrase 7,Phrases,Other Time Signature,phrases,12/8,2.0,12.0,24,11,10,0,66.1,13.6,0.083,0.01042,4f710d16-b2d0-4a55-ac82-08ddaa265477
+12-8-Phrase-8,12/8 Phrase 8,Phrases,Other Time Signature,phrases,12/8,2.6667,16.0,44,7,6,0,65.0,4.2,0.818,0.00544,45eb959e-c631-48c4-9d47-848af6df13d4
+12-8-Phrase-9,12/8 Phrase 9,Phrases,Other Time Signature,phrases,12/8,2.0,12.0,50,6,5,0,73.2,21.8,0.0,0,856bb0da-457b-4d06-9ced-2078eab73427
+3-4-Phrase-1,3/4 Phrase 1,Phrases,Other Time Signature,phrases,3/4,8.0,24.0,84,17,16,0,82.1,14.9,0.0,0,97544ea4-c62d-44ab-a10e-56d111e78234
+3-4-Phrase-10,3/4 Phrase 10,Phrases,Other Time Signature,phrases,4/4,6.0,24.0,44,16,15,0,75,7.9,0.0,0,c67b6d13-1539-403c-9a94-c2f0e7ddcc6e
+3-4-Phrase-2,3/4 Phrase 2,Phrases,Other Time Signature,phrases,4/4,6.0,24.0,190,18,17,0,81.6,13.2,0.0,0,b9d6b578-ae5a-40f2-9161-094d6c7e7f7f
+3-4-Phrase-3,3/4 Phrase 3,Phrases,Other Time Signature,phrases,3/4,8.0,24.0,68,14,13,0,86.8,14.6,0.0,0,f80120d4-f229-4ea7-b2ca-574b3d8932ee
+3-4-Phrase-4,3/4 Phrase 4,Phrases,Other Time Signature,phrases,3/4,8.0,24.0,91,19,18,0,79.8,13.0,0.0,0,4b7bfd04-e263-45ef-9846-37079d31d55c
+3-4-Phrase-5,3/4 Phrase 5,Phrases,Other Time Signature,phrases,3/4,8.0,24.0,84,9,8,0,91.2,8.0,0.0,0,b8168403-74a6-424b-8269-7b05d226c225
+3-4-Phrase-6,3/4 Phrase 6,Phrases,Other Time Signature,phrases,4/4,6.0,24.0,62,8,7,0,100.4,9.6,0.0,0,17c778d2-b04f-4cfd-b104-17792d34e644
+3-4-Phrase-7,3/4 Phrase 7,Phrases,Other Time Signature,phrases,3/4,8.0,24.0,46,16,15,0,85.6,9.0,0.0,0,10787b1a-9e61-4b5f-a282-743029d5130f
+3-4-Phrase-8,3/4 Phrase 8,Phrases,Other Time Signature,phrases,3/4,8.0,24.0,56,9,8,0,66,12.4,0.0,0,1efa1ef3-6653-41a7-bfb4-4aa018e8f353
+3-4-Phrase-9,3/4 Phrase 9,Phrases,Other Time Signature,phrases,3/4,8.0,24.0,86,10,9,0,57.7,15.6,0.0,0,8dd25572-a91f-45bf-a076-0f1e841bb339
+5-4-Phrase-1,5/4 Phrase 1,Phrases,Other Time Signature,phrases,5/4,4.0,20.0,56,8,7,-1,71.4,10.7,0.0,0,e5e91bbf-8882-4b08-bde0-35fd9fc71de0
+5-4-Phrase-10,5/4 Phrase 10,Phrases,Other Time Signature,phrases,5/4,4.0,20.0,112,7,6,-1,64.6,18.8,0.929,0.00521,928e8110-a997-4b33-9e40-e5c99de10975
+5-4-Phrase-11,5/4 Phrase 11,Phrases,Other Time Signature,phrases,5/4,4.0,20.0,102,11,10,0,72.8,17.4,0.725,0.00619,0071615e-e0dc-4afa-8fbb-3338f8003443
+5-4-Phrase-2,5/4 Phrase 2,Phrases,Other Time Signature,phrases,5/4,4.0,20.0,72,8,7,-1,64.7,15.9,0.778,0.00461,9d8cf343-07c6-44ba-a407-7141ac9292c1
+5-4-Phrase-3,5/4 Phrase 3,Phrases,Other Time Signature,phrases,5/4,4.8,24.0,66,11,10,-2,59.4,12.0,0.788,0.00913,466c888c-b8e9-4518-b7ce-fbb4e99790b6
+5-4-Phrase-4,5/4 Phrase 4,Phrases,Other Time Signature,phrases,5/4,4.0,20.0,96,10,9,-1,56.9,9.7,0.771,0.00912,f5e0a44e-77db-47c0-a93b-b2162dcc6ba5
+5-4-Phrase-5,5/4 Phrase 5,Phrases,Other Time Signature,phrases,5/4,4.0,20.0,96,14,13,-2,77.1,9.1,0.031,0.00208,e024090c-a217-419d-aea8-2d5df95f01ca
+5-4-Phrase-6,5/4 Phrase 6,Phrases,Other Time Signature,phrases,5/4,4.0,20.0,96,13,12,-2,59.5,12.7,0.0,0,0918133f-d717-4309-91dd-40c516962a75
+5-4-Phrase-7,5/4 Phrase 7,Phrases,Other Time Signature,phrases,5/4,4.0,20.0,111,19,18,-1,73.8,8.5,0.0,0,1ebb0cd3-ddd1-4f93-8eff-36ce579817d9
+5-4-Phrase-8,5/4 Phrase 8,Phrases,Other Time Signature,phrases,5/4,4.0,20.0,32,9,8,-1,80.4,4.9,0.75,0.00556,dba2ef9f-853c-4060-a549-809fdaaa601a
+5-4-Phrase-9,5/4 Phrase 9,Phrases,Other Time Signature,phrases,5/4,4.0,20.0,108,8,7,-1,71.1,5.4,0.407,0.01231,dc9d13bf-d3c3-4a33-9ba3-f4c0c10ebcb5
+6-8-Phrase-1,6/8 Phrase 1,Phrases,Other Time Signature,phrases,6/8,4.0,12.0,36,18,17,0,72.2,24.3,0.0,0,30f56785-e8ed-4c2b-9f0d-55fa23e81ffd
+6-8-Phrase-10,6/8 Phrase 10,Phrases,Other Time Signature,phrases,6/8,4.0,12.0,34,18,17,0,84.3,7.9,0.0,0,c56c003f-f6e1-41ad-889f-586d63747b6b
+6-8-Phrase-11,6/8 Phrase 11,Phrases,Other Time Signature,phrases,6/8,4.0,12.0,18,10,9,0,66.7,14.1,0.0,0,30b2fd41-4403-4ada-9bd5-aafdba07a43b
+6-8-Phrase-2,6/8 Phrase 2,Phrases,Other Time Signature,phrases,6/8,4.0,12.0,39,15,14,0,96.9,7.5,0.0,0,048e785e-c840-4f73-bb29-bec14ed735a5
+6-8-Phrase-3,6/8 Phrase 3,Phrases,Other Time Signature,phrases,6/8,4.0,12.0,28,10,9,0,77.6,14.3,0.0,0,8b97bc44-7f9d-4e4a-9c8f-c8ea17f6c6a8
+6-8-Phrase-4,6/8 Phrase 4,Phrases,Other Time Signature,phrases,6/8,4.0,12.0,76,16,15,0,71.0,19.9,0.0,0,7c61b4f5-c262-4c76-96ee-6b438888cc60
+6-8-Phrase-5,6/8 Phrase 5,Phrases,Other Time Signature,phrases,6/8,4.0,12.0,50,12,11,0,91.2,13.5,0.0,0,5ab04e0e-679d-4f4f-b4c5-37a94c84c6a0
+6-8-Phrase-6,6/8 Phrase 6,Phrases,Other Time Signature,phrases,6/8,4.0,12.0,14,11,10,0,97.4,3.1,0.0,0,48d54f0d-fa40-4bcf-a7de-285ee4440b3b
+6-8-Phrase-7,6/8 Phrase 7,Phrases,Other Time Signature,phrases,6/8,4.0,12.0,34,11,10,0,60.6,16.8,0.0,0,09aa0349-fde1-4f62-ac8a-c99583d01848
+6-8-Phrase-8,6/8 Phrase 8,Phrases,Other Time Signature,phrases,6/8,4.0,12.0,22,9,8,0,76.3,11.0,0.0,0,cdd1ccba-469a-41c0-a86a-0032a4bb976a
+6-8-Phrase-9,6/8 Phrase 9,Phrases,Other Time Signature,phrases,6/8,4.0,12.0,56,13,12,0,93.9,19.6,0.0,0,496ff8c9-def6-4972-9251-d22f80feef2c
+Triplet-Phrase-1,Triplet Phrase 1,Phrases,Triplet Feel,phrases,4/4,4.0,16.0,50,13,12,0,84.9,12.5,0.0,0,b00e515f-7d1e-452a-8fb2-746956299ede
+Triplet-Phrase-10,Triplet Phrase 10,Phrases,Triplet Feel,phrases,4/4,4.0,16.0,53,8,7,0,103.2,11.3,0.623,0.01212,85896c0d-05e6-4365-8eb6-273dd86a3911
+Triplet-Phrase-2,Triplet Phrase 2,Phrases,Triplet Feel,phrases,4/4,4.0,16.0,28,13,12,0,102.6,19.2,0.0,0,0df755fe-876e-4eda-9aa0-de44d19c144e
+Triplet-Phrase-3,Triplet Phrase 3,Phrases,Triplet Feel,phrases,4/4,4.0,16.0,54,7,6,0,63.1,7.0,0.0,0,a8c127f7-6e36-43d6-8e97-89c207df19d9
+Triplet-Phrase-4,Triplet Phrase 4,Phrases,Triplet Feel,phrases,4/4,2.0,8.0,34,7,6,0,55.2,22.6,0.706,0.00556,5bf33c47-7d94-4ec8-abd0-c8929f5ab166
+Triplet-Phrase-5,Triplet Phrase 5,Phrases,Triplet Feel,phrases,4/4,2.0,8.0,33,13,12,0,66.9,7.1,0.0,0,5aa9e0cc-7e9b-446e-804b-66873281c7cf
+Triplet-Phrase-6,Triplet Phrase 6,Phrases,Triplet Feel,phrases,4/4,4.0,16.0,26,9,8,0,85.7,13.5,0.538,0.01339,061569e5-0118-48ee-b51e-4799a016caf2
+Triplet-Phrase-7,Triplet Phrase 7,Phrases,Triplet Feel,phrases,4/4,4.0,16.0,34,9,8,0,51.4,5.6,0.0,0,1143787a-4a11-4ebc-abd2-b6e1ab866cd0
+Triplet-Phrase-8,Triplet Phrase 8,Phrases,Triplet Feel,phrases,4/4,4.0,16.0,41,9,8,0,87.8,15.8,0.488,0.01,ba14b511-4885-460e-8605-a19cb55a3faf
+Triplet-Phrase-9,Triplet Phrase 9,Phrases,Triplet Feel,phrases,4/4,2.0,8.0,26,10,9,0,79.3,13.0,0.0,0,0a4c27ad-aacf-424c-b7ee-dc85b2d7bf61
+Castrato,Castrato,Rhythms,Andante,rhythms,4/4,2.0,8.0,24,4,3,-1,64.7,15.9,0.0,0,35b44227-b89d-4e3d-83ee-ceefd673053f
+Non,Non,Rhythms,Andante,rhythms,4/4,1.0,4.0,12,4,3,-1,57.5,22.8,0.0,0,5a4169cd-c142-4560-8dcb-61dfae514c5d
+Opera,Opera,Rhythms,Andante,rhythms,4/4,2.0,8.0,12,4,3,-1,82.5,10.2,0.0,0,3515c31d-51a4-45ee-a9cf-875c64b01c0c
+Piano,Piano,Rhythms,Andante,rhythms,4/4,2.0,8.0,20,4,3,-1,68.5,2.6,0.0,0,96666e29-3f25-4896-a054-2b2e26237826
+Risoluto,Risoluto,Rhythms,Andante,rhythms,4/4,2.0,8.0,32,4,3,-1,78.9,16.9,0.0,0,87fd430b-c291-4817-8337-d404b3de19ad
+Sonata,Sonata,Rhythms,Andante,rhythms,4/4,1.0,4.0,8,4,3,-1,79,10.8,0.0,0,3fbec92d-f380-4712-90f8-76156bf37c1f
+Sospirando,Sospirando,Rhythms,Andante,rhythms,4/4,2.0,8.0,20,4,3,-1,71.5,17.9,0.0,0,016fdf45-da7e-4d95-be09-1be2e4e3cb03
+Sostenuto,Sostenuto,Rhythms,Andante,rhythms,4/4,2.0,8.0,32,4,3,-1,66.4,18.3,0.0,0,4ac76e19-25b0-4ca4-91e8-c78a2cc5ca72
+Tenuto,Tenuto,Rhythms,Andante,rhythms,4/4,2.0,8.0,36,4,3,-1,63,12.6,0.0,0,97377972-1b63-45fe-9b88-7762d143a690
+Verismo,Verismo,Rhythms,Andante,rhythms,4/4,2.0,8.0,28,4,3,-1,74.5,9.8,0.0,0,c9f6538a-a135-4091-a2c6-0fd9c6d4ce4d
+Common-1,Common 1,Rhythms,Common Rhythms,rhythms,4/4,1.0,4.0,6,3,2,-1,100,0.0,0.0,0,37c588ac-f4a8-4052-87b1-7c7c104d9a01
+Common-10,Common 10,Rhythms,Common Rhythms,rhythms,4/4,1.0,4.0,15,3,2,-1,100,0.0,0.067,0.01042,eaa0e4ff-57e4-4c2a-8a81-a4d316655eb1
+Common-11,Common 11,Rhythms,Common Rhythms,rhythms,4/4,1.0,4.0,12,3,2,-1,100,0.0,0.0,0,7e9f23e2-0735-4028-954a-2955da7981d6
+Common-12,Common 12,Rhythms,Common Rhythms,rhythms,4/4,1.0,4.0,12,3,2,-1,100,0.0,0.0,0,2a5b3d65-528a-4090-9641-e7f9da3a80c3
+Common-13,Common 13,Rhythms,Common Rhythms,rhythms,4/4,1.0,4.0,12,3,2,-1,100,0.0,0.0,0,7cbd817f-c7a6-435a-9076-5f7083a24c02
+Common-14,Common 14,Rhythms,Common Rhythms,rhythms,4/4,1.0,4.0,18,3,2,-1,100,0.0,0.0,0,16084b2a-574e-405b-b918-f5e736759ead
+Common-15,Common 15,Rhythms,Common Rhythms,rhythms,4/4,1.0,4.0,24,3,2,-1,100,0.0,0.0,0,b0507fa8-ca5f-475f-b55c-0399b8d7bdee
+Common-2,Common 2,Rhythms,Common Rhythms,rhythms,4/4,1.0,4.0,9,3,2,-1,100,0.0,0.0,0,5f78d24c-8920-4af9-a337-999c84872ca0
+Common-3,Common 3,Rhythms,Common Rhythms,rhythms,4/4,1.0,4.0,9,3,2,-1,100,0.0,0.0,0,7729e110-d158-4e0a-8c91-7b4d7e6b79ff
+Common-4,Common 4,Rhythms,Common Rhythms,rhythms,4/4,1.0,4.0,9,3,2,-1,100,0.0,0.0,0,9249c177-3e1f-4a6e-8bf9-ede25e8afa9d
+Common-5,Common 5,Rhythms,Common Rhythms,rhythms,4/4,1.0,4.0,9,3,2,-1,100,0.0,0.0,0,49e328f4-6e4d-4d2e-b9c3-5f76020d3308
+Common-6,Common 6,Rhythms,Common Rhythms,rhythms,4/4,1.0,4.0,12,3,2,-1,100,0.0,0.0,0,eb4d7217-3b5a-407b-96eb-d754c58f038d
+Common-7,Common 7,Rhythms,Common Rhythms,rhythms,4/4,1.0,4.0,15,3,2,-1,100,0.0,0.0,0,8f40ad8b-a60e-45ca-9441-4b66f37d275e
+Common-8,Common 8,Rhythms,Common Rhythms,rhythms,4/4,1.0,4.0,18,3,2,-1,100,0.0,0.0,0,8b7f5f97-c202-4092-b686-d57a38d3e022
+Common-9,Common 9,Rhythms,Common Rhythms,rhythms,4/4,1.0,4.0,6,3,2,-1,100,0.0,0.0,0,76f157a0-eba0-4c72-850c-39f7dfea8e4f
+Agitato,Agitato,Rhythms,Intermedio,rhythms,4/4,1.0,4.0,40,4,3,-1,57.9,24.0,0.0,0,8cbfb741-cf60-448d-a168-b386f7fba100
+Arietta,Arietta,Rhythms,Intermedio,rhythms,4/4,1.0,4.0,16,4,3,-1,76,13.0,0.75,0.00208,886b8bb2-44e4-4907-9796-0d35e08e91b1
+Capriccio,Capriccio,Rhythms,Intermedio,rhythms,4/4,2.0,8.0,72,4,3,-1,70.7,7.6,0.944,0.01581,2c83bcec-9834-45c5-a564-1c4ad765a4d4
+Fantasia,Fantasia,Rhythms,Intermedio,rhythms,4/4,2.0,8.0,48,4,3,-1,64.8,12.6,0.5,0.00208,c105f75c-1100-4596-9ac1-eca239f1a861
+Fortissimo,Fortissimo,Rhythms,Intermedio,rhythms,4/4,2.0,8.0,24,4,3,-1,100.5,2.6,0.0,0,e1387726-2959-4fb3-9702-be43755da145
+Furioso,Furioso,Rhythms,Intermedio,rhythms,4/4,1.0,4.0,16,4,3,-1,68.8,19.2,0.0,0,cf77806e-d60b-46a3-b97c-a5a89f92d9fb
+L-istesso,L'istesso,Rhythms,Intermedio,rhythms,4/4,1.0,4.0,20,4,3,-1,58.8,14.8,1.0,0.00208,ec2deff0-e86c-452d-9440-b646e24cfe33
+Libretto,Libretto,Rhythms,Intermedio,rhythms,4/4,1.0,4.0,16,4,3,-1,68.2,13.8,0.0,0,dd93e1e6-b29a-40d3-850e-8f9cce09c421
+Ma,Ma,Rhythms,Intermedio,rhythms,4/4,2.0,8.0,64,4,3,-1,61.4,15.4,0.0,0,521bb99b-8964-400e-9ed7-86b0948bd232
+Passaggio,Passaggio,Rhythms,Intermedio,rhythms,4/4,2.0,8.0,40,4,3,-1,68.8,15.5,0.2,0.00208,20435d25-e24b-4270-b639-7db7c7e6b3ed
+Ritardando,Ritardando,Rhythms,Intermedio,rhythms,4/4,2.0,8.0,52,4,3,-1,57.6,24.1,0.692,0.00255,c5849f62-ddae-4dca-8d0f-f4995f9e663f
+Sforzando,Sforzando,Rhythms,Intermedio,rhythms,4/4,2.0,8.0,28,4,3,-1,100.5,2.6,0.0,0,d0125a60-581c-4bef-86dc-4ff01d6e61ad
+Smorzando,Smorzando,Rhythms,Intermedio,rhythms,4/4,1.0,4.0,16,4,3,-1,65.5,24.1,0.0,0,1b4fe86d-6bda-47a8-8550-36eb906dcdfa
+Tacet,Tacet,Rhythms,Intermedio,rhythms,4/4,1.0,4.0,12,4,3,-1,71.2,14.2,0.0,0,93cc2aa2-7094-4938-80ce-587b9784aae0
+Volti-Subito,Volti Subito,Rhythms,Intermedio,rhythms,4/4,2.0,8.0,40,4,3,-1,71.2,23.4,0.0,0,15b9a714-59f2-4fd2-93ab-70f8f62229ce
+5-4-Rhythm-1,5/4 Rhythm 1,Rhythms,Other Time Signature,rhythms,5/4,4.0,20.0,96,6,5,-1,76.8,19.2,0.688,0.00208,cb15fbc9-bf4a-443d-997c-55a69d7fda40
+5-4-Rhythm-2,5/4 Rhythm 2,Rhythms,Other Time Signature,rhythms,5/4,4.0,20.0,128,4,3,-1,91,0.0,0.0,0,4595f1df-77ff-49b9-aacd-cf2c65f2002c
+5-4-Rhythm-3,5/4 Rhythm 3,Rhythms,Other Time Signature,rhythms,5/4,4.0,20.0,96,4,3,-1,91,0.0,0.0,0,58e70348-1a86-4afe-9c67-8f2005c0df39
+5-4-Rhythm-4,5/4 Rhythm 4,Rhythms,Other Time Signature,rhythms,5/4,4.0,20.0,96,4,3,-1,91,0.0,0.0,0,97c759de-6226-4d5b-8cf5-a7f91301c035
+5-4-Rhythm-5,5/4 Rhythm 5,Rhythms,Other Time Signature,rhythms,5/4,4.0,20.0,160,4,3,-1,88,26.6,0.0,0,033184e5-93da-46e7-b721-3b1aab4986f0
+5-4-Rhythm-6,5/4 Rhythm 6,Rhythms,Other Time Signature,rhythms,5/4,4.0,20.0,384,4,3,-1,56.9,31.8,0.083,0.00833,66327205-9736-413c-8fa8-5d83eb08b422
+5-4-Rhythm-7,5/4 Rhythm 7,Rhythms,Other Time Signature,rhythms,5/4,4.0,20.0,208,4,3,-1,48.5,27.7,0.0,0,0cae1486-9c5f-454d-8b35-8999a1eb089c
+5-4-Rhythm-8,5/4 Rhythm 8,Rhythms,Other Time Signature,rhythms,5/4,4.0,20.0,128,4,3,-1,102,0.0,0.0,0,f92b368a-824f-4ad6-bc6e-b2737e3844f1
+7-4-Rhythm-1,7/4 Rhythm 1,Rhythms,Other Time Signature,rhythms,7/4,4.0,28.0,96,3,2,-1,93.5,1.8,0.0,0,6d5076b7-bd23-416e-ae40-d3b3276b26b8
+7-4-Rhythm-10,7/4 Rhythm 10,Rhythms,Other Time Signature,rhythms,7/4,4.0,28.0,48,3,2,-1,94.0,4.2,0.0,0,b1db6a58-d714-4784-be20-3aa271c3fcf5
+7-4-Rhythm-2,7/4 Rhythm 2,Rhythms,Other Time Signature,rhythms,7/4,4.0,28.0,60,3,2,-1,97.1,2.8,0.0,0,59bf77ef-df48-4c2c-ada4-36ea9f78da3c
+7-4-Rhythm-3,7/4 Rhythm 3,Rhythms,Other Time Signature,rhythms,7/4,4.0,28.0,48,3,2,-1,99.5,3.3,0.0,0,ad44eba2-4093-43e4-a722-46f48a0e1198
+7-4-Rhythm-4,7/4 Rhythm 4,Rhythms,Other Time Signature,rhythms,7/4,4.0,28.0,96,3,2,-1,90.6,6.3,0.0,0,ccaf2109-5c95-49be-91d7-397c01d99b48
+7-4-Rhythm-5,7/4 Rhythm 5,Rhythms,Other Time Signature,rhythms,7/4,4.0,28.0,72,3,2,-1,94.2,5.8,0.0,0,8caeaf09-4f2c-4f93-9876-b84ef9f64a5a
+7-4-Rhythm-6,7/4 Rhythm 6,Rhythms,Other Time Signature,rhythms,7/4,4.0,28.0,48,3,2,-1,99.2,1.8,0.0,0,9590ddc8-979b-4742-9b67-6f99c82db396
+7-4-Rhythm-7,7/4 Rhythm 7,Rhythms,Other Time Signature,rhythms,7/4,4.0,28.0,60,3,2,-1,96.9,2.8,0.0,0,583a6365-cdfd-4937-8ff3-37489423a9bb
+7-4-Rhythm-8,7/4 Rhythm 8,Rhythms,Other Time Signature,rhythms,7/4,4.0,28.0,108,3,2,-1,91.2,7.0,0.0,0,f39d33c9-af41-4c94-9f2a-9e5ff8f82e32
+7-4-Rhythm-9,7/4 Rhythm 9,Rhythms,Other Time Signature,rhythms,7/4,4.0,28.0,84,3,2,-1,89.9,7.7,0.0,0,d62967eb-0272-402e-b88f-e37a2b2da793
+9-4-Rhythm-1,9/4 Rhythm 1,Rhythms,Other Time Signature,rhythms,9/4,4.0,36.0,48,3,2,-1,96.5,2.9,0.0,0,69925f83-23a3-4d43-9bd4-8885620f1347
+9-4-Rhythm-2,9/4 Rhythm 2,Rhythms,Other Time Signature,rhythms,9/4,4.0,36.0,96,3,2,-1,90.8,4.0,0.0,0,9ed61ad1-1228-46b5-aa05-2ecbc6028221
+9-4-Rhythm-3,9/4 Rhythm 3,Rhythms,Other Time Signature,rhythms,9/4,4.0,36.0,96,3,2,-1,96.6,3.8,0.0,0,01c57555-1dfa-4dc4-9f0f-cf456f7da2c0
+9-4-Rhythm-4,9/4 Rhythm 4,Rhythms,Other Time Signature,rhythms,9/4,4.0,36.0,168,3,2,-1,93.0,6.3,0.0,0,8c2c0fdb-1d36-4c55-9e35-0b96bdbc3d9f
+9-4-Rhythm-5,9/4 Rhythm 5,Rhythms,Other Time Signature,rhythms,9/4,4.0,36.0,120,3,2,-1,89.3,9.1,0.0,0,2b4e3717-e221-4ec2-bcc9-8012c5a80c75
+9-4-Rhythm-6,9/4 Rhythm 6,Rhythms,Other Time Signature,rhythms,9/4,4.0,36.0,120,3,2,-1,88.9,7.2,0.0,0,85bca50c-9d0d-4305-85d9-db4b72d87c30
+9-4-Rhythm-7,9/4 Rhythm 7,Rhythms,Other Time Signature,rhythms,9/4,4.0,36.0,144,3,2,-1,86.6,8.1,0.0,0,5a29e230-79b6-4c23-93dc-f3ce4d9feec6
+9-4-Rhythm-8,9/4 Rhythm 8,Rhythms,Other Time Signature,rhythms,9/4,4.0,36.0,168,3,2,-1,91.3,5.9,0.0,0,fe654fa3-8939-493c-913d-25441edaf8f0
+Accelerando,Accelerando,Rhythms,Presto,rhythms,4/4,1.0,4.0,40,4,3,-1,64.4,14.3,0.1,0.00208,1b02dfeb-69da-45a7-a037-16a36459693a
+Coda,Coda,Rhythms,Presto,rhythms,4/4,1.0,4.0,56,4,3,-1,59.8,16.5,0.429,0.00208,9f357fb0-9e11-44d6-bf40-9e5386da3b39
+Dal-Segno,Dal Segno,Rhythms,Presto,rhythms,4/4,1.0,4.0,36,4,3,-1,75.9,7.7,0.111,0.00208,b1cb74f9-5498-4892-9c5a-be6bfdefac60
+Ed,Ed,Rhythms,Presto,rhythms,4/4,1.0,4.0,64,4,3,-1,56.0,23.0,0.0,0,0ed31c9d-ec9f-4883-a561-89cb0f24c769
+Farsa,Farsa,Rhythms,Presto,rhythms,4/4,2.0,8.0,52,4,3,-1,80.2,7.7,0.0,0,4a3444fc-70a7-4cf2-aa2d-60cc56a61752
+Incalzando,Incalzando,Rhythms,Presto,rhythms,4/4,1.0,4.0,24,4,3,-1,71,11.9,0.0,0,7731e6c2-e0f8-4ec4-b62e-07f866939e2f
+Intermezzo,Intermezzo,Rhythms,Presto,rhythms,4/4,2.0,8.0,72,4,3,-1,73.6,17.7,0.0,0,bf6de6c9-6885-435a-bf7f-2697baceb916
+Mezzopiano,Mezzopiano,Rhythms,Presto,rhythms,4/4,2.0,8.0,56,4,3,-1,62.4,12.9,0.0,0,7b357fa0-9907-473a-a35a-932adf568507
+Morendo,Morendo,Rhythms,Presto,rhythms,4/4,2.0,8.0,48,4,3,-1,66.2,17.1,0.833,0.00208,581a3ac5-e5a8-44d8-bc58-12a84bd537dc
+Mosso,Mosso,Rhythms,Presto,rhythms,4/4,2.0,8.0,64,4,3,-1,75.0,12.0,0.0,0,bb3690cd-c73d-437d-9e40-99cb4910d562
+Oratorio,Oratorio,Rhythms,Presto,rhythms,4/4,1.0,4.0,40,4,3,-1,63.2,24.6,0.4,0.00208,d2aa3b25-b747-405d-9e08-0d101de4e764
+Pizzicato,Pizzicato,Rhythms,Presto,rhythms,4/4,2.0,8.0,36,4,3,-1,69.2,12.3,0.222,0.00208,ffa76861-9f96-440d-b6c1-0d2569a8d582
+Poco,Poco,Rhythms,Presto,rhythms,4/4,1.0,4.0,24,4,3,-1,58.7,19.0,0.0,0,b9042c34-6574-4b6a-b5e4-b4e7cf785b60
+Spinto,Spinto,Rhythms,Presto,rhythms,4/4,1.0,4.0,28,4,3,-1,60.1,23.5,0.429,0.00208,818e1795-cca3-48c4-a02e-2dd368828c71
+Tempo,Tempo,Rhythms,Presto,rhythms,4/4,2.0,8.0,48,4,3,-1,86,17.7,0.0,0,c30f0c42-d075-439d-833c-9c055c625dd7
+Volta,Volta,Rhythms,Presto,rhythms,4/4,1.0,4.0,36,4,3,-1,66.3,20.0,0.222,0.00208,26593124-8667-45a5-9a60-3127c65e3eb1
+Triplet-Rhythm-1,Triplet Rhythm 1,Rhythms,Triplet Feel,rhythms,4/4,2.0,8.0,56,4,3,-1,122.8,8.1,0.0,0,07466ce4-c496-4cb0-90c7-77d1b5c1d181
+Triplet-Rhythm-10,Triplet Rhythm 10,Rhythms,Triplet Feel,rhythms,4/4,2.0,8.0,76,4,3,-1,120.5,8.8,0.0,0,a90546f9-c2c4-4026-b3fe-6fec81c734f4
+Triplet-Rhythm-2,Triplet Rhythm 2,Rhythms,Triplet Feel,rhythms,4/4,2.0,8.0,52,4,3,-1,121.4,7.7,0.0,0,4f4857dc-010f-4abe-8a92-8e55745cabcb
+Triplet-Rhythm-3,Triplet Rhythm 3,Rhythms,Triplet Feel,rhythms,4/4,2.0,8.0,56,4,3,-1,119.1,10.0,0.0,0,6ae104ed-b05e-4457-821e-d5bdf5c6faab
+Triplet-Rhythm-4,Triplet Rhythm 4,Rhythms,Triplet Feel,rhythms,4/4,2.0,8.0,64,4,3,-1,117.8,10.5,0.0,0,af92240d-f94c-4bf4-af73-0c090b36b52a
+Triplet-Rhythm-5,Triplet Rhythm 5,Rhythms,Triplet Feel,rhythms,4/4,2.0,8.0,52,4,3,-1,116.1,13.5,0.0,0,c1a6e120-0f39-483a-b390-e0d033ed706d
+Triplet-Rhythm-6,Triplet Rhythm 6,Rhythms,Triplet Feel,rhythms,4/4,2.0,8.0,56,4,3,-1,118.1,10.7,0.0,0,b646eb5c-8e23-4e17-9914-3458f5884420
+Triplet-Rhythm-7,Triplet Rhythm 7,Rhythms,Triplet Feel,rhythms,4/4,2.0,8.0,60,4,3,-1,121.6,7.5,0.0,0,0ebdc2c0-98c4-4cd0-9277-386ad066afba
+Triplet-Rhythm-8,Triplet Rhythm 8,Rhythms,Triplet Feel,rhythms,4/4,2.0,8.0,60,4,3,-1,107.3,16.1,0.0,0,5e78073b-0535-4518-94a8-52afc6e14473
+Triplet-Rhythm-9,Triplet Rhythm 9,Rhythms,Triplet Feel,rhythms,4/4,2.0,8.0,72,4,3,-1,123.2,6.4,0.0,0,8707c05d-f46c-4541-97cc-3d6fa2d9d7ff
+_Con,Con,Rhythms,Volante,rhythms,4/4,2.0,8.0,88,4,3,-1,55.9,19.9,0.0,0,ced7beb8-6552-4f62-b249-aa7fafd3a2a1
+Fretta,Fretta,Rhythms,Volante,rhythms,4/4,1.0,4.0,40,4,3,-1,69.4,22.1,0.0,0,9a014a57-06bd-4e1c-8185-a70edc3631db
+Impetuoso,Impetuoso,Rhythms,Volante,rhythms,4/4,1.0,4.0,40,4,3,-1,72.4,16.5,0.0,0,348f5900-db06-4179-a843-4e4027343b99
+Marcato,Marcato,Rhythms,Volante,rhythms,4/4,2.0,8.0,60,4,3,-1,78.2,20.9,0.533,0.00208,9a2d5c64-e282-4eb0-92d8-c552b03d405f
+Marziale,Marziale,Rhythms,Volante,rhythms,4/4,1.0,4.0,32,4,3,-1,80.9,6.9,0.0,0,54873de9-726b-463f-a119-f1613133b18d
+Moto,Moto,Rhythms,Volante,rhythms,4/4,2.0,8.0,64,4,3,-1,70.9,20.7,0.0,0,ff1dd5e7-50f1-41f9-ad05-64550c07e5e4
+Nuovo,Nuovo,Rhythms,Volante,rhythms,4/4,2.0,8.0,60,4,3,-1,52.6,22.6,0.933,0.00208,aeda371e-e3c0-4f55-87b0-e223120b652f
+Ritmico,Ritmico,Rhythms,Volante,rhythms,4/4,1.0,4.0,40,4,3,-1,72.7,16.0,0.0,0,1fd5b06e-eb8c-4bac-85c1-9bb722d44bad
+Staccato,Staccato,Rhythms,Volante,rhythms,4/4,2.0,8.0,72,4,3,-1,68.8,27.1,0.556,0.00208,0a00a66d-675d-4f88-91da-6e24ea0dc6ac
+Vigoroso,Vigoroso,Rhythms,Volante,rhythms,4/4,2.0,8.0,72,4,3,-1,66.4,17.9,0.0,0,bab17e0c-3d93-4360-9887-5029584f7997
+Basic-1,Basic 1,Sequences,Common Sequences,sequences,4/4,1.0,4.0,6,3,2,1,89,0.0,0.0,0,ad9c2c41-353f-4dda-9052-dfc24c9f8add
+Basic-10,Basic 10,Sequences,Common Sequences,sequences,4/4,1.0,4.0,11,3,2,1,89,0.0,0.0,0,e79a7100-3737-45b4-b69b-fd1706223cc7
+Basic-11,Basic 11,Sequences,Common Sequences,sequences,4/4,1.0,4.0,10,3,2,1,89,0.0,0.0,0,93d4f843-a695-46cb-8e1a-e7d5b72cdd56
+Basic-12,Basic 12,Sequences,Common Sequences,sequences,4/4,1.0,4.0,5,3,2,0,89,0.0,0.0,0,d08227c2-dd0e-4248-bca7-e6c6af4abced
+Basic-13,Basic 13,Sequences,Common Sequences,sequences,4/4,1.0,4.0,5,4,3,0,89,0.0,0.0,0,4c29f300-958e-4e3a-b963-bb170629f933
+Basic-14,Basic 14,Sequences,Common Sequences,sequences,4/4,1.0,4.0,7,5,4,0,89,0.0,0.0,0,38f5e215-ebbd-4075-ae50-71a3f5d689c3
+Basic-15,Basic 15,Sequences,Common Sequences,sequences,4/4,1.0,4.0,8,5,4,0,89,0.0,0.0,0,02ec9a86-0b27-46cc-b553-75ce4a69f9ab
+Basic-16,Basic 16,Sequences,Common Sequences,sequences,4/4,2.0,8.0,10,4,3,0,62.4,13.0,0.0,0,8e447a6e-66a5-497d-9af3-05f3b7e90201
+Basic-17,Basic 17,Sequences,Common Sequences,sequences,4/4,2.0,8.0,9,5,4,0,57.2,11.0,0.0,0,6ecb79b7-60ee-4dcb-8610-47aed026d34f
+Basic-18,Basic 18,Sequences,Common Sequences,sequences,4/4,1.0,4.0,7,4,3,0,54.6,5.2,0.857,0.00382,c5539a98-29d6-4618-8976-dd2dd745654b
+Basic-19,Basic 19,Sequences,Common Sequences,sequences,4/4,1.0,4.0,5,2,1,0,48.6,6.0,0.8,0.01615,832f3cfe-1000-4c83-aa8c-1571aa25f479
+Basic-2,Basic 2,Sequences,Common Sequences,sequences,4/4,1.0,4.0,6,3,2,1,89,0.0,0.0,0,cec1b0e3-083e-4082-a67d-ac56fde8e081
+Basic-20,Basic 20,Sequences,Common Sequences,sequences,4/4,1.0,4.0,5,3,2,0,50.2,5.8,0.4,0.00729,6b4f04d3-d667-41e3-acfd-33b58d352932
+Basic-3,Basic 3,Sequences,Common Sequences,sequences,4/4,1.0,4.0,7,3,2,1,89,0.0,0.0,0,773cbcac-060e-4d69-86e9-8bdd69de3b05
+Basic-4,Basic 4,Sequences,Common Sequences,sequences,4/4,1.0,4.0,8,4,3,1,89,0.0,0.0,0,d45fcaf1-54e4-482f-9ed2-b455f93c99a9
+Basic-5,Basic 5,Sequences,Common Sequences,sequences,4/4,1.0,4.0,8,3,2,1,89,0.0,0.0,0,f227e018-86cd-4a42-9135-427d91105336
+Basic-6,Basic 6,Sequences,Common Sequences,sequences,4/4,1.0,4.0,6,3,2,1,89,0.0,0.0,0,f736570b-b63f-4c05-8307-2e5e29f147ba
+Basic-7,Basic 7,Sequences,Common Sequences,sequences,4/4,1.0,4.0,5,2,1,1,48.6,6.0,0.8,0.01615,631c7230-e6e3-497d-8a6f-fa65ce667459
+Basic-8,Basic 8,Sequences,Common Sequences,sequences,4/4,1.0,4.0,10,3,2,1,89,0.0,0.0,0,edcd2ff9-5cf7-42ec-b06c-8718dd97ccf0
+Basic-9,Basic 9,Sequences,Common Sequences,sequences,4/4,1.0,4.0,5,3,2,1,50.2,5.8,0.4,0.00729,88cf3051-155f-49e2-8885-dc4218fa5d92
+Ostinato-1,Ostinato 1,Sequences,Common Sequences,sequences,4/4,4.0,16.0,32,3,2,0,94,0.0,0.0,0,829b515f-92b3-4f9c-b3a2-189eeef62823
+Ostinato-10,Ostinato 10,Sequences,Common Sequences,sequences,4/4,2.0,8.0,16,6,5,0,45.2,9.3,0.0,0,04e0694f-5b4c-4532-973e-2f8fd699a3e4
+Ostinato-11,Ostinato 11,Sequences,Common Sequences,sequences,4/4,4.0,16.0,32,6,5,0,89,0.0,0.0,0,e68f64a7-7aba-471f-a5ca-65ee2f8b7f5d
+Ostinato-12,Ostinato 12,Sequences,Common Sequences,sequences,4/4,1.0,4.0,8,4,3,0,73.6,15.9,0.0,0,690e1ef4-1ffd-4c90-8d19-81593ccd43fd
+Ostinato-13,Ostinato 13,Sequences,Common Sequences,sequences,4/4,1.0,4.0,8,4,3,0,58.5,11.6,0.0,0,2ffcad35-fbfc-4912-a013-b1ee60fe4530
+Ostinato-14,Ostinato 14,Sequences,Common Sequences,sequences,4/4,2.0,8.0,8,3,2,0,76.1,17.7,0.875,0.00446,4f2816aa-45b4-4cb2-8cd0-66dbdc464357
+Ostinato-15,Ostinato 15,Sequences,Common Sequences,sequences,4/4,1.0,4.0,12,4,3,0,38.6,23.7,0.167,0.00729,7a59c295-7b9e-48ff-bd83-747f15a9c7ba
+Ostinato-16,Ostinato 16,Sequences,Common Sequences,sequences,4/4,1.0,4.0,8,3,2,0,50.9,8.6,0.75,0.00556,93f6fce5-7fd4-4064-bd51-4aaed6bd7da8
+Ostinato-17,Ostinato 17,Sequences,Common Sequences,sequences,4/4,1.0,4.0,9,4,3,0,42,8.1,0.556,0.00583,34bc94bd-0704-4fdb-882e-597b7cf1667c
+Ostinato-18,Ostinato 18,Sequences,Common Sequences,sequences,4/4,1.0,4.0,12,4,3,0,47.8,17.9,0.75,0.00602,862d7db2-b87f-4a96-8cbe-a237f2eba196
+Ostinato-19,Ostinato 19,Sequences,Common Sequences,sequences,4/4,1.0,4.0,8,3,2,0,58.6,22.0,0.125,0.00208,b0276f87-7061-486c-85ce-3be0fb9407a6
+Ostinato-2,Ostinato 2,Sequences,Common Sequences,sequences,4/4,4.0,16.0,64,3,2,0,81.1,9.8,0.0,0,a2369dad-fe76-4d82-85ae-fcc246f80034
+Ostinato-20,Ostinato 20,Sequences,Common Sequences,sequences,4/4,1.0,4.0,15,5,4,0,25.4,14.1,0.933,0.00402,f9dc7a00-4fb9-405a-b95d-691f37c0b5d6
+Ostinato-3,Ostinato 3,Sequences,Common Sequences,sequences,4/4,4.0,16.0,64,4,3,0,91.9,17.7,0.0,0,81aac556-5f61-4c3e-87a4-796549193a38
+Ostinato-4,Ostinato 4,Sequences,Common Sequences,sequences,4/4,2.0,8.0,16,5,4,0,89,0.0,0.0,0,118ab07c-c353-4200-9883-f51efda72bec
+Ostinato-5,Ostinato 5,Sequences,Common Sequences,sequences,4/4,1.0,4.0,16,5,4,0,89,0.0,0.0,0,b6766793-aba3-4508-8831-cd8724f0d5e6
+Ostinato-6,Ostinato 6,Sequences,Common Sequences,sequences,4/4,2.0,8.0,16,6,5,0,61.9,15.8,0.0,0,91a06005-de22-46fd-840f-68aa15e3b56b
+Ostinato-7,Ostinato 7,Sequences,Common Sequences,sequences,4/4,1.0,4.0,9,3,2,0,79,35.3,0.889,0.01667,812def8e-1fb0-4d1a-a3e2-3c4dd7e80d27
+Ostinato-8,Ostinato 8,Sequences,Common Sequences,sequences,4/4,2.0,8.0,8,4,3,0,38.8,6.3,0.875,0.00863,25e6306b-437a-48d9-ae66-30b483231428
+Ostinato-9,Ostinato 9,Sequences,Common Sequences,sequences,4/4,1.0,4.0,6,4,3,0,42,5.4,0.833,0.00625,64768b7d-4b8a-4218-b767-2a84545bdbc2
+Scale-Based-1,Scale Based 1,Sequences,Scale Based Sequences,sequences,4/4,1.0,4.0,8,5,4,0,67.9,6.9,0.0,0,b36e9043-2ef5-4e20-a490-35eb9dfe7dd9
+Scale-Based-10,Scale Based 10,Sequences,Scale Based Sequences,sequences,4/4,0.5,2.0,5,5,4,1,70.4,5.6,0.0,0,84a1c3fc-b282-40ab-bc5a-a9f4babef131
+Scale-Based-2,Scale Based 2,Sequences,Scale Based Sequences,sequences,4/4,1.0,4.0,12,5,4,1,69.4,9.2,0.0,0,e47a7a80-3c7b-4aed-b4d3-ab078c763a82
+Scale-Based-3,Scale Based 3,Sequences,Scale Based Sequences,sequences,4/4,1.0,4.0,10,4,3,1,73.2,5.6,0.0,0,93ec467a-5760-463f-a34a-330e5b121d24
+Scale-Based-4,Scale Based 4,Sequences,Scale Based Sequences,sequences,4/4,1.0,4.0,8,3,2,1,76.2,6.5,0.0,0,e40e5ed9-5bab-4029-97e6-88e5ae8597c8
+Scale-Based-5,Scale Based 5,Sequences,Scale Based Sequences,sequences,4/4,2.0,8.0,13,3,2,1,70.5,6.5,0.0,0,67db859d-08e2-4d72-adf6-00b576761f47
+Scale-Based-6,Scale Based 6,Sequences,Scale Based Sequences,sequences,4/4,2.0,8.0,16,3,2,1,71.1,7.4,0.0,0,1b7921f6-317a-47ec-9a79-24c9a7d6826b
+Scale-Based-7,Scale Based 7,Sequences,Scale Based Sequences,sequences,4/4,1.0,4.0,10,3,2,1,67.6,8.1,0.0,0,f776a1d2-e21a-4000-8278-8bab871b4988
+Scale-Based-8,Scale Based 8,Sequences,Scale Based Sequences,sequences,4/4,1.0,4.0,5,5,4,1,74,7.9,0.0,0,225ff997-927c-4eb8-842e-9cab0b030bf2
+Scale-Based-9,Scale Based 9,Sequences,Scale Based Sequences,sequences,4/4,0.5,2.0,6,5,4,1,74.7,6.0,0.0,0,1db41d71-5e45-4b5f-9140-bc94f5ea1ea4
+Synth-1,Synth 1,Sequences,Synth Sequences,sequences,4/4,1.0,4.0,16,6,5,1,99.1,13.3,0.0,0,930fb9af-757a-45e0-9256-1e7ca0bce628
+Synth-10,Synth 10,Sequences,Synth Sequences,sequences,4/4,1.0,4.0,16,6,5,0,80,0.0,0.0,0,3bae067a-0f4e-48a1-bb6e-9fac8b68e641
+Synth-11,Synth 11,Sequences,Synth Sequences,sequences,4/4,2.0,8.0,32,5,4,0,80,0.0,0.0,0,f4337d19-2c02-4bd9-a5e5-483d9b8afebb
+Synth-12,Synth 12,Sequences,Synth Sequences,sequences,4/4,1.0,4.0,12,6,5,1,100.6,14.3,0.0,0,3d1c4762-be7e-4061-ab40-3c145235ac00
+Synth-13,Synth 13,Sequences,Synth Sequences,sequences,4/4,1.0,4.0,16,5,4,0,80,0.0,0.0,0,8f513c81-038a-4074-b04e-0e5a2035fcf7
+Synth-14,Synth 14,Sequences,Synth Sequences,sequences,4/4,2.0,8.0,16,4,3,0,100.2,11.0,0.75,0.01736,662c261e-424e-4ed3-b82a-1132b0117457
+Synth-15,Synth 15,Sequences,Synth Sequences,sequences,4/4,1.0,4.0,16,7,6,0,80,0.0,0.0,0,b7dafebc-bb4e-49f5-8a1d-476780145254
+Synth-16,Synth 16,Sequences,Synth Sequences,sequences,4/4,2.0,8.0,22,4,3,-1,127,0.0,0.0,0,2d7920a4-570c-4a32-a172-b5df34029f96
+Synth-17,Synth 17,Sequences,Synth Sequences,sequences,4/4,1.0,4.0,16,6,5,0,98.4,13.2,0.0,0,bd695628-656f-4bbe-9528-0817274b6495
+Synth-18,Synth 18,Sequences,Synth Sequences,sequences,4/4,1.0,4.0,9,5,4,0,100,0.0,0.0,0,49ed75f5-7252-483b-b2bf-d88c3577cbe0
+Synth-19,Synth 19,Sequences,Synth Sequences,sequences,4/4,1.0,4.0,8,4,3,1,100.9,0.3,0.0,0,1c689f89-d676-4e9b-8555-8783d791ad25
+Synth-2,Synth 2,Sequences,Synth Sequences,sequences,4/4,2.0,8.0,24,5,4,0,106,29.7,0.333,0.00625,23d0dc67-9dc5-4387-9c5f-9bc8b7758893
+Synth-20,Synth 20,Sequences,Synth Sequences,sequences,4/4,1.0,4.0,6,4,3,0,100,0.0,0.0,0,d27c89d5-b2fb-4805-997c-33fdc042596c
+Synth-3,Synth 3,Sequences,Synth Sequences,sequences,4/4,2.0,8.0,10,5,4,0,100,0.0,0.0,0,a5a9db3f-1488-435f-8b35-de9357e82125
+Synth-4,Synth 4,Sequences,Synth Sequences,sequences,4/4,2.0,8.0,32,6,5,1,100,0.0,0.0,0,a1e1ef40-ccef-4e30-b4d3-ab363cdc36c3
+Synth-5,Synth 5,Sequences,Synth Sequences,sequences,4/4,2.0,8.0,16,6,5,0,100,0.0,0.0,0,8465429e-1776-4ea3-b97c-885e2a643cad
+Synth-6,Synth 6,Sequences,Synth Sequences,sequences,4/4,2.0,8.0,32,6,5,0,80,0.0,0.0,0,abbf9af4-2443-4bc8-be04-c0652f6065b0
+Synth-7,Synth 7,Sequences,Synth Sequences,sequences,4/4,2.0,8.0,12,3,2,0,99,3.3,0.0,0,08178eb1-bf45-492c-bae7-2fbe380aec76
+Synth-8,Synth 8,Sequences,Synth Sequences,sequences,4/4,1.0,4.0,16,7,6,0,100,0.0,0.0,0,bdeae168-6dc4-482b-8a55-5b8ebeaea56d
+Synth-9,Synth 9,Sequences,Synth Sequences,sequences,4/4,1.0,4.0,16,6,5,0,80,0.0,0.0,0,cad9771e-a72d-44a5-87e6-21e1ac88e094
+Fast-1,Fast 1,StrummedSequences,Fast,strummedSequences,4/4,2.0,8.0,10,1,0,0,70.5,17.3,1.0,0.00208,51b0c0f3-d626-40da-b20d-49020df28678
+Fast-10,Fast 10,StrummedSequences,Fast,strummedSequences,4/4,2.0,8.0,10,1,0,0,88.8,8.1,0.9,0.00208,c9dd45f5-b359-47a3-9941-efb727e5ce7c
+Fast-11,Fast 11,StrummedSequences,Fast,strummedSequences,4/4,2.0,8.0,10,1,0,0,87.8,8.1,0.0,0,90527033-d2d9-4d0d-9b08-203431ede125
+Fast-12,Fast 12,StrummedSequences,Fast,strummedSequences,4/4,1.0,4.0,45,3,2,0,102.6,19.7,0.0,0,81b90ece-9b98-427f-8443-bead46271568
+Fast-13,Fast 13,StrummedSequences,Fast,strummedSequences,4/4,2.0,8.0,39,3,2,0,103.6,22.4,0.0,0,8a5c0ffa-ebdf-4b1e-a559-02d13f38244a
+Fast-14,Fast 14,StrummedSequences,Fast,strummedSequences,4/4,2.0,8.0,10,1,0,0,88.6,11.6,0.9,0.00208,1f919a46-d989-49cf-9397-a8dbdfc0fda9
+Fast-15,Fast 15,StrummedSequences,Fast,strummedSequences,4/4,2.0,8.0,12,1,0,0,80.3,9.5,0.917,0.00208,2d4ee4a5-8d41-4928-b6e2-4b801df65d58
+Fast-2,Fast 2,StrummedSequences,Fast,strummedSequences,4/4,2.0,8.0,11,1,0,0,126.1,1.5,0.909,0.00583,b59c8d0e-b9ba-4a5e-9fc3-776dfd6525bf
+Fast-3,Fast 3,StrummedSequences,Fast,strummedSequences,4/4,2.0,8.0,9,1,0,0,87.3,3.8,0.889,0.0026,87142e06-1000-4137-b5ab-209602fa6741
+Fast-4,Fast 4,StrummedSequences,Fast,strummedSequences,4/4,2.0,8.0,14,1,0,0,70.7,14.6,1.0,0.00208,847e06ed-4295-45c6-a338-d63682eda3d8
+Fast-5,Fast 5,StrummedSequences,Fast,strummedSequences,4/4,2.0,8.0,10,1,0,0,85.2,11.1,0.9,0.00208,58adcbfe-4426-49ed-b385-d5e7b7e2553f
+Fast-6,Fast 6,StrummedSequences,Fast,strummedSequences,4/4,2.0,8.0,8,1,0,0,77.2,9.6,0.875,0.00417,530930a0-53c3-42cf-a9dd-98ed1153a31a
+Fast-7,Fast 7,StrummedSequences,Fast,strummedSequences,4/4,4.0,16.0,18,1,0,0,85.4,9.6,0.944,0.00208,ebd76652-477f-4764-a882-fd3c0ca901ef
+Fast-8,Fast 8,StrummedSequences,Fast,strummedSequences,4/4,2.0,8.0,8,1,0,0,86,6.0,0.875,0.00595,b05cfad3-4df5-4357-b7e1-aafe28533a48
+Fast-9,Fast 9,StrummedSequences,Fast,strummedSequences,4/4,2.0,8.0,6,1,0,0,110.3,7.1,0.833,0.02,1e9a4485-1a4c-4895-9819-ef608fed3e77
+Slow-1,Slow 1,StrummedSequences,Slow,strummedSequences,4/4,2.0,8.0,9,1,0,0,86.6,3.8,0.889,0.0125,c4485fc8-7e24-4447-9a51-4c05a91b71f4
+Slow-10,Slow 10,StrummedSequences,Slow,strummedSequences,4/4,2.0,8.0,4,1,0,0,88,12.0,0.75,0.00208,a625213e-9e05-4a0d-a272-a0afc47c7140
+Slow-11,Slow 11,StrummedSequences,Slow,strummedSequences,4/4,4.0,16.0,6,1,0,0,83.3,7.5,0.833,0.02125,ce10e1db-9b02-40b0-ba47-483f9b03a715
+Slow-12,Slow 12,StrummedSequences,Slow,strummedSequences,4/4,4.0,16.0,11,1,0,0,87.8,6.0,0.0,0,207e5a48-b77a-4406-8cab-49084c68b5ee
+Slow-13,Slow 13,StrummedSequences,Slow,strummedSequences,4/4,4.0,16.0,12,1,0,0,89.2,5.9,0.0,0,b80067c8-c645-4730-9032-b657947da937
+Slow-14,Slow 14,StrummedSequences,Slow,strummedSequences,4/4,2.0,8.0,3,1,0,0,87.3,6.6,0.0,0,b7788b71-26bb-47d5-abc2-33591d259372
+Slow-15,Slow 15,StrummedSequences,Slow,strummedSequences,4/4,2.0,8.0,6,1,0,0,102,0.0,0.0,0,d070e6a3-4b56-4ead-9f3c-5169d04bf419
+Slow-2,Slow 2,StrummedSequences,Slow,strummedSequences,4/4,4.0,16.0,13,1,0,0,79.3,12.0,1.0,0.02019,d3dc6554-0df5-45d3-9036-d0e8c6285afb
+Slow-3,Slow 3,StrummedSequences,Slow,strummedSequences,4/4,4.0,16.0,6,1,0,0,94.3,5.2,1.0,0.00208,67da64b6-9489-45e0-9595-2efe88debc01
+Slow-4,Slow 4,StrummedSequences,Slow,strummedSequences,4/4,2.0,8.0,5,1,0,0,84,0.0,0.0,0,cd6e6540-e72e-4d9a-94d3-784f6ce415e6
+Slow-5,Slow 5,StrummedSequences,Slow,strummedSequences,4/4,2.0,8.0,8,1,0,0,125.9,3.0,0.125,0.00833,94086a43-c445-41ff-b8f3-725e18e18f2a
+Slow-6,Slow 6,StrummedSequences,Slow,strummedSequences,4/4,2.0,8.0,4,1,0,0,89.5,5.5,0.0,0,130588a4-2dda-4840-9274-7a7fd857dea7
+Slow-7,Slow 7,StrummedSequences,Slow,strummedSequences,4/4,2.0,8.0,5,1,0,0,85.2,8.8,0.0,0,aa2891cc-a5da-400a-ab6a-ab0c3871997e
+Slow-8,Slow 8,StrummedSequences,Slow,strummedSequences,4/4,4.0,16.0,32,3,2,0,66.5,13.8,0.469,0.01917,52675c4c-a773-4485-85cb-5982dd2024cd
+Slow-9,Slow 9,StrummedSequences,Slow,strummedSequences,4/4,4.0,16.0,8,1,0,0,65,0.0,0.25,0.02083,9df53726-e106-4e88-a5c9-772ffaa6f4f4
