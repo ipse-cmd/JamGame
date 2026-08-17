@@ -10,3 +10,4 @@ native/src/*.os
 native/bin/*.exp
 native/bin/*.lib
 native/bin/*.pdb
+.DS_Store
