@@ -22,7 +22,7 @@ import sys
 LOGDIR = os.path.expanduser("~/.local/share/godot/app_userdata/JamGame/decision_logs")
 OUT = os.path.join(os.path.dirname(__file__), "..", "..", "data", "pattern_bank.json")
 
-BANK_SCHEMA = 1
+BANK_SCHEMA = 2  # V2 lane space
 MIN_DWELL = 2      # windows a line must survive
 MIN_NOTES = 2
 MAX_NOTES = 8
@@ -52,8 +52,11 @@ def lines_from_log(path):
             frames.append(e)
     out = []
     cur, dwell = None, 0
+    OLD_TO_NEW = {0: 0, 1: 2, 2: 4, 3: 6, 4: 7}  # pre-V2 logs use the 5-lane space
     for f in frames:
         notes = {int(str(k)): int(v) for k, v in f["observation"].get("bass_notes", {}).items()}
+        if int(f["observation"].get("observation_schema", 0)) < 5:
+            notes = {k: OLD_TO_NEW.get(v, v) for k, v in notes.items()}
         if cur is None or notes != cur:
             if cur is not None:
                 out.append((cur, dwell))

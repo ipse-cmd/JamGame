@@ -202,7 +202,7 @@ func _validate_cmd(sender: int, track: int, op: String, args: Dictionary) -> boo
 		[TRACK_DRUMS, "fill"], [TRACK_DRUMS, "drop"], [TRACK_DRUMS, "intensify"]:
 			return args.is_empty()
 		[TRACK_BASS, "place"]:
-			return _int_in(args, "step", 0, 15) and _int_in(args, "degree", 0, 4) and args.size() == 2
+			return _int_in(args, "step", 0, 15) and _int_in(args, "degree", 0, 7) and args.size() == 2
 		[TRACK_CHORDS, "cycle"]:
 			return _int_in(args, "bar", 0, 3) and args.has("delta") and (args.delta == 1 or args.delta == -1) and args.size() == 2
 		[TRACK_CHORDS, "set"]:

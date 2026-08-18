@@ -868,6 +868,42 @@ Validation: **439 unit tests green** (+5: same-line-different-kicks coupling
 direction, manifold caps, dimension absent without data, committed-profile
 interaction presence, provenance logging). **6/6 integration green.**
 
+## V2 bass lanes — the full diatonic ladder, experiment pre-registered (2026-08-17)
+
+The bass ring grows 5 → 8 lanes: lane d = chord root + d SCALE STEPS
+(R 2 3 4 5 6 7, all diatonic — the key decides color), lane 7 = octave.
+Corpus justification: 26% of real jazz bass is exactly the 2/4/6 color
+classes V1 could not express.
+
+**Pre-registered experiment first** (docs/design/v2-lanes-experiment.md +
+tools/corpus/v2_metrics.py, both written BEFORE the vocabulary code):
+success is SELECTIVE color in corpus-supported contexts with no rise in
+revert rate — never "uses 2/4/6 often". Held fixed: candidate generator
+logic (no 2/4/6-specific candidates — color enters only through the existing
+retune/recolor tone pool; the style prior's measured x2/x4/x6 distributions
+decide when it wins), profiles, weights, intent policy.
+
+Migration notes:
+- `chord_tone_midi` tones 0..6 are now STEPWISE (+d scale steps), 7 = octave;
+  the octave invariant moved to tone 7 and still holds for every degree.
+- **Frozen baseline preserved by boundary translation**: RuleBassPolicy v2
+  thinks in its original 5-tone space and remaps at the edges
+  (0/2/4/6/7 on the wire; removals emit the exact stored degree — the lossy
+  round trip cannot, pinned by test "never emits color lanes").
+- features_schema 3 (8 lane fractions, entropy over 8), observation_schema 5;
+  pattern bank migrated to V2 lane space (bank_schema 2); harvest remaps
+  pre-V2 logs by observation_schema; style prior LANE_TOKEN maps color lanes
+  onto the corpus x2/x4/x6 tokens; JamAnalysis TONE_TENSION has 8 entries
+  (4 tension-sensitive 0.55 — it rubs the third — 2 smooth 0.35, 6 color 0.4).
+- UI: 8 ring lanes, keys 1-8, 8-option radial bloom, color lanes drawn
+  muted-warm so structure vs color reads at a glance.
+
+Validation: **527 unit tests green** (+82 net: the 8-lane V|vi|IV sounding
+table, octave invariant at tone 7, chord-tones-outrank-color degree fit,
+all-color-finite, baseline-never-emits-color across 40 seeds, migrated
+fixtures throughout). **6/6 integration green.** The experiment now runs on
+ordinary duet sessions via v2_metrics.py.
+
 ## How to rebuild the extension
 
 ```

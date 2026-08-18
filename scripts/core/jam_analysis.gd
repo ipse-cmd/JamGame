@@ -38,10 +38,10 @@ const FULL_MOTION_SEMITONES := 12.0
 const CHANGE_HORIZON_LOOPS := 4.0 # a change this old no longer presses
 const REPETITION_HORIZON_LOOPS := 8.0 # unchanged this long = full repetition
 
-# Bass tone color (chord-relative lanes R 3 5 7 O): R/5 very stable, 3
-# descriptive, 7 color/directional, O register not tension. Ordering matters,
-# absolutes are tunable; lanes 2/4/6 will slot in without an API change.
-const TONE_TENSION := [0.0, 0.25, 0.1, 0.7, 0.05]
+# Bass tone color (V2 ladder R 2 3 4 5 6 7 O): R/5/O very stable, 3
+# descriptive, 2/6 smooth color, 4 tension-sensitive (rubs the third),
+# 7 color/directional. Ordering matters, absolutes are tunable.
+const TONE_TENSION := [0.0, 0.35, 0.25, 0.55, 0.1, 0.4, 0.7, 0.05]
 # Diatonic function as resolution pressure (I ii iii IV V vi vii°) — not
 # universal good/bad, just how strongly the harmony points somewhere.
 const CHORD_TENSION := [0.0, 0.35, 0.3, 0.4, 0.65, 0.3, 0.9]

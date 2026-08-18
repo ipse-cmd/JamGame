@@ -29,11 +29,20 @@ const NUM_STEPS := 16
 # it never decides.
 const BANK_PATH := "res://data/pattern_bank.json"
 const MAX_PATTERN_OPS := 8
+# V2 lane indices (full diatonic ladder R 2 3 4 5 6 7 O). The candidate
+# GENERATOR deliberately gains no 2/4/6-specific candidates — color tones
+# enter only through the existing retune/recolor tone pool, and the style
+# prior's corpus x2/x4/x6 distributions decide when they win (pre-registered
+# experiment: docs/design/v2-lanes-experiment.md).
 const TONE_R := 0
-const TONE_3 := 1
-const TONE_5 := 2
-const TONE_7 := 3
-const TONE_O := 4
+const TONE_2 := 1
+const TONE_3 := 2
+const TONE_4 := 3
+const TONE_5 := 4
+const TONE_6 := 5
+const TONE_7 := 6
+const TONE_O := 7
+const ALL_TONES := [0, 1, 2, 3, 4, 5, 6, 7]
 const BEATS := [0, 4, 8, 12]
 const DENSITY_MIN := 3 # same band the frozen baseline holds — a shared house style
 const DENSITY_MAX := 6
@@ -201,7 +210,7 @@ static func _retune_one(notes: Dictionary, rng: RandomNumberGenerator) -> Array:
 		return []
 	var steps := _sorted_steps(notes)
 	var s: int = steps[rng.randi() % steps.size()]
-	var tones := [TONE_R, TONE_3, TONE_5, TONE_7, TONE_O]
+	var tones := ALL_TONES.duplicate()
 	tones.erase(int(notes[s]))
 	return [_op(s, tones[rng.randi() % tones.size()])]
 
@@ -225,7 +234,7 @@ static func _strip_offbeats(notes: Dictionary, kicks: Array, rng: RandomNumberGe
 static func _to_root_five(notes: Dictionary, rng: RandomNumberGenerator, count: int) -> Array:
 	var colored: Array = []
 	for s in _sorted_steps(notes):
-		if int(notes[s]) == TONE_3 or int(notes[s]) == TONE_7:
+		if not [TONE_R, TONE_5, TONE_O].has(int(notes[s])):
 			colored.append(s)
 	if colored.is_empty():
 		return []
@@ -443,7 +452,7 @@ static func _stable_fraction(notes: Dictionary) -> float:
 		return 0.0
 	var stable := 0
 	for s in notes:
-		if int(notes[s]) == TONE_R or int(notes[s]) == TONE_5 or int(notes[s]) == TONE_O:
+		if [TONE_R, TONE_5, TONE_O].has(int(notes[s])):
 			stable += 1
 	return float(stable) / float(notes.size())
 

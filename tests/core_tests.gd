@@ -317,7 +317,7 @@ func _mk_models() -> Dictionary:
 	for hat_step in range(0, 16, 2):
 		PatternEditor.toggle_hit(starter, 2, hat_step, 0.6)
 	var line := BassLine.new()
-	line.notes = {0: 0, 8: 0, 12: 4}
+	line.notes = {0: 0, 8: 0, 12: 7}
 	var track := ChordTrack.new()
 	track.slots = [0, 5, 3, 4]
 	return {
@@ -339,7 +339,7 @@ func _valid_bass_op(op: Dictionary) -> bool:
 	var a: Dictionary = op.args
 	return a.size() == 2 \
 		and a.has("step") and typeof(a.step) == TYPE_INT and a.step >= 0 and a.step <= 15 \
-		and a.has("degree") and typeof(a.degree) == TYPE_INT and a.degree >= 0 and a.degree <= 4
+		and a.has("degree") and typeof(a.degree) == TYPE_INT and a.degree >= 0 and a.degree <= 7
 
 
 ## Apply policy ops to a fresh commit model seeded with the observed line;
@@ -358,7 +358,7 @@ func _test_bot_observation() -> void:
 	var obs := _mk_obs(models, 5, 2)
 	check(obs.kick_steps == [0, 8], "observation extracts kick steps")
 	check(obs.snare_steps == [4, 12], "observation extracts snare steps")
-	check(obs.bass_notes == {0: 0, 8: 0, 12: 4}, "observation carries the bass line")
+	check(obs.bass_notes == {0: 0, 8: 0, 12: 7}, "observation carries the bass line")
 	check(obs.chord_slots == [0, 5, 3, 4], "observation carries chord slots")
 	check(obs.target_loop == 5 and obs.windows_since_change == 2, "identity fields pass through")
 	obs.bass_notes.erase(0)
@@ -419,7 +419,7 @@ func _test_rule_bass_policy() -> void:
 
 	# Zero-op HOLD is a real outcome: a healthy, non-stale line must sometimes be
 	# left alone (and sometimes edited) across seeds — space-leaving is data.
-	models.bass.active.notes = {0: 0, 8: 0, 12: 4}
+	models.bass.active.notes = {0: 0, 8: 0, 12: 7}
 	var holds := 0
 	var edits := 0
 	for s in 40:
@@ -434,7 +434,7 @@ func _test_rule_bass_policy() -> void:
 
 	# JSON replay round-trip: an observation that went through the decision log
 	# (string keys, floats) must reproduce the same ops after rehydration.
-	models.bass.active.notes = {0: 0, 8: 0, 12: 4}
+	models.bass.active.notes = {0: 0, 8: 0, 12: 7}
 	var live_obs := _mk_obs(models, 9, 4)
 	var wire: Dictionary = JSON.parse_string(JSON.stringify(live_obs))
 	var rehydrated := BotObservation.from_json(wire)
@@ -513,7 +513,7 @@ class FakeRoom extends RefCounted:
 	func _init() -> void:
 		drums = CommitModelC.new(DrumPatternC.new())
 		var line = BassLineC.new()
-		line.notes = {0: 0, 8: 0, 12: 4}
+		line.notes = {0: 0, 8: 0, 12: 7}
 		bass = CommitModelC.new(line)
 		var track = ChordTrackC.new()
 		track.slots = [0, 5, 3, 4]
@@ -767,7 +767,7 @@ func _test_jam_features() -> void:
 	check(is_equal_approx(f.bass_third_fraction, 0.0) and is_equal_approx(f.bass_fifth_fraction, 0.0)
 		and is_equal_approx(f.bass_seventh_fraction, 0.0), "unused lanes are 0")
 	check(is_equal_approx(f.bass_lane_entropy,
-		-(2.0 / 3.0 * log(2.0 / 3.0) + 1.0 / 3.0 * log(1.0 / 3.0)) / log(5.0)),
+		-(2.0 / 3.0 * log(2.0 / 3.0) + 1.0 / 3.0 * log(1.0 / 3.0)) / log(8.0)),
 		"lane entropy normalized over 5 lanes")
 
 	# SOUNDING family: motif R.R.O rendered over I|vi|IV|V through the same
@@ -889,7 +889,7 @@ func _test_observation_contract() -> void:
 			"chords": models.chords.active.to_dict(),
 		}, [0, 0, 0])
 	var obs := BotObservation.build_bass(models.bass, models.drums, models.chords, 3, 1, h)
-	check(obs.observation_schema == 4, "observation carries its schema version")
+	check(obs.observation_schema == 5, "observation carries its schema version")
 	check(obs.features.has("kick_bass_alignment"), "observation carries snapshot features")
 	check(obs.temporal.has("loops_since_bass_change") and obs.temporal.has("bass_event_jaccard_prev_1"),
 		"observation carries temporal context")
@@ -1102,7 +1102,7 @@ func _test_intent_policy() -> void:
 
 	# REVERT: bass_notes_prev's first consumer — my own ADDITION crowded the jam.
 	var revert_obs := {"features": {"bass_density": 0.4},
-		"bass_notes": {0: 0, 8: 0, 12: 4}, "last_change_by": {"bass": "self"},
+		"bass_notes": {0: 0, 8: 0, 12: 7}, "last_change_by": {"bass": "self"},
 		"bass_notes_prev": {0: 0, 8: 0}}
 	var r := IntentPolicy.decide(revert_obs,
 		{"density_tension": 0.75, "self_change_pressure": 0.9})
@@ -1180,8 +1180,8 @@ func _test_bass_realizer() -> void:
 	var mid := BotObservation.build_bass(CommitModel.new(mid_line), models.drums, models.chords, 1, 1)
 	var vary := Realizer.realize(mid, "VARY", 7)
 	var vary_notes := _apply_ops(mid, vary.ops)
-	check(vary_notes != mid.bass_notes and absi(vary_notes.size() - mid.bass_notes.size()) <= 1,
-		"VARY changes the pattern without changing its weight class")
+	check(vary_notes != mid.bass_notes and vary_notes.size() >= 3 and vary_notes.size() <= 6,
+		"VARY changes the pattern and stays inside the density band")
 	# With the riff bank present, VARY on a crowded line escapes to a banked
 	# in-band pattern instead of refusing (cell edits can't fix a bad line;
 	# switching to a known-good riff can) — pinned as the improved behavior.
@@ -1199,9 +1199,9 @@ func _test_bass_realizer() -> void:
 
 	# REVERT restores the actual previous pattern — bass_notes_prev's realizer.
 	var rev_obs: Dictionary = dense.duplicate(true)
-	rev_obs.bass_notes_prev = {0: 0, 8: 0, 12: 4}
+	rev_obs.bass_notes_prev = {0: 0, 8: 0, 12: 7}
 	var rev := Realizer.realize(rev_obs, "REVERT", 7)
-	check(rev.candidate == "restore_prev" and _apply_ops(rev_obs, rev.ops) == {0: 0, 8: 0, 12: 4},
+	check(rev.candidate == "restore_prev" and _apply_ops(rev_obs, rev.ops) == {0: 0, 8: 0, 12: 7},
 		"REVERT restores the previous committed line exactly")
 	var no_prev: Dictionary = dense.duplicate(true)
 	no_prev.bass_notes_prev = null
@@ -1271,6 +1271,24 @@ func _test_style_prior() -> void:
 	check(stepwise.interval_fit > leapy.interval_fit,
 		"corpus prior prefers stepwise motion over octave leaps")
 
+	# V2 color lanes map onto the corpus's measured x2/x4/x6 classes: an
+	# all-color line is finite (rare, never -inf) but LESS typical than chord
+	# tones — the prior admits color as minority vocabulary, exactly the
+	# pre-registered experiment expectation.
+	var chordal = StylePrior.score_bass(bass, {0: 0, 4: 2, 8: 4}, [0, 5, 3, 4])
+	var colored = StylePrior.score_bass(bass, {0: 1, 4: 3, 8: 5}, [0, 5, 3, 4])
+	check(colored.degree_fit > StylePrior.FLOOR - 0.001, "all-color line scores finite")
+	check(chordal.degree_fit > colored.degree_fit,
+		"chord tones outrank color tones in degree fit (corpus minority share)")
+
+	# Frozen baseline under V2: pure index remap — it emits ONLY its original
+	# five tones (as V2 indices 0/2/4/6/7), so its sounding behavior is frozen.
+	var base_obs := BotObservation.build_bass(models.bass, models.drums, models.chords, 1, 5)
+	for s2 in 40:
+		for op in RuleBassPolicy.decide(base_obs, s2):
+			check([0, 2, 4, 6, 7].has(int(op.args.degree)),
+				"remapped baseline never emits color lanes")
+
 	# Missing data contributes zero, not a substitute.
 	check(StylePrior.score_bass({}, {0: 0}, [0, 5, 3, 4]) == null,
 		"empty profile section -> null, no generic substitute")
@@ -1312,7 +1330,7 @@ func _test_pattern_bank() -> void:
 	# The committed bank: every variant legal and playable.
 	var text := FileAccess.get_file_as_string("res://data/pattern_bank.json")
 	var bank: Dictionary = JSON.parse_string(text)
-	check(bank != null and bank.bank_schema == 1 and bank.motifs.size() >= 1,
+	check(bank != null and bank.bank_schema == 2 and bank.motifs.size() >= 1,
 		"pattern bank loads with schema")
 	var all_legal := true
 	for m in bank.motifs:
@@ -1321,14 +1339,14 @@ func _test_pattern_bank() -> void:
 			if n.size() < 2 or n.size() > 8:
 				all_legal = false
 			for k in n:
-				if int(str(k)) < 0 or int(str(k)) > 15 or int(n[k]) < 0 or int(n[k]) > 4:
+				if int(str(k)) < 0 or int(str(k)) > 15 or int(n[k]) < 0 or int(n[k]) > 7:
 					all_legal = false
 	check(all_legal, "every banked variant is a legal, playable line")
 
 	# Bank candidates: applying the ops lands EXACTLY on a banked variant.
 	var models := _mk_models()
 	var line := BassLine.new()
-	line.notes = {0: 0, 8: 0, 12: 4} # the starter groove — a known motif member
+	line.notes = {0: 0, 8: 0, 12: 7} # the starter groove — a known motif member
 	var obs := BotObservation.build_bass(CommitModel.new(line), models.drums, models.chords, 1, 1)
 	var found_pattern := false
 	for c in Realizer.candidates(obs, "VARY", 3):
@@ -1570,27 +1588,27 @@ func _test_harmony() -> void:
 	check(Harmony.note_name(36) == "C2", "MIDI 36 is C2 (bass root)")
 	check(Harmony.ROMAN.size() == 7, "seven roman numerals")
 
-	# Chord-relative bass vocabulary: one stored motif (all five lanes) sounds
-	# different pitch classes under each chord of V | vi | IV | V — the whole
-	# semantic reinterpretation captured in one table.
+	# V2 chord-relative vocabulary: one stored motif (all EIGHT lanes) sounds
+	# different pitch classes under each chord of V | vi | IV — the ladder
+	# walks the key's scale upward from each chord root.
 	var expected := {
-		4: ["G", "B", "D", "F", "G"], # V
-		5: ["A", "C", "E", "G", "A"], # vi
-		3: ["F", "A", "C", "E", "F"], # IV
+		4: ["G", "A", "B", "C", "D", "E", "F", "G"], # V
+		5: ["A", "B", "C", "D", "E", "F", "G", "A"], # vi
+		3: ["F", "G", "A", "B", "C", "D", "E", "F"], # IV
 	}
 	for chord_deg in expected:
-		for lane in 5:
+		for lane in 8:
 			var midi := Harmony.chord_tone_midi(36, chord_deg, lane)
 			check(Harmony.pitch_class_name(midi) == expected[chord_deg][lane],
 				"chord %s lane %s sounds %s" % [Harmony.ROMAN[chord_deg], Harmony.BASS_TONE_NAMES[lane], expected[chord_deg][lane]])
 	# Same lane, different bars -> different sounding MIDI (the bug this fixes).
 	check(Harmony.chord_tone_midi(36, 4, 0) != Harmony.chord_tone_midi(36, 5, 0),
 		"identical stored lane follows the progression")
-	# O is the one lane that isn't "stack another diatonic third".
+	# O is the one lane that isn't "walk up the scale".
 	for chord_deg in 7:
-		check(Harmony.chord_tone_midi(36, chord_deg, 4) == Harmony.chord_tone_midi(36, chord_deg, 0) + 12,
+		check(Harmony.chord_tone_midi(36, chord_deg, 7) == Harmony.chord_tone_midi(36, chord_deg, 0) + 12,
 			"octave lane = chord root + 12 (degree %d)" % chord_deg)
-	# Empty chord slot resolves against the tonic, and the diatonic seventh needs
-	# no explicit 7th-chord spelling: R/3/5/7 over an empty (tonic) bar = C E G B.
-	check(Harmony.chord_tone_midi(36, -1, 0) == 36 and Harmony.chord_tone_midi(36, -1, 3) == 47,
+	# Empty chord slot resolves against the tonic, and the diatonic seventh
+	# needs no chord spelling: tone 6 over an empty (tonic) bar = B2.
+	check(Harmony.chord_tone_midi(36, -1, 0) == 36 and Harmony.chord_tone_midi(36, -1, 6) == 47,
 		"empty slot falls back to tonic; diatonic seventh derived from the key")

@@ -17,7 +17,9 @@ extends RefCounted
 # (what that behavior produces under this progression: the pattern virtually
 # rendered across all chord slots through the SAME Harmony resolver the
 # scheduler uses, so analysis can never disagree with the audio).
-const FEATURES_SCHEMA := 2
+# v3: V2 bass lanes — 8-lane fractions (second/fourth/sixth join), entropy
+# normalized over 8 lanes.
+const FEATURES_SCHEMA := 3
 
 const VOICE_KICK := 0
 const VOICE_SNARE := 1
@@ -60,7 +62,7 @@ static func extract(state: Dictionary) -> Dictionary:
 	ordered_steps.sort()
 
 	# SEMANTIC family: distribution over harmonic roles, chord-independent.
-	var lane_counts := [0, 0, 0, 0, 0]
+	var lane_counts := [0, 0, 0, 0, 0, 0, 0, 0]
 	for s in ordered_steps:
 		var lane := int(notes[s])
 		if lane >= 0 and lane < lane_counts.size():
@@ -130,10 +132,13 @@ static func extract(state: Dictionary) -> Dictionary:
 		"perc_density": float(voice_counts[VOICE_PERC]) / float(steps),
 		"bass_density": float(notes.size()) / float(int(bass.get("num_steps", 16))),
 		"bass_root_fraction": _lane_fraction(lane_counts, 0, notes.size()),
-		"bass_third_fraction": _lane_fraction(lane_counts, 1, notes.size()),
-		"bass_fifth_fraction": _lane_fraction(lane_counts, 2, notes.size()),
-		"bass_seventh_fraction": _lane_fraction(lane_counts, 3, notes.size()),
-		"bass_octave_fraction": _lane_fraction(lane_counts, 4, notes.size()),
+		"bass_second_fraction": _lane_fraction(lane_counts, 1, notes.size()),
+		"bass_third_fraction": _lane_fraction(lane_counts, 2, notes.size()),
+		"bass_fourth_fraction": _lane_fraction(lane_counts, 3, notes.size()),
+		"bass_fifth_fraction": _lane_fraction(lane_counts, 4, notes.size()),
+		"bass_sixth_fraction": _lane_fraction(lane_counts, 5, notes.size()),
+		"bass_seventh_fraction": _lane_fraction(lane_counts, 6, notes.size()),
+		"bass_octave_fraction": _lane_fraction(lane_counts, 7, notes.size()),
 		"bass_lane_entropy": lane_entropy,
 		"sounding_pitch_mean": float(pitch_sum) / float(midis.size()) if not midis.is_empty() else 0.0,
 		"sounding_pitch_range": pitch_max - pitch_min,
@@ -149,7 +154,8 @@ static func extract(state: Dictionary) -> Dictionary:
 ## Numeric features that make sense as deltas between two snapshots.
 const DELTA_KEYS := [
 	"drum_density", "kick_density", "snare_density", "hat_density", "perc_density",
-	"bass_density", "bass_root_fraction", "bass_third_fraction", "bass_fifth_fraction",
+	"bass_density", "bass_root_fraction", "bass_second_fraction", "bass_third_fraction",
+	"bass_fourth_fraction", "bass_fifth_fraction", "bass_sixth_fraction",
 	"bass_seventh_fraction", "bass_octave_fraction", "bass_lane_entropy",
 	"sounding_pitch_mean", "sounding_pitch_range", "sounding_mean_interval",
 	"sounding_max_interval", "sounding_direction_change_rate",

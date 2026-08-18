@@ -42,7 +42,11 @@ const CHORD_ROOT_MIDI := 60 # C4
 
 const DRUM_LANE_NAMES := ["Kick", "Snare", "Hat", "Perc"]
 const DRUM_LANE_COLORS := [Color("e05a4e"), Color("e8b84b"), Color("6fd3e0"), Color("b58ce8")]
-const BASS_LANE_COLORS := [Color("e06c5a"), Color("e8b84b"), Color("8fd15f"), Color("5fc9d8"), Color("b58ce8")]
+# V2: 8 lanes (R 2 3 4 5 6 7 O). Stable tones saturated, color tones (2/4/6)
+# deliberately muted-warm so the ring reads structure vs color at a glance.
+const BASS_LANE_COLORS := [
+	Color("e06c5a"), Color("c9a37a"), Color("e8b84b"), Color("a9b47e"),
+	Color("8fd15f"), Color("7ea9b4"), Color("5fc9d8"), Color("b58ce8")]
 
 enum Focus { DRUMS, BASS, CHORDS }
 
@@ -85,7 +89,7 @@ DRUM RING (focus: DRUMS)
   V       groove template (swing lens)
 
 BASS RING (focus: BASS)
-  1-5     select scale degree
+  1-8     select tone (R 2 3 4 5 6 7 O)
   Left/Right  move step cursor
   Enter   place / re-tune / remove
 
@@ -536,7 +540,7 @@ func _unhandled_key_input(event: InputEvent) -> void:
 			_cycle_chord(-1)
 		KEY_D:
 			_cycle_chord(1)
-		KEY_1, KEY_2, KEY_3, KEY_4, KEY_5:
+		KEY_1, KEY_2, KEY_3, KEY_4, KEY_5, KEY_6, KEY_7, KEY_8:
 			_select_lane(k.keycode - KEY_1)
 		KEY_F: # drummer: queue a fill for the phrase turnaround
 			_dispatch(Focus.DRUMS, "fill", {})

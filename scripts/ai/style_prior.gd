@@ -26,8 +26,10 @@ const CAP_TYPICAL := 0.6 # nats above chance where extra typicality stops paying
 const FLOOR := -2.0
 const BASS_ROOT_MIDI := 36
 
-# V1 lane -> corpus tone token (FiloBass folds octave roots into R).
-const LANE_TOKEN := ["R", "3", "5", "7", "R"]
+# V2 lane -> corpus tone token (FiloBass folds octave roots into R). The
+# color lanes map onto the corpus's measured x2/x4/x6 classes — degree_fit is
+# now genuinely informative about WHEN color belongs.
+const LANE_TOKEN := ["R", "x2", "3", "x4", "5", "x6", "7", "R"]
 const TOKENS := ["R", "3", "5", "7", "x2", "x4", "x6"]
 
 const CONFIDENCE_FACTOR := {"HIGH": 1.0, "MEDIUM": 0.6, "LOW": 0.3}
@@ -63,7 +65,7 @@ static func score_bass(bass_profile: Dictionary, notes: Dictionary, chord_slots:
 		tone_total += float(tone_counts.get(t, 0))
 	var degree_lp := 0.0
 	for s in steps:
-		var tok: String = LANE_TOKEN[clampi(int(notes[s]), 0, 4)]
+		var tok: String = LANE_TOKEN[clampi(int(notes[s]), 0, 7)]
 		degree_lp += log((float(tone_counts.get(tok, 0)) + 1.0) / (tone_total + TOKENS.size()))
 	var degree_fit := _fit(degree_lp / steps.size(), log(1.0 / TOKENS.size()))
 
@@ -104,8 +106,8 @@ static func score_bass(bass_profile: Dictionary, notes: Dictionary, chord_slots:
 	if steps.size() >= 2 and not trans.is_empty():
 		var lp3 := 0.0
 		for i in range(1, steps.size()):
-			var a: String = LANE_TOKEN[clampi(int(notes[steps[i - 1]]), 0, 4)]
-			var b: String = LANE_TOKEN[clampi(int(notes[steps[i]]), 0, 4)]
+			var a: String = LANE_TOKEN[clampi(int(notes[steps[i - 1]]), 0, 7)]
+			var b: String = LANE_TOKEN[clampi(int(notes[steps[i]]), 0, 7)]
 			var row: Dictionary = trans.get(a, {})
 			var row_total := 0.0
 			for t in TOKENS:

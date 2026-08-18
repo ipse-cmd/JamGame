@@ -13,10 +13,18 @@ extends RefCounted
 # the server validates the ops like anyone else's.
 
 const POLICY_NAME := "rule_bass"
-const POLICY_VERSION := 1
+# v2: pure index remap for the V2 8-lane vocabulary — the policy still thinks
+# in its original 5-tone space (R/3/5/7/O) and translates at the boundary, so
+# its SOUNDING behavior is unchanged. The baseline stays frozen musically.
+const POLICY_VERSION := 2
+
+# Old internal lane -> V2 lane (R,3,5,7,O -> ladder indices 0,2,4,6,7) and a
+# lossy inverse for foreign color notes (nearest chord tone downward).
+const OLD_TO_NEW := [0, 2, 4, 6, 7]
+const NEW_TO_OLD := [0, 0, 1, 1, 2, 2, 3, 4]
 
 const TRACK_BASS := 1
-const NUM_DEGREES := 5 # bass lanes: diatonic degrees 0..4 above the key root
+const NUM_DEGREES := 5 # INTERNAL lanes: the original 5-tone space
 const CHORD_TONES := [0, 2, 4] # (bass_degree - chord_degree) posmod 7 for root/third/fifth
 
 const DENSITY_MIN := 3 # notes per 16-step bar
@@ -38,7 +46,13 @@ static func decide(obs: Dictionary, seed_value: int) -> Array:
 	var rng := RandomNumberGenerator.new()
 	rng.seed = seed_value
 
-	var current: Dictionary = obs.bass_notes
+	# Boundary translation: observed V2 lanes -> internal 5-tone space (raw
+	# kept so removals can emit the exact stored degree).
+	var current := {}
+	var raw := {}
+	for k in obs.bass_notes:
+		raw[int(str(k))] = int(obs.bass_notes[k])
+		current[int(str(k))] = NEW_TO_OLD[clampi(int(obs.bass_notes[k]), 0, 7)]
 	var windows: int = obs.windows_since_change
 
 	# Rule 1: a line that just changed gets at least one window to breathe.
@@ -70,7 +84,7 @@ static func decide(obs: Dictionary, seed_value: int) -> Array:
 		var removed_step: int = _remove_worst(desired, obs)
 		_add_best(desired, obs, rng, removed_step)
 
-	return _diff_to_ops(current, desired)
+	return _diff_to_ops(current, desired, raw)
 
 
 # ---------------------------------------------------------------- candidates
@@ -154,7 +168,10 @@ static func _remove_worst(desired: Dictionary, obs: Dictionary) -> int:
 ## Ops that transform `current` into `desired` under place_or_toggle semantics:
 ## absent->present = place, degree change = place (retune), present->absent =
 ## place SAME degree (toggle off). Emitted in ascending step order.
-static func _diff_to_ops(current: Dictionary, desired: Dictionary) -> Array:
+## raw: the OBSERVED V2 degrees per step — a removal must emit the exact
+## stored degree (place-same = toggle off), which the lossy old-space round
+## trip cannot reproduce for foreign color notes.
+static func _diff_to_ops(current: Dictionary, desired: Dictionary, raw: Dictionary = {}) -> Array:
 	var ops: Array = []
 	var all_steps := {}
 	for step in current:
@@ -167,11 +184,17 @@ static func _diff_to_ops(current: Dictionary, desired: Dictionary) -> Array:
 		if desired.has(step) and not current.has(step):
 			ops.append(_place(step, desired[step]))
 		elif current.has(step) and not desired.has(step):
-			ops.append(_place(step, current[step]))
+			ops.append(_place_raw(step, int(raw.get(step, OLD_TO_NEW[clampi(current[step], 0, 4)]))))
 		elif current[step] != desired[step]:
 			ops.append(_place(step, desired[step]))
 	return ops
 
 
+static func _place_raw(step: int, new_degree: int) -> Dictionary:
+	return {"track": TRACK_BASS, "op": "place", "args": {"step": step, "degree": new_degree}}
+
+
 static func _place(step: int, degree: int) -> Dictionary:
-	return {"track": TRACK_BASS, "op": "place", "args": {"step": step, "degree": degree}}
+	# Boundary translation: internal 5-tone lane -> V2 lane on the wire.
+	return {"track": TRACK_BASS, "op": "place",
+		"args": {"step": step, "degree": OLD_TO_NEW[clampi(degree, 0, 4)]}}

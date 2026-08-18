@@ -6,7 +6,7 @@ extends RefCounted
 # the current bar's chord (Harmony.chord_tone_midi), so one stored motif follows
 # the whole progression. One note per step by construction (Dictionary keyed by step).
 
-const NUM_DEGREES := 5 # lanes = harmonic roles R / 3 / 5 / 7 / O against the bar's chord
+const NUM_DEGREES := 8 # V2 lanes = full diatonic ladder R 2 3 4 5 6 7 O against the bar's chord
 
 var num_steps: int = 16
 var notes: Dictionary = {} # step:int -> degree:int (0-based, 0..NUM_DEGREES-1)

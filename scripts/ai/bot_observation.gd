@@ -28,7 +28,8 @@ extends RefCounted
 # assumed "someone changed my line"; self vs other is local knowledge every
 # participant has) and bass_notes_prev (the previous committed pattern, for
 # revert/continuation reasoning).
-const OBSERVATION_SCHEMA := 4
+# v5: V2 bass lanes (8-lane diatonic ladder) + FEATURES_SCHEMA 3.
+const OBSERVATION_SCHEMA := 5
 
 const Features := preload("res://scripts/core/jam_features.gd")
 
