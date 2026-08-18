@@ -39,6 +39,7 @@ static func realization(obs: Dictionary, seed_value: int) -> Dictionary:
 	var intent := IntentPolicy.decide(obs, interp)
 	var style_bass = null
 	var style_meta = null
+	var style_interaction = null
 	var profile = StylePrior.load_profile(STYLE_PROFILE_PATH)
 	if profile != null and profile.get("roles", {}).has("bass"):
 		var role: Dictionary = profile.roles.bass
@@ -53,8 +54,16 @@ static func realization(obs: Dictionary, seed_value: int) -> Dictionary:
 				"confidence": role.confidence,
 				"w_style": W_STYLE * factor,
 			}
+			# Interaction section (drums↔bass coupling, corpus-measured):
+			# absent → the coupling dimension contributes exactly zero.
+			if profile.roles.has("interaction"):
+				var irole: Dictionary = profile.roles.interaction
+				if StylePrior.CONFIDENCE_FACTOR.get(irole.get("confidence", ""), 0.0) > 0.0:
+					style_interaction = irole.profile
+					style_meta["interaction_source"] = irole.source
+					style_meta["interaction_n_pairs"] = irole.profile.n_pairs
 	var real := Realizer.realize(obs, intent.intent, seed_value,
-		style_bass, style_meta.w_style if style_meta != null else 0.0)
+		style_bass, style_meta.w_style if style_meta != null else 0.0, style_interaction)
 	real["drivers"] = intent.drivers
 	real["realizer"] = Realizer.REALIZER_NAME
 	real["realizer_version"] = Realizer.REALIZER_VERSION

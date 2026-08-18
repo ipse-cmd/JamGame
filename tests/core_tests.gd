@@ -1275,11 +1275,34 @@ func _test_style_prior() -> void:
 	check(StylePrior.score_bass({}, {0: 0}, [0, 5, 3, 4]) == null,
 		"empty profile section -> null, no generic substitute")
 
+	# Drum-conditioned coupling: measured interaction (bass lands on the kick
+	# at ~3.4x the rate of elsewhere) must prefer kick-aligned candidates
+	# GIVEN the current drums — same notes, different kicks, different fit.
+	var interaction := {"bass_given_kick": 0.67, "bass_given_nokick": 0.196, "bass_marginal": 0.262}
+	var line_notes := {0: 0, 4: 2, 8: 0, 12: 2}
+	var on_kick = StylePrior.score_bass(bass, line_notes, [0, 5, 3, 4], [0, 4, 8, 12], interaction)
+	var off_kick = StylePrior.score_bass(bass, line_notes, [0, 5, 3, 4], [2, 6, 10, 14], interaction)
+	check(on_kick.coupling_fit > off_kick.coupling_fit,
+		"the SAME line scores higher coupling when the drums actually kick under it")
+	check(on_kick.coupling_fit <= StylePrior.CAP_TYPICAL and off_kick.coupling_fit >= StylePrior.FLOOR,
+		"coupling fit respects the soft manifold")
+	# Missing interaction -> dimension absent, everything else byte-identical.
+	var no_int = StylePrior.score_bass(bass, line_notes, [0, 5, 3, 4], [0, 4, 8, 12], null)
+	check(not no_int.has("coupling_fit"), "no interaction data -> no coupling dimension")
+
+	# The committed jazz profile now carries the interaction section.
+	check(profile.roles.has("interaction")
+		and profile.roles.interaction.profile.n_pairs >= 100
+		and profile.roles.interaction.confidence == "HIGH",
+		"committed jazz profile carries HIGH-confidence measured interaction")
+
 	# The full policy carries provenance and stays JSON-replayable with style on.
 	var real := IntentBassPolicy.realization(obs, 7)
 	check(real.style != null and real.style.style_id == "jazz"
 		and real.style.bass_source.begins_with("FiloBass") and real.style.w_style > 0.0,
 		"decisions log exact style provenance")
+	check(real.style.has("interaction_source") and int(real.style.interaction_n_pairs) >= 100,
+		"decisions log the interaction provenance too")
 	var wire := BotObservation.from_json(JSON.parse_string(JSON.stringify(obs)))
 	check(JSON.stringify(IntentBassPolicy.decide(wire, 7)) == JSON.stringify(IntentBassPolicy.decide(obs, 7)),
 		"styled pipeline replays identically through the JSON boundary")

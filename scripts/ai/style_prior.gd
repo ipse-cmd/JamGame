@@ -45,9 +45,12 @@ static func load_profile(path: String):
 
 
 ## Per-dimension style fits for a candidate bass line under a bass profile
-## section. Returns null when profile/notes give nothing to score (missing
-## data contributes zero — the caller treats null as no style term).
-static func score_bass(bass_profile: Dictionary, notes: Dictionary, chord_slots: Array):
+## section. kick_steps + interaction add the drum-CONDITIONED dimension: a
+## candidate is style-shaped AGAINST THE CURRENT DRUMS, not in a vacuum.
+## Returns null when profile/notes give nothing to score (missing data
+## contributes zero — the caller treats null as no style term).
+static func score_bass(bass_profile: Dictionary, notes: Dictionary, chord_slots: Array,
+		kick_steps: Array = [], interaction = null):
 	if notes.is_empty() or bass_profile.is_empty():
 		return null
 	var steps := notes.keys()
@@ -110,6 +113,22 @@ static func score_bass(bass_profile: Dictionary, notes: Dictionary, chord_slots:
 			lp3 += log((float(row.get(b, 0)) + 1.0) / (row_total + TOKENS.size()))
 		transition_fit = _fit(lp3 / (steps.size() - 1), log(1.0 / TOKENS.size()))
 
+	# coupling_fit: onset likelihood conditioned on the CURRENT kick pattern
+	# vs the corpus marginal — measured drums↔bass interaction, never opinion.
+	var coupling_fit = null
+	if interaction != null and interaction is Dictionary and interaction.has("bass_given_kick"):
+		var r_k := clampf(float(interaction.bass_given_kick), 0.001, 0.999)
+		var r_n := clampf(float(interaction.bass_given_nokick), 0.001, 0.999)
+		var marginal := clampf(float(interaction.get("bass_marginal",
+			(r_k + r_n) / 2.0)), 0.001, 0.999)
+		var kickset := {}
+		for s in kick_steps:
+			kickset[int(s)] = true
+		var lp4 := 0.0
+		for s in steps:
+			lp4 += log((r_k if kickset.has(int(s)) else r_n) / marginal)
+		coupling_fit = _fit(lp4 / steps.size(), 0.0)
+
 	var dims := {"degree_fit": degree_fit}
 	if beat_fit != null:
 		dims["beat_position_fit"] = beat_fit
@@ -117,6 +136,8 @@ static func score_bass(bass_profile: Dictionary, notes: Dictionary, chord_slots:
 		dims["interval_fit"] = interval_fit
 	if transition_fit != null:
 		dims["transition_fit"] = transition_fit
+	if coupling_fit != null:
+		dims["coupling_fit"] = coupling_fit
 	var combined := 0.0
 	for k in dims:
 		combined += dims[k]

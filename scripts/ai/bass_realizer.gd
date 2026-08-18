@@ -48,7 +48,7 @@ const MAX_REVERT_OPS := 8
 ## are computed from the SAME candidates and returned (the ablation is in
 ## every log line).
 static func realize(obs: Dictionary, intent: String, seed_value: int,
-		style_bass = null, w_style := 0.0) -> Dictionary:
+		style_bass = null, w_style := 0.0, style_interaction = null) -> Dictionary:
 	var cands := candidates(obs, intent, seed_value)
 	var scores: Array = []
 	var best = null # styled winner (== interaction winner when style is inert)
@@ -61,7 +61,7 @@ static func realize(obs: Dictionary, intent: String, seed_value: int,
 			entry["pattern_id"] = c.pattern_id
 		if style_bass != null and w_style > 0.0 and not c.ops.is_empty():
 			var style = StylePrior.score_bass(style_bass, _simulate(_notes(obs), c.ops),
-				obs.get("chord_slots", []))
+				obs.get("chord_slots", []), obs.get("kick_steps", []), style_interaction)
 			if style != null:
 				entry["style"] = style
 				final = interaction + w_style * style.combined

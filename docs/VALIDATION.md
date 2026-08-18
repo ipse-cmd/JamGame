@@ -839,6 +839,35 @@ Offline harness renders every new variant at healthy levels. Validation:
 **434 unit tests green**, **6/6 integration green** (timing gates unchanged
 on the stereo master path).
 
+## Interaction axis — measured drums↔bass coupling enters the prior (2026-08-17)
+
+`tools/corpus/interaction.py`: drums+bass pairs from aligned multitracks —
+BabySlakh (19 clean-labeled pairs) + Lakh genre-filtered through MidiCaps
+captions (jazz 268 / electronic 120 pairs; 400-file caps per genre, LOGGED).
+Per pair on the 16-step grid: the joint per-step {kick&bass / kick / bass /
+neither} table, per-bar density correlation, bass-in-drum-silence rate.
+
+**The findings (all HIGH confidence, remarkably cross-genre):**
+- Bass lands on the kick at **3.4× the rate of anywhere else**
+  (bass|kick 0.67-0.70 vs bass|no-kick 0.20-0.23) — the evaluator's
+  kick-alignment house rule now has a corpus magnitude.
+- **Bass does NOT fill drum silence** (0.05-0.08) — it locks, it doesn't
+  complement. A "play where drums don't" heuristic would be corpus-wrong.
+- **Densities move together** (+0.23 jazz, +0.34 electronic) — bass thickens
+  WITH drums.
+
+Game side: style profiles gain an `interaction` role section (provenance +
+confidence, absent-not-fabricated); `StylePrior.score_bass` gains
+**coupling_fit** — per-onset log-likelihood of P(bass | kick at this step)
+vs the corpus marginal, conditioned on the observation's ACTUAL kick_steps,
+soft-manifold capped like every dimension. The style prior finally answers
+"is this jazz-shaped against THESE drums?" instead of scoring bass in a
+vacuum. Interaction provenance (source, n_pairs) rides in every decision log.
+
+Validation: **439 unit tests green** (+5: same-line-different-kicks coupling
+direction, manifold caps, dimension absent without data, committed-profile
+interaction presence, provenance logging). **6/6 integration green.**
+
 ## How to rebuild the extension
 
 ```
