@@ -132,9 +132,29 @@ def build():
         by_style[e["style"]].append(e)
 
     filo = load("filobass.jsonl")
-    styles = sorted(set(by_style) | {"jazz"})
+    # Slakh bass: labeled stems with chords ESTIMATED from the chordal stems
+    # (see slakh_bass.py). Weaker evidence than FiloBass's human transcriptions,
+    # so it never overrides a corpus-annotated bass profile and its confidence
+    # is capped — but it is the only non-jazz bass source on disk.
+    slakh_bass = defaultdict(list)
+    for e in load("slakh_bass.jsonl"):
+        slakh_bass[e["style"]].append(e)
+
+    styles = sorted(set(by_style) | set(slakh_bass) | {"jazz"})
     for style in styles:
-        profile = {"profile_schema": PROFILE_SCHEMA, "style_id": style, "roles": {}}
+        # Preserve role sections this builder does not own (e.g. `interaction`,
+        # written by interaction.py) instead of clobbering the whole file.
+        path = os.path.join(PROFILE_DIR, f"{style}.json")
+        if os.path.exists(path):
+            profile = json.load(open(path))
+            profile["profile_schema"] = PROFILE_SCHEMA
+            profile["style_id"] = style
+            profile.setdefault("roles", {})
+        else:
+            profile = {"profile_schema": PROFILE_SCHEMA, "style_id": style, "roles": {}}
+        profile["roles"].pop("drums", None)
+        profile["roles"].pop("bass", None)
+
         if by_style.get(style):
             es = by_style[style]
             profile["roles"]["drums"] = {
@@ -148,8 +168,23 @@ def build():
                 "source": "FiloBass v1.0.0",
                 "confidence": confidence(len(filo), sum(e["notes"] for e in filo)),
             }
+        elif slakh_bass.get(style):
+            es = slakh_bass[style]
+            n_notes = sum(e["notes"] for e in es)
+            cov = sum(e["chord_coverage"] for e in es) / len(es)
+            # An estimated chord track is not a transcribed one. Cap at MEDIUM
+            # so a consumer weighting by confidence discounts it accordingly.
+            conf = confidence(len(es), n_notes)
+            profile["roles"]["bass"] = {
+                "profile": bass_profile(es),
+                "source": "Slakh2100 labeled stems; chords ESTIMATED from "
+                          "chordal stems (bass excluded from estimation)",
+                "chord_source": "estimated",
+                "mean_chord_coverage": cov,
+                "confidence": "MEDIUM" if conf == "HIGH" else conf,
+            }
         # Roles with no corpus stay absent — absent, not fabricated.
-        with open(os.path.join(PROFILE_DIR, f"{style}.json"), "w") as f:
+        with open(path, "w") as f:
             json.dump(profile, f, indent=1)
         roles = {r: profile["roles"][r]["confidence"] for r in profile["roles"]}
         print(f"{style:>14}: {roles}")

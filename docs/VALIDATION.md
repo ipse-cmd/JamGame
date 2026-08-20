@@ -904,6 +904,80 @@ all-color-finite, baseline-never-emits-color across 40 seeds, migrated
 fixtures throughout). **6/6 integration green.** The experiment now runs on
 ordinary duet sessions via v2_metrics.py.
 
+## Corpus: chord estimation unlocks non-jazz bass; jazz interaction exhaustive
+
+Jazz was the only style with a bass profile, and the reason was structural:
+the bass representation is chord-relative by construction (`convert.py` drops
+any note whose chord is unknown), and FiloBass — jazz only — was the sole
+corpus on disk carrying human chord annotations. Since the AI player IS a bass
+player, that made "which style ships" a data question, not a taste one.
+
+Two changes, both measurement-side only — no game logic touched.
+
+**1. Jazz interaction is now exhaustive.** `LAKH_CAP_PER_GENRE` was a flat 400,
+set when Slakh was assumed to be the heavyweight corpus. It is not: Slakh holds
+**3** jazz tracks (it inherits Lakh's pop/rock/electronic distribution), so
+Lakh's 4,563 jazz-tagged files are the entire jazz supply. Cap lifted for jazz
+(`LAKH_CAP_OVERRIDE`), caps still LOGGED per genre with the uncapped case
+named explicitly.
+
+Jazz interaction pairs **268 → 3,127 (11.7×)**, and the measurement held:
+
+| | n=268 | n=3,127 |
+|---|---|---|
+| bass\|kick | 0.670 | 0.668 |
+| bass\|no-kick | 0.196 | 0.201 |
+| density corr | +0.23 | +0.21 |
+
+That stability across a 11.7× sample increase is the strongest available
+evidence the original coupling measurement was real, not thin-sample noise.
+
+**2. `tools/corpus/slakh_bass.py`** — chords estimated per half-bar from
+Slakh's labeled **chordal** stems by pitch-class template matching, then bass
+read against them. Two properties keep it from being circular or invented:
+
+- **The bass stem is excluded from chord estimation.** Including it would let
+  the bass root define the chord and then "discover" that bass plays roots.
+- **No confident chord = NC, notes dropped** — the same rule `convert.py`
+  applies to FiloBass. Per-example coverage recorded; kept set runs 0.95–1.00.
+
+1,454 examples from 2,100 tracks (582 rejected: missing stems, non-4/4, length,
+coverage < 0.5; 64 untagged). Genre labels come from joining Slakh's UUID —
+which IS the Lakh MD5 — to MidiCaps: **97.0% hit** (1,659/1,710). Untagged
+tracks fall to the unlabeled `all` bucket rather than being guessed.
+
+Estimated chords are weaker evidence than transcribed ones, so these profiles
+carry `chord_source: "estimated"` and confidence is **capped at MEDIUM
+regardless of n**. Sanity check: estimated tone distributions are root-dominant
+(R ≈ 0.45–0.57 by style) where random chord assignment gives ≈ 0.08.
+
+**Result — four styles now carry both roles the AI player uses**, where before
+only jazz did, and they separate rather than converge:
+
+| style | bass\|kick | density corr | root share | interaction n |
+|---|---|---|---|---|
+| jazz | 0.668 | +0.21 | 0.33 | 3,127 [H] |
+| electronic | 0.696 | +0.30 | 0.45 | 1,934 [H] |
+| pop | 0.782 | +0.37 | 0.49 | 729 [H] |
+| rock | 0.790 | +0.37 | 0.48 | 121 [H] |
+
+Jazz bass is least locked to the kick and tracks drum density most loosely;
+pop/rock most locked; jazz spends a third of its notes on the root where pop
+spends half. `data/style_profiles/electronic.json` ships alongside jazz —
+`intent_bass_policy.gd` still hard-codes jazz, so this is data staged for a
+style selector, changing nothing at runtime yet.
+
+Also fixed: `profiles.py build()` rewrote each profile file wholesale, silently
+destroying the `interaction` role written by `interaction.py` — order-dependent
+data loss. It now preserves role sections it does not own. And `interaction.py`
+double-counted Slakh pairs into the `all` bucket (they are already tagged
+`genre: "all"`), inflating it by 44% at the new corpus size.
+
+Validation: **527 unit tests green, 6/6 integration green** (measurement-side
+change; the game reads the same profile schema). Separability gate re-run:
+**51% vs 14% chance**, unchanged. Full inventory of what each genre can support
+in `docs/design/corpus-inventory.md`.
+
 ## How to rebuild the extension
 
 ```

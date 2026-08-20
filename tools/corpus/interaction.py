@@ -2,8 +2,10 @@
 """Interaction axis: drums↔bass coupling measured from aligned multitracks.
 
 Sources:
-- BabySlakh (clean per-stem instrument labels; full Slakh swaps in when its
-  download lands)
+- Slakh2100 (clean per-stem instrument labels): BabySlakh plus the full
+  MIDI-only redux. The 104GB FLAC tarball holds the same MIDI and audio we
+  never read, so the 226MB MIDI-only distribution is the source. CC-BY-NC-4.0
+  - measured distributions only, no content ships.
 - Lakh full, genre-filtered through MidiCaps captions (jazz / electronic
   lists), capped per genre and LOGGED (no silent caps).
 
@@ -28,12 +30,19 @@ except ImportError:
 import mido
 
 BABY = "/media/ipsedesktop/ShareDrive1/ModelData/babyslakh_16k"
+SLAKH = "/media/ipsedesktop/ShareDrive1/ModelData/slakh2100_midi"
+SLAKH_SPLITS = ("train", "validation", "test", "omitted")
 LMD = os.path.expanduser("~/JamminCorpus/lmd_full")
 CAPTIONS = os.path.expanduser("~/JamminCorpus/midicaps/train.json")
 EX_DIR = "/media/ipsedesktop/ShareDrive1/ModelData/JamminCorpusExamples"
 PROFILE_DIR = os.path.join(EX_DIR, "profiles")
 
-LAKH_CAP_PER_GENRE = 400  # scanned files per genre list — logged, not silent
+# Per-genre scan caps. Jazz is UNCAPPED: Slakh contributes 3 jazz tracks (it
+# inherits Lakh's pop/rock/electronic distribution), so Lakh's 4,563 jazz-tagged
+# files are the entire jazz supply, not a stopgap. The old flat 400 was set when
+# Slakh was assumed to be the heavyweight — backwards. Caps stay LOGGED.
+LAKH_CAP_PER_GENRE = 4000
+LAKH_CAP_OVERRIDE = {"jazz": None}  # None = no cap
 KICK_NOTES = {35, 36}
 BASS_PROGRAMS = set(range(32, 40))
 GENRES = {
@@ -126,54 +135,115 @@ def measure(kicks, drums, bass):
     }
 
 
+def slakh_pair(track_dir):
+    """(kicks, drums, bass) onsets from one Slakh track's labeled stems.
+
+    Same layout in BabySlakh and the full MIDI-only redux: metadata.yaml names
+    each stem's inst_class / is_drum, MIDI/<stem>.mid holds that stem alone.
+    """
+    meta_path = os.path.join(track_dir, "metadata.yaml")
+    if not os.path.exists(meta_path):
+        return None
+    try:
+        meta = yaml.safe_load(open(meta_path))
+    except Exception:
+        return None
+    drum_stem = bass_stem = None
+    for sid, s in (meta.get("stems") or {}).items():
+        if s.get("is_drum") and drum_stem is None:
+            drum_stem = sid
+        if s.get("inst_class") == "Bass" and bass_stem is None:
+            bass_stem = sid
+    if not (drum_stem and bass_stem):
+        return None
+    try:
+        dmid = mido.MidiFile(os.path.join(track_dir, "MIDI", drum_stem + ".mid"))
+        bmid = mido.MidiFile(os.path.join(track_dir, "MIDI", bass_stem + ".mid"))
+    except Exception:
+        return None
+    kicks, drums, _ = onsets_from_track(dmid, True, False)
+    if not drums:  # drum stem not on ch9: every note is a drum, kick = low notes
+        tpb = dmid.ticks_per_beat
+        for tr in dmid.tracks:
+            t = 0
+            for msg in tr:
+                t += msg.time
+                if msg.type == "note_on" and msg.velocity > 0:
+                    drums.append(t / tpb)
+                    if msg.note in KICK_NOTES:
+                        kicks.append(t / tpb)
+    bass = []
+    tpb = bmid.ticks_per_beat
+    for tr in bmid.tracks:
+        t = 0
+        for msg in tr:
+            t += msg.time
+            if msg.type == "note_on" and msg.velocity > 0:
+                bass.append(t / tpb)
+    return measure(kicks, drums, bass)
+
+
+def slakh_roots():
+    """(source_name, track_dir) for every Slakh track available locally.
+
+    BabySlakh is flat (20 tracks); the full MIDI-only redux nests tracks under
+    train/validation/test/omitted. The 104GB FLAC tarball carries the same MIDI
+    and nothing else we read, so the MIDI-only distribution is the source.
+    """
+    if os.path.isdir(BABY):
+        for track in sorted(os.listdir(BABY)):
+            d = os.path.join(BABY, track)
+            if os.path.isdir(d):
+                yield "babyslakh", d
+    for split in SLAKH_SPLITS:
+        root = os.path.join(SLAKH, split)
+        if not os.path.isdir(root):
+            continue
+        for track in sorted(os.listdir(root)):
+            d = os.path.join(root, track)
+            if os.path.isdir(d):
+                yield f"slakh/{split}", d
+
+
 def extract():
     examples = []
-    # --- BabySlakh: labeled stems ---
-    if yaml is not None and os.path.isdir(BABY):
-        for track in sorted(os.listdir(BABY)):
-            meta_path = os.path.join(BABY, track, "metadata.yaml")
-            if not os.path.exists(meta_path):
+    # --- Slakh: labeled stems (BabySlakh + full MIDI-only redux) ---
+    if yaml is not None:
+        # Slakh ships no genre labels, but its UUID IS the Lakh MD5, so
+        # MidiCaps supplies them (97% hit). Without this every Slakh pair lands
+        # in the unlabeled "all" bucket and improves no style in particular.
+        sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+        from slakh_bass import genre_index, primary_genre
+        caps = genre_index()
+        per_source = defaultdict(int)
+        untagged = 0
+        seen_uuid = set()
+        for source, track_dir in slakh_roots():
+            m = slakh_pair(track_dir)
+            if not m:
                 continue
-            meta = yaml.safe_load(open(meta_path))
-            drum_stem = bass_stem = None
-            for sid, s in meta.get("stems", {}).items():
-                if s.get("is_drum") and drum_stem is None:
-                    drum_stem = sid
-                if s.get("inst_class") == "Bass" and bass_stem is None:
-                    bass_stem = sid
-            if not (drum_stem and bass_stem):
-                continue
+            # BabySlakh tracks are a subset of the full set - dedup by UUID so
+            # the same performance is not counted twice.
             try:
-                dmid = mido.MidiFile(os.path.join(BABY, track, "MIDI", drum_stem + ".mid"))
-                bmid = mido.MidiFile(os.path.join(BABY, track, "MIDI", bass_stem + ".mid"))
+                uuid = yaml.safe_load(open(os.path.join(track_dir, "metadata.yaml"))).get("UUID")
             except Exception:
+                uuid = None
+            if uuid and uuid in seen_uuid:
                 continue
-            # Slakh stems keep drums on channel 9? Some render on ch0 — treat the
-            # whole drum stem as drums and the whole bass stem as bass.
-            kicks, drums, _ = onsets_from_track(dmid, True, False)
-            if not drums:  # drum stem not on ch9: take every note as a drum, kick = low notes
-                tpb = dmid.ticks_per_beat
-                for tr in dmid.tracks:
-                    t = 0
-                    for msg in tr:
-                        t += msg.time
-                        if msg.type == "note_on" and msg.velocity > 0:
-                            drums.append(t / tpb)
-                            if msg.note in KICK_NOTES:
-                                kicks.append(t / tpb)
-            bass = []
-            tpb = bmid.ticks_per_beat
-            for tr in bmid.tracks:
-                t = 0
-                for msg in tr:
-                    t += msg.time
-                    if msg.type == "note_on" and msg.velocity > 0:
-                        bass.append(t / tpb)
-            m = measure(kicks, drums, bass)
-            if m:
-                m.update({"source": "babyslakh", "source_id": track, "genre": "all"})
-                examples.append(m)
-        print(f"babyslakh: {len(examples)} pairs")
+            if uuid:
+                seen_uuid.add(uuid)
+            genre = primary_genre(caps.get(uuid) or [])
+            if genre is None:
+                genre = "all"          # untagged: unlabeled bucket, not guessed
+                untagged += 1
+            m.update({"source": source, "source_id": os.path.basename(track_dir),
+                      "genre": genre})
+            examples.append(m)
+            per_source[source] += 1
+        for s in sorted(per_source):
+            print(f"{s}: {per_source[s]} pairs")
+        print(f"slakh genre labels: {untagged} pairs had no MidiCaps tag "
+              f"-> unlabeled 'all' bucket")
 
     # --- Lakh via MidiCaps genre lists ---
     lists = {g: [] for g in GENRES}
@@ -185,7 +255,10 @@ def extract():
                 continue
             genres = [str(x).lower() for x in e.get("genre", [])]
             for gname, pred in GENRES.items():
-                if pred(" ".join(genres)) and len(lists[gname]) < LAKH_CAP_PER_GENRE:
+                if not pred(" ".join(genres)):
+                    continue
+                cap = LAKH_CAP_OVERRIDE.get(gname, LAKH_CAP_PER_GENRE)
+                if cap is None or len(lists[gname]) < cap:
                     lists[gname].append(e["location"])
     for gname, locs in lists.items():
         kept = scanned = 0
@@ -208,8 +281,11 @@ def extract():
                 m.update({"source": "lakh", "source_id": loc, "genre": gname})
                 examples.append(m)
                 kept += 1
+        cap = LAKH_CAP_OVERRIDE.get(gname, LAKH_CAP_PER_GENRE)
+        note = "UNCAPPED - every tagged file listed" if cap is None else \
+               f"cap {cap} of the full corpus - capped, not exhaustive"
         print(f"lakh/{gname}: scanned {scanned}/{len(locs)} listed "
-              f"(cap {LAKH_CAP_PER_GENRE} of the full corpus — capped, not exhaustive), kept {kept} pairs")
+              f"({note}), kept {kept} pairs")
 
     with open(os.path.join(EX_DIR, "interaction.jsonl"), "w") as f:
         for e in examples:
@@ -226,7 +302,8 @@ def profiles():
     groups = defaultdict(list)
     for e in examples:
         groups[e["genre"]].append(e)
-        groups["all"].append(e)
+        if e["genre"] != "all":
+            groups["all"].append(e)  # genre "all" IS the bucket - don't count it twice
     for genre, es in sorted(groups.items()):
         n = len(es)
         table = [[0, 0, 0, 0] for _ in range(16)]
@@ -248,7 +325,7 @@ def profiles():
             "bass_given_nokick": wmean("bass_given_nokick"),
             "bass_in_drum_silence": wmean("bass_in_drum_silence"),
             "density_corr_mean": sum(e["density_corr"] for e in es) / n,
-            "source": "BabySlakh + Lakh(MidiCaps-filtered, capped)",
+            "source": "Slakh2100 MIDI-only redux + Lakh(MidiCaps-filtered, capped)",
             "confidence": confidence(n),
         }
         print(f"{genre:>12}: n={n} bass|kick={prof['bass_given_kick']:.3f} "

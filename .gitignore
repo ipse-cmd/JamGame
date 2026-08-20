@@ -11,3 +11,4 @@ native/bin/*.exp
 native/bin/*.lib
 native/bin/*.pdb
 .DS_Store
+tools/corpus/__pycache__/
